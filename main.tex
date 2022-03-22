@@ -481,6 +481,144 @@ TODO: FINISH THIS PART
 
     $R(\overrightarrow{w}) = -\overrightarrow{w}$ for all $\overrightarrow{w} \perp W$, so $\lambda = -1$ is an eigenvalue, and $E_{-1} = \mathrm{Sp}(\overrightarrow{w})$.
 \end{example}
+
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{6}
+\begin{proposition}
+$E_\lambda$ is a subspace of $V$ for all $\lambda$.
+\end{proposition}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    \begin{itemize}
+        \item $T(\overrightarrow{0}) = \overrightarrow{0} = \lambda\overrightarrow{0} \implies \overrightarrow{x} \in E_\lambda$
+
+        \item Pick $\overrightarrow{v}, \overrightarrow{w} \in E_\lambda$.
+
+        WTS $\overrightarrow{v} + \overrightarrow{w} \in E_\lambda$.
+
+        $T(\overrightarrow{v} + \overrightarrow{w}) = T(\overrightarrow{v}) + T(\overrightarrow{w}) = \lambda\overrightarrow{v} + \lambda \overrightarrow{w} = \lambda(\overrightarrow{v} + \overrightarrow{w}) \in E_\lambda$
+
+        \item Pick $\overrightarrow{v} \in E_\lambda$, $r \in \mathbb{F}$.
+
+        WTS $T(r\overrightarrow{v}) = rT(\overrightarrow{v})$.
+
+        $T(r\overrightarrow{v}) = \lambda(r\overrightarrow{v}) = r(\lambda\overrightarrow{x}) = rT(\overrightarrow{v}) \in E_\lambda$.
+    \end{itemize}
+\end{proof}
+
+\subsubsection{Eigenbasis}
+
+Consider the same linear transformation $R$ discussed in example 2.
+
+$R(\overrightarrow{x}) = A\overrightarrow{x}$
+
+$A=[R]_\mathcal{E} = \begin{bmatrix} | &| &| \\ R(\overrightarrow{e_1}) &R(\overrightarrow{e_2}) &R(\overrightarrow{e_3}) \\ | &| &| \end{bmatrix} = \frac{1}{3}\begin{bmatrix} 1 &-2 &-2 \\ -2 &1 &-2 \\ -2 &-2 &1 \end{bmatrix}$
+
+Eigenbasis: linearly independent and spans $\mathbb{R}^3$.
+
+For example: $\mathcal{B} = \left\{
+\underbrace{ \begin{pmatrix} 1\\1\\-2 \end{pmatrix} }_{\overrightarrow{v_1}},
+\underbrace{ \begin{pmatrix} 2\\1\\-2 \end{pmatrix} }_{\overrightarrow{v_2}},
+\underbrace{ \begin{pmatrix} 1\\1\\1 \end{pmatrix} }_{\overrightarrow{w}}
+\right\}$
+
+Then, $[R]_\mathcal{B} =
+\begin{bmatrix} | &| &| \\ [R(\overrightarrow{v_1})]_\mathcal{B} &[R(\overrightarrow{v_2})]_\mathcal{B} &[R(\overrightarrow{w})]_\mathcal{B} \\ | &| &| \end{bmatrix} = \begin{bmatrix} 1 &0 &0 \\ 0 &1 &0 \\ 0 &0 &-1 \end{bmatrix}$
+
+$[R(\overrightarrow{v_1})]_\mathcal{B} = [\overrightarrow{v_1}]_\mathcal{B} = \begin{bmatrix} 1\\0\\0 \end{bmatrix}$
+
+$[R(\overrightarrow{v_2})]_\mathcal{B} = [\overrightarrow{v_2}]_\mathcal{B}=\begin{bmatrix} 0\\1\\0 \end{bmatrix}$
+
+$[R(\overrightarrow{w})]_\mathcal{B} = [\overrightarrow{w}]_\mathcal{B}=\begin{bmatrix} 0\\0\\-1 \end{bmatrix}$
+
+Let $T: V \to V$ be a linear transformation.
+
+$\overrightarrow{v} \in V$  is an eigenvector if and only if $T(\overrightarrow{v}) = \lambda \overrightarrow{v}$, by the definition.
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{4}
+\begin{proposition}
+    A vector $\overrightarrow{v}$ is an eigenvector of $T$ with eigenvalue $\lambda$ if and only if $\overrightarrow{v} \neq \overrightarrow{0}$ and $\overrightarrow{v} \in \ker(T - \lambda \mathrm{id})$.
+\end{proposition}
+\setcounter{chapter}{3}
+\begin{align*}
+    T(\overrightarrow{v}) - \lambda \overrightarrow{v}
+    &= \overrightarrow{0}
+    \\
+    T(\overrightarrow{v}) - \lambda ~ id(\overrightarrow{v})
+    &= \overrightarrow{0}
+    \\
+    (T-\lambda ~ id)\overrightarrow{v}
+    &= 0
+    \qquad\text{by sum of linear transformations}
+    \\
+    \overrightarrow{v} &\in \ker (T - \lambda ~ \mathrm{id}) \qquad\text{for some }\lambda \in \mathbb{F}
+\end{align*}
+
+Let $\dim V = n$, and fix a basis $\mathcal{B}$ for $V$,
+
+$\begin{matrix}
+\text{Then, }
+\mathcal{L}(V, V)
+&\overset{\cong}{\to}
+&\underset{n \times n}M(\mathbb{F})
+\\
+T &\mapsto &[T]_\mathcal{B} = B
+\end{matrix}$
+
+Suppose $\overrightarrow{v}$ is an eigenvector of $T$.
+
+$T(\overrightarrow{v}) - \lambda \overrightarrow{v}$ means that $[T]_\mathcal{B}[\overrightarrow{v}]_\mathcal{B} = [\lambda\overrightarrow{v}]_\mathcal{B} = \lambda [\overrightarrow{v}]_\mathcal{B}$.
+\begin{align*}
+    [T - \lambda ~ id]_\mathcal{B}
+    &= [T]_\mathcal{B} - \lambda[id]_\mathcal{B}
+    \\
+    &={B - \lambda I}_{n \times n}
+\end{align*}
+
+$\lambda$ is an eigenvalue for $T$ iff $B - \lambda I$ is not invertible.
+$\lambda$ is an eigenvalue for $T$ iff $\det (B - \lambda I) = 0$.
+
+This is called that \bred{characteristic polynomial} of the linear transformation $T$.
+
+\setcounter{chapter}{4}
+\setcounter{definitionT}{10}
+\begin{definition}[Characteristic Polynomial]
+    Let $A \in M_{n \times n}(\mathbb{R})$. The polynomial $\det(A = \lambda I)$ is called the \term{characteristic polynomial} of $A$.
+\end{definition}
+\setcounter{chapter}{3}
+
+\begin{example}
+    {~~~}
+
+    $\begin{matrix} T: &\mathcal{P}_3(\mathbb{R}) &\to &P_3(\mathbb{R}) \\ &p &\mapsto &p' + 2p \end{matrix}$
+
+    \begin{enumerate}
+        \item Find the characteristic polynomial of $T$.
+
+        Pick the basis $\mathcal{B} = ( 1, x, x^2, x^3 )$. Then, $B = \begin{bmatrix} 2 &1 &0 &0 \\ 0 &2 &2 &0 \\ 0 &0 &2 &3 \\\ 0 &0 &0 &2 \end{bmatrix}$.
+
+        $$\mathrm{char}(T) = \det(B -\lambda I) = (\lambda-2)^4{~~~}\footnote{Note that the power of $4$ means the \term{algebraic multiplicity} of $\lambda = 2$ is $4$.}$$
+
+        \bred{Note:} $\mathrm{char}(T)$ is well defined (does NOT depend on the choice of basis).
+
+        \item Find all eigenvalues and the corresponding eigenspace of $T$.
+
+        $$E_2 = \mathrm{nul}(B - \lambda I) = \mathrm{sp}\begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}$$
+
+        $\dim(E_2) = 1$ is the \term{geometric multiplicity} of $\lambda = 2$.
+    \end{enumerate}
+\end{example}
+
+\section{Diagonalizability}
+
+\setcounter{chapter}{4}
+\begin{definition}[Diagonalizable]
+    Let $V$ be a finite-dimensional vector space, and let $T: V \to V$ be a linear mapping. $T$ is said to be \term{diagonalizable} if there exists a basis of $V$, all of whose vectors are eigenvectors of $T$.
+\end{definition}
+\setcounter{chapter}{3}
 %----------------------------------------------------------------------------------------
 %	PART
 %----------------------------------------------------------------------------------------
