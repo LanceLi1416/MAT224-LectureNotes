@@ -1,0 +1,388 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.1.1 (14/2/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+% Lance
+\DeclareTextFontCommand{\bred}{\color{red}\bfseries} % Bold and red
+\DeclareTextFontCommand{\itblue}{\color{blue}\itshape} % Italic and blue
+\DeclareTextFontCommand{\term}{\color{orange}\itshape} % Italic and blue
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate [below=12cm] (midpoint) at (current page.north);
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{background}}; % Background image
+\draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Linear Algebra II\\[15pt] % Book title
+{\Large Course Notes}\\[20pt] % Subtitle
+{\huge Lance Li}}}; % Author name
+\end{tikzpicture}};
+\end{tikzpicture}
+\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2022 Lance Li\\ % Copyright notice
+
+\noindent \textsc{Published by Lance Li}\\ % Publisher
+
+\noindent \textsc{www.math.toronto.edu/nhoell/MAT224}\\ % URL
+
+\noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
+
+\noindent \textit{First edition, March 2022} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\usechapterimagefalse % If you don't want to include a chapter image, use this to toggle images off - it can be enabled later with \usechapterimagetrue
+
+\chapterimage{index.jpg} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+ 
+\part{Notes}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+
+\chapterimage{Introduction.jpg} % Chapter heading image
+
+\setcounter{chapter}{-1}
+\chapter{Introduction}
+
+\section{Introduction}
+
+Fields, complex numbers, vector spaces over a field, linear transformations, matrix of a linear transformation, kernel, range, dimension theorem, isomorphisms, change of basis, eigenvalues, eigenvectors, diagonalizability, real and complex inner products, spectral theorem, adjoint/self-adjoint/normal linear operators, triangular form, nilpotent mappings, Jordan canonical form.
+
+\subsection{Learning Outcome}
+
+\begin{itemize}
+    \item Read and understand new mathematical ideas and concepts on your own
+    \item Communicate mathematical ideas of linear algebra clearly in words and in writing (proofs)
+    \item Connect abstract knowledge to examples
+    \item Approach challenging problems independently
+    \item Use linear algebra as a computational tool
+\end{itemize}
+
+\subsection{Course Structure}
+
+\begin{center}
+    \includegraphics[width=0.75\linewidth]{Pictures/Course Structure.png}
+\end{center}
+
+Our course has multiple components. Each component is built carefully to support several aspects of the learning outcomes of our course as listed in the syllabus. This page explains how different components of the course interact with one another and helps you navigate the course 
+
+\subsubsection{Reading Quizzes}
+
+A typical week in our course starts by doing the reading assigned for that week and ends by revisiting the reading assignment for that week.  Assigned readings are mainly from our primary textbook followed by a Quercus quiz on your assigned readings for the week and that of the previous week.  You should start your reading as soon as they are posted. 
+
+You should read all the assigned readings for the week and submit your quiz on Quercus. {\color{red}The weekly quiz is due at 10 am every Monday.} The best strategy is to spread out the reading throughout the week. You are not expected to understand everything when you read the textbook before the class. Your learning will happen gradually during lectures, tutorials, and mostly when you do the suggested problems from the textbook and the written homework.  You will need to review the textbook again after lectures. Reading Quizzes quizzes makeup 5\% of your final grade. 
+
+\subsubsection{Lectures}
+
+\textbf{What to expect from lectures?}
+
+ During lectures, your instructor will guide you through important concepts and invite you to participate in lecture activities. Lectures complement your reading, tutorials, and homework. Lectures are not meant to replace textbook reading. There will be concepts and theorems that are only discussed in the textbook or only during your lectures, or only in homework. You are encouraged to attend all lectures. While in your lecture you are expected to actively participate in all activities prompted by your instructor. While the delivery of the course is online, your instructor may record the lectures and make it available for you to watch asynchronously. Note that watching the lectures do not replace attending them as you will miss the in-class activities. You are asked to do a lecture reflection quiz at the end of your lecture week. The reflection due date is a day after your last lecture of the week. Reflections are a tool for your instructor to emphasize important concepts in the lectures and to collect feedback from you, and an opportunity for you to reflect on your understanding of the lecture material. Reflections are part of your participation grade as per our syllabus. 
+
+\subsubsection{Tutorials}
+
+You must be enrolled in a tutorial.  You will have weekly tutorial sessions starting on Jan 24th. During tutorials, you will work with your classmates in small groups on tutorial worksheets.  Tutorial worksheets are carefully designed to be discussed in groups. Tutorial worksheets are roughly one week behind the lectures. 
+
+Ideally, you want to read, understand, and think about all the questions before your tutorial. This involves checking all the definitions and statements of the results you need to know to tackle questions.  Set aside 15 minutes before your tutorial to go over questions. Your tutorial sessions are facilitated by your TAs. During your tutorial, your TA will ask you to sit with your tutorial group. You will work with your groupmates on selected problems from the worksheet. Each group works on a shared document that will be checked by the TA during the tutorial. Do not expect your TA to work out the questions for you or to teach the concepts.  Your TA will give you feedback on what you already put down in your shared document. That is the more you work among your group the more your TA can help you. Your TA might choose to go over some of the questions for the entire class or answer your questions within your groups. You get the most out of your tutorials if you work on the problems ahead of time and stay active and engaged throughout the tutorial. After all, you can only get an answer to those questions you ask, either from your peers or the TA.  You will get solutions to all tutorial questions at the end of the tutorial week. Tutorials are one of the most important components of the course because they facilitate your communication with your peers.  Explain concepts to your group mates and ask them to do the same for you.  At the end of each tutorial, you will submit your shared document as a group. 
+
+This submission is marked holistically, and not for correctness. You and all your group members will receive the same mark. Your active participation in your tutorial is measured by your group submission marks. Your active participation in tutorials is part of your participation grade. 
+
+\subsubsection{Homework}
+You will have four types of homework. We already talked about two of them. That is reading assignments, due weekly, as part of your Reading Quiz, and Tutorial worksheets that you work on with help of your peers during your tutorial and submit with your group.  The other two are
+
+\itblue{WeBWork.} WeBWork is an online assignment system. You have weekly WeBWork due every Wednesday 11:59 pm.  These questions are straightforward and cover what you learned in the same week and the past week. To access the homework, you should follow the link in the assignment posted under the Homework module. You will be automatically be directed to WeBWork environment. {\color{red}WARNING:} You should check your grade for WeBWork inside the WebWork environment and not in Quercus. You may occasionally see some grades regarding this homework appear on Quercus. Those numbers are not accurate and will disappear! WeBWork makes 5\% of your final grade. 
+
+\itblue{Written Homework.}  There will be five written homework sets. These homework sets are rather long and you have about two weeks to do them. You should submit these homework sets individually. You will receive instructions on how to submit your written homework.  Only selected questions from each set are graded. The lowest grade will be dropped. Written homework sets make 10\% of your final grade. 
+
+\subsection{Lecture Rules}
+
+\begin{itemize}
+    \item Come prepared (read the textbook)
+    \item Be fully present
+    \begin{itemize}
+        \item No distraction
+        \item Ready to engage
+        \item Ready to participate in activities
+    \end{itemize}
+    \item Reflect
+    \begin{itemize}
+        \item What did you learn?
+        \item Engage with the textbook
+        \item Write down your questions
+        \item Follow up on piazza
+    \end{itemize}
+\end{itemize}
+
+% ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+\chapterimage{field.jpg}
+\chapter{Fields, Complex Numbers and Vector Spaces}
+
+\section{Fields and Complex Numbers}
+
+\subsection{Fields}
+
+\setcounter{chapter}{5}
+\setcounter{definitionT}{3}
+\begin{definition}[Field]\index{Field}\index{addition}\index{sum}\index{multiplication}\index{product}
+    A \term{field} is a set\footnote{Note that such set must be \bred{non-empty}.} $\mathbb{F}$ with two operations, defined on ordered pairs of elements of $\mathbb{F}$, called \term{addition} and \term{multiplication}. Addition assigns to the pair $x$ and $y \in \mathbb{F}$ their \term{sum}, which is denoted by $x + y$ and multiplication assigns to the pair $x$ and $y$ their \term{product}, which is denoted by $x \cdot y$ or $xy$. These two operations must satisfy the following properties for all $x$, $y$ and $z \in \mathbb{F}$: 
+    
+    \begin{enumerate}[label=(\roman*)]
+        \item Commutativity of addition $x + y = y + z$.
+
+        \item Associativity of addition: $(x + y) + z = x + (y + z)$.
+
+        \item Existence of an additive identity: There is an element $0 \in \mathbb{F}$, called zero, such that $x + 0 = a$.
+
+        \item Existence of additive inverses: For each $x$ there is an element $-x \in \mathbb{F}$ such that $x + (-x) = 0$.
+
+        \item Commutativity of multiplication: $xy  = yx$.
+
+        \item Associativity of multiplication: $(xy)z = x(yz)$.
+
+        \item Distributivity: $(x + y)z = xz + yz$ and $x(y + z) = xy + xz$.
+
+        \item Existence of a multiplicative identity: There is an element $1 \in \mathbb{F}$, called $1$, such that $x \cdot 1  = x$.
+
+        \item Existence of multiplicative inverses: If $x \neq 0$, then there is an element $x^{-1} \in \mathbb{F}$ such that $x \cdot x^{-1}  = 1$.
+    \end{enumerate}
+\end{definition}
+\setcounter{chapter}{1}
+
+\subsection{Complex Numbers}
+
+Goal: build a field containing $\mathbb{R}$ such that all polynomials (such as $x^2 + 1$) have their roots.
+
+\setcounter{chapter}{5}
+\setcounter{section}{1}
+\setcounter{definitionT}{1}
+\begin{definition}
+    The set of \term{complex numbers}, denoted $\mathbb{C}$, is the set of ordered pairs of real numbers$ (a, b)$ with the operations of addition and multiplication defined by 
+    
+    {~~~}
+    
+    For all $(a, b)$ and $(c, d) \in \mathbb{C}$, the \term{sum} of $(a, b)$ and $(c, d)$ is the complex number defined by $(a, b) + (c, d) = (a + c, b + d)$
+    
+    {~~~}
+    
+    and the \term{product} of $(a, b)$ and $(c, d)$ is the complex number defined by $(a, b)(c, d) = (ac - bd, ad + cb)$
+\end{definition}
+\setcounter{section}{2}
+\setcounter{chapter}{1}
+
+The subset of $\mathbb{C}$ consisting of those elements with second coordinate zero, $\{ (a, 0) | a \in \mathbb{R} \}$, will be identified with the real numbers in the obvious way, $a \in \mathbb{R}$ is identified with $(a, 0) \in \mathbb{C}$. If we apply our rules of addition and multiplication to the subset $\mathbb{R} \subset \mathbb{C}$, we obtain
+$$(a, 0) + (c, 0) = (a + c, 0)$$
+and
+$$(a, 0)(c, 0) = (ac - 0 \cdot 0)(a \cdot 0 + c \cdot 0) = (ac, 0)$$
+
+\setcounter{chapter}{5}
+\setcounter{section}{1}
+\setcounter{dummy}{4}
+\begin{proposition}
+The set of complex numbers is a field with the operations of addition and scalar multiplication as defined previously. 
+\end{proposition}
+\setcounter{section}{2}
+\setcounter{chapter}{1}
+
+\begin{proof}
+    WTS $\mathbb{C}$ is a field\footnote{To show $\mathbb{F}$ is a field, we need to check commutativity, associativity, existence of additive identity and additive inverse, multiplicative identity and multiplicative inverse, and the distributivity between addition and multiplication. }.
+    
+    (i), (ii), (v), (vi), and (vii) follow immediately.
+        
+    {~~~}
+
+    \textbf{(iii)} The additive identity is $0 = 0 + 0i$ since
+    
+    $(0 + 0i) + (a + bi) = (0 + a) + (0 + b)i = a + bi$
+    
+    {~~~}
+    
+    \textbf{(iv)} The additive inverse of $a + bi$ is $(-a) + (-b)i$.
+    
+    $(a + bi) + ((-a) + (-b)i) = (a + (-a)) + (b + (-b))i = 0 + 0i = 0$. 
+    
+    {~~~}
+    
+    \textbf{(viii)} The multiplicative identity is $1 = 1 + 0 \cdot i$ since 
+    
+    $(1 + 0 \cdot i)(a + bi) = (1 \cdot a - 0 \cdot b) + (1 \cdot b + 0 \cdot a)i = a + bi$.
+    
+    {~~~}
+    
+    \textbf{(ix)} Note first that if $a + bi \neq 0$, then either $a \neq 0$ or $b \neq 0$ and $a^2 + b^2 \neq 0$. Further, note that $(a + bi)(a + (-b)i) = a^2 + b^2$. 
+    
+    Therefore $\displaystyle (a + bi) \frac{a - ib}{a^2 + b^2} = 1$. 
+    
+    Thus, $(a + ib)^{-1} = (a - ib) / (a^2 + b^2)$. 
+\end{proof}
+
+\begin{exercise}
+    Compute the following. 
+    \begin{enumerate}
+        \item $(3-5i)^{-1}$
+        {\color{blue} \begin{align*}
+            (3-5i)^{-1}
+            &=\frac{(3+5i)}{3^2+5^2}
+            \\
+            &=\frac{3}{34}+\frac{5}{34}i
+        \end{align*} }
+        
+        \item $\displaystyle \frac{4-2i}{3-5i} = (4-2i)(3-5i)^{-1}$
+        {\color{blue} \begin{align*}
+            \frac{4-2i}{3-5i} 
+            &= (4-2i)(3-5i)^{-1}
+            \\
+            &=(4-2i) \left( \frac{1}{34}(3+5i) \right)
+            \\
+            &=\frac{1}{34}(4-2i)(3+5i)
+            \\
+            &=\frac{1}{34}(12+10+20i-6i)
+            \\
+            &=\frac{1}{34}(22+14i)
+        \end{align*} }
+    \end{enumerate}
+\end{exercise}
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\part{Part Two}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 3
+%----------------------------------------------------------------------------------------
+
+\chapterimage{index.jpg} % Chapter heading image
+
+% \chapter{Presenting Information}
+
+% \section{Table}\index{Table}
+
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{l l l}
+% \toprule
+% \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+% \midrule
+% Treatment 1 & 0.0003262 & 0.562 \\
+% Treatment 2 & 0.0015681 & 0.910 \\
+% Treatment 3 & 0.0009271 & 0.296 \\
+% \bottomrule
+% \end{tabular}
+% \caption{Table caption}
+% \end{table}
+
+%------------------------------------------------
+
+% \section{Figure}\index{Figure}
+
+% \begin{figure}[h]
+% \centering\includegraphics[scale=0.5]{placeholder}
+% \caption{Figure caption}
+% \end{figure}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+% \chapter*{Bibliography}
+% \addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+% \section*{Books}
+% \addcontentsline{toc}{section}{Books}
+% \printbibliography[heading=bibempty,type=book]
+% \section*{Articles}
+% \addcontentsline{toc}{section}{Articles}
+% \printbibliography[heading=bibempty,type=article]
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+\cleardoublepage
+\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+\printindex
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
