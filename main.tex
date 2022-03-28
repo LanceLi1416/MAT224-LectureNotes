@@ -203,7 +203,7 @@ You will have four types of homework. We already talked about two of them. That 
 
 \setcounter{chapter}{5}
 \setcounter{definitionT}{3}
-\begin{definition}[Field]\index{Field}\index{addition}\index{sum}\index{multiplication}\index{product}
+\begin{definition}[Field]\index{Field}\index{Addition}\index{Sum}\index{Multiplication}\index{Product}
     A \term{field} is a set\footnote{Note that such set must be \bred{non-empty}.} $\mathbb{F}$ with two operations, defined on ordered pairs of elements of $\mathbb{F}$, called \term{addition} and \term{multiplication}. Addition assigns to the pair $x$ and $y \in \mathbb{F}$ their \term{sum}, which is denoted by $x + y$ and multiplication assigns to the pair $x$ and $y$ their \term{product}, which is denoted by $x \cdot y$ or $xy$. These two operations must satisfy the following properties for all $x$, $y$ and $z \in \mathbb{F}$:
 
     \begin{enumerate}[label=(\roman*)]
@@ -235,7 +235,7 @@ Goal: build a field containing $\mathbb{R}$ such that all polynomials (such as $
 \setcounter{chapter}{5}
 \setcounter{section}{1}
 \setcounter{definitionT}{1}
-\begin{definition}
+\begin{definition}\index{Complex Numbers}
     The set of \term{complex numbers}, denoted $\mathbb{C}$, is the set of ordered pairs of real numbers$ (a, b)$ with the operations of addition and multiplication defined by
 
     {~~~}
@@ -388,7 +388,7 @@ Let $\mathbb{F}$ be a field\footnote{The differences between a field and a vecto
 
 \setcounter{chapter}{5}
 \setcounter{section}{2}
-\begin{definition}[Vector Space over a Field]
+\begin{definition}[Vector Space over a Field]\index{Vector Space over a Field}
     A \term{vector space over $\mathbb{F}$} is a set $V$ (whose elements are called \term{vectors}) together with two operations:
     \begin{itemize}
         \item A binary operation called \bred{vector addition}, which for each pair of vectors $\overrightarrow{v}, \overrightarrow{w} \in V$ produces a vector denoted $\overrightarrow{v} + \overrightarrow{w} \in V$, and
@@ -643,7 +643,7 @@ Furthermore, the two operations must satisfy the following axioms:
 
 \setcounter{section}{2}
 \setcounter{definitionT}{5}
-\begin{definition}[Subspace]
+\begin{definition}[Subspace]\index{Subspace}
     Let $V$ be a vector space and let $W \subseteq V$ be a \itblue{non-empty} subset. Then $W$ is a (vector) \term{subspace} of $V$ if $W$ is a vector space itself under the operations of vector sum and scalar multiplication from $V$.
 \end{definition}
 \setcounter{section}{3}
@@ -713,7 +713,7 @@ Furthermore, the two operations must satisfy the following axioms:
 
 \setcounter{section}{3}
 \setcounter{definitionT}{0}
-\begin{definition}
+\begin{definition}\index{Linear Combination}\index{Empty Set of a Vector Space}\index{Span}
     Let $S$ be a subset of a vector space $V$.
     
     \begin{itemize}
@@ -804,7 +804,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
     Let $V$ be a vector space and let $S$ be any subset of $V$. Then $\mathrm{Span}(S)$ is a subspace of $V$.
 \end{theorem}
 
-% TODO: finish the proof
+% TODO: complete the proof
 \begin{proof}
     $V$ is an $\mathbb{F}$\_V.S. $S \subseteq V$. WTS $\mathrm{Span}(S) \underset{S.S.}{\subseteq} V$. 
     
@@ -858,7 +858,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 \setcounter{section}{4}
 \setcounter{definitionT}{1}
-\begin{definition}[Linear Dependence]
+\begin{definition}[Linear Dependence]\index{Linear Dependence}
     Let $V$ be a vector space, and let $S$ be a subset of $V$.
     
     \begin{enumerate}[label=\alph*)]
@@ -1109,6 +1109,222 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 \chapterimage{field.jpg}
 \chapter{Linear Transformations}
+
+\section{Linear Transformations}
+
+\begin{definition}[Linear Transformation]\index{Linear Mapping}\index{Linear Transformation}\index{Domain}\index{Target}
+    A function $T: V \to W$ is called a \term{linear mapping} or a \term{linear transformation} if it satisfies
+    
+    \begin{enumerate}[label=\roman*)]
+        \item $T(\overrightarrow{v_1} + \overrightarrow{v_2}) = T(\overrightarrow{v_1}) + T(\overrightarrow{v_2})$ for all $\overrightarrow{v_1}$ and $\overrightarrow{v_2} \in V$. 
+        \item $T(r\overrightarrow{v}) = rT(\overrightarrow{v})$ for all $r \in \mathbb{R}$ and $\overrightarrow{v} \in V$. 
+    \end{enumerate}
+    
+    $V$ is called the \term{domain} of $T$ and $W$ is called the \term{target} of $T$.
+\end{definition}
+
+\begin{example} Consider the following examples. 
+
+\begin{minipage}[t]{0.45\linewidth}
+    $\begin{matrix} \mathrm{id}: &V &\to &V \\ &\overrightarrow{x} &\mapsto &\overrightarrow{x} \end{matrix}$
+    
+    $\begin{matrix} P_l: &\mathbb{R}^2 &\to &\mathbb{R}^2 \\ &\overrightarrow{x} &\mapsto &\mathrm{proj}_l\overrightarrow{x} \end{matrix}$
+\end{minipage}
+\begin{minipage}[t]{0.45\linewidth}
+    $\begin{matrix} R_{\theta}: &\mathbb{R}^2 &\to &\mathbb{R}^2 \\ &\overrightarrow{x} &\mapsto &\overrightarrow{x}\text{ rotated through }\theta \end{matrix}$
+    
+    $\begin{matrix} T_M: &\mathbb{R}^3 &\to &\mathbb{R} \\ &\overrightarrow{x} &\mapsto &\begin{bmatrix} 1&2&2 \end{bmatrix}\overrightarrow{x} \end{matrix}$
+\end{minipage}
+
+These are all commonly seen linear transformations. 
+\end{example}
+
+{~~~}
+
+$\begin{matrix} \text{Given a } m \times n \text{ matrix } A \text{, } T_A: &\mathbb{R}^m &\to &\mathbb{R}^n &\text{is a linear transformation.} \\ &\overrightarrow{x} &\mapsto &A\overrightarrow{x} \end{matrix}$
+    
+Conversely for every linear transformation $T: \mathbb{R}^m \to \mathbb{R}^n$, $\exists n \times n$ matrix $M_T$ s.t. $T(\overrightarrow{v}) = M_T\overrightarrow{v}$. 
+
+{~~~}
+
+Given $V, W$ be $\mathbb{F}$\_V.S., and a linear transformation $T: V \to W$. 
+
+Can we describe $T$ using matrices? 
+
+\begin{example}
+    Which function is a linear transformation?
+    
+    \begin{enumerate}[label=\alph*)]
+        \item Let $\mathcal{C}^\infty(\mathbb{R})$ be the space of smooth functions $$\begin{matrix} D: &\mathcal{C}^\infty(\mathbb{R}) &\to &\mathcal{C}^\infty(\mathbb{R}) \\ &f &\mapsto &f' \end{matrix}$$
+
+        \item Let $\mathcal{C}[0,1]$ be the space of continuous functions on $[0,1] \to \mathbb{R}$. $$\begin{matrix} I: &\mathcal{C}[0,1] &\to &\mathbb{R} \\ &f &\mapsto &\int_0^1f(t)\,dt \end{matrix}$$
+    \end{enumerate}
+    
+    \begin{itemize}
+        \item {\color{lightblue} a) is a linear transformation. 
+
+        Let $f, g \in \mathcal{C}^\infty(\mathbb{R})$, $r\in\mathbb{R}$. 
+        
+        $D(f+g)= (f+g)'=f'+g'=D(f)+D(g)$
+        
+        $D(rf) = (rf)'=rf'=rD(f)$. }
+        \item { \color{lightblue} b is also a linear transformation. 
+
+        Let $f,g \in \mathcal{C}[0,1]$, $r \in \mathbb{R}$. 
+        
+        $I(f+g)=\int_0^1(f+g)(t)\,dt=\int_0^1f(t)+g(x)\,dt=\int_0^1f(t)\,dt+\int_0^1g(t)\,dt=I(f)+I(g)$.
+         
+        $I(rf)=\int_0^1(rf)(t)\,dt=r\int_0^1f(t)\,dt=rI(f)$. }
+    \end{itemize}
+\end{example}
+
+\textbf{Properties of a Linear Transformation}
+
+\begin{itemize}
+    \item Linear transformations $\overrightarrow{0}$ to $\overrightarrow{0}$. 
+
+    \item Linear transformations preserve linear combinations
+\end{itemize}
+
+\setcounter{section}{0}
+\begin{lemma}
+    Let $T: V \to W$ be a linear transformation. Then $T(\overrightarrow{0_V}) = \overrightarrow{0_W}$. 
+\end{lemma}
+\setcounter{section}{1}
+
+\begin{proof}
+    WTS $T(\overrightarrow{0_V}) = \overrightarrow{0_W}$. 
+    
+    \begin{flalign*}
+        T(\overrightarrow{0_V})
+        &=T(\overrightarrow{0_V}+\overrightarrow{0_V})
+        &\text{since }\overrightarrow{0_V}\text{ is the additive identity in }V
+        &&\\
+        &=T(\overrightarrow{0_V})+T(\overrightarrow{0_V})
+        &\text{by linearity of }T
+        \\
+        T(\overrightarrow{0_V})+(-T(\overrightarrow{0_V}))&=(T(\overrightarrow{0_V})+T(\overrightarrow{0_V})) + (-T(\overrightarrow{0_V}))
+        &\text{since the additive inverse is unique}
+        \\
+        \overrightarrow{0_W}
+        &=T(\overrightarrow{0_V})+(T(\overrightarrow{0_V})+(-T(\overrightarrow{0_V})))
+        &\text{since addition is associative}
+        \\
+        &=T(\overrightarrow{0_V})+\overrightarrow{0_W}
+        \\
+        &=T(\overrightarrow{0_V})
+        &\text{since }\overrightarrow{0_w}\text{ is the additive identity in }W
+    \end{flalign*}
+    
+    Thus, $T(\overrightarrow{0_V}) = \overrightarrow{0_W}$. 
+\end{proof}
+
+\begin{proposition}
+    A function $T: V \to W$ is a linear transformation if and only if for all $a$ and $b \in \mathbb{F}$ and all $\overrightarrow{u}$ and $\overrightarrow{v} \in V$ $$T(a\overrightarrow{u} + b\overrightarrow{v}) = aT(\overrightarrow{u}) + bT(\overrightarrow{v})$$
+\end{proposition}
+
+%TODO: complete the proof
+\begin{proof}
+    WTS a function $T: V \to W$ is a linear transformation if and only if for all $a$ and $b \in \mathbb{F}$ and all $\overrightarrow{u}$ and $\overrightarrow{v} \in V$, $T(a\overrightarrow{u} + b\overrightarrow{v}) = aT(\overrightarrow{u}) + bT(\overrightarrow{v})$. 
+    \begin{itemize}
+        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies T(a\overrightarrow{u} + b\overrightarrow{v}) = aT(\overrightarrow{u}) + bT(\overrightarrow{v})$. 
+            \begin{flalign*}
+                T(a\overrightarrow{u} + b\overrightarrow{v})
+                &=T(a\overrightarrow{u}) + T(b\overrightarrow{v})
+                &\text{by (1) of the definition of L.T.}
+                &&\\
+                &=aT(\overrightarrow{u}) + bT(\overrightarrow{v})
+                &\text{by (2) of the definition of L.T.}
+            \end{flalign*}
+
+        \item $\leftarrow$: WTS $T(a\overrightarrow{u} + b\overrightarrow{v}) = aT(\overrightarrow{u}) + bT(\overrightarrow{v}) \implies T : V \to W$ is a linear transformation. 
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    A function $T : V \to W$ is a linear transformation if and only if for all $a_1, \dots a_k \in \mathbb{F}$ and for all $\overrightarrow{v_1}, \dots, \overrightarrow{v_k} \in V$: $$T(\sum_{i=1}^ka_i\overrightarrow{v_i})=\sum_{i=1}^ka_iT(\overrightarrow{v_i})$$
+\end{corollary}
+
+%TODO: complete the proof
+\begin{proof}
+    WTS $T : V \to W$ is a linear transformation if and only if for all $a_1, \dots a_k \in \mathbb{F}$ and for all $\overrightarrow{v_1}, \dots, \overrightarrow{v_k} \in V$, $\displaystyle T(\sum_{i=1}^ka_i\overrightarrow{v_i})=\sum_{i=1}^ka_iT(\overrightarrow{v_i})$. 
+    
+    \begin{itemize}
+        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies \displaystyle T(\sum_{i=1}^ka_i\overrightarrow{v_i})=\sum_{i=1}^ka_iT(\overrightarrow{v_i})$. 
+
+        Prove by induction. 
+        
+        \begin{itemize}
+        
+        \item \textbf{Base case:} WTS $T(a_1\overrightarrow{v}_1)=a_1T(\overrightarrow{v_1})$
+        
+        This follows immediately from (2) of the definition of linear transformation. 
+        
+        {~~~}
+        
+        \item \textbf{Induction hypothesis:} $\displaystyle T(\sum_{i=1}^ka_i\overrightarrow{v_1}) = \sum_{i=1}^ka_iT(\overrightarrow{v_i})$. 
+        
+        WTS $\displaystyle T(\sum_{i=1}^{k+1}a_i\overrightarrow{v_1}) = \sum_{i=1}^{k+1}a_iT(\overrightarrow{v_i})$. 
+        
+        {~~~}
+        
+        By (1) of the definition of linear transformation, $\displaystyle T(\sum_{i=1}^{k+1}a_i\overrightarrow{v_i}) = T(\sum_{i=1}^{k}a_i\overrightarrow{v_i})+T(a_{k+1}\overrightarrow{v}_{k+1})$. 
+        
+        $\displaystyle T(\sum_{i=1}^{k}a_i\overrightarrow{v_i}) = \sum_{i=1}^ka_iT(\overrightarrow{v_i})$ by the induction hypothesis. 
+        
+        $T(a_{k+1}\overrightarrow{v}_{k+1}) = a_{k+1}T(\overrightarrow{v}_{k+1})$ by (2) of the definition of linear transformation. 
+        \begin{flalign*}
+            \text{So }
+            T(\sum_{i=1}^{k+1}a_i\overrightarrow{v_i}) 
+            &= T(\sum_{i=1}^{k}a_i\overrightarrow{v_i})+T(a_{k+1}\overrightarrow{v}_{k+1})
+            \\&=\sum_{i=1}^ka_iT(\overrightarrow{v_i}) + a_{k+1}T(\overrightarrow{v}_{k+1})
+            &&\\
+            &=\sum_{i=1}^ka_iT(\overrightarrow{v_i})
+        \end{flalign*}
+
+        Thus, $\displaystyle T(\sum_{i=1}^ka_i\overrightarrow{v_i})=\sum_{i=1}^ka_iT(\overrightarrow{v_i})$. 
+        \end{itemize}
+        
+        \item $\leftarrow$: WTS $\displaystyle T(\sum_{i=1}^ka_i\overrightarrow{v_i})=\sum_{i=1}^ka_iT(\overrightarrow{v_i}) \implies T: V \to W$ is a linear transformation. 
+    \end{itemize}
+\end{proof}
+
+\setcounter{dummy}{13}
+\begin{proposition}
+    If $T: V \to W$ is a linear transformation and $V$ is finite-dimensional, then $T$ is uniquely determined by its value on the members of a basis of $V$. 
+\end{proposition}
+
+\setcounter{section}{0}
+\begin{definition}\index{Injective}\index{Surjective}\index{Bijective}
+    Let $A, B$ be sets. 
+
+    Let $f: A \to B$ be a function. 
+
+    \begin{itemize}
+        \item $f$ is \term{injective} (one to one) if $\forall a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$. 
+
+        \item $f$ is \term{surjective} (onto) if $\forall b \in B$, $\exists a \in A$ s.t. $f(a) = b$. 
+
+        \item $f$ is \term{bijective} if $f$ is both injective and surjective. 
+    \end{itemize}
+\end{definition}
+\setcounter{section}{1}
+
+\section{Kernel and Image}
+
+\setcounter{section}{3}
+\begin{definition}[Kernel]\index{Kernel}
+    The \term{kernel} of $T$, denoted $\ker(T)$. is the subset of $V$ consisting of all vectors $\overrightarrow{v} \in V$ such that $T(\overrightarrow{v}) = 0$. $$\ker T=\{ \overrightarrow{v} \in V ~|~ T(\overrightarrow{v}) = \overrightarrow{0} \}$$
+\end{definition}
+\setcounter{section}{2}
+
+\section{Applications of the Dimension Theorem}
+
+\section{Composition of Linear Transformations}
+
+\section{The Inverse of a Linear Transformation}
+
+\section{Change of Basis}
 
 \chapterimage{field.jpg}
 \chapter{The Spectral Theorem in $\mathbb{R}^n$}
