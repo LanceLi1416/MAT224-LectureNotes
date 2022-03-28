@@ -413,7 +413,7 @@ Furthermore, the two operations must satisfy the following axioms:
 
     \item For all vectors $\overrightarrow{v}$ and $\overrightarrow{w} \in V$, $\overrightarrow{v} + \overrightarrow{w} = \overrightarrow{w} + \overrightarrow{v}$. (addition is \term{commutative})
 
-    \item There exists a vector $\overrightarrow{0} \in V$ with the property that $\overrightarrow{x} + \overrightarrow{0} = \overrightarrow{v}$ for all vectors $\overrightarrow{v} \in V$. ($\exists$ an \term{additive identity})
+    \item There exists a vector $\overrightarrow{0} \in V$ with the property that $\overrightarrow{v} + \overrightarrow{0} = \overrightarrow{v}$ for all vectors $\overrightarrow{v} \in V$. ($\exists$ an \term{additive identity})
 
     \item For each vector $\overrightarrow{v} \in V$, there exists a vector denoted $-\overrightarrow{v}$ with the property that $\overrightarrow{v} + -\overrightarrow{v} = \overrightarrow{0}$. ($\exists$ \term{additive inverse})
 
@@ -434,7 +434,7 @@ Furthermore, the two operations must satisfy the following axioms:
     
     Take $\overrightarrow{z} = \begin{pmatrix} z_1 \\ \vdots \\ z_n \end{pmatrix}$, $\overrightarrow{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix}$, then $\overrightarrow{z} + \overrightarrow{w} = \begin{pmatrix} z_1 + w_1 \\ \vdots \\ z_n + w_n \end{pmatrix}$\footnote{Note that the two $+$'s ($\overrightarrow{z} + \overrightarrow{w}$ and $z_i + w_i$) here are different. The former is vector addition, while the later is addition over $\mathbb{C}$. }.
     
-    In general, $\mathbb{F}^n := \left\{ \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, a_i \in \mathbb{F} \right\}$ is a vector space over the field $\mathbb{F}$~\footnote{"A vector space over the field $\mathbb{F}$" can be shortened to "$\mathbb{F}$ vector space", or "$\mathbb{F}$\_V.S.". }. 
+    In general, $\mathbb{F}^n := \left\{ \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, a_i \in \mathbb{F} \right\}$ is a vector space over the field $\mathbb{F}$~\footnote{``A vector space over the field $\mathbb{F}$'' can be shortened to ``$\mathbb{F}$ vector space'', or ``$\mathbb{F}$\_V.S.''. }. 
     
     \begin{itemize}
         \item Additive identity: $\overrightarrow{0} := \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$\footnote{Note that $\overrightarrow{0}$ is the additive identity of $\mathbb{F}^n$, while the $0$’s are the additive identity over the field $\mathbb{F}$.}
@@ -608,16 +608,16 @@ Furthermore, the two operations must satisfy the following axioms:
                 &=\underset{\mathbb{F}}{0}\overrightarrow{v}
             \end{align*}
             
-            Thus, $\forall \overrightarrow{x} \in V$, $\underset{\mathbb{F}}{0}\overrightarrow{v} = \overrightarrow{0_V}$. 
+            Thus, $\forall \overrightarrow{v} \in V$, $\underset{\mathbb{F}}{0}\overrightarrow{v} = \overrightarrow{0_V}$. 
         \end{proof}
 
-        \item For each $\overrightarrow{v} \in V$, the additive inverse $-\overrightarrow{x}$ is unique.
+        \item For each $\overrightarrow{v} \in V$, the additive inverse $-\overrightarrow{v}$ is unique.
 
         \begin{proof}
-            We use the same idea as in the proof of part a. Given $\overrightarrow{v} \in V$, if $-\overrightarrow{v}$ and $(-\overrightarrow{v})'$ are two additive inverses of $\overrightarrow{v}$, then on one hand we have $\overrightarrow{v} + -\overrightarrow{v}  + (-\overrightarrow{v})' = (\overrightarrow{v} + -\overrightarrow{v}) + (-\overrightarrow{v})' = \overrightarrow{0} + (-\overrightarrow{v})' = (-\overrightarrow{v})'$, by axioms 1, 4, and 3. On the other hand, if we use axiom 2 first before associating, we have $\overrightarrow{v} + -\overrightarrow{v}  + (-\overrightarrow{v})' = \overrightarrow{v} + (-\overrightarrow{x})' + -\overrightarrow{v} = (\overrightarrow{v} + (-\overrightarrow{v})') + -\overrightarrow{v} = \overrightarrow{0} + -\overrightarrow{v} = -\overrightarrow{v}$. Hence $-\overrightarrow{v} = (-\overrightarrow{v})'$, and the additive inverse of $\overrightarrow{v}$ is unique.
+            We use the same idea as in the proof of part a. Given $\overrightarrow{v} \in V$, if $-\overrightarrow{v}$ and $(-\overrightarrow{v})'$ are two additive inverses of $\overrightarrow{v}$, then on one hand we have $\overrightarrow{v} + -\overrightarrow{v}  + (-\overrightarrow{v})' = (\overrightarrow{v} + -\overrightarrow{v}) + (-\overrightarrow{v})' = \overrightarrow{0} + (-\overrightarrow{v})' = (-\overrightarrow{v})'$, by axioms 1, 4, and 3. On the other hand, if we use axiom 2 first before associating, we have $\overrightarrow{v} + -\overrightarrow{v}  + (-\overrightarrow{v})' = \overrightarrow{v} + (-\overrightarrow{v})' + -\overrightarrow{v} = (\overrightarrow{v} + (-\overrightarrow{v})') + -\overrightarrow{v} = \overrightarrow{0} + -\overrightarrow{v} = -\overrightarrow{v}$. Hence $-\overrightarrow{v} = (-\overrightarrow{v})'$, and the additive inverse of $\overrightarrow{v}$ is unique.
         \end{proof}
         
-        \item For all $\overrightarrow{v} \in V$, and all $c \in \mathbb{R}$, $(-c)\overrightarrow{x}  = -(c\overrightarrow{v})$.
+        \item For all $\overrightarrow{v} \in V$, and all $c \in \mathbb{R}$, $(-c)\overrightarrow{v}  = -(c\overrightarrow{v})$.
         \begin{proof}
             We have $c\overrightarrow{v} + (-c)\overrightarrow{v} = (c + -c)\overrightarrow{v} = 0\overrightarrow{v} = \overrightarrow{0}$ by axiom 6 and part b. Hence $(-c)\overrightarrow{v}$ also serves as an additive inverse for the vector $c\overrightarrow{v}$. By part c, therefore, we must have $(-c)\overrightarrow{v} = -(c\overrightarrow{v})$.
         \end{proof}
@@ -638,7 +638,7 @@ Furthermore, the two operations must satisfy the following axioms:
         \begin{matrix} \cdot: &\mathbb{R} \times W &\to &W \\ &(r, \overrightarrow{w}) &\mapsto &r\overrightarrow{w} \end{matrix}
     $$
     
-    We can conclude that $W$ is a subspace of $\mathbb{R}^3$~\footnote{A short hand of "$W$ \textit{is a subspace of} $V$" is $W \underset{S.S.}{\subseteq} V$. }. 
+    We can conclude that $W$ is a subspace of $\mathbb{R}^3$~\footnote{A short hand of ``$W$ \textit{is a subspace of} $V$'' is ``$W \underset{S.S.}{\subseteq} V$''. }. 
 \end{example}
 
 \setcounter{section}{2}
@@ -651,7 +651,7 @@ Furthermore, the two operations must satisfy the following axioms:
 \setcounter{section}{2}
 \setcounter{dummy}{7}
 \begin{theorem}[Subset Test]
-    Let $V$ be a vector space, and let $W$ be a non-empty subset of $V$. Then $W$ is a subspace of $V$ if and only if for all $\overrightarrow{v}, \overrightarrow{w} \in W$, and all $c \in \mathbb{R}$. we have $c\overrightarrow{v} + \overrightarrow{w} \in W$~\footnote{This is equivalent to "$W$ is closed under vector addition and under scalar multiplication of $V$". }.
+    Let $V$ be a vector space, and let $W$ be a non-empty subset of $V$. Then $W$ is a subspace of $V$ if and only if for all $\overrightarrow{v}, \overrightarrow{w} \in W$, and all $c \in \mathbb{R}$. we have $c\overrightarrow{v} + \overrightarrow{w} \in W$~\footnote{This is equivalent to ``$W$ is closed under vector addition and under scalar multiplication of $V$''. }.
 \end{theorem}
 \setcounter{section}{3}
 
@@ -708,6 +708,404 @@ Furthermore, the two operations must satisfy the following axioms:
         Thus, $W \underset{S.S.}{\subseteq} \mathbb{F}^3$. 
     \end{proof}
 \end{example}
+
+\section{Linear Combinations}
+
+\setcounter{section}{3}
+\setcounter{definitionT}{0}
+\begin{definition}
+    Let $S$ be a subset of a vector space $V$.
+    
+    \begin{itemize}
+        \item A \term{linear combination} of vectors in $S$ is any sum $a_x\overrightarrow{v_1} + \cdots + a_n\overrightarrow{v_n}$, where the $a_i \in \mathbb{R}$, and the $\overrightarrow{v_i} \in S$.
+
+        \item If $5 \neq \emptyset$ (the empty subset of $V$), the set of all linear combinations of vectors in $S$ is called the (linear) \term{span} of $S$, and denoted $\mathrm{Span}(S)$. If $S = \emptyset$, we define $\mathrm{Span}(S) = \{ \overrightarrow{0} \}$.
+
+        \item If $W = \mathrm{Span}(S)$, we say $S$ \term{spans} (or generates) $W$.
+
+        \item We think of the span of a set $S$ as the set of all vectors that can be ``built up'' from the vectors in S by forming linear combinations.
+    \end{itemize}
+\end{definition}
+\setcounter{section}{4}
+
+{~~~}
+
+How do we describe $\mathrm{Span}(S)$ in set builder notation? 
+\begin{itemize}
+  \item If $S$ is finite or infinite 
+  $$\mathrm{Span}\left( S \right) = \{ a_1\overrightarrow{x_1} + a_2\overrightarrow{x_2} + \dots + a_n\overrightarrow{x_n} ~|~ a_i \in \mathbb{F}, n \in \mathbb{N},  \overrightarrow{x_i} \in S \}$$
+
+  \item If $S$ is finite 
+  $$S = \{ \overrightarrow{w_1} , \dots, \overrightarrow{w_n} \}$$ 
+  $$\mathrm{Span}\left( S \right) = \{ a_1\overrightarrow{w_1} + \dots + a_k\overrightarrow{w_k} ~|~ a_i \in \mathbb{F}, \overrightarrow{w_i} \in S \}$$
+\end{itemize}
+
+\begin{example}
+{~~~}
+
+\begin{minipage}[t]{0.45\linewidth}
+    Let $S = \{ \sin^2x,\cos^2x \} \subseteq F(\mathbb{R})$. 
+    
+    \begin{itemize}
+        \item Describe $\mathrm{Span}(S)$. 
+
+        {\color{lightblue} $\mathrm{Span}\left( S \right) = \{ a_1\sin^2x+a_2\cos^2x ~|~ a_i \in \mathbb{R} \}$ }
+        
+        \item True or False: $\mathrm{Span}(S)$ contains all constant functions 
+
+        {\color{lightblue} True. 
+        
+        Let $f(x)=c$, $c \in \mathbb{R}$. 
+        \begin{flalign*}
+            \text{Then, }
+            f(x) 
+            &= c \cdot 1
+            &&\\
+            &=c(\sin^2x+\cos^2x)
+            \\
+            &=c\sin^2x+c\cos^2x
+            \in \mathrm{Span}\left( S \right)
+            \end{flalign*} }
+    \end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.45\linewidth}
+    Let $S' = \left\{ \begin{bmatrix} 1&0\\0&0 \end{bmatrix}, \begin{bmatrix} 0&1\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$.     
+    
+    \begin{itemize}
+        \item Describe $\mathrm{Span}(S)$. 
+
+        {\color{lightblue} $\mathrm{Span}\left( S \right) = \left\{ \begin{bmatrix} a_1&a_2\\0&0 \end{bmatrix} ~|~ a_1,a_2 \in \mathbb{R} \right\}$ }
+        
+        \item True or False: $\mathrm{Span}\left( S' \right)$ contains no symmetric matrix. 
+
+        {\color{lightblue} False.
+        
+        Consider $0_{2\times2}=\begin{bmatrix} 0&0\\0&0 \end{bmatrix}$. }
+    \end{itemize}
+\end{minipage}
+\end{example}
+
+\begin{example}
+    Let $\mathcal{P}(\mathbb{R}):=$ the set of all polynomials with real coefficients. 
+
+    \begin{itemize}
+        \item Give s spanning set for $\mathcal{P}(\mathbb{R})$. 
+        $$\color{lightblue} S = \{ x^i ~|~ i \in \mathbb{N} \cup \{0\} \} $$
+        
+        \vspace{-0.5cm}
+        \item Can we find a finite spanning set for ? 
+
+        {\color{lightblue} No. }
+    \end{itemize}
+\end{example}
+
+\setcounter{dummy}{3}
+\begin{theorem}
+    Let $V$ be a vector space and let $S$ be any subset of $V$. Then $\mathrm{Span}(S)$ is a subspace of $V$.
+\end{theorem}
+
+% TODO: finish the proof
+\begin{proof}
+    $V$ is an $\mathbb{F}$\_V.S. $S \subseteq V$. WTS $\mathrm{Span}(S) \underset{S.S.}{\subseteq} V$. 
+    
+    \begin{itemize}
+        \item Show $\mathrm{Span}(S) \subseteq V$. 
+        
+        Pick $\overrightarrow{v} \in \mathrm{Span}\left( S \right) = \{ a_1\overrightarrow{v_1} + \dots + a_m\overrightarrow{v_m} ~|~ a_i \in \mathbb{F}, \overrightarrow{v_i} \in S, m \in \mathbb{N} \}$. 
+        
+        Then, $\overrightarrow{v} = a_1\overrightarrow{v_1} + \dots + a_m\overrightarrow{v_m}$ for some $\overrightarrow{v}_1, \dots, \overrightarrow{v_m} \in S$ and $a_1,\dots a_m  \in \mathbb{F}$. 
+        
+        Since $\overrightarrow{v_i} \in S \subseteq V$, $\overrightarrow{v}$ is a linear combination of vectors in $V$, and $V$ is a vector space. 
+        
+        Thus, $\overrightarrow{v} \in V$. 
+        
+        \item Show $\mathrm{Span}(S) \neq \emptyset$
+
+        \item Show $\mathrm{Span}(S)$ is closed under vector addition. 
+
+        \item Show $\mathrm{Span}(S)$ is closed under scalar multiplication. 
+    \end{itemize}
+\end{proof}
+
+\begin{example}
+{~~~}
+    
+    Let $S_1=\{ 1, 2\sin^2{x}, 3\cos^2{x} \}$, $S_2 = \{ \sin^2{x}, \cos^2{x} \}$. 
+    
+    $\mathrm{Span}(S_1) \overset{?}= \mathrm{Span}(S_2)$? 
+    
+    \begin{itemize}
+        \item $\mathrm{Span}\left( S_1 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_2 \right)$? 
+        
+        {\color{lightblue} Yes. 
+        
+        $S_1 \subseteq \mathrm{Span}\left( S_2 \right)$. 
+        
+        $\overrightarrow{v} = a\underset{\in \mathrm{Span}\left( S_2 \right)}{\sin^2x}+b\underset{\in\mathrm{Span}\left( S_2 \right)}{\cos^2x} \in \mathrm{Span}\left( S_2 \right)$ since $\mathrm{Span}\left( S_2 \right) \underset{S.S.}{\subseteq} V$. }
+        
+        \item $\mathrm{Span}\left( S_2 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_1 \right)$? 
+        
+        {\color{lightblue} Yes. 
+        
+        $S_2 \subseteq \mathrm{Span}\left( S_1 \right)$. 
+        
+        $\overrightarrow{v} = a \cdot \underset{\in\mathrm{Span}\left( S_1 \right)}{1} + b \underset{\in \mathrm{Span}\left( S_1 \right)}{\sin^2x} + c \underset{\in\mathrm{Span}\left( S_1 \right)}{\cos^2x} \in \mathrm{Span}\left( S_1 \right)$ since $\mathrm{Span}\left( S_1 \right) \underset{S.S.}{\subseteq} V$. }
+
+    \end{itemize}
+\end{example}
+
+\section{Linear Dependence and Linear Independence}
+
+\setcounter{section}{4}
+\setcounter{definitionT}{1}
+\begin{definition}[Linear Dependence]
+    Let $V$ be a vector space, and let $S$ be a subset of $V$.
+    
+    \begin{enumerate}[label=\alph*)]
+        \item A \term{linear dependence}\footnote{A linear dependence is often called a \bred{non}\itblue{-trivial relation}. } among the vectors of S is an equation $$a_1\overrightarrow{v_1} + \cdots + a_n\overrightarrow{v_n} = 0$$ where the $\overrightarrow{v_i} \in S$ and the $a_i \in \mathbb{R}$ are not all zero (i.e., at least one of the $a_i \neq 0$).
+
+        \item the set $S$ is said to be \term{linearly dependent} if there exists a linear dependence among the vectors in $S$.
+    \end{enumerate} 
+\end{definition}
+\setcounter{section}{5}
+
+\begin{example}
+{~~~}
+
+    Is $S = \left\{ \begin{bmatrix} 1&2\\3&4 \end{bmatrix}, \begin{bmatrix} 0&1\\2&3 \end{bmatrix}, \begin{bmatrix} 0&0\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$ linearly independent? 
+    
+    {\color{lightblue} Yes. $$0 \begin{bmatrix} 1&2\\3&4 \end{bmatrix} + 0 \begin{bmatrix} 0&1\\2&3 \end{bmatrix} + 1 \begin{bmatrix} 0&0\\0&0 \end{bmatrix} = \overrightarrow{0}_{2\times2}$$ }
+\end{example}
+
+\begin{example}
+    Let $V$ be a vector space over the field $\mathbb{F}$. 
+    
+    Is $S' = \{\overrightarrow{0}, \overrightarrow{v_1}, \dots, \overrightarrow{v_n}\} \subseteq V$ linearly independent? 
+    
+    {\color{lightblue} Yes. $$1_{\mathbb{F}}\overrightarrow{0} + 0_{\mathbb{F}}\overrightarrow{v_1} + \dots + 0_{\mathbb{F}}\overrightarrow{v_n} = \overrightarrow{0}$$ }
+\end{example}
+
+\setcounter{section}{4}
+\setcounter{definitionT}{3}
+\begin{definition}[Linearly Independent]\index{Linear Independence}
+    A subset $S$ of a vector space $V$ is \term{linearly independent} if whenever we have $a_i \in \mathbb{R}$ and $\overrightarrow{v_i} \in S$ such that $a_1\overrightarrow{v_1} + \cdots + a_n\overrightarrow{v_n} = 0$, then $a_i = 0$ for all $i$.
+\end{definition}
+\setcounter{section}{5}
+
+\begin{example}
+    Is $S = \{ e^x, e^{2x}, e^{3x} \} \subseteq \mathcal{C}(\mathbb{R})$ linearly independent? 
+    
+    {\color{lightblue} No. 
+    
+    {~~~}
+    
+    Assume $\forall x \in \mathbb{R}, a_1e^x + a_2e^{2x} + a_3e^{3x} = \overrightarrow{0}$. 
+    
+    In particular when $x = 0$, $a_1+a_2+a_3 = 0$. 
+    
+    {~~~}
+
+    Taking the derivative on both sides. $\forall x \in \mathbb{R}$, $a_1e^x+2a_2e^{2x}+3a_3e^{3x}=\overrightarrow{0}$. 
+    
+    Again, when $x = 0$, $a_1+2a_2+3a_3 = 0$. 
+    
+    {~~~}
+
+    Take the derivative again, $\forall x \in \mathbb{R}$, $a_1e^x+4a_2e^{2x}+9a_3e^{3x}=\overrightarrow{0}$.
+    
+    When $x = 0$, $a_1+4a_2+9a_3 = 0$.
+    
+    {~~~}
+
+    Thus, $a_1 = a_2 = a_3 = 0$. 
+
+    So $S$ is linearly independent. }
+\end{example}
+
+\setcounter{section}{4}
+\setcounter{dummy}{6}
+\begin{proposition}
+{~~~}
+
+    \begin{itemize}
+        \item Let $S$ be a linearly dependent subset of a vector space $V$, and let $S'$ be another subset of $V$ that \bred{contains} $S$. Then $S'$ is also linearly dependent.
+
+        \item Let $S$ be a linearly independent subset of a vector space $V$ and let $S'$ be another subset of $V$ that is \bred{contained in} $S$. Then $S'$ is also linearly independent.
+    \end{itemize}
+\end{proposition}
+\setcounter{section}{5}
+
+\begin{example}
+    Let $S_1$ and $S_2$ be linearly independent subsets of a vector space $V$. 
+    
+    \begin{enumerate}[label=\alph*)]
+        \item Is $S_1 \cup S_2$ always linearly independent? Why or why not? 
+            
+            {\color{lightblue} No.
+            
+            $\{ 1 \} \in \mathbb{R}$, $\{ 2 \} \in \mathbb{R}$ and they are linearly independent. 
+            
+            $\{ 1 \} \cup \{2 \} = \{1, 2\} \in \mathbb{R}$ and it is linearly dependent. }
+
+        \item Is  always linearly independent? Why or why not? 
+
+            {\color{lightblue} Yes. 
+            
+            $S_1 \cap S_2 \subseteq S_1$ and $S_1 \cap S_2 \subseteq S_2$. Then by the proposition $S_1 \cap S_2$ is linearly independent. }
+
+        \item Is  always linearly independent? Why or why not? 
+
+            {\color{lightblue} Yes. 
+            
+            $S_1 \setminus S_2 \subseteq S_1$. Then by the proposition $S_1 \setminus S_2$ is linearly independent. }
+
+    \end{enumerate}
+\end{example}
+
+\setcounter{section}{6}
+\setcounter{dummy}{7}
+\begin{lemma}
+    Let $S$ be a linearly independent subset of $V$ and let $\overrightarrow{v} \in V$, but $\overrightarrow{v} \notin S$. Then $S \cup \{\overrightarrow{v}\}$ is linearly independent if and only if $\overrightarrow{v} \notin \mathrm{Span}\left( S \right)$. 
+\end{lemma}
+\setcounter{section}{5}
+
+\begin{proof}
+    WTS $S \cup \{\overrightarrow{v}\}$ is linearly independent if and only if $\overrightarrow{v} \notin \mathrm{Span}((S)$. 
+    
+    \begin{itemize}
+        \item $\rightarrow$: Assume $S \cup \{ \overrightarrow{v} \}$ is linearly independent. WTS $\overrightarrow{v} \notin \mathrm{Span}\left( S \right)$. 
+        
+        {~~~}
+        
+        Proof by contradiction. Assume $\overrightarrow{v} \in \mathrm{Span}(S)$. 
+
+        Then, $\exists r_1, \dots, r_m \in \mathbb{F}$, $\overrightarrow{s_1}, \dots, \overrightarrow{s_m} \in S$ s.t. $\overrightarrow{v} + r_1\overrightarrow{s_1} + \dots + r_m\overrightarrow{s_m}$.
+        
+        i.e $\overrightarrow{v} - r_1\overrightarrow{s_1} - \dots - r_m\overrightarrow{s_m} = \overrightarrow{0}$. This is a non-trivial relation among vectors in $S \cup \{ \overrightarrow{v} \}$, $S \cup \{ \overrightarrow{v} \}$ is linearly dependent. 
+
+        Contradiction with the assumption. 
+        
+        {~~~}
+        
+        Thus, $\overrightarrow{v} \notin \mathrm{Span}\left( S \right)$. 
+ 
+        \item $\leftarrow$: Assume $\overrightarrow{v} \notin \mathrm{Span}(S)$. WTS $S \cup \{ \overrightarrow{v} \}$ is linearly independent. 
+        
+        {~~~}
+        
+        (Prove the contrapositive $\lnot ( S \cup \{ \overrightarrow{v}\} \text{ is linearly independent} ) \implies \lnot \left( \overrightarrow{v} \notin \mathrm{Span}(S) \right)$, that is, we prove that ``$S \cup \{ \overrightarrow{v}\} \text{ is linearly dependent} \implies \overrightarrow{v} \in \mathrm{Span}(S)$''). 
+        
+        {~~~}
+        
+        There exists a dependency relation among vectors in $S \cup \{\overrightarrow{v} \}$. 
+        
+        This relation should contain $\overrightarrow{v}$. 
+        
+        $\exists r_1, \cdots, r_m, a \in \mathbb{F}$ s.t. $r_1\overrightarrow{s_1} + \dots + r_m\overrightarrow{s}_m+a\overrightarrow{v} = \overrightarrow{0}$. 
+        \begin{flalign*}
+            \text{Thus, }
+            a\overrightarrow{v} 
+            &= -r\overrightarrow{s_1} - \dots - r_m\overrightarrow{s_m}
+            &&\\
+            \overrightarrow{v}
+            &= -\frac{r_1}{a}\overrightarrow{s_1} - \dots - \frac{r_m}a\overrightarrow{s_m}
+        \end{flalign*}
+        
+        That is, $x\in \mathrm{Span}\left( S \right)$. 
+    \end{itemize}
+    
+    {~~~}
+    
+    Thus, $S \cup \{\overrightarrow{v}\}$ is linearly independent if and only if $\overrightarrow{v} \notin \mathrm{Span}((S)$. 
+\end{proof}
+
+\section{Bases and Dimension}
+
+\begin{definition}[Basis]\index{Basis}
+    A subset $S$ of a vector space $V$ is called a \term{basis} of $V$ if $V = \mathrm{Span}(S)$ and $S$ is \itblue{linearly independent}.
+\end{definition}
+
+\setcounter{dummy}{2}
+\begin{theorem}
+    Let $V$ be a vector space, and let $S$ be a nonempty subset of $V$. Then $S$ is a basis of $V$ if and only if every vector $\overrightarrow{v} \in V$ may be written uniquely as a linear combination of the vectors in $S$. 
+\end{theorem}
+
+%TODO: finish this proof
+\begin{proof}
+    WTS
+\end{proof}
+
+\begin{example}
+{~~~}
+
+    $\mathbb{F}^n = \left\{ \begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} ~|~a_i \in \mathbb{F} \right\}$
+    
+    Find a basis $\mathcal{B}$ of $\mathbb{F}^n$. 
+    
+    Note that $\begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} = a_1\begin{bmatrix}1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix} + a_2\begin{bmatrix} 0\\1_{\mathbb{F}}\\\vdots\\0 \end{bmatrix} + \dots + a_n\begin{bmatrix} 0\\0\\\vdots\\1_{\mathbb{F}} \end{bmatrix}$. 
+    
+    $\overrightarrow{e_i} := \begin{bmatrix} 0\\\vdots\\0\\1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix}$ with the $i$-th element $1_\mathbb{F}$ and the rest $0$. 
+    
+    $\{\overrightarrow{e_1}, \dots, \overrightarrow{e_n}\}$ is linearly independent, and $\mathrm{Span}\left( \overrightarrow{e_1}, \dots, \overrightarrow{e_n} \right) = \mathbb{F}^n$. 
+    
+    Then $\mathcal{B} = \{\overrightarrow{e_1}, \dots, \overrightarrow{e_n}\} $ is a basis for $\mathbb{F}^n$. 
+\end{example}
+
+\begin{example}
+{~~~}
+
+    Consider $\mathbb{C}^2 = \left\{ \begin{pmatrix} z_1\\z_2 \end{pmatrix} ~|~ z_i \in \mathbb{C} \right\}$. 
+    
+    \begin{itemize}
+        \item Suppose $\mathbb{C}^2$ is a $\mathbb{C}$\_V.S., what is $\dim \mathbb{C}^2$? 
+        
+        \begin{itemize}
+            \item $w\begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} wz_1 \\ wz_2\end{pmatrix}, w\in \mathbb{C}$. 
+
+            \item $\mathcal{E} = \left\{ \overrightarrow{e_1} = \begin{pmatrix} 1\\0 \end{pmatrix}, \overrightarrow{e_2}=\begin{pmatrix} 0\\1 \end{pmatrix} \right\}$
+        \end{itemize}
+        
+        \item Suppose $\mathbb{C}^2$ is a $\mathbb{R}$\_V.S., what is $\dim \mathbb{C}^2$? 
+        
+        \begin{itemize}
+            \item $r \begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} rz_1 \\ rz_2\end{pmatrix}, r \in \mathbb{R}$. 
+
+            \item $\mathcal{V} = \left\{ \overrightarrow{v_1} = \begin{pmatrix} 1\\0 \end{pmatrix}, \overrightarrow{v_2} = \begin{pmatrix} 0\\1 \end{pmatrix}, \overrightarrow{v_3} = \begin{pmatrix} i\\0 \end{pmatrix}, \overrightarrow{v_4} = \begin{pmatrix} 0\\i \end{pmatrix} \right\}$
+            \item $z_1 = a_1 + b_1i$, $z_2 = a_2+b_2i$, then $\begin{pmatrix} z_1\\z_2 \end{pmatrix} \in \mathbb{C}^2 = a_1\overrightarrow{v_1} + a_2\overrightarrow{v_2} + b_1\overrightarrow{v_3} + b_2\overrightarrow{v_4}$
+        \end{itemize}
+    \end{itemize}
+\end{example}
+
+\setcounter{dummy}{9}
+\begin{theorem}
+    Let $V$ be a \itblue{finitely generate} vector space and let $S$ be a spanning set for $V$, which has $m$ elements. Then no linearly independent set in $V$ can have more than $m$ elements. 
+\end{theorem}
+
+\begin{corollary}
+    Let $V$ be a vector space and let $S$ and $S'$ be two bases of $V$, with $m$ and $m'$ elements, respectively. Then $m = m'$.
+\end{corollary}
+
+\begin{proof}
+    WTS if $S$ and $S'$ are two bases of $V$, with $m$ and $m'$ elements, respectively, then $m = m'$.
+
+    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S$ is linearly independent. 
+
+    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S')=V$. 
+
+    Applying the theorem above, $m = |S| \le |S'| = m'$. 
+    
+    {~~~}
+
+    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S)=V$. 
+    
+    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S'$ is linearly independent. 
+
+    Applying the theorem above, $m' = |S'| \le |S| = m$. 
+    
+    {~~~}
+    
+    So $m \le m'$ and $m' \le m$. That is, $m = m'$. 
+\end{proof}
 
 \chapterimage{field.jpg}
 \chapter{Linear Transformations}
