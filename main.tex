@@ -1314,13 +1314,357 @@ Can we describe $T$ using matrices?
 
 \setcounter{section}{3}
 \begin{definition}[Kernel]\index{Kernel}
-    The \term{kernel} of $T$, denoted $\ker(T)$. is the subset of $V$ consisting of all vectors $\overrightarrow{v} \in V$ such that $T(\overrightarrow{v}) = 0$. $$\ker T=\{ \overrightarrow{v} \in V ~|~ T(\overrightarrow{v}) = \overrightarrow{0} \}$$
+    The \term{kernel}\footnote{Kernel is equivalent to the null space. } of $T$, denoted $\ker(T)$. is the subset of $V$ consisting of all vectors $\overrightarrow{v} \in V$ such that $T(\overrightarrow{v}) = 0$. $$\ker T=\{ \overrightarrow{v} \in V ~|~ T(\overrightarrow{v}) = \overrightarrow{0} \}$$
 \end{definition}
+
+\setcounter{definitionT}{9}
+\begin{definition}[Image]\index{Image}
+    The subset of $W$ consisting of all vectors $\overrightarrow{w} \in W$ for which there exists a $\overrightarrow{v} \in V$ such that $T(\overrightarrow{v}) = \overrightarrow{w}$ is called the \term{image} of $T$ and is denoted by $\mathrm{Im}(T)$. $$\mathrm{Im}~T = \{ \overrightarrow{w} \in W ~|~ T(\overrightarrow{v}) = \overrightarrow{w} \text{ for some } \overrightarrow{v} \in V \}$$
+\end{definition}
+
+\setcounter{section}{0}
+\begin{proposition}
+    Let $T$ be a linear transformation. $T$ is injective if and only if $\ker T = \{ \overrightarrow{0} \}$. 
+\end{proposition}
+
+\begin{proof}
+    WTS $T$ is injective iff $\ker T = \{\overrightarrow{0} \}$.
+    
+    \begin{itemize}
+        \item $\rightarrow$: Assume $T$ is injective. WTS $\ker T = \{\overrightarrow{0} \}$. 
+        
+        Pick $\overrightarrow{v} \in T$. 
+        
+        Suppose $T(\overrightarrow{v})=\overrightarrow{0_W}$. 
+        
+        {~~~}
+
+        Then, $T(\overrightarrow{v}) = \overrightarrow{0_W} = T(\overrightarrow{0})$. 
+        
+        Since $T$ is injective, $\overrightarrow{v} = 0$. 
+        
+        {~~~}
+
+        Thus, $\forall \overrightarrow{v} \in \ker T, \overrightarrow{v} = \overrightarrow{0}$.
+        
+        That is, $\ker T=\overrightarrow{0}$. 
+        
+        \item $\leftarrow$: Assume $\ker T = \{\overrightarrow{0} \}$. WTS $T$ is injective. 
+        
+        WTS $T(\overrightarrow{v_1}) = T(\overrightarrow{v_2}) \implies \overrightarrow{v_1} = \overrightarrow{v_2}$. 
+
+        Pick $\overrightarrow{v_1}, \overrightarrow{v_2} \in V$. 
+        
+        Suppose $T(\overrightarrow{v_1})=T(\overrightarrow{v_2})$. 
+
+        {~~~}
+
+        Then, $T(\overrightarrow{v_1} - \overrightarrow{v_2}) = \overrightarrow{0_W}$. 
+        
+        By linearity of $T$, $\overrightarrow{0_W} = T(\overrightarrow{v_1} - \overrightarrow{v_2}) = T(\overrightarrow{v_1}) - T(\overrightarrow{v_2})$. 
+        
+        {~~~}
+
+        Then, $\overrightarrow{v_1} - \overrightarrow{v_2} \in \ker T = \{ \overrightarrow{0_V} \}$. 
+        
+        Thus, $\overrightarrow{v_1} - \overrightarrow{v_2} = 0$. 
+        
+        That is, $\overrightarrow{v_1} = \overrightarrow{v_2}$. 
+    \end{itemize}
+    
+    Thus, $T$ is injective iff $\ker T = \{\overrightarrow{0} \}$. 
+\end{proof}
+
+\begin{proposition}
+    Let $T$ be a linear transformation. $T$ is surjective if and only if $\mathrm{Im}~T=W$. 
+\end{proposition}
 \setcounter{section}{2}
 
-\section{Applications of the Dimension Theorem}
+\begin{example}
 
-\section{Composition of Linear Transformations}
+    $\begin{matrix} \text{Let } D: &\mathcal{C}^\infty(\mathbb{R}) &\to &\mathcal{C}^\infty(\mathbb{R}) &\text{be a linear transformation.} \\ &f &\mapsto &f' \end{matrix}$
+
+    \begin{itemize}
+        \item Describe: 
+        
+        \begin{itemize}
+            \item $\ker D$. 
+            \begin{align*}
+                \ker D 
+                &= \{f\in \mathcal{C}^\infty(\mathbb{R}) ~|~D(f) = \overrightarrow{0} \}
+                \\
+                &= \{ f \in \mathcal{C}^\infty(\mathbb{R}) ~|~f'=\overrightarrow{0} \}
+                \\
+                &=\{ f \in \mathcal{C}^\infty(\mathbb{R}) ~|~ f(x) = c \text{ for some } c \in \mathbb{R}\}
+            \end{align*}
+
+            \item $\mathrm{Im}~D$. 
+            \begin{align*}
+                \mathrm{Im}~D
+                &=\{ g \in \mathcal{C}^\infty(\mathbb{R}) ~|~g=D(f) \text{ for some }f \in \mathcal{C}^\infty(\mathbb{R}) \}
+                \\  
+                &=\{ g \in \mathcal{C}^\infty(\mathbb{R}) ~|~ g = f' \text{ for some } f \in \mathcal{C}^\infty(\mathbb{R}) \}
+                \\
+                &= \mathcal{C}^\infty(\mathbb{R})
+            \end{align*}
+        \end{itemize}
+        
+        \item Is $D$: 
+        
+        \begin{itemize}
+            \item injective? 
+            
+            No. 
+            
+            The kernel is NOT trivial. 
+            \item surjective?
+            
+            Yes. 
+            
+            $\mathrm{Im}~g=\mathcal{C}^\infty(\mathbb{R})$(the image is equal to the codomain). 
+        \end{itemize}
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    $\begin{matrix} \text{Let } T: &P_2(\mathbb{R}) &\to &P_3(\mathbb{R}) &\text{be a linear transformation.} \\ &p(x) &\mapsto &xp(x) \end{matrix}$
+    
+    \begin{itemize}
+        \item Describe: 
+        
+        \begin{itemize}
+            \item $\ker D$. 
+            \begin{align*}
+                \mathrm{Ker}~T
+                &=\{ p(x)\in P_2(x) ~|~xp(x) = 0\}
+                \\
+                &=\{\overrightarrow{0}\}
+            \end{align*}
+
+            \item $\mathrm{Im}~D$. 
+            \begin{align*}
+                \mathrm{Im}~T = \{ xp(x) ~|~ p(x) \in P_2(\mathbb{R}) \}
+            \end{align*}
+        \end{itemize}
+        
+        \item Is $D$: 
+        
+        \begin{itemize}
+            \item injective? 
+            
+            Yes.
+            
+            The kernel of $T$ is trivial. 
+            
+            \item surjective?
+            
+            No. 
+            
+            Take $p(x)=2 \in P_3(\mathbb{R})$. $2 \notin \mathrm{Im}~T$. 
+        \end{itemize}
+    \end{itemize}
+\end{example}
+
+\setcounter{section}{3}
+\setcounter{dummy}{0}
+\begin{proposition}
+    Let $T: V \to W$ be a linear transformation. $\ker(T)$ is a subspace of $V$.
+\end{proposition}
+\setcounter{section}{2}
+
+\begin{proof}
+    We will use subspace test. 
+    
+    \begin{itemize}
+        \item Show that $\ker T \subseteq V$. 
+
+        The follows immediately form the definition of kernel. 
+
+        \item Show that $\ker T \neq \emptyset$.
+        
+        Since $T(\overrightarrow{0})=\overrightarrow{0}$, $\overrightarrow{0} \in \ker T$. So $\ker T \neq \emptyset$. 
+
+        \item Show that $\ker T$ is closed under addition. 
+        
+        Pick $\overrightarrow{v_1}, \overrightarrow{v_2} \in \ker T$. 
+        \begin{align*}
+            T(\overrightarrow{v_1} + \overrightarrow{v_2})
+            &=T(\overrightarrow{v_1}) + T(\overrightarrow{v_2})
+            &\text{by linearity of }T
+            \\
+            &=\overrightarrow{0_W}+\overrightarrow{0_W}
+            &\text{since }\overrightarrow{v_1}, \overrightarrow{v_2} \in \ker T
+            \\
+            &=\overrightarrow{0_W}
+        \end{align*}
+
+        \item Show that $\ker T$ is closed under scalar multiplication. 
+        
+        Pick $\overrightarrow{v} \in V$, $r \in \mathbb{F}$. 
+        \begin{align*}
+            T(r\overrightarrow{v})
+            &=rT(\overrightarrow{v}))
+            &\text{by linearity of }T
+            \\
+            &=r\overrightarrow{0_W}
+            &\text{since }\overrightarrow{v} \in \ker T
+            \\
+            &=\overrightarrow{0_W}
+        \end{align*}
+    \end{itemize}
+    
+    Thus, $\ker T \underset{S.S.}{\subseteq} V$. 
+\end{proof}
+
+\begin{example}
+    True or false. 
+    
+    \begin{itemize}
+        \item Let $T$ be a linear transformation and $\dim \ker T = 0$. Then $T$ is injective. 
+
+        True. 
+        
+        \item Let $T$ be a linear transformation and $\dim \mathrm{Im}~T = \dim W$. Then  is surjective. 
+        
+        True
+        \begin{itemize}
+            \item $\mathrm{img}~T \underset{S.S.}{\subseteq} W \overset{?}{\implies} \mathrm{img}~T = W$
+            \item Assume $\dim\left( \mathrm{img}~T \right) = \dim W$. 
+            \item Let $\mathcal{B} = \left( \overrightarrow{b_1}, \dots, \overrightarrow{b_k} \right)$ be a basis for $\mathrm{img}~T \implies \mathcal{B}$ is linearly independent in $W$. 
+            \item $\mathcal{B}$ is a basis for $W$, and $\mathcal{B}$ has $k$ elements. 
+        \end{itemize}
+    \end{itemize}
+\end{example}
+
+\begin{example}
+{~~~}
+
+    Let $A = \begin{bmatrix} 1&4&1&2 \\ 3&4&0&0 \\ 0&0&0&4 \end{bmatrix}$. 
+    
+    $A \sim \underbrace{ \begin{bmatrix} 1&4&1&2\\0&-8&-3&-5\\0&0&0&4 \end{bmatrix} }_{REF} \sim \underbrace{ \begin{bmatrix} 1&0&-\frac{1}{2}&0\\0&1&\frac{3}{8}&0\\0&0&0&1 \end{bmatrix}}_{RREF}$. 
+    \begin{align*}
+        T_A:
+        &~\mathbb{R}^4 \to \mathbb{R}^3
+        \\
+        &~\overrightarrow{x} ~\mapsto A\overrightarrow{x}
+    \end{align*}
+    
+    \begin{enumerate}
+        \item Find a basis for $\underbrace{\ker T_A}_{\mathrm{Nul}(A)}$ and $\dim\left( \ker T_A \right)$. 
+        
+        $\ker T_A = \mathrm{Nul}~A = \{ \overrightarrow{x} \in \mathbb{R}^4 ~|~ A\overrightarrow{x} = \overrightarrow{0} \}$. 
+        
+        Solution to $A\overrightarrow{x} = \overrightarrow{0}$.
+        
+        From RREF of : $x_3$ is a free variable. 
+        \begin{itemize}
+            \item ${x_1} = \frac{1}{2}{x_3}$
+            \item ${x_2} = -\frac{3}{8}{x_3}$
+            \item $x_4 = 0$
+        \end{itemize}
+        
+        $\overrightarrow{x} = {x_3} \begin{pmatrix} \frac{1}{2} \\ -\frac{3}{2} \\ 1 \\ 0 \end{pmatrix}$, $x_3 \in \mathbb{R}$. 
+        
+        $\ker T_A = \mathrm{Nul}~A = \mathrm{Span}\left( \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right)$. 
+        
+        That is, a basis for $\ker T_A = \left\{ \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right\}$, $\dim\left( \ker T_A \right)=1$. 
+        
+        \item Find a basis for $\underbrace{\mathrm{img}~T_A}_{\mathrm{Col}(A)}$ and $\dim \left( \mathrm{img}~T_A \right)$. 
+        \begin{align*}
+            \mathrm{img}~T_A 
+            &= \mathrm{Cal}(A) = \{ A\overrightarrow{x} ~|~ \overrightarrow{x} \in \mathbb{R}^4 \}
+            \\
+            &=\mathrm{Span}\left( \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 1\\0\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right)
+        \end{align*}
+        
+        Take $x_3=1$: 
+        \begin{align*}
+            A \begin{pmatrix} \frac12\\-\frac38\\1\\0 \end{pmatrix}
+            &=\overrightarrow{0}
+            \\
+            \overrightarrow{a_3} 
+            &= -\frac12\overrightarrow{a_1} + \frac38\overrightarrow{a_2} 
+        \end{align*}
+        
+        Thus, a basis for $\mathrm{Im}~T_A = \left\{ \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right\}$. $\dim\left( \mathrm{img}~T_A \right) = 3$. 
+
+        \item Find the relationship between the rank and nullity of $T_A$. 
+        $$\dim \mathrm{dom}~A = \dim \mathrm{img}~T_A + \dim \ker  T_A $$
+    \end{enumerate}
+\end{example}
+
+\setcounter{section}{3}
+\setcounter{dummy}{16}
+\begin{theorem}[Rank-Nullity Theorem]\index{Rank-Nullity Theorem}\index{Dimension Theorem}\index{Fundamental Theorem of Linear Algebra}
+    If $V$ is a \bred{finite-dimensional} vector space and $T: V \to W$ is a linear transformation, then $$\dim V = \dim \mathrm{img}~T + \dim \ker T$$
+\end{theorem}
+\setcounter{section}{2}
+
+\begin{proof}
+    Proof: WTS $\dim V = \dim \mathrm{img}~T + \dim \ker T$. 
+
+    {~~~}
+    
+    Consider a basis $\overrightarrow{u_1}, \dots, \overrightarrow{u_m}$ for $\ker T$. 
+    
+    $\overrightarrow{u_1}, \dots, \overrightarrow{u_m}$ is linearly independent in $V$, thus it can be extended to a basis for $V$. 
+    
+    Suppose $\overrightarrow{u_1}, \dots, \overrightarrow{u_m}, \overrightarrow{v_1}, \dots, \overrightarrow{v_n}$ is a basis for $V$ we get. 
+
+    Note that $\dim \ker T = m$, and $\dim V = m + n$. 
+    
+    {~~~}
+
+    WTS $\dim \mathrm{img}~T = n$. 
+    
+    Take $\overrightarrow{w} \in \mathrm{img}~T$. 
+    
+    Then, $\exists \overrightarrow{v} \in V$ s.t. $T(\overrightarrow{v}) = \overrightarrow{w}$. 
+    \begin{align*}  
+        \overrightarrow{w}
+        &=T(\overrightarrow{v})
+        \\
+        &= T(a_1\overrightarrow{u_1} + \dots + a_m\overrightarrow{u_m} + b_1\overrightarrow{v_1} + \dots + b_n\overrightarrow{v_n})
+        \text{ for some }a_i, b_i \in \mathbb{F}
+        \\
+        &= a_1T(\overrightarrow{u_1}) + \dots + a_mT(\overrightarrow{u_m}) + b_1T(\overrightarrow{v_1}) + \dots + b_nT(\overrightarrow{v_n})
+    \end{align*}
+    
+    {~~~}
+
+    Since $\overrightarrow{v_1}, \dots, \overrightarrow{v_n}$ is a basis for $\ker T$, $a_iT(\overrightarrow{u_i}) = \overrightarrow{0}$. 
+    $$\overrightarrow{w} = b_1T(\overrightarrow{v_1}) + \dots + b_nT(\overrightarrow{v_n})$$
+
+    {~~~}
+
+    Thus, $\mathrm{img}~T = \mathrm{Span}\left( T(\overrightarrow{v_1}), \dots, T(\overrightarrow{v_n}) \right)$. 
+
+    {~~~}
+
+    Show that $T(\overrightarrow{v_1}), \dots, T(\overrightarrow{v_n})$ is linearly independent. 
+    
+    $c_1 T(\overrightarrow{v_1}), \dots, c_nT(\overrightarrow{v_n}) = \overrightarrow{0}$, WTS $c_i = 0$. 
+    \begin{align*}
+        T ( \underbrace{c_1\overrightarrow{v_1}, \dots, c_n\overrightarrow{v_n}}_{\in~\ker T} ) 
+        &= \overrightarrow{0}
+        \\
+        c_1\overrightarrow{v_1} + \dots + c_n\overrightarrow{v_n} 
+        &= r_1\overrightarrow{u_1} + \dots + r_m\overrightarrow{u}_m \text{ for some } r_i \in \mathbb{F}
+        \\
+        c_1\overrightarrow{v_1} + \dots + c_n\overrightarrow{v_n} - r_1\overrightarrow{u_1} - \dots - r_m\overrightarrow{u}_m 
+        &= \overrightarrow{0}
+    \end{align*}
+    
+    {~~~}
+
+    $\{\overrightarrow{v_i}, \overrightarrow{u_j} ~|~  i \le u \le m, 1 \le j \le n \}$ is a basis for $V$. 
+    
+    Thus, $c_1 = \dots = c_n = r_1 = \dots = r_n = 0$. 
+    
+    So $T(\overrightarrow{v_1}), \dots, T(\overrightarrow{v_n})$ is linearly independent, and so it is a basis for $V$. 
+    
+    $\dim \mathrm{img}~T = n$. 
+\end{proof}
 
 \section{The Inverse of a Linear Transformation}
 
