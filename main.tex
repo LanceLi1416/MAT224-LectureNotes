@@ -2899,6 +2899,12 @@ $T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following A
 \end{definition}
 \setcounter{section}{5}
 \setcounter{chapter}{3}
+\begin{itemize}
+    \item $A \in M_n(\mathbb{R})$, $A = A^T \implies T_A$ is self-adjoint 
+    \item $B \in M_n(\mathbb{C})$, $B = B^* \implies T_B$ is self-adjoint. 
+\end{itemize}
+
+{~~~}
 
 \textbf{Observation 1}
 
@@ -2980,6 +2986,136 @@ That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(
     \\
     &= \langle T(\vec{v}), \vec{w} \rangle
 \end{align*}
+
+\begin{proof}
+    Let $A = [T]_\mathcal{U} = \begin{bmatrix} | &| & &| \\ [T(\overrightarrow{u_1})]_\mathcal{U} &[T(\overrightarrow{u_2})]_\mathcal{U} & \cdots &[T(\overrightarrow{u_n})]_\mathcal{U} \\ | &| & &|  \end{bmatrix}$, where $\mathcal{U} = (\overrightarrow{u_1}, \dots, \overrightarrow{u_n})$ is an orthonormal basis for $V$. 
+    
+    \begin{itemize}
+        \item The $i-j^{th}$ entry of $[T(\overrightarrow{u_j})]_\mathcal{U}$:
+        
+        \begin{itemize}
+            \item $\displaystyle [T(\overrightarrow{u_j})]_\mathcal{U} = \sum_{k=1}^n \langle T(\overrightarrow{u_j}), \overrightarrow{u_k} \rangle \overrightarrow{u_k}$
+            \item The $i-j^{th}$ entry of $A$ is $\langle T(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
+        \end{itemize}
+        
+        \item The $i-j^{th}$ entry of $[T^*(\overrightarrow{u_j})]_\mathcal{U}$:
+        \begin{itemize}
+            \item $\displaystyle [T^*(\overrightarrow{u_j})]_\mathcal{U} = \sum_{k=1}^n \langle T^*((\overrightarrow{u_j}), \overrightarrow{u_k} \rangle \overrightarrow{u_k}$
+            \item The $i-j^{th}$ entry of $[T^*(\overrightarrow{u_j})]_\mathcal{U}$ is $\langle T^*(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
+        \end{itemize}
+                
+        \item The $i-j^{th}$ entry of $A$ is $\langle T(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
+
+        \item The $i-j^{th}$ entry of $A^T$ is $\langle T(\overrightarrow{u_i}), \overrightarrow{u_j} \rangle$
+
+        \item The $i-j^{th}$ entry of $\overline{A}^T = A^*$ is $\overline {\langle T(\overrightarrow{u_i}), \overrightarrow{u_j} \rangle} = \overline{\langle \overrightarrow{u_i}, T^*(\overrightarrow{u_j}) \rangle} = \langle T^*(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle = i-j^{th}$ column of $[T^*]_\mathcal{U}$
+    \end{itemize}
+\end{proof}
+
+\setcounter{section}{0}
+\begin{corollary}
+    $T \in \mathcal{L}(V)$ is self-adjoint if and only if $[T]_\mathcal{U} = ([T]_\mathcal{U})^*$. 
+\end{corollary}
+
+\setcounter{chapter}{5}
+\setcounter{section}{3}
+\setcounter{dummy}{9}
+\begin{proposition}
+    If $\lambda$ is an eigenvalue of the self-adjoint linear transformation $T$, then $\lambda \in \mathbb{R}$. 
+\end{proposition}
+\setcounter{section}{5}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    Let $\lambda$ be an eigenvalue. 
+
+    $T(\overrightarrow{v}) = \lambda \overrightarrow{v}$ for some $\overrightarrow{v} \in V$.
+
+    $\langle \lambda \overrightarrow{v}, \overrightarrow{v} \rangle = \lambda\langle T(\overrightarrow{v}), \overrightarrow{v} \rangle = \langle \overrightarrow{v}, T(\overrightarrow{v}) \rangle = \langle \overrightarrow{v}, \lambda \overrightarrow{v} \rangle = \overline{\lambda} \langle \overrightarrow{v}, \overrightarrow{v} \rangle$. 
+
+    $(\lambda - \overline) \langle \overrightarrow{v}, \overrightarrow{v} \rangle = 0$. 
+
+    Since $\langle \overrightarrow{v}, \overrightarrow{v} \rangle \neq 0$, $\lambda = \overline{\lambda} \implies \lambda \in \mathbb{R}$. 
+\end{proof}
+
+\begin{example}
+{~~~}
+
+    Is $\lambda = 3-i$ an eigenvalue of $A = \begin{bmatrix} 1 &-2 &3 \\ -2 &5 &2 \\ 3 &2 &7 \end{bmatrix}$? 
+    
+    { \color{lightblue} No. $A$ is a symmetric, so all of its eigenvectors must be in real. }
+\end{example}
+
+\setcounter{chapter}{5}
+\setcounter{section}{3}
+\begin{proposition}
+    If $\vec{u}$ and $\vec{v}$ are eigenvectors, respectively, for the distinct eigenvalues $\lambda$ and $\mu$ of $T: V \to V$, then $\vec{u}$ and $\vec{v}$ are orthogonal, $\langle \vec{u}, \vec{v} \rangle = 0$. 
+\end{proposition}
+\setcounter{section}{5}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    Let $\lambda_1 \neq \lambda_2$ be eigenvalues. 
+
+    $T(\overrightarrow{v_1}) = \lambda_1\overrightarrow{v_1}$, and $T(\overrightarrow{v_2}) = \lambda_2\overrightarrow{v_2}$, $v_i \neq 0$, $\overrightarrow{v} \in V$. 
+
+    $\langle \lambda_1\overrightarrow{v_1}, \overrightarrow{v_2} \rangle = \langle T(\overrightarrow{v_1}), \overrightarrow{v_2} \rangle = \langle \overrightarrow{v_1}, T(\overrightarrow{v_2} \rangle = \langle v_1, \lambda_2\overrightarrow{v_2}) \rangle = \overline{\lambda_2}\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle$.
+
+    Then, $(\lambda_1 - \lambda_2)\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle = 0$. 
+
+    $\lambda_1 - \lambda_2 \neq 0 \to \langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle = 0$. 
+\end{proof}
+ 
+\begin{example}
+{~~~}
+
+    Let $A = \begin{bmatrix} a &b \\ b &c \end{bmatrix}$.
+
+    Let $\overrightarrow{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ be an eigenvector. 
+
+    $A$ must have another eigenvector of $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$. 
+\end{example}
+
+\setcounter{section}{0}
+\setcounter{dummy}{8}
+\begin{proposition}
+    Let $T \in \mathcal{L}(V)$ be self-adjoint. $U \underset{S.S.}{\subseteq} V$ s.t. $\underbrace{T(U) \in U}_{U\text{ is invariant}}$. 
+    
+    \begin{enumerate}
+        \item $T(U^\perp) \underset{S.S.}{\subseteq} U^\perp$
+        \item $T \bigg|_U: U \to U$ s.t. $\overrightarrow{u} \mapsto T(\overrightarrow{u})$ ~ \footnote{$T \bigg|_U$ means $T$ restricted to $U$. } is self-adjoint. 
+        \item $T\bigg|_{U^\perp}: U^\perp \to \perp U^\perp$ is self-adjoint. 
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let $\overrightarrow{v} \in U^\perp$. WTS $T(\overrightarrow{v}) \in U^\perp$. 
+        
+        WTS $\langle T(\overrightarrow{v}), \overrightarrow{u} \rangle = 0$ for all $\overrightarrow{u} \in U$. 
+        
+        $\langle T(\overrightarrow{v}), \overrightarrow{u} \rangle = \langle \underset{\in U^\perp}{\overrightarrow{v}}, \underset{\in U}{T(\overrightarrow{u})} \rangle = 0$
+        
+        \item Exercise
+
+        \item Exercise
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Spectral Theorem]\index{Spectral Theorem}
+$\text{ }$
+
+    \begin{itemize}
+        \item Spectral Theorem ($\mathbb{F} = \mathbb{C}$)
+        
+        $T \in \mathcal{L}(V)$ is self-adjoint $\implies T$ admits an orthonormal eigenbasis. 
+        
+        \item Spectral Theorem ($\mathbb{F} = \mathbb{R}$)
+        
+        $T \in \mathcal{L}(V)$ is self-adjoint $\iff T$ admits an orthonormal eigenbasis. 
+    \end{itemize}
+\end{theorem}
+\setcounter{section}{5}
 
 %----------------------------------------------------------------------------------------
 %	PART
