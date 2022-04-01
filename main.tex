@@ -61,6 +61,7 @@
 \colorlet{xcol}{blue!85!black}
 \tikzstyle{xline}=[myblue,very thick]
 \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+\usepackage{pgfplots}
 
 \begin{document}
 
@@ -2028,13 +2029,13 @@ $E_{\lambda_1} \cup \dots \cup E_{\lambda_k}$ is an eigenbasis for $T$.
 
     WTS $\{ \vec{v}_1, \dots, \vec{v}_k \}$ is linearly independent. 
 
-\begin{quote}
+\begin{quotation}
     \textbf{Rough Work}
     
     $k = 1$, $0 \neq \vec{v}_1$ is linearly independent.
     
     $k = 2$, $\vec{v}_1, \vec{v}_2$, $T(\vec{v}_1) = T(\alpha\vec{v}_2) = \alpha T(\vec{v}_1) = \alpha\lambda_2 \vec{v}_2 = \lambda_2\alpha\vec{v}_2 = \lambda_2\vec{v}_1$. Contradiction, because the $\lambda$'s should be distinct. 
-\end{quote}
+\end{quotation}
 
     Induction on $k$
     
@@ -2690,6 +2691,295 @@ $
 
     $\|x\| = 1$
 \end{example}
+
+\setcounter{section}{0}
+\setcounter{dummy}{5}
+\begin{theorem}
+    $\forall \vec{v} \in V$, $\|\vec{v} - \mathrm{proj}_W \vec{v} \| \le \| \vec{v} - \vec{w} \| ~ \forall \vec{w} \in W$. 
+\end{theorem}
+\setcounter{section}{4}
+
+\begin{proof}
+    \begin{align*}
+        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 
+        &\le \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 + \|\mathrm{proj}_W \vec{v} - \vec{w}\|^2
+        \\
+        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 
+        &\le \|\vec{v} - \vec{w}\|^2
+    \end{align*}
+\end{proof}
+
+\begin{example}
+{~~~}
+
+    \begin{quote}
+        Previously we have:
+        
+        $\mathcal{P}_2(\mathbb{R}) \underset{S.S.}{\subseteq} \mathcal{C}^0(\mathbb{R})$. 
+        
+        $\mathcal{B} = (1, x, x^2) \overset{G-S}{\longrightarrow} \mathcal{U} = (u_1, u_2, u_3)$
+        
+        \begin{itemize}
+            \item $\vec{u}_1 = 1$
+            \item $\vec{u}_2 = 2\sqrt{3}(x - \frac{1}{2})$
+            \item $\vec{u}_3 = 6\sqrt{5}(x^2 - x + \frac{1}{6})$
+        \end{itemize}
+    \end{quote}
+
+    Let $f(x) = xe^x \in \mathcal{C}^0(\mathbb{R})$.
+
+    Find the closest polynomial in $\mathcal{P}_2(\mathbb{R})$ to $f(x)$.
+
+    $\displaystyle \mathrm{proj}_{\mathcal{P}_2(\mathbb{R})} f = \sum_{i=1}^3 \frac{\langle f, \vec{u}_i \rangle}{\langle \vec{u}_i, \vec{u}_i \rangle} \vec{u}_i = \sum_{i=1}^3 \langle f, \vec{u}_i \rangle \vec{u}_i \approx \frac{1}{500}(1~062 x^2 + 246x + 23)$
+
+    Tayler appension (for $x = 2$) would be $x + x^2$
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[xmin=-6, xmax=7, ymin=-3, ymax=17, axis lines=middle, restrict y to domain=-1:15]
+                \addplot[red, samples=50]  {x * e^x} node[left]{$f(x)$};  % Original
+                \addplot[green, samples=50] {x + x^2} node[right]{$x + x^2$}; % Taylor expansion
+                \addplot[lightblue, samples=70] {0.002 * (1062 * x^2 + 246 * x + 23)} node[above]{$\mathrm{proj}_{\mathcal{P}_2(\mathbb{R})} f$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{example}
+
+\begin{example}
+{~~~}
+
+    $\begin{matrix} \text{Let }T: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
+
+    Let $A = \begin{bmatrix} 2 &0 &0 \\ 1 &2 &1 \\ -1 &0 &1 \end{bmatrix}$. 
+
+    $\mathrm{char}(T) = (2 - 2\lambda)(1 - \lambda)$. 
+
+    $E_2 = \mathrm{Sp}\left\{ \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix} \right\}$ (v1 and v2)
+    
+    $E_1 = \mathrm{Sp}\left\{ \begin{bmatrix} 0 \\ -1 \\ 1 \end{bmatrix} \right\}$ (v3)
+
+    $\mathcal{U} = (\vec{v}_1, \vec{v}_2, \vec{v}_3)$. 
+
+    $[T]_\mathcal{U} = \begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1\end{bmatrix}$.
+
+
+    $E_1 \not\perp E_2$. 
+
+    $\mathbb{R}^3 \ni \vec{v} = c_1\vec{v}_1 + c_2\vec{v}_3 + c_3\vec{v}_3$ uniquely. 
+
+    $\mathbb{R}^3 = E_1 \oplus E_2$. 
+\end{example}
+
+\begin{example}
+{~~~}
+
+    $\begin{matrix} \text{Let }S: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &D\vec{x} \end{matrix}$
+
+    Let $D = \begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1 \end{bmatrix}$. 
+    
+    $\mathcal{E} = (\vec{e}_1, \vec{e}_2, \vec{e}_3)$ is an eignebasis. 
+    \begin{itemize}
+        \item $S(\vec{e}_1) = 2\vec{e}_1$
+        \item $S(\vec{e}_2) = 2\vec{e}_2$
+        \item $S(\vec{e}_3) = 1\vec{e}_3$
+    \end{itemize}
+
+    $\mathbb{R}^3 = E_2 \oplus E_1$. 
+\end{example}
+
+\begin{example}
+{~~~}
+
+    $\begin{matrix} \text{Let }L: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &B\vec{x} \end{matrix}$
+
+    Let $B = \begin{bmatrix} 1 &-1 &1 \\ -1 &0 &1 \\ 1 &1 &0 \end{bmatrix}$. 
+
+    $\mathrm{char}(T) = (\lambda - 1)(\lambda - \sqrt{3})(\lambda + \sqrt{3})$. 
+    
+    \begin{itemize}
+        \item $E_1 = \mathrm{Sp}\left\{ \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \right\}$
+        \item $E_{\sqrt{3}} = \mathrm{Sp}\left\{ \begin{pmatrix} \sqrt{3} \\ -1 \\ 1 \end{pmatrix} \right\}$
+        \item $E_{-\sqrt{3}} = \mathrm{Sp}\left\{ \begin{pmatrix} -\sqrt{3} \\ -1 \\ 1 \end{pmatrix} \right\}$
+    \end{itemize}
+
+    $L$ is diagonalizable because it has $3$ distinct eigenvalues.  
+
+    $\mathbb{R}^3 = E_1 \oplus E_{\sqrt{3}} \oplus E_{-\sqrt{3}}$
+
+    $E_i \perp E_j ~ \forall i\neq j \le 3$. 
+
+    Note that $B$ is symmetric since $B = B^T$.
+\end{example}
+
+\begin{example}
+    $\begin{matrix} \text{Let }T: &\mathbb{C}^2 &\to &\mathbb{C}^2 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &\begin{bmatrix} 1 &i \\ -i &1\end{bmatrix}\vec{x} \end{matrix}$
+
+    $\mathrm{char}(T) = \lambda(\lambda - 2)$. 
+    
+    \begin{itemize}
+        \item $E_0 = \mathrm{Sp}\left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix} \right\}$
+        \item $E_1 = \mathrm{Sp}\left\{ \begin{pmatrix} i \\ 1 \end{pmatrix} \right\}$
+    \end{itemize}
+
+    $T$ is diagonalizable because it has $2$ distinct eigenvalues. 
+
+    $\mathbb{C}^2 = E_0 \oplus E_2$. 
+
+    $\langle \begin{pmatrix} -i \\ i \end{pmatrix}, \begin{pmatrix} i \\ 1 \end{pmatrix} \rangle = (-i)\overline{(i)} + (1)\overline{(1)} = -1 + 1 = 0$, so $E_1 \perp E_2$. 
+
+    {~~~}
+
+    Note that if $A = (a_{ij})$, then $A^T = (a_{ji})$ and $A^* = (\overline{a_{ji}})$ (conjugate transpose). 
+    
+    $\begin{bmatrix} 1 &i \\ -i &1 \end{bmatrix}^* = \begin{bmatrix} \overline{1} &\overline{i} \\ \overline{-i} &\overline{1} \end{bmatrix} = \begin{bmatrix} 1 &i \\ -i &1 \end{bmatrix}$
+\end{example}
+
+\section{Spectral Theorem}
+
+\setcounter{chapter}{5}
+\setcounter{section}{3}
+\setcounter{dummy}{11}
+\begin{theorem}
+    Let $T: V \to V$ be a self-adjoint transformation of a complex vector space $V$ with Hermitian inner product $\langle ~,~ \rangle$. Then there is an orthonormal basis of $V$ consisting of eigenvectors for $T$ and, in particular, $T$ is diagonalizable.
+\end{theorem} 
+
+\setcounter{chapter}{4}
+\setcounter{section}{6}
+\setcounter{dummy}{0}
+\begin{theorem}
+    Let $T: \mathbb{R}^n \to \mathbb{R}^n$ be a symmetric linear mapping. Then there is an orthonormal basis of $\mathbb{R}^n$ consisting of eigenvectors of $T$. In particular, $T$ is diagonalizable.
+\end{theorem}
+\setcounter{chapter}{3}
+
+$T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following Are Equivalent''. }. 
+
+\begin{enumerate}
+    \item $T$ is diagonalizable AND eigenspaces of $T$ are orthogonal. 
+    \item $V = E_{\lambda_1} \oplus \dots + E_{\lambda_k}$ AND $E_{\lambda_i} \perp E_{\lambda_j}$ for $i \neq j$, $\lambda_1, \dots, \lambda_k$ are eigenvalues. 
+    \item $T$ has an orthonormal eigenbasis. 
+\end{enumerate}
+
+\begin{itemize}
+    \item $2 \to 3$
+    
+    $V = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}$, $E_{\lambda_i} \perp E_{\lambda_j}$
+    
+    $\overset{G-S}{\sim} \mathcal{U}_1 \cup \dots \cup \mathcal{U}_k$ is an orthonormal eignebasis. 
+    
+    \item $3 \to 2$
+    
+    $(\vec{v}_1, \dots, \vec{v}_n)$ ~ \footnote{$\vec{v}_i$'s are eigenvectors corresponding to the eigenvales. } is an orthonormal eigenbais, $\vec{v} \in V$.
+    
+    $\vec{v} = r_1\vec{v}_1 + r_2\vec{v}_2 + \dots + r_n\vec{v}_n$
+    
+    $V = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_n}$
+\end{itemize}
+
+\setcounter{chapter}{5}
+\setcounter{section}{3}
+\setcounter{definitionT}{6}
+\begin{definition}[Adjoint]\index{Adjoint}
+    Let $V$ be a finite dimensional Hermitian inner product space and let $\alpha$ be an \bred{orthonormal} basis for $V$. The \term{adjoint} of the linear transformation $T: V \to V$ is the linear transformation $T^*$ whose matrix with respect to the orthonormal basis $\alpha$ is the matrix $([\overline{T}]_\alpha^\alpha)^T$; that is, $[T^*]_\alpha^\alpha = ([\overline{T}]_\alpha^\alpha)^T$.
+\end{definition}
+
+\setcounter{dummy}{7}
+\begin{proposition}
+    Let $V$ be a finite dimensional Hermitian inner product space. The adjoint of $T: V \to V$ satisfies $\langle T(\vec{v}), \vec{w} \rangle = \langle \vec{v}, T(\vec{w}) \rangle$ for all $\vec{v}$ and $\vec{w} \in V$. 
+\end{proposition}
+
+\textbf{Questions: }
+\begin{itemize}
+    \item Does $T^*$ exist?
+    \item Is $T^*$ unique?
+\end{itemize}
+
+\setcounter{definitionT}{8}
+\begin{definition}[Self-adjoint]\index{Self-adjoint}\index{Hermitian}
+    $T: V \to V$ is called \term{Hermitian} or \term{self-adjoint} if $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T(\vec{v}) \rangle$ for all $\vec{u}$ and $\vec{v} \in V$. Equivalently, $T$ is Hermitian or self-adjoint if $T = T^*$ or $[\overline{T}]_\alpha^\alpha = [T]_\alpha^\alpha$ for an orthonormal basis $\alpha$. An $n \times n$ complex matrix is called \term{Hermitian} or \term{self-adjoint} if $A = A^*$.
+\end{definition}
+\setcounter{section}{5}
+\setcounter{chapter}{3}
+
+\textbf{Observation 1}
+
+$\begin{matrix} \text{Let }T: &\mathbb{R}^n &\to &\mathbb{R} ^n &\text{be a linear transformation. }\\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
+
+If $A = A^T$, then $T$ is self-adjoint. 
+
+$\forall \vec{v}, \vec{w} \in \mathbb{R}^n$. 
+
+$\langle T(\vec{v}), \vec{w} \rangle = \langle A\vec{v}, \vec{w} \rangle = (A\vec{v}) \cdot \vec{w}$. 
+
+\begin{quote}
+    $\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \cdot \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = \begin{pmatrix} x_1 &\cdots &x_n \end{pmatrix} \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}$
+    
+    That is, $\vec{x} \cdot \vec{y} = \vec{x}^T \vec{y}$
+    
+    $(AB)^T = B^TA^T$
+\end{quote}
+\begin{align*}
+    \langle T(\vec{v}), \vec{w} \rangle
+    &= \langle A\vec{v}, \vec{w} \rangle 
+    \\
+    &= (A\vec{v}) \cdot \vec{w}
+    \\
+    &= (A\vec{v})^T\vec{w}
+    \\
+    &= \vec{v}^TA^T\vec{w}
+    \\
+    &= \vec{v}^TA\vec{w}
+    \\
+    &= \vec{v} \cdot \underbrace{(A\vec{w})}_{T(\vec{w})}
+    \\
+    &= \langle \vec{v}, T(\vec{w}) \rangle
+\end{align*}
+
+\setcounter{section}{0}
+\setcounter{dummy}{6}
+\begin{theorem}
+    Let $T \in \mathcal{L}(V, V)$.
+
+    Let $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_n)$ be an orthonormal basis for $V$. 
+
+    Let $A = [T]_\mathcal{U}$. 
+
+    Then, $[T^*]_\mathcal{U} = A^*$ ~ \footnote{For $\mathbb{F} = \mathbb{R}$, $M^* = M^T$, }. 
+\end{theorem}
+\setcounter{section}{5}
+
+\textbf{Observation 2}
+
+$\begin{matrix} \text{Let }T: &\mathbb{C}^2 &\to &\mathbb{C}^2 &\text{be a linear transformation}. \\ &\vec{x} &\mapsto &B\vec{x} \end{matrix}$
+
+$B = B^* = \overline{B^T}$, $B$ is Hermitian. 
+
+Then, $T$ is self adjoint. 
+
+That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(\vec{w}) \rangle_{\mathbb{C}}$ ~ \footnote{Recall that $\langle u, v \rangle_{\mathbb{C}} = u^*v = \overline{u^T} v = u^T\overline{w}$. }. 
+
+\begin{quote}
+    $\vec{z} = \begin{pmatrix} z_1 \\ \vdots \\ z_n \end{pmatrix}, \vec{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix} \in \mathbb{C}^n$
+
+    $\langle \vec{z}, \vec{w} \rangle = z_1 \overline{w_1} + \dots + z_n\overline{w_n} = \vec{w}^* \vec{z}$
+
+    That is, $\langle \vec{z}, \vec{w} \rangle_\mathbb{C} = \vec{w}^* \vec{z}$. 
+
+    $(BA)^* = A^*B^*$
+\end{quote}
+\begin{align*}
+    \langle \vec{v}, T(\vec{w}) \rangle_\mathbb{C}
+    &= \langle \vec{v}, B\vec{w} \rangle_\mathbb{C}
+    \\
+    &= (B\vec{w})^*\vec{v}
+    \\
+    &= \vec{w}^*B^*\vec{v}
+    \\
+    &= \vec{w}^* (B\vec{v})
+    \\
+    &= \langle B\vec{v}, \vec{w} \rangle_\mathbb{C}
+    \\
+    &= \langle T(\vec{v}), \vec{w} \rangle
+\end{align*}
 
 %----------------------------------------------------------------------------------------
 %	PART
