@@ -1536,9 +1536,9 @@ Can we describe $T$ using matrices?
         
         True
         \begin{itemize}
-            \item $\mathrm{img}~T \underset{S.S.}{\subseteq} W \overset{?}{\implies} \mathrm{img}~T = W$
-            \item Assume $\dim\left( \mathrm{img}~T \right) = \dim W$. 
-            \item Let $\mathcal{B} = \left( \vec{b}_1, \dots, \vec{b}_k \right)$ be a basis for $\mathrm{img}~T \implies \mathcal{B}$ is linearly independent in $W$. 
+            \item $\mathrm{Im}~T \underset{S.S.}{\subseteq} W \overset{?}{\implies} \mathrm{Im}~T = W$
+            \item Assume $\dim\left( \mathrm{Im}~T \right) = \dim W$. 
+            \item Let $\mathcal{B} = \left( \vec{b}_1, \dots, \vec{b}_k \right)$ be a basis for $\mathrm{Im}~T \implies \mathcal{B}$ is linearly independent in $W$. 
             \item $\mathcal{B}$ is a basis for $W$, and $\mathcal{B}$ has $k$ elements. 
         \end{itemize}
     \end{itemize}
@@ -1577,9 +1577,9 @@ Can we describe $T$ using matrices?
         
         That is, a basis for $\ker T_A = \left\{ \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right\}$, $\dim\left( \ker T_A \right)=1$. 
         
-        \item Find a basis for $\underbrace{\mathrm{img}~T_A}_{\mathrm{Col}(A)}$ and $\dim \left( \mathrm{img}~T_A \right)$. 
+        \item Find a basis for $\underbrace{\mathrm{Im}~T_A}_{\mathrm{Col}(A)}$ and $\dim \left( \mathrm{Im}~T_A \right)$. 
         \begin{align*}
-            \mathrm{img}~T_A 
+            \mathrm{Im}~T_A 
             &= \mathrm{Cal}(A) = \{ A\vec{x} ~|~ \vec{x} \in \mathbb{R}^4 \}
             \\
             &=\mathrm{Span}\left( \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 1\\0\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right)
@@ -1594,22 +1594,22 @@ Can we describe $T$ using matrices?
             &= -\frac12\vec{a}_1 + \frac38\vec{a}_2
         \end{align*}
         
-        Thus, a basis for $\mathrm{Im}~T_A = \left\{ \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right\}$. $\dim\left( \mathrm{img}~T_A \right) = 3$. 
+        Thus, a basis for $\mathrm{Im}~T_A = \left\{ \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right\}$. $\dim\left( \mathrm{Im}~T_A \right) = 3$. 
 
         \item Find the relationship between the rank and nullity of $T_A$. 
-        $$\dim \mathrm{dom}~A = \dim \mathrm{img}~T_A + \dim \ker  T_A $$
+        $$\dim \mathrm{dom}~A = \dim \mathrm{Im}~T_A + \dim \ker  T_A $$
     \end{enumerate}
 \end{example}
 
 \setcounter{section}{3}
 \setcounter{dummy}{16}
 \begin{theorem}[Rank-Nullity Theorem]\index{Rank-Nullity Theorem}\index{Dimension Theorem}\index{Fundamental Theorem of Linear Algebra}
-    If $V$ is a \bred{finite-dimensional} vector space and $T: V \to W$ is a linear transformation, then $$\dim V = \dim \mathrm{img}~T + \dim \ker T$$
+    If $V$ is a \bred{finite-dimensional} vector space and $T: V \to W$ is a linear transformation, then $$\dim V = \dim \mathrm{Im}~T + \dim \ker T$$
 \end{theorem}
 \setcounter{section}{2}
 
 \begin{proof}
-    Proof: WTS $\dim V = \dim \mathrm{img}~T + \dim \ker T$. 
+    Proof: WTS $\dim V = \dim \mathrm{Im}~T + \dim \ker T$. 
 
     {~~~}
     
@@ -1623,9 +1623,9 @@ Can we describe $T$ using matrices?
     
     {~~~}
 
-    WTS $\dim \mathrm{img}~T = n$. 
+    WTS $\dim \mathrm{Im}~T = n$. 
     
-    Take $\vec{w} \in \mathrm{img}~T$. 
+    Take $\vec{w} \in \mathrm{Im}~T$. 
     
     Then, $\exists \vec{v} \in V$ s.t. $T(\vec{v}) = \vec{w}$. 
     \begin{align*}  
@@ -1645,7 +1645,7 @@ Can we describe $T$ using matrices?
 
     {~~~}
 
-    Thus, $\mathrm{img}~T = \mathrm{Span}\left( T(\vec{v}_1), \dots, T(\vec{v}_n) \right)$. 
+    Thus, $\mathrm{Im}~T = \mathrm{Span}\left( T(\vec{v}_1), \dots, T(\vec{v}_n) \right)$. 
 
     {~~~}
 
@@ -1671,7 +1671,7 @@ Can we describe $T$ using matrices?
     
     So $T(\vec{v}_1), \dots, T(\vec{v}_n)$ is linearly independent, and so it is a basis for $V$. 
     
-    $\dim \mathrm{img}~T = n$. 
+    $\dim \mathrm{Im}~T = n$. 
 \end{proof}
 
 \section{The Inverse of a Linear Transformation}
@@ -2111,7 +2111,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 \setcounter{chapter}{3}
 
 \setcounter{section}{0}
-\setcounter{definitionT}{0}
+\setcounter{definitionT}{1}
 \begin{definition}[Inner Product]
     $$\begin{matrix} \langle~,~\rangle: &V \times V &\to &\mathbb{F} \\ &(\vec{v}, \vec{w}) &\mapsto \langle \vec{v}, \vec{w} \rangle \end{matrix}$$
 
@@ -2250,6 +2250,7 @@ $$ \langle \vec{z}, \vec{w} \rangle_\mathcal{C} = \sum_{i=1}^n z_i\overline{w_i}
 
 \setcounter{chapter}{3}
 \setcounter{section}{0}
+\setcounter{dummy}{2}
 \begin{definition}[Inner Product Space]\index{Inner Product Space}
     An \term{inner product space} is a vector space $V$ along with an inner product on $V$. 
 \end{definition}
@@ -2491,9 +2492,9 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 \begin{definition}[Orthogonal Projection]\index{Orthogonal Projection}
 {~~~}
 
-    Let $V$ be an inner product space. 
-    
-    The orthogonal projection of the vector $\vec{v} \in V$ onto the subspace $W \subseteq V$, denoted $\mathrm{proj}_W(\vec{v})$, is the mapping $$\begin{matrix} \mathrm{proj}_W(\vec{v})&: &V &\to &V \\ &\vec{v} &\mapsto &\vec{v}_1 \end{matrix}$$ where $\vec{v} = \vec{v}_1 + \vec{v}_2$, with $\vec{v}_1 \in W$ and $\vec{v}_2 \in W^\perp$. 
+    Let $V$ be an inner product space. The orthogonal projection of the vector $\vec{v} \in V$ onto the subspace $W \subseteq V$, denoted $P_W$ or $\mathrm{proj}_W(\vec{v})$, is the mapping 
+    $$\begin{matrix}P_W := proj_W: &V &\to &V \\ &\underset{\color{red}\vec{v}_W + \vec{v}_{W^\perp}}{\vec{v}} &\mapsto &\vec{v}_W\end{matrix}$$ 
+    where $\vec{v} = \vec{v}_W + \vec{v}_{W^\perp}$, with $\vec{v}_W \in W$ and $\vec{v}_{W^\perp} \in W^\perp$. 
 \end{definition}
 \setcounter{section}{4}
 
@@ -2503,9 +2504,9 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 {~~~}
 
     \begin{enumerate}[label=\alph*)]
-        \item $\mathrm{proj}_W$ is a linear mapping.
-        \item $\mathrm{im}(\mathrm{proj}_W) = W$, and if $\vec{w} \in W$, then $\mathrm{proj}_W(\vec{w}) = \vec{w}$.
-        \item $\ker(\mathrm{proj}_W) = W^\perp$. 
+        \item $P_W$ is a linear mapping.
+        \item $\mathrm{Im}(P_W) = W$, and if $\vec{w} \in W$, then $P_W(\vec{w}) = \vec{w}$.
+        \item $\ker(P_W) = W^\perp$. 
     \end{enumerate}
 \end{proposition}
 
@@ -2514,7 +2515,7 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
     
     \begin{enumerate}[label=\alph*)]
         \item For each $w \in W$, we have $$\vec{w} = \sum_{i=1}^n \langle \vec{w}, \vec{w}_i \rangle \vec{w}_i$$
-        \item For all $\vec{v} \in V$, we have $$\mathrm{proj}_W(\vec{v}) = \sum_{i=1}^n \langle \vec{v}, \vec{w}_i \rangle \vec{w}_i$$
+        \item For all $\vec{v} \in V$, we have $$P_W(\vec{v}) = \sum_{i=1}^n \langle \vec{v}, \vec{w}_i \rangle \vec{w}_i$$
     \end{enumerate}
 \end{proposition}
 \setcounter{chapter}{3}
@@ -2534,6 +2535,161 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
         &= r_1
     \end{align*}
 \end{proof}
+
+\setcounter{section}{0}
+\setcounter{dummy}{4}
+\begin{lemma}
+    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$ be a basis for $W$. 
+    
+    $\vec{v} \in W^\perp$ iff $\langle \vec{v}, \vec{b}_i \rangle = 0 ~ \forall \vec{b}_i \in \mathcal{B}$. 
+\end{lemma}
+\setcounter{section}{4}
+
+\begin{example}
+{~~~}
+
+    $P_W$ is a linear transformation. 
+    
+    \begin{itemize}
+        \item $\ker P_W = ~?$
+        
+        $W^\perp$
+        
+        Let $\vec{w} \in W^\perp$, $P_W(\vec{w}) = P_W(\vec{0} + \vec{w}) = \vec{0}$, so $W^\perp \in \ker P_W$ 
+        
+        Let $\vec{w} \in \ker P_W$, so $P_W(\vec{w}) = \vec{0} \implies P_W(\vec{w}_W + \vec{w}_{W^\perp})$, so $\vec{w} = \vec{0} + \vec{w}_{W^\perp}$, so $\vec{w} = \vec{w}_{W\perp}$, $\vec{w} \in W^\perp$. 
+        
+        \item $\mathrm{Im}~P_w = ~?$
+        
+        $W$
+        \vspace{-0.5cm}
+        \begin{flalign*}
+            \vec{v} 
+            &= \vec{v}_W + \vec{v}_{W^\perp} 
+            &&\\ 
+            \mathrm{Im}(P_W) 
+            &\subseteq W 
+            \\ 
+            \vec{w} \in W, P_W(\vec{w} + \vec{0}) 
+            &= \vec{w}
+        \end{flalign*}
+        
+        \item Assume $\dim V < \infty$, what does rank-nullity say about $P_w$? 
+        
+        $\dim V = \dim W + \dim W^\perp$
+    \end{itemize}
+
+\end{example}
+
+\begin{proof}
+    WTS $V = W + W^\perp$.
+    
+    Suppose $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$ is an orthonormal basis for $W$. 
+
+    $\forall \vec{v} \in V$, $\vec{w} := \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \langle \vec{v}, \vec{u}_2 \rangle\vec{u}_2 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$
+
+    $\vec{v} = \underset{\in W}{\vec{w}} + \underset{\overset{?}{\in} W^\perp}{(\vec{v}} - \vec{w})$
+
+    WTS $\vec{v} - \vec{w}$ is in $W^\perp$. 
+
+    WTS $\langle \vec{v} - \vec{w}, \vec{u} \rangle = 0 \forall \vec{u} \in W$.
+
+    This is true $\iff \langle \vec{v} - \vec{w}, \vec{u}_i \rangle = 0$ (by lemma). 
+    \begin{align*}
+        \langle \vec{v} - \vec{w}, \vec{u}_i \rangle
+        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{w}, \vec{u}_i \rangle
+        \\
+        &= \langle \vec{v}, \vec{u}_1 \rangle - \langle \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_i \rangle\vec{u}_i + \dots + \langle \vec{v}, \vec{u}_m \rangle \vec{u}_m, \vec{u}_i \rangle
+        \\
+        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \langle \vec{v}, \vec{u}_i \rangle \vec{u}_i, \vec{u}_i \rangle 
+        \\
+        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{v}, \vec{u}_i \rangle 
+        \\
+        &= 0
+    \end{align*}
+
+$\langle \vec{v}, \vec{u}_i \rangle \langle \vec{u}_i, \vec{u}_i \rangle = \begin{cases} \langle \vec{v}, \vec{u}_i \rangle \\ 0  \end{cases}
+$
+\end{proof}
+
+\setcounter{chapter}{4}
+\setcounter{definitionT}{7}
+\begin{definition}[Gram-Schmidt Procedure]\index{Gram-Schmidt Procedure}
+    By induction, suppose that we have already constructed the vectors $\{ \vec{v}_1, \dots, \vec{v_k} \}$. Note that the vectors $\left\{ \dfrac{\vec{v}_1}{\|\vec{v}_1\|}, \dots, \dfrac{\vec{v_j}}{\|\vec{v_j}\|} \right\}$form an orthonormal basis for the subspace $W_j$. Then we have $$P_{W_j}(\vec{v}) = \sum_{i=1}^j \frac{\langle \vec{v}_i, \vec{v} \rangle}{\langle \vec{v}_i, \vec{v}_i \rangle} \vec{v_i}$$
+    
+    Substituting this expression into our formula for $\vec{v}_{j+1}$, w obtain
+    \begin{flalign*}
+        \vec{v}_1 
+        &= \vec{u}_1
+        &&\\
+        \vec{v_2} 
+        &= \vec{u}_2 - \frac{\langle \vec{v}_1, \vec{u}_2 \rangle}{\langle \vec{v}_1, \vec{v}_1}\vec{v}_2
+        \\
+        &\vdots
+        \\
+        \vec{v}_{j+1}
+        &=\vec{u}_{j+1} - \sum_{i=1}^j \frac{\langle \vec{v}_i, \vec{v} \rangle}{\langle \vec{v}_i, \vec{v}_i \rangle} \vec{v_i}
+    \end{flalign*}
+\end{definition}
+
+\setcounter{dummy}{8}
+\begin{theorem}
+    Every finitely generated inner product space has an orthonormal basis. 
+\end{theorem}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    (idea)
+    
+    $W \underset{S.S.}{\subseteq} V$, $\dim W < \infty$. 
+
+    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_m)$ be a basis for $W$. 
+
+    Apply the \hyperref[https://en.wikipedia.org/wiki/Gram–Schmidt_process]{Gram–Schmidt process}, we get $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$, an orthonormal basis. 
+    
+    \begin{itemize}
+        \item $\dim W = 1$ 
+        
+        $\mathcal{B} = (\vec{b}_1)$
+        
+        $\vec{u}_1 = \dfrac{\vec{b}}{\|\vec{v}\|}$
+        
+        \item $\dim W =2$
+        
+        $\mathcal{B} = (\vec{b}_1, \vec{b}_2)$ 
+        
+        $\vec{u}_1 = \dfrac{\vec{b}_1}{\|\vec{b}_1\|}$ 
+        
+        Take $\vec{p}_2 = {\vec{b}_2}^\perp = \vec{b}_2 + \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1)}\vec{b}_2$, $\vec{u}_2 = \dfrac{\vec{p}_2}{\|\vec{p}_2\|}$
+        
+        \item $\dim W = 3$ 
+        
+        $\mathcal{B} = (\vec{b}_1, \vec{b}_2, \vec{b}_3)$ 
+        
+        $\vec{u}_1 = \frac{\vec{b}_1}{\|\vec{b}_1\|}$ <
+        
+        $\vec{p}_2 = \vec{b}_2 - \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1)}\vec{b}_2$, $\vec{u}_2 = \dfrac{\vec{p}_2}{\|\vec{p}_2\|}$ 
+        
+        $\vec{p}_3 = \vec{b}_3 - \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1, \vec{b}_2)}\vec{b}_3$, $\vec{u}_3 = \dfrac{\vec{p}_3}{\|\vec{p}_3\|}$
+        
+        \item $\cdots$
+    \end{itemize}
+
+    If $\vec{u}_1, \dots, \vec{u}_m$ is an orthonormal basis for $W \underset{S.S.}{\subseteq} V$, $\forall \vec{v} \in V$, $\mathrm{proj}_W\vec{v} - \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$. 
+    $$\vec{v} = \underset{\in W}{\vec{w}} + \underset{\in W}{\vec{v} - \vec{w}}$$
+\end{proof}
+
+\begin{example}
+    $\mathcal{P}_2(\mathbb{R}) \in \mathcal{C}^0(\mathbb{R})$. 
+
+    $\langle f, g \rangle = \int_0^1 f(x)g(x)\,dx$
+
+    $\mathcal{B} = (1 + x, x^2) \overset{G-S}{\longrightarrow} (u_1, u_2, u_2)$ prthonormal basis for $\mathcal{P}_2(\mathbb{R})$. 
+
+    $\|1\| = \sqrt{\int_0^1 1\cdot1\,dx}$
+
+    $\|x\| = 1$
+\end{example}
 
 %----------------------------------------------------------------------------------------
 %	PART
