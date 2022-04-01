@@ -454,16 +454,16 @@ Furthermore, the two operations must satisfy the following axioms:
 \begin{example}
 {~~~}
 
-    Define $\mathcal{P}_n(\mathbb{F}) = \left\{ a_0 + a_1x + a_2x^2 + \dots + a_nx^n ~|~a_i \in \mathbb{F} \right\}$. 
+    Define $\mathcal{P}_n(\mathbb{F}) = \left\{ a_0 + a_1x + a_2x^2 + \cdots + a_nx^n ~|~a_i \in \mathbb{F} \right\}$. 
     
     \begin{itemize}
         \item $\mathcal{P}_n(\mathbb{F})$ is an $\mathbb{F}$\_V.S. 
         
-        Take $p(x) = a_0 + a_1x + \dots + a_nx^n$, $q(x)=b_0 + b_1x + \dots + b_nx^n \in P_n(\mathbb{F})$. 
+        Take $p(x) = a_0 + a_1x + \cdots + a_nx^n$, $q(x)=b_0 + b_1x + \cdots + b_nx^n \in P_n(\mathbb{F})$. 
         
         $p(x)+q(x):=(a_0+b_0)+(a_1+b_1)x+\dots+(a_nb_n)x^n$. 
         
-        $cp(x) := ca_0 + \overbrace{ca_1}^{c ~\times~ a_1 \mathrm{~on~}\mathbb{F}}x + \dots + ca_nx^n$. 
+        $cp(x) := ca_0 + \overbrace{ca_1}^{c ~\times~ a_1 \mathrm{~on~}\mathbb{F}}x + \cdots + ca_nx^n$. 
     \end{itemize}
 \end{example}
 
@@ -745,7 +745,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
   \item If $S$ is finite 
   $$S = \{ \vec{w}_1 , \dots, \vec{w}_n \}$$ 
-  $$\mathrm{Span}\left( S \right) = \{ a_1\vec{w}_1 + \dots + a_k\vec{w}_k ~|~ a_i \in \mathbb{F}, \vec{w}_i \in S \}$$
+  $$\mathrm{Span}\left( S \right) = \{ a_1\vec{w}_1 + \cdots + a_k\vec{w}_k ~|~ a_i \in \mathbb{F}, \vec{w}_i \in S \}$$
 \end{itemize}
 
 \begin{example}
@@ -819,9 +819,9 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
     \begin{itemize}
         \item Show $\mathrm{Span}(S) \subseteq V$. 
         
-        Pick $\vec{v} \in \mathrm{Span}\left( S \right) = \{ a_1\vec{v}_1 + \dots + a_m\vec{v}_m ~|~ a_i \in \mathbb{F}, \vec{v}_i \in S, m \in \mathbb{N} \}$. 
+        Pick $\vec{v} \in \mathrm{Span}\left( S \right) = \{ a_1\vec{v}_1 + \cdots + a_m\vec{v}_m ~|~ a_i \in \mathbb{F}, \vec{v}_i \in S, m \in \mathbb{N} \}$. 
         
-        Then, $\vec{v} = a_1\vec{v}_1 + \dots + a_m\vec{v}_m$ for some $\vec{v}_1, \dots, \vec{v}_m \in S$ and $a_1,\dots a_m  \in \mathbb{F}$. 
+        Then, $\vec{v} = a_1\vec{v}_1 + \cdots + a_m\vec{v}_m$ for some $\vec{v}_1, \dots, \vec{v}_m \in S$ and $a_1,\dots a_m  \in \mathbb{F}$. 
         
         Since $\vec{v}_i \in S \subseteq V$, $\vec{v}$ is a linear combination of vectors in $V$, and $V$ is a vector space. 
         
@@ -890,7 +890,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
     
     Is $S' = \{\vec{0}, \vec{v}_1, \dots, \vec{v}_n\} \subseteq V$ linearly independent? 
     
-    {\color{lightblue} Yes. $$1_{\mathbb{F}}\vec{0} + 0_{\mathbb{F}}\vec{v}_1 + \dots + 0_{\mathbb{F}}\vec{v}_n = \vec{0}$$ }
+    {\color{lightblue} Yes. $$1_{\mathbb{F}}\vec{0} + 0_{\mathbb{F}}\vec{v}_1 + \cdots + 0_{\mathbb{F}}\vec{v}_n = \vec{0}$$ }
 \end{example}
 
 \setcounter{section}{4}
@@ -987,7 +987,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
         
         Proof by contradiction. Assume $\vec{v} \in \mathrm{Span}(S)$. 
 
-        Then, $\exists r_1, \dots, r_m \in \mathbb{F}$, $\vec{s}_1, \dots, \vec{s}_m \in S$ s.t. $\vec{v} + r_1\vec{s}_1 + \dots + r_m\vec{s}_m$.
+        Then, $\exists r_1, \dots, r_m \in \mathbb{F}$, $\vec{s}_1, \dots, \vec{s}_m \in S$ s.t. $\vec{v} + r_1\vec{s}_1 + \cdots + r_m\vec{s}_m$.
         
         i.e $\vec{v} - r_1\vec{s}_1 - \dots - r_m\vec{s}_m = \vec{0}$. This is a non-trivial relation among vectors in $S \cup \{ \vec{v} \}$, $S \cup \{ \vec{v} \}$ is linearly dependent. 
 
@@ -1009,7 +1009,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
         
         This relation should contain $\vec{v}$. 
         
-        $\exists r_1, \cdots, r_m, a \in \mathbb{F}$ s.t. $r_1\vec{s}_1 + \dots + r_m\vec{s}_m+a\vec{v} = \vec{0}$. 
+        $\exists r_1, \dots, r_m, a \in \mathbb{F}$ s.t. $r_1\vec{s}_1 + \cdots + r_m\vec{s}_m+a\vec{v} = \vec{0}$. 
         \begin{flalign*}
             \text{Thus, }
             a\vec{v} 
@@ -1050,7 +1050,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
     
     Find a basis $\mathcal{B}$ of $\mathbb{F}^n$. 
     
-    Note that $\begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} = a_1\begin{bmatrix}1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix} + a_2\begin{bmatrix} 0\\1_{\mathbb{F}}\\\vdots\\0 \end{bmatrix} + \dots + a_n\begin{bmatrix} 0\\0\\\vdots\\1_{\mathbb{F}} \end{bmatrix}$. 
+    Note that $\begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} = a_1\begin{bmatrix}1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix} + a_2\begin{bmatrix} 0\\1_{\mathbb{F}}\\\vdots\\0 \end{bmatrix} + \cdots + a_n\begin{bmatrix} 0\\0\\\vdots\\1_{\mathbb{F}} \end{bmatrix}$. 
     
     $\vec{e}_i := \begin{bmatrix} 0\\\vdots\\0\\1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix}$ with the $i$-th element $1_\mathbb{F}$ and the rest $0$. 
     
@@ -1632,16 +1632,16 @@ Can we describe $T$ using matrices?
         \vec{w}
         &=T(\vec{v})
         \\
-        &= T(a_1\vec{u}_1 + \dots + a_m\vec{u}_m + b_1\vec{v}_1 + \dots + b_n\vec{v}_n)
+        &= T(a_1\vec{u}_1 + \cdots + a_m\vec{u}_m + b_1\vec{v}_1 + \cdots + b_n\vec{v}_n)
         \text{ for some }a_i, b_i \in \mathbb{F}
         \\
-        &= a_1T(\vec{u}_1) + \dots + a_mT(\vec{u}_m) + b_1T(\vec{v}_1) + \dots + b_nT(\vec{v}_n)
+        &= a_1T(\vec{u}_1) + \cdots + a_mT(\vec{u}_m) + b_1T(\vec{v}_1) + \cdots + b_nT(\vec{v}_n)
     \end{align*}
     
     {~~~}
 
     Since $\vec{v}_1, \dots, \vec{v}_n$ is a basis for $\ker T$, $a_iT(\vec{u}_i) = \vec{0}$. 
-    $$\vec{w} = b_1T(\vec{v}_1) + \dots + b_nT(\vec{v}_n)$$
+    $$\vec{w} = b_1T(\vec{v}_1) + \cdots + b_nT(\vec{v}_n)$$
 
     {~~~}
 
@@ -1656,10 +1656,10 @@ Can we describe $T$ using matrices?
         T ( \underbrace{c_1\vec{v}_1, \dots, c_n\vec{v}_n}_{\in~\ker T} ) 
         &= \vec{0}
         \\
-        c_1\vec{v}_1 + \dots + c_n\vec{v}_n 
-        &= r_1\vec{u}_1 + \dots + r_m\vec{u}_m \text{ for some } r_i \in \mathbb{F}
+        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n 
+        &= r_1\vec{u}_1 + \cdots + r_m\vec{u}_m \text{ for some } r_i \in \mathbb{F}
         \\
-        c_1\vec{v}_1 + \dots + c_n\vec{v}_n - r_1\vec{u}_1 - \dots - r_m\vec{u}_m 
+        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n - r_1\vec{u}_1 - \dots - r_m\vec{u}_m 
         &= \vec{0}
     \end{align*}
     
@@ -2062,12 +2062,12 @@ $E_{\lambda_1} \cup \dots \cup E_{\lambda_k}$ is an eigenbasis for $T$.
 
     Multiply (*) by $\lambda_{k+1}$ (if $\lambda_{k_i} = 0$, switch with $\lambda_k$): 
     \begin{equation*}
-        a_1\lambda_{k+1}\vec{v}_1 + \dots + a_k\lambda_{k+1}\vec{v}_k + a_{k+1}\lambda_{k+1}\vec{v}_{k+1}
+        a_1\lambda_{k+1}\vec{v}_1 + \cdots + a_k\lambda_{k+1}\vec{v}_k + a_{k+1}\lambda_{k+1}\vec{v}_{k+1}
         \label{eq:2}\tag{2}
     \end{equation*}
 
     $\ref{eq:1} - \ref{eq:2}$: 
-    $a_1(\lambda_1 - \lambda_{k+1})\vec{v}_1 + \dots + a_k(\lambda_k-\lambda_{k+1})\vec{v}_k = \vec{0}$
+    $a_1(\lambda_1 - \lambda_{k+1})\vec{v}_1 + \cdots + a_k(\lambda_k-\lambda_{k+1})\vec{v}_k = \vec{0}$
 
     We have $a_1 = \dots = a_k = 0$. 
     
@@ -2096,7 +2096,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 \noindent In $\mathbb{R}^n$, 
 \begin{itemize}
-    \item $\|\vec{v}\| = \sqrt{{v_1}^2 + \dots + {v_n}^2} = \sqrt{\vec{v} \cdot \vec{v}}$
+    \item $\|\vec{v}\| = \sqrt{{v_1}^2 + \cdots + {v_n}^2} = \sqrt{\vec{v} \cdot \vec{v}}$
     \item $d(\vec{v}, \vec{w}) = \|\vec{v} - \vec{w}\|$
     \begin{itemize}
         \item $\vec{v} \perp \vec{w} \iff \vec{v} \cdot \vec{w} = 0$
@@ -2106,7 +2106,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 \setcounter{chapter}{4}\index{Standard Inner Product}\index{Dot Product}\label{Def4_3_1}
 \begin{definition}
-    The \term{standard inner product} (or \term{dot product}) on $\mathbb{R}^n$ is the function $\langle , \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by the following rule. If $\vec{x} = (x_1, \dots, x_n)$ and $\vec{y} =  (y_1, \dots, y_n)$ in standard coordinates, then $\langle \vec{x}, \vec{y} \rangle$ is the scalar: $\langle \vec{x}, \vec{y} \rangle = x_1y_1 + \dots + x_ny_n$. 
+    The \term{standard inner product} (or \term{dot product}) on $\mathbb{R}^n$ is the function $\langle , \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by the following rule. If $\vec{x} = (x_1, \dots, x_n)$ and $\vec{y} =  (y_1, \dots, y_n)$ in standard coordinates, then $\langle \vec{x}, \vec{y} \rangle$ is the scalar: $\langle \vec{x}, \vec{y} \rangle = x_1y_1 + \cdots + x_ny_n$. 
 \end{definition}
 \setcounter{chapter}{3}
 
@@ -2158,7 +2158,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
     Many of the simpler facts about the standard inner product may be derived by expanding out the expressions involved, using \hyperref[Def4_3_1]{Definition (4.3.1)}.
     
     \begin{enumerate}[label=\alph*)]
-        \item Write $\vec{x} = (x_1, \dots, x_n)$, $\vec{y} = (y_1, \dots, y_n)$, and $\vec{z} = (z_1, \dots, z_n)$. Then $\langle c\vec{x} + \vec{y} \rangle = (cx_1 + y_1, \dots, x_n + y_n)$, so we have $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = (cx_1 + y_1)z_1 + \dots + (cx_n + y_n)z_n$$ After multiplying this out and rearranging the terms, we obtain $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = c(x_1z_1 + \dots + x_nz_n)+ \cdots + (y_1z_1+ \cdots + y_nz_n) = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$$ 
+        \item Write $\vec{x} = (x_1, \dots, x_n)$, $\vec{y} = (y_1, \dots, y_n)$, and $\vec{z} = (z_1, \dots, z_n)$. Then $\langle c\vec{x} + \vec{y} \rangle = (cx_1 + y_1, \dots, x_n + y_n)$, so we have $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = (cx_1 + y_1)z_1 + \cdots + (cx_n + y_n)z_n$$ After multiplying this out and rearranging the terms, we obtain $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = c(x_1z_1 + \cdots + x_nz_n)+ \cdots + (y_1z_1+ \cdots + y_nz_n) = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$$ 
 
         \item We have:
         \vspace{-0.45cm} 
@@ -2216,19 +2216,19 @@ $a^2 + b^2 = z \overline{z}$
 
 $\|z\|^2 = a^2 + b^2 = z \overline{z}$
 
-$\|\vec{z}\|^2 = z_1\overline{z_1} + z_2\overline{z_2} + \dots + z_n\overline{z_n} = \langle \vec{z}, \vec{z} \rangle_{\mathbb{C}}$
+$\|\vec{z}\|^2 = z_1\overline{z_1} + z_2\overline{z_2} + \cdots + z_n\overline{z_n} = \langle \vec{z}, \vec{z} \rangle_{\mathbb{C}}$
 
 \begin{example} The following are commonly seen examples of inner products. 
     \begin{itemize}
         \item dot product in $\mathbb{R}^n$
         
-        $\vec{x} \cdot \vec{y} = x_1y_1 + \dots + x_ny_n$
+        $\vec{x} \cdot \vec{y} = x_1y_1 + \cdots + x_ny_n$
         
         \item Euclidian inner product (or Hermitan inner product)
         
         $\vec{z} = \begin{pmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{pmatrix}$
         
-        $\langle \vec{z}, \vec{x} \rangle = z_1 \overline{w_1} + \dots + z_n\overline{w_n}$
+        $\langle \vec{z}, \vec{x} \rangle = z_1 \overline{w_1} + \cdots + z_n\overline{w_n}$
     \end{itemize}
 \end{example}
 
@@ -2510,7 +2510,7 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 \end{proposition}
 
 \begin{proposition}
-    Let $\{ \vec{w}_1, \cdots, \vec{w}_n \}$ be an orthonormal basis for the subspace $W \subseteq V$. 
+    Let $\{ \vec{w}_1, \dots, \vec{w}_n \}$ be an orthonormal basis for the subspace $W \subseteq V$. 
     
     \begin{enumerate}[label=\alph*)]
         \item For each $w \in W$, we have $$\vec{w} = \sum_{i=1}^n \langle \vec{w}, \vec{w}_i \rangle \vec{w}_i$$
