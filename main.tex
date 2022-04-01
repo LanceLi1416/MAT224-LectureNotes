@@ -53,6 +53,14 @@
 \DeclareTextFontCommand{\bred}{\color{red}\bfseries} % Bold and red
 \DeclareTextFontCommand{\itblue}{\color{lightblue}\itshape} % Italic and blue
 \DeclareTextFontCommand{\term}{\color{orange}\itshape} % Italic and blue
+% Tikz
+\usetikzlibrary{angles,quotes} % for pic
+\usetikzlibrary{bending} % for arrow head angle
+\tikzstyle{vector}=[->,very thick,xcol,line cap=round]
+\colorlet{vcol}{green!70!black}
+\colorlet{xcol}{blue!85!black}
+\tikzstyle{xline}=[myblue,very thick]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
 
 \begin{document}
 
@@ -1778,13 +1786,6 @@ $[R(\overrightarrow{w})]_\mathcal{B} = [\overrightarrow{w}]_\mathcal{B}=\begin{b
 Let $T: V \to V$ be a linear transformation.
 
 $\overrightarrow{v} \in V$  is an eigenvector if and only if $T(\overrightarrow{v}) = \lambda \overrightarrow{v}$, by the definition.
-
-\setcounter{chapter}{4}
-\setcounter{dummy}{4}
-\begin{proposition}
-    A vector $\overrightarrow{v}$ is an eigenvector of $T$ with eigenvalue $\lambda$ if and only if $\overrightarrow{v} \neq \overrightarrow{0}$ and $\overrightarrow{v} \in \ker(T - \lambda \mathrm{id})$.
-\end{proposition}
-\setcounter{chapter}{3}
 \begin{align*}
     T(\overrightarrow{v}) - \lambda \overrightarrow{v}
     &= \overrightarrow{0}
@@ -1794,36 +1795,42 @@ $\overrightarrow{v} \in V$  is an eigenvector if and only if $T(\overrightarrow{
     \\
     (T-\lambda ~ id)\overrightarrow{v}
     &= 0
-    \qquad\text{by sum of linear transformations}
+    &\text{by sum of linear transformations}
     \\
-    \overrightarrow{v} &\in \ker (T - \lambda ~ \mathrm{id}) \qquad\text{for some }\lambda \in \mathbb{F}
+    \overrightarrow{v} &\in \ker (T - \lambda ~ \mathrm{id}) &\text{for some }\lambda \in \mathbb{F}
 \end{align*}
 
-Let $\dim V = n$, and fix a basis $\mathcal{B}$ for $V$,
+\setcounter{chapter}{4}
+\setcounter{dummy}{4}
+\begin{proposition}
+    A vector $\overrightarrow{v}$ is an eigenvector of $T$ with eigenvalue $\lambda$ if and only if $\overrightarrow{v} \neq \overrightarrow{0}$ and $\overrightarrow{v} \in \ker(T - \lambda \mathrm{id})$.
+\end{proposition}
+\setcounter{chapter}{3}
 
-$\begin{matrix}
-\text{Then, }
-\mathcal{L}(V, V)
-&\overset{\cong}{\to}
-&\underset{n \times n}M(\mathbb{F})
-\\
-T &\mapsto &[T]_\mathcal{B} = B
-\end{matrix}$
 
-Suppose $\overrightarrow{v}$ is an eigenvector of $T$.
+\begin{example}
+{~~~}
 
-$T(\overrightarrow{v}) - \lambda \overrightarrow{v}$ means that $[T]_\mathcal{B}[\overrightarrow{v}]_\mathcal{B} = [\lambda\overrightarrow{v}]_\mathcal{B} = \lambda [\overrightarrow{v}]_\mathcal{B}$.
-\begin{align*}
-    [T - \lambda ~ id]_\mathcal{B}
-    &= [T]_\mathcal{B} - \lambda[id]_\mathcal{B}
-    \\
-    &={B - \lambda I}_{n \times n}
-\end{align*}
+    Let $\dim V = n$, and fix a basis $\mathcal{B}$ for $V$. 
 
-$\lambda$ is an eigenvalue for $T$ iff $B - \lambda I$ is not invertible.
-$\lambda$ is an eigenvalue for $T$ iff $\det (B - \lambda I) = 0$.
+    $\begin{matrix} \text{Then, } \mathcal{L}(V, V) &\overset{\cong}{\to} &\underset{n \times n}M(\mathbb{F}) \\ T &\mapsto &[T]_\mathcal{B} = B \end{matrix}$
 
-This is called that \bred{characteristic polynomial} of the linear transformation $T$.
+    Suppose $\overrightarrow{v}$ is an eigenvector of $T$.
+
+    $T(\overrightarrow{v}) - \lambda \overrightarrow{v}$ means that $[T]_\mathcal{B}[\overrightarrow{v}]_\mathcal{B} = [\lambda\overrightarrow{v}]_\mathcal{B} = \lambda [\overrightarrow{v}]_\mathcal{B}$.
+    \begin{align*}
+        [T - \lambda ~ id]_\mathcal{B}
+        &= [T]_\mathcal{B} - \lambda[id]_\mathcal{B}
+        \\
+        &={B - \lambda I}_{n \times n}
+    \end{align*}
+
+    $\lambda$ is an eigenvalue for $T$ iff $B - \lambda I$ is not invertible.
+
+    $\lambda$ is an eigenvalue for $T$ iff $\det (B - \lambda I) = 0$.
+
+    This is called that \bred{characteristic polynomial} of the linear transformation $T$.
+\end{example}
 
 \setcounter{chapter}{4}
 \setcounter{definitionT}{10}
@@ -1860,9 +1867,673 @@ This is called that \bred{characteristic polynomial} of the linear transformatio
 \begin{definition}[Diagonalizable]
     Let $V$ be a finite-dimensional vector space, and let $T: V \to V$ be a linear mapping. $T$ is said to be \term{diagonalizable} if there exists a basis of $V$, all of whose vectors are eigenvectors of $T$.
 \end{definition}
+
+\setcounter{dummy}{1}
+\begin{proposition}
+    $T: V \to V$ is diagonalizable if and only if, for any basis $\alpha$ of $V$, the matrix $[T]_\alpha^\alpha$ is similar to a diagonal matrix.
+\end{proposition}
 \setcounter{chapter}{3}
 
+\begin{proof}
+{~~~}
 
+    \begin{itemize}
+        \item $\rightarrow$: WTS $T$ is diagonalizable $\implies \exists$ a basis  of $\mathcal{B}$ s.t.  is diagonal.
+         
+        $T$ has an eigenbasis $\mathcal{B} = (\overrightarrow{b_1}, \dots, \overrightarrow{b_n})$. 
+    
+        Note that $T(\overrightarrow{b_i}) = \lambda_i \overrightarrow{b_i}$ for some $\lambda_i \in \mathbb{F}$. 
+        
+        $[T]_\mathcal{B} = \begin{bmatrix} | & &| \\ [T(\overrightarrow{b_1})]_\mathcal{B} &\dots &[T(\overrightarrow{b_n})]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} | & &| \\ [\lambda_1\overrightarrow{b_1}]_\mathcal{B} &\dots &[\lambda_n\overrightarrow{b_n}]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} \lambda_1 &0 &\cdots &0 \\ 0 &\lambda_2 & &\vdots \\ \vdots &\vdots & &0 \\ 0 &0 &\cdots &\lambda_n  \end{bmatrix}$
+
+        \item $\leftarrow$: WTS $\exists$ a basis $\mathcal{B}$ of $T$ s.t. $[T]_\mathcal{B}$ is diagonal $\implies T$ is diagonalizable.
+        
+        $\exists$ a basis $\mathcal{B} = (\overrightarrow{b_1}, \dots, \overrightarrow{b_n})$ s.t. $[T]_\mathcal{B} = \begin{bmatrix} a_1 &0 &\cdots &0 \\ 0 &a_1 &\cdots &0 \\ \vdots &\vdots &\ddots &\vdots \\ 0 &0 &\cdots &a_n \end{bmatrix}$. 
+
+        $[T]_\mathcal{B} = \begin{bmatrix} | & &| \\ [T(\overrightarrow{b_1})]_\mathcal{B} &\dots &[T(\overrightarrow{b_n})]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} a_1 &0 &\cdots &0 \\ 0 &a_1 &\cdots &0 \\ \vdots &\vdots &\ddots &\vdots \\ 0 &0 &\cdots &a_n \end{bmatrix}$
+        \begin{flalign*}
+            \forall i, [T(\overrightarrow{b_i})]_\mathcal{B} 
+            &= a_i\overrightarrow{e_i}
+            &&\\
+            [a_i\overrightarrow{b_i}]_\mathcal{B} 
+            &= a_i\overrightarrow{e_i}
+        \end{flalign*}
+
+        So $T(\overrightarrow{b_i}) = a_i\overrightarrow{b_i}$, since $\gamma_\mathcal{B}$ is injective. 
+    \end{itemize}
+\end{proof}
+
+\setcounter{section}{0}
+\setcounter{dummy}{0}
+\begin{proposition}
+    $T: V \to V$ is diagonalizable iff $\exists$ a basis $\mathcal{B}$ of $V$ s.t. $[T]_\mathcal{B}$ is diagonal
+\end{proposition}
+\setcounter{section}{2}
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{6}
+\begin{theorem}
+(Computational Criteria)
+
+Let $V$ be a vector space, $\dim V = n$. 
+
+Let $T: V \to V$ be a linear transformation. 
+
+Let $\lambda_1, \dots,, \lambda_n$ be \bred{distinct} eigenvalues of $T$. 
+
+{~~~}
+
+Let $m_i$ be the algebraic multiplicity of $\lambda_i$. 
+
+Let $M_i$ be the geometric multiplicity of $\lambda_i$. 
+
+{~~~}
+
+T is diagonalizable if and only if
+\begin{enumerate}
+    \item $\displaystyle \sum_{i=1}^{k}m_i = n$
+    \item $\forall i$, $M_i = m_i$. 
+\end{enumerate}
+
+{~~~}
+
+\begin{itemize}
+    \item $\mathrm{char}(T) = (x - \lambda_i)^{m_i}g(x)$
+    \item $\dim (E_{\lambda_i}) = M_i$
+\end{itemize}
+\end{theorem}
+\setcounter{chapter}{3}
+
+\begin{example}
+
+Let $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_2(\mathbb{R})$ be a linear transformation. 
+
+Let $\mathcal{A} = (x^2, x, 1)$ be a basis for $\mathcal{P}_2(\mathbb{R})$. 
+
+$A = [T]_\mathcal{A} = \begin{bmatrix} 2 &0 &0 \\ 1 &2 &1 \\ -1 &0 &1 \end{bmatrix}$
+
+{~~~}
+
+$\mathrm{char}(T) = \det(A - \lambda I) = (2 - \lambda^2)(1 - \lambda)$
+
+$E_2 = \mathrm{Span}\left( \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix} \right)$
+
+$E_1 = \mathrm{Span}\left( \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix} \right)$
+
+\end{example}
+
+
+$\mathrm{Nul}(A - 2I) = \mathrm{Span}\left(\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\right)$
+
+\begin{itemize}
+    \item For $\lambda = 2$, the algebraic multiplicity is $2$. 
+    \item For $\lambda = 1$, the algebraic multiplicity is $1$. 
+\end{itemize}
+$$2+1 = 3$$
+
+The geometric multiplicity of $\lambda = 2$ is $\dim \ker (T - 2 \mathrm{id}) = \dim E_2$
+
+$\dim(\mathrm{Nul}(A - 2I)) = 2$
+
+\begin{itemize}
+    \item The geometric multiplicity of $\lambda = 2$  is 2. 
+    \item The geometric multiplicity of $\lambda = 1$ is 1. 
+\end{itemize}
+
+$\mathrm{Nul}(A - 2I) = \mathrm{Span}\left(\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\right) \underset{S.S.}{\subseteq} \mathbb{R}^3$
+
+$\ker(T - 2\mathrm{id}) = E_2$
+
+$$\begin{matrix} E_2 &\underset{S.S.}\subseteq &\mathcal{P}_2(\mathbb{R}) \\ \cong & &~~~\downarrow \lambda_\mathcal{A} \\ \mathrm{Nul}(A - 2I) &\underset{S.S.}{\subseteq} &\mathbb{R}^3 \end{matrix}$$
+
+$\dim \mathrm{Nul}(A - 2I) = 2$
+
+$\mathrm{Nul}(A - 2I) \cong E_2$
+
+$\dim E_2 = \dim \mathrm{Nul}(A - 2I)$
+
+Find an eigenbasis $\mathcal{B}$ for $T$. 
+
+\bred{Note:} We need the eigenbasis for $\mathcal{P_2}(\mathbb{R})$, not $\mathbb{R}^3$!
+
+$\{ x, -x^2+1, -x+1 \}$ is an eigenbasis for $T$
+
+
+$\begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1 \end{bmatrix}$
+
+\begin{itemize}
+    \item $E_{\lambda_1} = \{ x_1, \dots, x_{l_1} \}$
+    \item $E_{\lambda_2} = \{ x_1, \dots, x_{l_2} \}$
+    \item $E_{\lambda_k} = \{ x_1, \dots, x_{l_1} \}$
+\end{itemize}
+
+$E_{\lambda_1} \cup \dots \cup E_{\lambda_k}$ is an eigenbasis for $T$.
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{5}
+\begin{proposition}
+    Let $V$ be finite-dimensional, and let $T: V \to V$ be linear.
+    
+    Let $A$ be an eigenvalue of $T$, and assume that $A$ is an $m$-fold root of the characteristic polynomial of $T$. Then we have $$1 \le \dim(E_\lambda) \le m$$
+\end{proposition}
+
+\setcounter{dummy}{3}
+\begin{proposition}
+    Let $\overrightarrow{v_1}, \dots, \overrightarrow{v_n}$ be eigenvectors corresponding to distinct eigenvalues of $T: V \to V$. Then $\{ \overrightarrow{v_1}, \dots, \overrightarrow{v_n} \}$  is linearly independent. 
+\end{proposition}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    We know that $T(\overrightarrow{v_i}) = \lambda_i\overrightarrow{v_i}$, $1 \le i \le k$ and $\lambda_i \neq \lambda_j$ for $i \neq j$. 
+
+    WTS $\{ \overrightarrow{v_1}, \dots, \overrightarrow{v_k} \}$ is linearly independent. 
+
+\begin{quote}
+    \textbf{Rough Work}
+    
+    $k = 1$, $0 \neq \overrightarrow{v_1}$ is linearly independent.
+    
+    $k = 2$, $\overrightarrow{v_1}, \overrightarrow{v_2}$, $T(\overrightarrow{v_1}) = T(\alpha\overrightarrow{v_2}) = \alpha T(\overrightarrow{v_1}) = \alpha\lambda_2 \overrightarrow{v_2} = \lambda_2\alpha\overrightarrow{v_2} = \lambda_2\overrightarrow{v_1}$. Contradiction, because the $\lambda$'s should be distinct. 
+\end{quote}
+
+    Induction on $k$
+    
+    \begin{itemize}
+        \item \textbf{Base case:} $k = 1$
+
+        $0 \neq \overrightarrow{v_1}$ is linearly independent.
+        
+        \item \textbf{Induction hypothesis:} suppose $\overrightarrow{v_1}, \dots, \overrightarrow{v_k}$ is linearly independent. 
+    
+        Prove that $\overrightarrow{v_1}, \dots, \overrightarrow{v_k}, \overrightarrow{v_{k+1}}$ is linearly independent. 
+
+    Suppose $a_1\overrightarrow{v_1} + a_2\overrightarrow{v_2} + \dots + a_k\overrightarrow{v_k} + a_{k+1}\overrightarrow{v_k}_{k+1} = \overrightarrow{0}$. (*)
+
+    WTS $a_1 = \dots = a_k = a_{k+1} = 0$. 
+
+    Apply $T$ to (*): 
+    \begin{align*}
+        a_1T(\overrightarrow{v_1}) + a_kT(\overrightarrow{v_k}) +a_{k+1}T(\overrightarrow{v_{k+1}}) 
+        &= \overrightarrow{0}
+        \\
+        a_1\lambda_1\overrightarrow{v_1} +a_k\lambda_k\overrightarrow{v_k} +a_{k+1}\lambda_{k+1}\overrightarrow{v_{k+1}} 
+        \label{eq:1}\tag{1}
+    \end{align*}
+
+    Multiply (*) by $\lambda_{k+1}$ (if $\lambda_{k_i} = 0$, switch with $\lambda_k$): 
+    \begin{equation*}
+        a_1\lambda_{k+1}\overrightarrow{v_1} + \dots + a_k\lambda_{k+1}\overrightarrow{v_k} + a_{k+1}\lambda_{k+1}\overrightarrow{v}_{k+1}
+        \label{eq:2}\tag{2}
+    \end{equation*}
+
+    $\ref{eq:1} - \ref{eq:2}$: 
+    $a_1(\lambda_1 - \lambda_{k+1})\overrightarrow{v_1} + \dots + a_k(\lambda_k-\lambda_{k+1})\overrightarrow{v}_k = \overrightarrow{0}$
+
+    We have $a_1 = \dots = a_k = 0$. 
+    
+    {~~~}
+
+    Plug back into (*): 
+
+    $a_{k+1} = 0$. So $\overrightarrow{v_1}, \dots, \overrightarrow{v}_{k+1}$ are linearly independent. 
+    \end{itemize}
+\end{proof}
+
+\section{Geonetry in $\mathbb{R}^n$}
+
+Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$. 
+
+\noindent We know that $V \overset{\gamma\mathcal{B}}{\cong} \mathbb{F}^n$, $v \mapsto [v]_\mathcal{B}$ and $T \mapsto [T]_\mathcal{B}$
+
+\noindent In $\mathbb{R}^3$ and $\mathbb{R}^3$, we have these concepts intuitively
+\begin{itemize}
+    \item Norm
+    \item Distance
+    \item Angle
+\end{itemize}
+
+{~~~}
+
+\noindent In $\mathbb{R}^n$, 
+\begin{itemize}
+    \item $\|\overrightarrow{v}\| = \sqrt{{v_1}^2 + \dots + {v_n}^2} = \sqrt{\overrightarrow{v} \cdot \overrightarrow{v}}$
+    \item $d(\overrightarrow{v}, \overrightarrow{w}) = \|\overrightarrow{v} - \overrightarrow{w}\|$
+    \begin{itemize}
+        \item $\overrightarrow{v} \perp \overrightarrow{w} \iff \overrightarrow{v} \cdot \overrightarrow{w} = 0$
+    \end{itemize}
+    \item $\theta = \cos^{-1}\frac{\overrightarrow{v} \cdot \overrightarrow{w}}{\|\overrightarrow{v}\|^2 \|\overrightarrow{w}\|^2}$
+\end{itemize}
+
+\setcounter{chapter}{4}\index{Standard Inner Product}\index{Dot Product}\label{Def4_3_1}
+\begin{definition}
+    The \term{standard inner product} (or \term{dot product}) on $\mathbb{R}^n$ is the function $\langle , \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by the following rule. If $\vec{x} = (x_1, \dots, x_n)$ and $\vec{y} =  (y_1, \dots, y_n)$ in standard coordinates, then $\langle \vec{x}, \vec{y} \rangle$ is the scalar: $\langle \vec{x}, \vec{y} \rangle = x_1y_1 + \dots + x_ny_n$. 
+\end{definition}
+\setcounter{chapter}{3}
+
+\setcounter{section}{0}
+\setcounter{definitionT}{0}
+\begin{definition}[Inner Product]
+    $$\begin{matrix} \langle~,~\rangle: &V \times V &\to &\mathbb{F} \\ &(\overrightarrow{v}, \overrightarrow{w}) &\mapsto \langle \overrightarrow{v}, \overrightarrow{w} \rangle \end{matrix}$$
+
+    An \term{inner product} on $V$ is a function that takes each ordered pair of $(u, v)$ of elements of $V$ to a number $\langle u, v \rangle \in \mathbb{F}$ and has the following properties:
+    
+    \begin{enumerate}[label=\alph*)]
+        \item \textbf{Positivity}
+        
+        $\langle v, v \rangle \ge 0$ for all $v \in V$;
+        
+        \item \textbf{Definiteness}
+        
+        $\langle v, v \rangle = 0$ if and only if $v = 0$
+        
+        \item \textbf{Additivity in the first slot}
+
+        $\langle u + v, w \rangle = \langle u + w \rangle + \langle v + w \rangle$ for all $u, v, w \in V$;
+        
+        \item \textbf{Homogeneity in the first slot}
+
+        $\langle \lambda u, v \rangle = \lambda\langle u, v\rangle$ for all $u, v \in V$
+        
+        \item \textbf{Conjugate symmetry}
+        
+        $\langle u, v \rangle = \overline{\langle v, u \rangle}$ for all $u, v \in V$.
+    \end{enumerate}
+\end{definition}
+\setcounter{section}{3}
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{2}
+\begin{proposition}
+{~~~}
+
+    \begin{enumerate}[label=\alph*)]
+        \item For all $\vec{x}, \vec{y}, \vec{z} \in \mathbb{R}^n$ and all $c \in \mathbb{R}$, $\langle c\vec{x} + \vec{y}, \vec{z} \rangle = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$. (In other words, as a function of the first variable, the inner product is a \itblue{linear} mapping.)
+        \item For all $\vec{x}, \vec{y} \in \mathbb{R}^n$, $\langle \vec{x}, \vec{y} \rangle = \langle \vec{y}, \vec{x} \rangle$ (i.e., the inner product is ``\itblue{symmetric}'').
+        \item For all $\vec{x} \in \mathbb{R}^n$, $\langle \vec{x}, \vec{x} \rangle \ge 0$, and $\langle \vec{x}, \vec{x} \rangle = 0$ if and only if $\vec{x} = \vec{0}$. (We say the standard inner product is ``\itblue{positive-definite}''.)
+    \end{enumerate}
+\end{proposition}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    Many of the simpler facts about the standard inner product may be derived by expanding out the expressions involved, using \hyperref[Def4_3_1]{Definition (4.3.1)}.
+    
+    \begin{enumerate}[label=\alph*)]
+        \item Write $\vec{x} = (x_1, \dots, x_n)$, $\vec{y} = (y_1, \dots, y_n)$, and $\vec{z} = (z_1, \dots, z_n)$. Then $\langle c\vec{x} + \vec{y} \rangle = (cx_1 + y_1, \dots, x_n + y_n)$, so we have $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = (cx_1 + y_1)z_1 + \dots + (cx_n + y_n)z_n$$ After multiplying this out and rearranging the terms, we obtain $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = c(x_1z_1 + \dots + x_nz_n)+ \cdots + (y_1z_1+ \cdots + y_nz_n) = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$$ 
+
+        \item We have:
+        \vspace{-0.45cm} 
+        \begin{align*}
+            \langle \vec{x}, \vec{y} \rangle 
+            &= x_1y_1 + \cdots + x_ny_n 
+            \\
+            &= y_1x_1 + \cdots + y_nz_n
+            \\
+            &= \langle \vec{y}, \vec{x} \rangle.
+        \end{align*}
+        
+        \item By the definition, $\langle \vec{x}, \vec{x} \rangle = x_1^2 + \cdots + x_n^2$. Since the components of $\vec{x}$ are all real numbers, each $x_i^2 \ge 0$, so $\langle \vec{x}, \vec{x} \rangle \ge 0$. Furthermore, if $\langle \vec{x}, \vec{x} \rangle = 0$, then it is clear that $x_i = 0$ for all $i$, or in other words, that $\vec{x} = \vec{0}$.
+    \end{enumerate}
+\end{proof}
+
+Note that $\mathbb{C} \cong \mathbb{R}^2$
+
+Let $z \in \mathbb{C}$, $z = a + bi$
+
+\begin{center}
+    \begin{tikzpicture}
+        \def\xmax{4.0}
+        \def\ymax{3}
+        \def\R{3.925}
+        \def\ang{35}
+        
+        \coordinate (O) at (0,0);
+        \coordinate (R) at (\ang:\R);
+        \coordinate (X) at ({\R*cos(\ang)},0);
+        \coordinate (Y) at (0,{\R*sin(\ang)});
+        
+        \node[fill=red,circle,inner sep=0.8] (R') at (R) {};
+        \node[blue,above right=-2] at (R') {$z = a + bi$};
+        \node[black,below left=2] at (O) {$O$};
+        
+        \draw[dashed,blue]
+            (Y) -- (R') --++ (0,{0.1-\R*sin(\ang)});
+            
+        \draw[->,line width=0.9] (-0.5,0) -- (\xmax+0.05,0) node[right] {$\mathrm{Re}$};
+        \draw[->,line width=0.9] (0,-0.5) -- (0,\ymax+0.05) node[left] {$\mathrm{Im}$};
+        
+        \draw[vector] (O) -- (R') node[pos=0.55,above left=-2] {$r$};
+        
+        \tick{X}{90} node[scale=1,below=-1] {$a$};
+        \tick{Y}{ 0} node[blue,scale=1,left] {$b$};
+    \end{tikzpicture}
+\end{center}
+
+$\|z\| = \sqrt{a^2 + b^2}$
+
+$\overline{z} = a - bi$
+
+$a^2 + b^2 = z \overline{z}$
+
+$\|z\|^2 = a^2 + b^2 = z \overline{z}$
+
+$\|\overrightarrow{z}\|^2 = z_1\overline{z_1} + z_2\overline{z_2} + \dots + z_n\overline{z_n} = \langle \overrightarrow{z}, \overrightarrow{z} \rangle_{\mathbb{C}}$
+
+\begin{example} The following are commonly seen examples of inner products. 
+    \begin{itemize}
+        \item dot product in $\mathbb{R}^n$
+        
+        $\overrightarrow{x} \cdot \overrightarrow{y} = x_1y_1 + \dots + x_ny_n$
+        
+        \item Euclidian inner product (or Hermitan inner product)
+        
+        $\overrightarrow{z} = \begin{pmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{pmatrix}$
+        
+        $\langle \overrightarrow{z}, \overrightarrow{x} \rangle = z_1 \overline{w_1} + \dots + z_n\overline{w_n}$
+    \end{itemize}
+\end{example}
+
+\setcounter{chapter}{5}
+\setcounter{definitionT}{0}
+\begin{definition}[Hermitian Inner Product]\index{Hermitian Inner Product}\index{Hermitian Inner Product Space}
+    Let $V$ be a complex vector space. A \term{Hermitian inner product} on $V$ is a complex valued function on pairs of vectors in $V$, denoted by $\langle \vec{u}, \vec{v} \rangle \in \mathbb{V}$ for $\vec{u}, \vec{v} \in V$, which satisfies the following properties:
+    \begin{enumerate}[label=\alph*)]
+        \item For all $\vec{u}, \vec{v}$, and $\vec{w} \in V$ and $a, b \in \mathbb{C}$, $\langle a\vec{u} + b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$, 
+        \item For all $\vec{u}, \vec{v} \in V$, $\langle \vec{u}, \vec{v} \rangle = \overline{ \langle \vec{v}, \vec{u} \rangle }$, and
+        \item For all $\vec{v} \in V$, $\langle \vec{v}, \vec{v} \rangle \ge 0$, and $langle \vec{v}, \vec{v} \rangle  = 0$ implies $\vec{v} = \vec{0}$. 
+    \end{enumerate}
+    
+    We call a complex vector space with a Hermitian inner product a \term{Hermitian inner product space}.
+\end{definition}
+
+$ \langle z, w \rangle_\mathbb{C} \overset{?}= \overline{ \langle w, z \rangle }$ ~ \footnote{$\overline{w+z} = \overline{w} + \overline{z}$. }
+$$ \langle \vec{z}, \vec{w} \rangle_\mathcal{C} = \sum_{i=1}^n z_i\overline{w_i} = \sum_{i=1}^n\overline{w_i}z_i = \overline{\overline{\sum_{i=1}^n\overline{w_i}z_i}} = \overline{\sum_{i=1}^n\overline{\overline{w_i}z_i}} = \overline{\sum_{i=1}^n \overline{\overline{w_i}}\overline{z_i}} = \overline{\sum_{i=1}^nw_i\overline{z_i}} = \overline{\langle \overrightarrow{w}, \overrightarrow{z} \rangle_{\mathbb{C}}} $$
+
+\setcounter{chapter}{3}
+\setcounter{section}{0}
+\begin{definition}[Inner Product Space]\index{Inner Product Space}
+    An \term{inner product space} is a vector space $V$ along with an inner product on $V$. 
+\end{definition}
+
+\setcounter{chapter}{4}
+\setcounter{section}{3}
+\begin{definition}[Norm]\index{Norm}\index{Unit Vector}
+{~~~}
+
+    \begin{enumerate}[label=\alph*)]
+        \item The \term{length} (or \term{norm}) of $\vec{v} \in \mathbb{R}^n$ is the scalar $$\|\vec{v}\| = \sqrt{\langle \vec{v}, \vec{v} \rangle}$$
+        \item $\vec{v}$ is called a \term{unit vector} if $\| \vec{v} \| = 1$. 
+    \end{enumerate}
+\end{definition}
+
+\setcounter{definitionT}{4}
+\begin{definition}
+    The angle, $\theta$, between two nonzero vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$ is defined to be $\theta = \cos^{-1}\dfrac{\langle \vec{x}, \vec{y} \rangle}{\|x\| \cdot \|y\|}$. 
+\end{definition}
+
+\setcounter{definitionT}{6}
+\begin{definition}[Orthogonal]\index{Orthogonal}\index{Perpendicular}
+    Two vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$ are said to be \term{orthogonal} (or \term{perpendicular}) if $\langle \vec{x}, \vec{y} \rangle = 0$.
+\end{definition}
+\setcounter{chapter}{3}
+
+\begin{example}
+    Define $V = \mathcal{C}^0[0, 1] = \left\{ f: [0, 1] \to \mathbb{R} | f \text{ continuous} \right\}$
+
+    $\displaystyle \langle f, g \rangle = \int_0^1 f(x)g(x)\,dx$
+
+    Show $\langle~, ~\rangle$ is an inner product on $V$. 
+    
+    \begin{itemize}
+        \item Show that $\langle ~,~ \rangle$ has positivity
+        
+        $\displaystyle \langle f, f \rangle = \int_0^1f^(x)\,dx \ge 0$. 
+        $\langle ~,~ \rangle$ is positive 
+        
+        \item Show that $\langle ~,~ \rangle$ has definiteness
+
+        $\displaystyle \int_0^1f^2(x)\,dx = 0$ if and only if $f(x) = 0$. 
+        $\langle ~,~ \rangle$ is definite
+
+        \item Show that $\langle~, ~\rangle$ has additivity and homogeneityin the first slot
+        \begin{flalign*}
+            \langle rf + g, h \rangle 
+            &= \int_0^1 (rf + g)(x) h(x)\,dx 
+            &&\\
+            &= \int_0^1 (rf(x) + g(x)) h(x)\,dx 
+            \\
+            &= \int_0^1 rf(x) h(x) + g(x) h(x)\,dx 
+            \\
+            &= r\int_0^1f(x) h(x)\,dx + \int_0^1g(x)h(x)\,dx 
+            \\
+            &= r\langle f, h \rangle + \langle g, h \rangle
+        \end{flalign*}
+        
+        \item Show that $\langle~, ~\rangle$ has conjugate summery
+        \begin{flalign*}
+            \langle g, h \rangle 
+            &= \int_0^1 g(x) h(x)\,dx 
+            &&\\
+            &= \int_0^1 \overline{h(x) g(x)}\,dx
+            \\
+            &=\overline{\langle h, g \rangle}
+        \end{flalign*}
+    \end{itemize}
+\end{example}
+
+Note that inner products have the following properties: 
+
+\begin{itemize}
+    \item $\langle \vec{0}, \vec{u} \rangle = 0$ for every $\vec{u} \in V$. 
+    \item $\langle \vec{u}, \vec{0} \rangle = 0$ for every $\vec{u} \in V$
+    \item $\langle \vec{u}, \vec{v} + \vec{w} \rangle = \langle \vec{x} + \vec{v} \rangle + \langle \vec{u} + \vec{w} \rangle$ for all $\vec{u}, \vec{v}, \vec{w} \in V$
+    \item $\langle \vec{u}, \lambda \vec{v} \rangle = \overline{\lambda}\langle \vec{u}, \vec{v} \rangle$ for all $\lambda \in \mathbb{F}$ and $\vec{u}, \vec{v} \in V$. 
+\end{itemize}
+
+Let $\vec{v} \in V$
+\begin{itemize}
+    \item $\|\vec{v}\| = 0$ if and only if $\vec{v} = \vec{0}$.
+    \item $\|\lambda\vec{v}\| = |\lambda|\|\vec{v}\|$ for all $\lambda \in \mathbb{F}$. 
+\end{itemize}
+
+\setcounter{section}{0}
+\setcounter{definitionT}{2}
+\begin{definition}[Trace]\index{Trace}
+{~~~}
+
+    Let $A \in M_{n \times n}(\mathbb{F})$. The \term{trace} of $A$, denoted $\mathrm{tr}(A)$, is defined by $$\mathrm{tr}(A) = \sum_{i=1}^\infty a_{ij}, A_{n \times n} = a_{ij}$$ (the sum of the diagonal entries). 
+\end{definition}
+\setcounter{section}{3}
+\begin{itemize}
+    \item $\mathrm{tr}(A + B) = \mathrm{tr}A + \mathrm{tr}B$
+    \item $\mathrm{tr}(AB) = \mathrm{tr}(BA)$    
+\end{itemize}
+
+\begin{example}
+{~~~}
+
+    Let $V = \underset{2\times2}{M}(\mathbb{R})$ be an inner product space. 
+
+    $\begin{matrix} \text{Define } \langle ~,~ \rangle_V: &V x V &\rangle &\mathbb{R} \\ &(A, B) &\mapsto &\frac{1}{2}\mathrm{tr}(A^TB) \end{matrix}$. 
+
+    Let $A = \begin{bmatrix} \frac{1}{\sqrt{2}} &\frac{-1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} &\frac{1}{\sqrt{2}} \end{bmatrix}$. What is $\|A\|$? 
+
+    \begin{align*}
+        \|A\|^2
+        &= \langle A, A \rangle
+        \\
+        &= \frac{1}{2}\mathrm{tr}(A^TA)
+        \\
+        &= \frac{1}{2}(2)
+        \\
+        &= 1
+    \end{align*}
+    
+    So $\|A\| = \sqrt{1} = 1$. 
+\end{example}
+
+\setcounter{chapter}{4}
+\setcounter{definitionT}{8}
+\begin{definition}[Orthogonal (set) and Orthonormal]\index{Orthogonal (set)}\index{Orthonormal}
+$\text{ }$
+
+    \begin{enumerate}[label=\alph*)]
+        \item A set of vectors $S \subset \mathbb{R}^n$ is said to be \term{orthogonal} if for every pair of vectors $\vec{x}, \vec{y} \in S$ with $\vec{x} \neq \vec{y}$, wc have $\langle \vec{x}, \vec{y} \rangle = 0$.
+        \item A set of vectors $S \subset \mathbb{R}^n$ is said to be \term{orthonormal} if $S$ is orthogonal and, in addition, every vector in $S$ is a unit vector.
+    \end{enumerate}
+\end{definition}
+\setcounter{chapter}{3}
+
+\textbf{Pythagorean Theorem}\index{Pythagorean Theorem}
+
+Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 + |v\|^2. $$
+
+\begin{proof}
+    WTS $\overrightarrow{u}, \overrightarrow{v} \in V$ s.t. $\langle \overrightarrow{u}, \overrightarrow{v} \rangle = 0$. Then $\|\overrightarrow{u} + \overrightarrow{v}\|^2 = \|\overrightarrow{u}\|^2 + \|\overrightarrow{v}\|^2$. 
+    \begin{align*}
+        \|\overrightarrow{u} + \overrightarrow{v}\|^2
+        &= \langle \overrightarrow{u} + \overrightarrow{v}, \overrightarrow{u} + \overrightarrow{v} \rangle
+        \\
+        &= \langle \overrightarrow{u}, \overrightarrow{u} + \overrightarrow{v} \rangle + \langle \overrightarrow{v} + \overrightarrow{u} + \overrightarrow{v} \rangle
+        \\
+        &=
+        \langle \overrightarrow{u}, \overrightarrow{u} \rangle + \underbrace{\langle \overrightarrow{u}, \overrightarrow{v} \rangle}_{0} + \underbrace{\langle \overrightarrow{v}, \overrightarrow{u} \rangle}_{0} + \langle \overrightarrow{v}, \overrightarrow{v} \rangle
+        \\
+        &= \|\overrightarrow{u}\|^2 + \|\overrightarrow{v}\|^2
+    \end{align*}
+\end{proof}
+
+\setcounter{chapter}{4}
+\begin{proposition}[The Triangle Inequality and The Cauchy-Schwarz Inequality]\index{The Triangle Inequality}\index{The Cauchy-Schwarz Inequality}
+{~~~}
+
+    \begin{enumerate}[label=\alph*)]
+        \item (The triangle inequality) For all vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$, $\| \vec{x} + \vec{y} \| \le \|\vec{x}\| + \|\vec{y}\|$. 
+        
+        (Geometrically, in a triangle, the length of any side is less than or equal to the sum of the lengths of the other two sides. )
+        \begin{center}
+            \begin{tikzpicture}
+                \coordinate (O) at (0,0) {};
+                \coordinate (A) at (4,0) {};
+                \coordinate (B) at (6,2) {};
+                \coordinate (C) at (2,2) {};
+                
+                \draw[thick, arrows={-latex}]  (O) -- (A) node[midway,below] {$\vec{x}$};
+                \draw[thick, arrows={-latex}]  (A) -- (B) node[midway,below] {$\vec{y}$};
+                \draw[thick, arrows={-latex}]  (C) -- (B) node[midway,above] {$\vec{x}$};
+                \draw[thick, arrows={-latex}]  (O) -- (C) node[midway,above] {$\vec{y}$};
+                \draw[arrows={-latex}]  (O) -- (B) node[midway,below] {$\vec{x} + \vec{y}$};
+            \end{tikzpicture}
+        \end{center}
+        
+        \item (The Cauchy-Schwarz inequality\footnote{This inequality if an equality if and only if one of $u, v$ is a scalar multiple of the other. }) For all vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$, $$| \langle \vec{x}, \vec{x} \rangle \le \|\vec{x}\| \cdot \|\vec{y}\|. $$
+    \end{enumerate}
+\end{proposition}
+\setcounter{chapter}{3}
+
+$$\langle \overrightarrow{u_i}, \overrightarrow{u_j} \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \end{cases}$$
+
+\begin{example}
+    Let $\mathbb{R}^2$ with the dot product be an inner product space. 
+
+    $\left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \end{pmatrix} \right\}$ is a basis for $\mathbb{R}^2$. 
+
+    $\left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\}$ is an orthogonal basis for $\mathbb{R}^2$. 
+
+    $\left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{pmatrix}, \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \right\}$ is an orthonormal basis for $\mathbb{R}^2$. 
+\end{example}
+
+\begin{example}
+    Example of Inner Product Space
+
+    $W \underset{S.S.}{\subseteq}V,~ \dim W < \infty$
+
+    $$W^\perp = \left\{ \overrightarrow{v} \in V , \langle \overrightarrow{v}, \overrightarrow{w} \rangle = 0 ~ \forall \overrightarrow{w} \in V \right\}$$
+
+    $$V^\perp = ?$$
+    
+    \begin{itemize}
+        \item $\langle \overrightarrow{0}, \overrightarrow{v} \rangle = 0$, so $\overrightarrow{0} \in V^\perp$
+
+        \item $\overrightarrow{v} \in V^\perp$: $\langle \overrightarrow{v}, \overrightarrow{w} \rangle = 0 ~ \forall \overrightarrow{w} \in V$
+        
+        $\langle \overrightarrow{v}, \overrightarrow{v} \rangle = 0 \implies \overrightarrow{v} = \overrightarrow{0}$
+    \end{itemize}
+    
+    So $V^\perp = \{ \overrightarrow{0} \}$
+
+    $$\{ \overrightarrow{0} \}^\perp = ?$$
+    
+    \begin{itemize}
+        \item $\{ \overrightarrow{0} \}^\perp = \left\{ \overrightarrow{v} \in V \big| \langle \overrightarrow{v}, \overrightarrow{0} \rangle = 0 \right\} = V$
+    \end{itemize}
+\end{example}
+
+\setcounter{chapter}{4}
+\setcounter{section}{4}
+\setcounter{dummy}{2}
+\begin{proposition}[Orthogonal Decomposition]\index{Orthogonal Decomposition}
+{~~~}
+
+    \begin{enumerate}[label=\alph*)]
+        \item For every subspace $W$ of $\mathbb{R}^n$, $W^\perp$ is also a subspace of $\mathbb{R}^n$.
+        \item We have $\dim(W) + \dim(W^\perp) = \dim(\mathbb{R}^n) = n$.
+        \item For all subspaces $W$ of $\mathbb{R}^n$, $W \cap W^\perp = \{ \vec{0} \}$.
+        \item Given a subspace $W$ of $\mathbb{R}^n$, every vector $\vec{v} \in \mathbb{R}^n$ can be written \bred{uniquely} as $\vec{v} = \vec{v}_1 + \vec{v}_2$, where $\vec{v}_1 \in W$ and $\vec{v_2} \in W^\perp$. In other words, $\mathbb{R}^n = W \oplus W^\perp$.
+    \end{enumerate}
+\end{proposition}
+\setcounter{section}{3}
+\setcounter{chapter}{3}
+
+\section{Orthogonal Projection and the Gram-Schmidt Process}
+
+\setcounter{section}{0}
+\setcounter{definitionT}{3}
+\begin{definition}[Orthogonal Projection]\index{Orthogonal Projection}
+{~~~}
+
+    Let $V$ be an inner product space. 
+    
+    The orthogonal projection of the vector $\vec{v} \in V$ onto the subspace $W \subseteq V$, denoted $\mathrm{proj}_W(\vec{v})$, is the mapping $$\begin{matrix} \mathrm{proj}_W(\vec{v})&: &V &\to &V \\ &\vec{v} &\mapsto &\vec{v}_1 \end{matrix}$$ where $\vec{v} = \vec{v}_1 + \vec{v}_2$, with $\vec{v}_1 \in W$ and $\vec{v}_2 \in W^\perp$. 
+\end{definition}
+\setcounter{section}{4}
+
+\setcounter{chapter}{4}
+\setcounter{dummy}{4}
+\begin{proposition}
+{~~~}
+
+    \begin{enumerate}[label=\alph*)]
+        \item $\mathrm{proj}_W$ is a linear mapping.
+        \item $\mathrm{im}(\mathrm{proj}_W) = W$, and if $\vec{w} \in W$, then $\mathrm{proj}_W(\vec{w}) = \vec{w}$.
+        \item $\ker(\mathrm{proj}_W) = W^\perp$. 
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Let $\{ \vec{w}_1, \cdots, \vec{w}_n \}$ be an orthonormal basis for the subspace $W \subseteq V$. 
+    
+    \begin{enumerate}[label=\alph*)]
+        \item For each $w \in W$, we have $$\vec{w} = \sum_{i=1}^n \langle \vec{w}, \vec{w}_i \rangle \vec{w}_i$$
+        \item For all $\vec{v} \in V$, we have $$\mathrm{proj}_W(\vec{v}) = \sum_{i=1}^n \langle \vec{v}, \vec{w}_i \rangle \vec{w}_i$$
+    \end{enumerate}
+\end{proposition}
+\setcounter{chapter}{3}
+
+\begin{proof}
+    (idea) say $\left\{ \overrightarrow{u_1}, \overrightarrow{u_2} \right\}$ ($\dim V = 2$), $\overrightarrow{v} \in V$
+
+    $\overrightarrow{v} = r_1\overrightarrow{u_1} + r_2\overrightarrow{u_2},~ r_i \in \mathbb{F}$. 
+    \begin{align*}
+        \langle \overrightarrow{v}, \overrightarrow{u_1} \rangle
+        &= \langle r_1\overrightarrow{u_1} + r_2\overrightarrow{u_2}, \overrightarrow{u_1} \rangle
+        \\
+        &= r_1\langle \overrightarrow{u_1}, \overrightarrow{u_1} \rangle + r_2 \langle \overrightarrow{u_2}, \overrightarrow{u_1} \rangle
+        \\
+        &= r_1 \cdot 1 + r_2 \cdot 0
+        \\
+        &= r_1
+    \end{align*}
+\end{proof}
 
 %----------------------------------------------------------------------------------------
 %	PART
