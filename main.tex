@@ -54,6 +54,7 @@
 \DeclareTextFontCommand{\itblue}{\color{lightblue}\itshape} % Italic and blue
 \DeclareTextFontCommand{\term}{\color{orange}\itshape} % Italic and blue
 % Tikz
+\usepackage{pgfplots}
 \usetikzlibrary{angles,quotes} % for pic
 \usetikzlibrary{bending} % for arrow head angle
 \tikzstyle{vector}=[->,very thick,xcol,line cap=round]
@@ -61,7 +62,8 @@
 \colorlet{xcol}{blue!85!black}
 \tikzstyle{xline}=[myblue,very thick]
 \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
-\usepackage{pgfplots}
+% Young Tableau
+\usepackage{ytableau}
 
 \begin{document}
 
@@ -438,42 +440,42 @@ Furthermore, the two operations must satisfy the following axioms:
 \begin{example}
 {~~~}
 
-    Define $\mathbb{R}^n = \left\{ \begin{pmatrix} a_1\\\vdots\\a_n \end{pmatrix}, a_i \in \mathbb{R} \right\}$, 
-    $\mathbb{C}^n = \left\{ \begin{pmatrix} z_1\\\vdots\\z_n \end{pmatrix}, a_i \in \mathbb{C} \right\}$. 
-    
+    Define $\mathbb{R}^n = \left\{ \begin{pmatrix} a_1\\\vdots\\a_n \end{pmatrix}, a_i \in \mathbb{R} \right\}$,
+    $\mathbb{C}^n = \left\{ \begin{pmatrix} z_1\\\vdots\\z_n \end{pmatrix}, a_i \in \mathbb{C} \right\}$.
+
     Take $\vec{z} = \begin{pmatrix} z_1 \\ \vdots \\ z_n \end{pmatrix}$, $\vec{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix}$, then $\vec{z} + \vec{w} = \begin{pmatrix} z_1 + w_1 \\ \vdots \\ z_n + w_n \end{pmatrix}$\footnote{Note that the two $+$'s ($\vec{z} + \vec{w}$ and $z_i + w_i$) here are different. The former is vector addition, while the later is addition over $\mathbb{C}$. }.
-    
-    In general, $\mathbb{F}^n := \left\{ \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, a_i \in \mathbb{F} \right\}$ is a vector space over the field $\mathbb{F}$~\footnote{``A vector space over the field $\mathbb{F}$'' can be shortened to ``$\mathbb{F}$ vector space'', or ``$\mathbb{F}$\_V.S.''. }. 
-    
+
+    In general, $\mathbb{F}^n := \left\{ \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, a_i \in \mathbb{F} \right\}$ is a vector space over the field $\mathbb{F}$~\footnote{``A vector space over the field $\mathbb{F}$'' can be shortened to ``$\mathbb{F}$ vector space'', or ``$\mathbb{F}$\_V.S.''. }.
+
     \begin{itemize}
         \item Additive identity: $\vec{0} := \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$\footnote{Note that $\vec{0}$ is the additive identity of $\mathbb{F}^n$, while the $0$’s are the additive identity over the field $\mathbb{F}$.}
 
-        \item Take $\vec{v} = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \in \mathbb{F}^n$, then $-\vec{v} = \begin{pmatrix} -v_1 \\ \vdots \\ -v_n \end{pmatrix}$~\footnote{Note that the two $-$'s ($-\vec{v}$ and $-v_i$) here are different. The former is the symbol for the additive inverse inside $\mathbb{F}^n$, while the later is additive inverse over the field $\mathbb{F}$. }. 
+        \item Take $\vec{v} = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \in \mathbb{F}^n$, then $-\vec{v} = \begin{pmatrix} -v_1 \\ \vdots \\ -v_n \end{pmatrix}$~\footnote{Note that the two $-$'s ($-\vec{v}$ and $-v_i$) here are different. The former is the symbol for the additive inverse inside $\mathbb{F}^n$, while the later is additive inverse over the field $\mathbb{F}$. }.
     \end{itemize}
 \end{example}
 
 \begin{example}
 {~~~}
 
-    Define $\mathcal{P}_n(\mathbb{F}) = \left\{ a_0 + a_1x + a_2x^2 + \cdots + a_nx^n ~|~a_i \in \mathbb{F} \right\}$. 
-    
+    Define $\mathcal{P}_n(\mathbb{F}) = \left\{ a_0 + a_1x + a_2x^2 + \cdots + a_nx^n ~|~a_i \in \mathbb{F} \right\}$.
+
     \begin{itemize}
-        \item $\mathcal{P}_n(\mathbb{F})$ is an $\mathbb{F}$\_V.S. 
-        
-        Take $p(x) = a_0 + a_1x + \cdots + a_nx^n$, $q(x)=b_0 + b_1x + \cdots + b_nx^n \in P_n(\mathbb{F})$. 
-        
-        $p(x)+q(x):=(a_0+b_0)+(a_1+b_1)x+\dots+(a_nb_n)x^n$. 
-        
-        $cp(x) := ca_0 + \overbrace{ca_1}^{c ~\times~ a_1 \mathrm{~on~}\mathbb{F}}x + \cdots + ca_nx^n$. 
+        \item $\mathcal{P}_n(\mathbb{F})$ is an $\mathbb{F}$\_V.S.
+
+        Take $p(x) = a_0 + a_1x + \cdots + a_nx^n$, $q(x)=b_0 + b_1x + \cdots + b_nx^n \in P_n(\mathbb{F})$.
+
+        $p(x)+q(x):=(a_0+b_0)+(a_1+b_1)x+\dots+(a_nb_n)x^n$.
+
+        $cp(x) := ca_0 + \overbrace{ca_1}^{c ~\times~ a_1 \mathrm{~on~}\mathbb{F}}x + \cdots + ca_nx^n$.
     \end{itemize}
 \end{example}
 
 \begin{example}
 {~~~}
 
-    $F(\mathbb{R}) := \left\{ f:\mathbb{R} \to \mathbb{R} ~|~f \text{ is a function} \right\}$ is a real vector space. 
-    
-    Consider $f(x) = x^2 \in F(\mathbb{R})$. 
+    $F(\mathbb{R}) := \left\{ f:\mathbb{R} \to \mathbb{R} ~|~f \text{ is a function} \right\}$ is a real vector space.
+
+    Consider $f(x) = x^2 \in F(\mathbb{R})$.
     $$\begin{matrix} &f: &\mathbb{R} &\to &\mathbb{R} \\& &x &\mapsto &x^2 \end{matrix}$$
     \begin{center}
         \begin{tikzpicture}
@@ -482,32 +484,32 @@ Furthermore, the two operations must satisfy the following axioms:
             \draw[scale=1.0, domain=-2:2, smooth, variable=\x, red] plot ({\x}, {\x*\x});
         \end{tikzpicture}
     \end{center}
-    
+
     \begin{itemize}
         \item Define vector addition and scalar multiplication
-        
-        Take $f,g \in F(\mathbb{R})$. 
+
+        Take $f,g \in F(\mathbb{R})$.
         \begin{itemize}
             \item $(f+g)(x):=f(x)+g(x)$ for all $x \in \mathbb{R}$.
 
-            \item $(rf)(x)=r\left(f(x)\right)$ for all $x \in \mathbb{R}$ and all $x \in \mathbb{R}$. 
+            \item $(rf)(x)=r\left(f(x)\right)$ for all $x \in \mathbb{R}$ and all $x \in \mathbb{R}$.
         \end{itemize}
-        
+
         \item Additive identity of $F(\mathbb{R})$:
         $$\begin{matrix} &\underset{F(\mathbb{R})}{0} &\mathbb{R} &\to &\mathbb{R} \\& &x &\mapsto &0_{\mathbb{R}} \end{matrix}$$
-        
+
         \begin{itemize}
             \item Prove that $\underset{F(\mathbb{R})}{0}$ is the additive identity of $F(\mathbb{R})$.
-            
+
             \begin{proof}
-                WTS $\forall f \in F(\mathbb{R})$, $f+\underset{F(\mathbb{R})}{0} = f$. 
-                
-                Pick arbitrary $f \in F(\mathbb{R})$, $f: \mathbb{R} \to \mathbb{R}$. 
-                
-                WTS $\forall x \in \mathbb{R}$, $(f+\underset{F(\mathbb{R})}{0})(x) = f(x)$. 
-                
+                WTS $\forall f \in F(\mathbb{R})$, $f+\underset{F(\mathbb{R})}{0} = f$.
+
+                Pick arbitrary $f \in F(\mathbb{R})$, $f: \mathbb{R} \to \mathbb{R}$.
+
+                WTS $\forall x \in \mathbb{R}$, $(f+\underset{F(\mathbb{R})}{0})(x) = f(x)$.
+
                 \begin{flalign*}
-                    \text{Pick }x \in \mathbb{R}, 
+                    \text{Pick }x \in \mathbb{R},
                     (f+\underset{F(\mathbb{R})}{0})(x)
                     &=f(x)+\underset{F(\mathbb{R})}{0}(x)
                     &\text{by the definition of}+\text{in }F(\mathbb{R})
@@ -518,25 +520,25 @@ Furthermore, the two operations must satisfy the following axioms:
                     &=f(x)
                     &\text{since }0_{\mathbb{R}}\text{ is the additive identity in }\mathbb{R}
                 \end{flalign*}
-                
-                We have shown that $\forall x \in \mathbb{R}$, $(f+\underset{F(\mathbb{R})}{0})(x) = f(x)$. 
+
+                We have shown that $\forall x \in \mathbb{R}$, $(f+\underset{F(\mathbb{R})}{0})(x) = f(x)$.
             \end{proof}
-            
-            \item Prove that $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$. 
+
+            \item Prove that $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$.
             \begin{proof}
-                WTS $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$. 
-                
-                Pick arbitrary $f \in F(\mathbb{R})$. 
-                
+                WTS $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$.
+
+                Pick arbitrary $f \in F(\mathbb{R})$.
+
                 Let $-f$ be the function $$\begin{matrix} -f: &\mathbb{R} &\to &\mathbb{R} \\ &x &\mapsto &-f(x) \end{matrix}$$
-                
-                WTS $f+(-f)=\underset{F(\mathbb{R})}{0}$. 
-                
-                WTS $\forall x \in \mathbb{R}$, $(f+(-f))(x) = \underset{F(\mathbb{R})}{0}(x)$.  
-                
+
+                WTS $f+(-f)=\underset{F(\mathbb{R})}{0}$.
+
+                WTS $\forall x \in \mathbb{R}$, $(f+(-f))(x) = \underset{F(\mathbb{R})}{0}(x)$.
+
                 {~~~}
-                
-                Pick arbitrary $x \in \mathbb{R}$.  
+
+                Pick arbitrary $x \in \mathbb{R}$.
                 \begin{flalign*}
                     (f+(-f))(x)
                     &=f(x)+(-f)(x)
@@ -551,43 +553,43 @@ Furthermore, the two operations must satisfy the following axioms:
                     &=\underset{F(\mathbb{R})}{0}
                     &\text{since}\forall x \in \mathbb{R},\underset{F(\mathbb{R})}{0}(x)=\underset{\mathbb{R}}{0}
             \end{flalign*}
-            
-            Thus, $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$. 
+
+            Thus, $\forall f \in F(\mathbb{R})$, $\exists -f \in F(\mathbb{R})$ s.t. $f + (-f) = \underset{F(\mathbb{R})}{0}$.
             \end{proof}
         \end{itemize}
     \end{itemize}
 \end{example}
 
 \begin{example}
-    Prove $\underset{2 \times 3}{M}(\mathbb{R}) \left\{ [a_{ij}] ~|~ a_{ij} \in \mathbb{R} \right\}$ is a vector space. 
-    
-    Example: $\begin{bmatrix}  1 &2 &0 \\ 0 &0 & 0 \end{bmatrix} \in \underset{2 \times 3}{M}(\mathbb{R})$. 
+    Prove $\underset{2 \times 3}{M}(\mathbb{R}) \left\{ [a_{ij}] ~|~ a_{ij} \in \mathbb{R} \right\}$ is a vector space.
+
+    Example: $\begin{bmatrix}  1 &2 &0 \\ 0 &0 & 0 \end{bmatrix} \in \underset{2 \times 3}{M}(\mathbb{R})$.
     \begin{itemize}
         \item $\begin{bmatrix} a_{ij} \end{bmatrix} + \begin{bmatrix} b_{ij} \end{bmatrix} = \begin{bmatrix} a_{ij}+b_{ij} \end{bmatrix}$
 
         \item $r\begin{bmatrix} a_{ij} \end{bmatrix} = \begin{bmatrix} ra_{ij} \end{bmatrix}$
 
-        \item Additive identity in $\underset{2\times3}M(\mathbb{R})$ is $\underset{2\times3}{0} = \begin{bmatrix} 0&0&0\\0&0&0 \end{bmatrix}$. 
+        \item Additive identity in $\underset{2\times3}M(\mathbb{R})$ is $\underset{2\times3}{0} = \begin{bmatrix} 0&0&0\\0&0&0 \end{bmatrix}$.
 
-        \item Given $A = \begin{bmatrix} a_{ij} \end{bmatrix} \in \underset{2\times3}M(\mathbb{R})$, $-A = \begin{bmatrix} -a_{ij} \end{bmatrix}$ is the additive inverse of $A$. 
+        \item Given $A = \begin{bmatrix} a_{ij} \end{bmatrix} \in \underset{2\times3}M(\mathbb{R})$, $-A = \begin{bmatrix} -a_{ij} \end{bmatrix}$ is the additive inverse of $A$.
     \end{itemize}
 \end{example}
 
 \setcounter{section}{1}
 \setcounter{dummy}{5}
 \begin{proposition}
-    Let $V$ be a vector space. Then 
-    
+    Let $V$ be a vector space. Then
+
     \begin{enumerate}[label=\alph*)]
         \item The zero vector $\vec{0}$ (additive identity in $V$) is unique.
         \begin{proof}
             WTS Additive identity in $V$ is unique\footnote{To prove that something is unique, a common technique is to assume we have two examples of the object in question, then show that those two examples must in fact be equal. }.
 
-            Suppose $\vec{0}$ and $\vec{0}'$ are additive identity in $V$. 
-            
-            Since $\vec{0}$ is additive identity, $\forall \vec{v} \in V$, $\vec{v} + \vec{0} = \vec{v}$. In particular, $\vec{0}' + \vec{0} = \vec{0}'$. 
-            
-            Since $\vec{0}'$ is additive identity, $\forall \vec{v} \in V$, $\vec{v} + \vec{0}' = \vec{v}$. In particular, $\vec{0} + \vec{0}' = \vec{0}$. 
+            Suppose $\vec{0}$ and $\vec{0}'$ are additive identity in $V$.
+
+            Since $\vec{0}$ is additive identity, $\forall \vec{v} \in V$, $\vec{v} + \vec{0} = \vec{v}$. In particular, $\vec{0}' + \vec{0} = \vec{0}'$.
+
+            Since $\vec{0}'$ is additive identity, $\forall \vec{v} \in V$, $\vec{v} + \vec{0}' = \vec{v}$. In particular, $\vec{0} + \vec{0}' = \vec{0}$.
 
             So $\vec{0}' = \vec{0} + \vec{0}' = \vec{0}$, so there is only one additive identity in $V$.
         \end{proof}
@@ -595,12 +597,12 @@ Furthermore, the two operations must satisfy the following axioms:
         \item For all $\vec{v} \in V$ , $\underset{\mathbb{F}}{0}\vec{v} = \vec{0}_V$.
 
         \begin{proof}
-            WTS $\forall \vec{v} \in V$, $\underset{\mathbb{F}}{0}\vec{v} = \vec{0}_V$. 
-            
-            Pick $\vec{v} \in V$. 
+            WTS $\forall \vec{v} \in V$, $\underset{\mathbb{F}}{0}\vec{v} = \vec{0}_V$.
+
+            Pick $\vec{v} \in V$.
             \begin{align*}
-                \underset{\mathbb{F}}{0}\vec{v} 
-                &= (\underset{\mathbb{F}}{0} + \underset{\mathbb{F}}{0})\vec{v} 
+                \underset{\mathbb{F}}{0}\vec{v}
+                &= (\underset{\mathbb{F}}{0} + \underset{\mathbb{F}}{0})\vec{v}
                 \\
                 &= \underset{\mathbb{F}}{0}\vec{v} + \underset{\mathbb{F}}{0}\vec{v}
                 \\
@@ -616,8 +618,8 @@ Furthermore, the two operations must satisfy the following axioms:
                 \\
                 &=\underset{\mathbb{F}}{0}\vec{v}
             \end{align*}
-            
-            Thus, $\forall \vec{v} \in V$, $\underset{\mathbb{F}}{0}\vec{v} = \vec{0}_V$. 
+
+            Thus, $\forall \vec{v} \in V$, $\underset{\mathbb{F}}{0}\vec{v} = \vec{0}_V$.
         \end{proof}
 
         \item For each $\vec{v} \in V$, the additive inverse $-\vec{v}$ is unique.
@@ -625,7 +627,7 @@ Furthermore, the two operations must satisfy the following axioms:
         \begin{proof}
             We use the same idea as in the proof of part a. Given $\vec{v} \in V$, if $-\vec{v}$ and $(-\vec{v})'$ are two additive inverses of $\vec{v}$, then on one hand we have $\vec{v} + -\vec{v}  + (-\vec{v})' = (\vec{v} + -\vec{v}) + (-\vec{v})' = \vec{0} + (-\vec{v})' = (-\vec{v})'$, by axioms 1, 4, and 3. On the other hand, if we use axiom 2 first before associating, we have $\vec{v} + -\vec{v}  + (-\vec{v})' = \vec{v} + (-\vec{v})' + -\vec{v} = (\vec{v} + (-\vec{v})') + -\vec{v} = \vec{0} + -\vec{v} = -\vec{v}$. Hence $-\vec{v} = (-\vec{v})'$, and the additive inverse of $\vec{v}$ is unique.
         \end{proof}
-        
+
         \item For all $\vec{v} \in V$, and all $c \in \mathbb{R}$, $(-c)\vec{v}  = -(c\vec{v})$.
         \begin{proof}
             We have $c\vec{v} + (-c)\vec{v} = (c + -c)\vec{v} = 0\vec{v} = \vec{0}$ by axiom 6 and part b. Hence $(-c)\vec{v}$ also serves as an additive inverse for the vector $c\vec{v}$. By part c, therefore, we must have $(-c)\vec{v} = -(c\vec{v})$.
@@ -636,18 +638,18 @@ Furthermore, the two operations must satisfy the following axioms:
 
 \subsection{Subspace}
 \begin{example}
-    Let $W \subseteq \mathbb{R}^3$. 
-    
-    Let $\vec{w}_1, \vec{w}_2 \in W$. 
-    
-    Then, $\vec{w}_1 + \vec{w}_2 \in W$. 
+    Let $W \subseteq \mathbb{R}^3$.
+
+    Let $\vec{w}_1, \vec{w}_2 \in W$.
+
+    Then, $\vec{w}_1 + \vec{w}_2 \in W$.
     $$
-        \begin{matrix} +: &W\times W &\to &W \\ &(\vec{w}_1, \vec{w}_2) &\mapsto &\vec{w}_1 + \vec{w}_2 \end{matrix} 
-        \qquad \qquad 
+        \begin{matrix} +: &W\times W &\to &W \\ &(\vec{w}_1, \vec{w}_2) &\mapsto &\vec{w}_1 + \vec{w}_2 \end{matrix}
+        \qquad \qquad
         \begin{matrix} \cdot: &\mathbb{R} \times W &\to &W \\ &(r, \vec{w}) &\mapsto &r\vec{w} \end{matrix}
     $$
-    
-    We can conclude that $W$ is a subspace of $\mathbb{R}^3$~\footnote{A short hand of ``$W$ \textit{is a subspace of} $V$'' is ``$W \underset{S.S.}{\subseteq} V$''. }. 
+
+    We can conclude that $W$ is a subspace of $\mathbb{R}^3$~\footnote{A short hand of ``$W$ \textit{is a subspace of} $V$'' is ``$W \underset{S.S.}{\subseteq} V$''. }.
 \end{example}
 
 \setcounter{section}{2}
@@ -665,56 +667,56 @@ Furthermore, the two operations must satisfy the following axioms:
 \setcounter{section}{3}
 
 \begin{example}
-    Is $\mathbb{R}^2$ a subspace of $\mathbb{R}^3$? 
-    
-    Note that $\mathbb{R}^2 = \left\{ \begin{bmatrix}a _1 \\ a_2 \end{bmatrix} ~|~ a_1,a_2 \in \mathbb{R} \right\}$ but $\mathbb{R}^3 = \left\{ \begin{bmatrix}a _1 \\ a_2 \\ a_3 \end{bmatrix} ~|~ a_1,a_2,a_3 \in \mathbb{R} \right\}$. Clearly, $\mathbb{R}^2 \not\subseteq \mathbb{R}^3$. 
+    Is $\mathbb{R}^2$ a subspace of $\mathbb{R}^3$?
+
+    Note that $\mathbb{R}^2 = \left\{ \begin{bmatrix}a _1 \\ a_2 \end{bmatrix} ~|~ a_1,a_2 \in \mathbb{R} \right\}$ but $\mathbb{R}^3 = \left\{ \begin{bmatrix}a _1 \\ a_2 \\ a_3 \end{bmatrix} ~|~ a_1,a_2,a_3 \in \mathbb{R} \right\}$. Clearly, $\mathbb{R}^2 \not\subseteq \mathbb{R}^3$.
 \end{example}
 
 \begin{example}
-    Let $\mathbb{F}$ be a field. 
-    
-    Define $\mathbb{F}^3 = \left\{ \begin{bmatrix} a_1\\a_2\\a_3 \end{bmatrix} ~|~ a_i \in \mathbb{F} \right\}$. 
-    
-    Let $W = \left\{ \begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix} \in \mathbb{F}^3 ~|~ a_1+a_2+a_3=\underset{\mathbb{F}}{0} \right\}$. 
-    
+    Let $\mathbb{F}$ be a field.
+
+    Define $\mathbb{F}^3 = \left\{ \begin{bmatrix} a_1\\a_2\\a_3 \end{bmatrix} ~|~ a_i \in \mathbb{F} \right\}$.
+
+    Let $W = \left\{ \begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix} \in \mathbb{F}^3 ~|~ a_1+a_2+a_3=\underset{\mathbb{F}}{0} \right\}$.
+
     \begin{proof}
-        WTS $W$ is a subspace of $\mathbb{F}^3$. 
-        
+        WTS $W$ is a subspace of $\mathbb{F}^3$.
+
         \begin{itemize}
-            \item Show that $W$ is non-empty. 
+            \item Show that $W$ is non-empty.
 
-            $\begin{bmatrix} 0\\0\\0 \end{bmatrix} \in W$, so $W$ is non-empty. 
+            $\begin{bmatrix} 0\\0\\0 \end{bmatrix} \in W$, so $W$ is non-empty.
 
-            \item Show that $W \subseteq \mathbb{F}^3$. 
-            
-            Since $\forall \vec{v} \in W$, $\vec{v} \in \mathbb{F}^3$, we have $W \subseteq \mathbb{F}^3$. 
-            
-            \item Show that $W$ is closed under vector addition. 
+            \item Show that $W \subseteq \mathbb{F}^3$.
 
-            Let $\vec{w}_1 = \begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix}, \vec{w}_2 = \begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix} \in W$, $a_i,b_i \in \mathbb{F}$. 
-            
-            Then, $\vec{w}_1 + \vec{w}_2 = \begin{bmatrix}a_1+b_1\\a_2+b_2\\a_3+b_3\end{bmatrix}$. 
-            
-            Note that $(a_1+b_1) + (a_2+b_2) + (a_3+b_3) = (a_1+a_2+a_3) + (b_1+b_2+b_3) = \underset{\mathbb{F}}{0}+\underset{\mathbb{F}}{0}=\underset{\mathbb{F}}{0}$. 
-            
-            Thus, $\vec{w}_1 + \vec{w}_2 \in W$. 
-            
+            Since $\forall \vec{v} \in W$, $\vec{v} \in \mathbb{F}^3$, we have $W \subseteq \mathbb{F}^3$.
+
+            \item Show that $W$ is closed under vector addition.
+
+            Let $\vec{w}_1 = \begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix}, \vec{w}_2 = \begin{bmatrix}b_1\\b_2\\b_3\end{bmatrix} \in W$, $a_i,b_i \in \mathbb{F}$.
+
+            Then, $\vec{w}_1 + \vec{w}_2 = \begin{bmatrix}a_1+b_1\\a_2+b_2\\a_3+b_3\end{bmatrix}$.
+
+            Note that $(a_1+b_1) + (a_2+b_2) + (a_3+b_3) = (a_1+a_2+a_3) + (b_1+b_2+b_3) = \underset{\mathbb{F}}{0}+\underset{\mathbb{F}}{0}=\underset{\mathbb{F}}{0}$.
+
+            Thus, $\vec{w}_1 + \vec{w}_2 \in W$.
+
             That is, $W$ is closed under vector addition.
 
-            \item Show that $W$ is closed under scalar multiplication. 
-            
-            Pick $r \in \mathbb{F}$, pick $\vec{w} \in W$. 
-            
-            $r\vec{w} = r\begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix} = \begin{bmatrix}ra_1\\ra_2\\ra_3\end{bmatrix}$. 
-            
-            $ra_1+ra_2+ra_3 = r(a_1+a_2+a_3) = r(\underset{\mathbb{F}}{0}) = \underset{\mathbb{F}}{0}$. 
-            
-            Thus, $r\vec{w} \in W$. 
-            
-            Thus is, $W$ is closed under scalar multiplication. 
+            \item Show that $W$ is closed under scalar multiplication.
+
+            Pick $r \in \mathbb{F}$, pick $\vec{w} \in W$.
+
+            $r\vec{w} = r\begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix} = \begin{bmatrix}ra_1\\ra_2\\ra_3\end{bmatrix}$.
+
+            $ra_1+ra_2+ra_3 = r(a_1+a_2+a_3) = r(\underset{\mathbb{F}}{0}) = \underset{\mathbb{F}}{0}$.
+
+            Thus, $r\vec{w} \in W$.
+
+            Thus is, $W$ is closed under scalar multiplication.
         \end{itemize}
-        
-        Thus, $W \underset{S.S.}{\subseteq} \mathbb{F}^3$. 
+
+        Thus, $W \underset{S.S.}{\subseteq} \mathbb{F}^3$.
     \end{proof}
 \end{example}
 
@@ -724,7 +726,7 @@ Furthermore, the two operations must satisfy the following axioms:
 \setcounter{definitionT}{0}
 \begin{definition}\index{Linear Combination}\index{Empty Set of a Vector Space}\index{Span}
     Let $S$ be a subset of a vector space $V$.
-    
+
     \begin{itemize}
         \item A \term{linear combination} of vectors in $S$ is any sum $a_x\vec{v}_1 + \cdots + a_n\vec{v}_n$, where the $a_i \in \mathbb{R}$, and the $\vec{v}_i \in S$.
 
@@ -739,13 +741,13 @@ Furthermore, the two operations must satisfy the following axioms:
 
 {~~~}
 
-How do we describe $\mathrm{Span}(S)$ in set builder notation? 
+How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \begin{itemize}
-  \item If $S$ is finite or infinite 
+  \item If $S$ is finite or infinite
   $$\mathrm{Span}(S) = \{ a_1\vec{x}_1 + a_2\vec{x}_2 + \cdots + a_n\vec{x}_n ~|~ a_i \in \mathbb{F}, n \in \mathbb{N}, \vec{x}_i \in S \}$$
 
-  \item If $S$ is finite 
-  $$S = \{ \vec{w}_1 , \dots, \vec{w}_n \}$$ 
+  \item If $S$ is finite
+  $$S = \{ \vec{w}_1 , \dots, \vec{w}_n \}$$
   $$\mathrm{Span}\left( S \right) = \{ a_1\vec{w}_1 + \cdots + a_k\vec{w}_k ~|~ a_i \in \mathbb{F}, \vec{w}_i \in S \}$$
 \end{itemize}
 
@@ -753,21 +755,21 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 {~~~}
 
 \begin{minipage}[t]{0.45\linewidth}
-    Let $S = \{ \sin^2x,\cos^2x \} \subseteq F(\mathbb{R})$. 
-    
+    Let $S = \{ \sin^2x,\cos^2x \} \subseteq F(\mathbb{R})$.
+
     \begin{itemize}
-        \item Describe $\mathrm{Span}(S)$. 
+        \item Describe $\mathrm{Span}(S)$.
 
         {\color{lightblue} $\mathrm{Span}\left( S \right) = \{ a_1\sin^2x+a_2\cos^2x ~|~ a_i \in \mathbb{R} \}$ }
-        
-        \item True or False: $\mathrm{Span}(S)$ contains all constant functions 
 
-        {\color{lightblue} True. 
-        
-        Let $f(x)=c$, $c \in \mathbb{R}$. 
+        \item True or False: $\mathrm{Span}(S)$ contains all constant functions
+
+        {\color{lightblue} True.
+
+        Let $f(x)=c$, $c \in \mathbb{R}$.
         \begin{flalign*}
             \text{Then, }
-            f(x) 
+            f(x)
             &= c \cdot 1
             &&\\
             &=c(\sin^2x+\cos^2x)
@@ -778,31 +780,31 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
     \end{itemize}
 \end{minipage}
 \begin{minipage}[t]{0.45\linewidth}
-    Let $S' = \left\{ \begin{bmatrix} 1&0\\0&0 \end{bmatrix}, \begin{bmatrix} 0&1\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$.     
-    
+    Let $S' = \left\{ \begin{bmatrix} 1&0\\0&0 \end{bmatrix}, \begin{bmatrix} 0&1\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$.
+
     \begin{itemize}
-        \item Describe $\mathrm{Span}(S)$. 
+        \item Describe $\mathrm{Span}(S)$.
 
         {\color{lightblue} $\mathrm{Span}\left( S \right) = \left\{ \begin{bmatrix} a_1&a_2\\0&0 \end{bmatrix} ~|~ a_1,a_2 \in \mathbb{R} \right\}$ }
-        
-        \item True or False: $\mathrm{Span}\left( S' \right)$ contains no symmetric matrix. 
+
+        \item True or False: $\mathrm{Span}\left( S' \right)$ contains no symmetric matrix.
 
         {\color{lightblue} False.
-        
+
         Consider $0_{2\times2}=\begin{bmatrix} 0&0\\0&0 \end{bmatrix}$. }
     \end{itemize}
 \end{minipage}
 \end{example}
 
 \begin{example}
-    Let $\mathcal{P}(\mathbb{R}):=$ the set of all polynomials with real coefficients. 
+    Let $\mathcal{P}(\mathbb{R}):=$ the set of all polynomials with real coefficients.
 
     \begin{itemize}
-        \item Give s spanning set for $\mathcal{P}(\mathbb{R})$. 
+        \item Give s spanning set for $\mathcal{P}(\mathbb{R})$.
         $$\color{lightblue} S = \{ x^i ~|~ i \in \mathbb{N} \cup \{0\} \} $$
-        
+
         \vspace{-0.5cm}
-        \item Can we find a finite spanning set for ? 
+        \item Can we find a finite spanning set for ?
 
         {\color{lightblue} No. }
     \end{itemize}
@@ -815,49 +817,49 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 % TODO: complete the proof
 \begin{proof}
-    $V$ is an $\mathbb{F}$\_V.S. $S \subseteq V$. WTS $\mathrm{Span}(S) \underset{S.S.}{\subseteq} V$. 
-    
+    $V$ is an $\mathbb{F}$\_V.S. $S \subseteq V$. WTS $\mathrm{Span}(S) \underset{S.S.}{\subseteq} V$.
+
     \begin{itemize}
-        \item Show $\mathrm{Span}(S) \subseteq V$. 
-        
-        Pick $\vec{v} \in \mathrm{Span}\left( S \right) = \{ a_1\vec{v}_1 + \cdots + a_m\vec{v}_m ~|~ a_i \in \mathbb{F}, \vec{v}_i \in S, m \in \mathbb{N} \}$. 
-        
-        Then, $\vec{v} = a_1\vec{v}_1 + \cdots + a_m\vec{v}_m$ for some $\vec{v}_1, \dots, \vec{v}_m \in S$ and $a_1,\dots a_m  \in \mathbb{F}$. 
-        
-        Since $\vec{v}_i \in S \subseteq V$, $\vec{v}$ is a linear combination of vectors in $V$, and $V$ is a vector space. 
-        
-        Thus, $\vec{v} \in V$. 
-        
+        \item Show $\mathrm{Span}(S) \subseteq V$.
+
+        Pick $\vec{v} \in \mathrm{Span}\left( S \right) = \{ a_1\vec{v}_1 + \cdots + a_m\vec{v}_m ~|~ a_i \in \mathbb{F}, \vec{v}_i \in S, m \in \mathbb{N} \}$.
+
+        Then, $\vec{v} = a_1\vec{v}_1 + \cdots + a_m\vec{v}_m$ for some $\vec{v}_1, \dots, \vec{v}_m \in S$ and $a_1,\dots a_m  \in \mathbb{F}$.
+
+        Since $\vec{v}_i \in S \subseteq V$, $\vec{v}$ is a linear combination of vectors in $V$, and $V$ is a vector space.
+
+        Thus, $\vec{v} \in V$.
+
         \item Show $\mathrm{Span}(S) \neq \emptyset$
 
-        \item Show $\mathrm{Span}(S)$ is closed under vector addition. 
+        \item Show $\mathrm{Span}(S)$ is closed under vector addition.
 
-        \item Show $\mathrm{Span}(S)$ is closed under scalar multiplication. 
+        \item Show $\mathrm{Span}(S)$ is closed under scalar multiplication.
     \end{itemize}
 \end{proof}
 
 \begin{example}
 {~~~}
-    
-    Let $S_1=\{ 1, 2\sin^2{x}, 3\cos^2{x} \}$, $S_2 = \{ \sin^2{x}, \cos^2{x} \}$. 
-    
-    $\mathrm{Span}(S_1) \overset{?}= \mathrm{Span}(S_2)$? 
-    
+
+    Let $S_1=\{ 1, 2\sin^2{x}, 3\cos^2{x} \}$, $S_2 = \{ \sin^2{x}, \cos^2{x} \}$.
+
+    $\mathrm{Span}(S_1) \overset{?}= \mathrm{Span}(S_2)$?
+
     \begin{itemize}
-        \item $\mathrm{Span}\left( S_1 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_2 \right)$? 
-        
-        {\color{lightblue} Yes. 
-        
-        $S_1 \subseteq \mathrm{Span}\left( S_2 \right)$. 
-        
+        \item $\mathrm{Span}\left( S_1 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_2 \right)$?
+
+        {\color{lightblue} Yes.
+
+        $S_1 \subseteq \mathrm{Span}\left( S_2 \right)$.
+
         $\vec{v} = a\underset{\in \mathrm{Span}\left( S_2 \right)}{\sin^2x}+b\underset{\in\mathrm{Span}\left( S_2 \right)}{\cos^2x} \in \mathrm{Span}\left( S_2 \right)$ since $\mathrm{Span}\left( S_2 \right) \underset{S.S.}{\subseteq} V$. }
-        
-        \item $\mathrm{Span}\left( S_2 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_1 \right)$? 
-        
-        {\color{lightblue} Yes. 
-        
-        $S_2 \subseteq \mathrm{Span}\left( S_1 \right)$. 
-        
+
+        \item $\mathrm{Span}\left( S_2 \right) \overset{?}{\subseteq} \mathrm{Span}\left( S_1 \right)$?
+
+        {\color{lightblue} Yes.
+
+        $S_2 \subseteq \mathrm{Span}\left( S_1 \right)$.
+
         $\vec{v} = a \cdot \underset{\in\mathrm{Span}\left( S_1 \right)}{1} + b \underset{\in \mathrm{Span}\left( S_1 \right)}{\sin^2x} + c \underset{\in\mathrm{Span}\left( S_1 \right)}{\cos^2x} \in \mathrm{Span}\left( S_1 \right)$ since $\mathrm{Span}\left( S_1 \right) \underset{S.S.}{\subseteq} V$. }
 
     \end{itemize}
@@ -869,28 +871,28 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \setcounter{definitionT}{1}
 \begin{definition}[Linear Dependence]\index{Linear Dependence}
     Let $V$ be a vector space, and let $S$ be a subset of $V$.
-    
+
     \begin{enumerate}[label=\alph*)]
         \item A \term{linear dependence}\footnote{A linear dependence is often called a \bred{non}\itblue{-trivial relation}. } among the vectors of S is an equation $$a_1\vec{v}_1 + \cdots + a_n\vec{v}_n = 0$$ where the $\vec{v}_i \in S$ and the $a_i \in \mathbb{R}$ are not all zero (i.e., at least one of the $a_i \neq 0$).
 
         \item the set $S$ is said to be \term{linearly dependent} if there exists a linear dependence among the vectors in $S$.
-    \end{enumerate} 
+    \end{enumerate}
 \end{definition}
 \setcounter{section}{5}
 
 \begin{example}
 {~~~}
 
-    Is $S = \left\{ \begin{bmatrix} 1&2\\3&4 \end{bmatrix}, \begin{bmatrix} 0&1\\2&3 \end{bmatrix}, \begin{bmatrix} 0&0\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$ linearly independent? 
-    
+    Is $S = \left\{ \begin{bmatrix} 1&2\\3&4 \end{bmatrix}, \begin{bmatrix} 0&1\\2&3 \end{bmatrix}, \begin{bmatrix} 0&0\\0&0 \end{bmatrix} \right\} \subseteq \underset{2\times2}{M}(\mathbb{R})$ linearly independent?
+
     {\color{lightblue} Yes. $$0 \begin{bmatrix} 1&2\\3&4 \end{bmatrix} + 0 \begin{bmatrix} 0&1\\2&3 \end{bmatrix} + 1 \begin{bmatrix} 0&0\\0&0 \end{bmatrix} = \vec{0}_{2\times2}$$ }
 \end{example}
 
 \begin{example}
-    Let $V$ be a vector space over the field $\mathbb{F}$. 
-    
-    Is $S' = \{\vec{0}, \vec{v}_1, \dots, \vec{v}_n\} \subseteq V$ linearly independent? 
-    
+    Let $V$ be a vector space over the field $\mathbb{F}$.
+
+    Is $S' = \{\vec{0}, \vec{v}_1, \dots, \vec{v}_n\} \subseteq V$ linearly independent?
+
     {\color{lightblue} Yes. $$1_{\mathbb{F}}\vec{0} + 0_{\mathbb{F}}\vec{v}_1 + \cdots + 0_{\mathbb{F}}\vec{v}_n = \vec{0}$$ }
 \end{example}
 
@@ -902,31 +904,31 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \setcounter{section}{5}
 
 \begin{example}
-    Is $S = \{ e^x, e^{2x}, e^{3x} \} \subseteq \mathcal{C}(\mathbb{R})$ linearly independent? 
-    
-    {\color{lightblue} No. 
-    
-    {~~~}
-    
-    Assume $\forall x \in \mathbb{R}, a_1e^x + a_2e^{2x} + a_3e^{3x} = \vec{0}$. 
-    
-    In particular when $x = 0$, $a_1+a_2+a_3 = 0$. 
-    
+    Is $S = \{ e^x, e^{2x}, e^{3x} \} \subseteq \mathcal{C}(\mathbb{R})$ linearly independent?
+
+    {\color{lightblue} No.
+
     {~~~}
 
-    Taking the derivative on both sides. $\forall x \in \mathbb{R}$, $a_1e^x+2a_2e^{2x}+3a_3e^{3x}=\vec{0}$. 
-    
-    Again, when $x = 0$, $a_1+2a_2+3a_3 = 0$. 
-    
+    Assume $\forall x \in \mathbb{R}, a_1e^x + a_2e^{2x} + a_3e^{3x} = \vec{0}$.
+
+    In particular when $x = 0$, $a_1+a_2+a_3 = 0$.
+
+    {~~~}
+
+    Taking the derivative on both sides. $\forall x \in \mathbb{R}$, $a_1e^x+2a_2e^{2x}+3a_3e^{3x}=\vec{0}$.
+
+    Again, when $x = 0$, $a_1+2a_2+3a_3 = 0$.
+
     {~~~}
 
     Take the derivative again, $\forall x \in \mathbb{R}$, $a_1e^x+4a_2e^{2x}+9a_3e^{3x}=\vec{0}$.
-    
+
     When $x = 0$, $a_1+4a_2+9a_3 = 0$.
-    
+
     {~~~}
 
-    Thus, $a_1 = a_2 = a_3 = 0$. 
+    Thus, $a_1 = a_2 = a_3 = 0$.
 
     So $S$ is linearly independent. }
 \end{example}
@@ -945,27 +947,27 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \setcounter{section}{5}
 
 \begin{example}
-    Let $S_1$ and $S_2$ be linearly independent subsets of a vector space $V$. 
-    
+    Let $S_1$ and $S_2$ be linearly independent subsets of a vector space $V$.
+
     \begin{enumerate}[label=\alph*)]
-        \item Is $S_1 \cup S_2$ always linearly independent? Why or why not? 
-            
+        \item Is $S_1 \cup S_2$ always linearly independent? Why or why not?
+
             {\color{lightblue} No.
-            
-            $\{ 1 \} \in \mathbb{R}$, $\{ 2 \} \in \mathbb{R}$ and they are linearly independent. 
-            
+
+            $\{ 1 \} \in \mathbb{R}$, $\{ 2 \} \in \mathbb{R}$ and they are linearly independent.
+
             $\{ 1 \} \cup \{2 \} = \{1, 2\} \in \mathbb{R}$ and it is linearly dependent. }
 
-        \item Is  always linearly independent? Why or why not? 
+        \item Is  always linearly independent? Why or why not?
 
-            {\color{lightblue} Yes. 
-            
+            {\color{lightblue} Yes.
+
             $S_1 \cap S_2 \subseteq S_1$ and $S_1 \cap S_2 \subseteq S_2$. Then by the proposition $S_1 \cap S_2$ is linearly independent. }
 
-        \item Is  always linearly independent? Why or why not? 
+        \item Is  always linearly independent? Why or why not?
 
-            {\color{lightblue} Yes. 
-            
+            {\color{lightblue} Yes.
+
             $S_1 \setminus S_2 \subseteq S_1$. Then by the proposition $S_1 \setminus S_2$ is linearly independent. }
 
     \end{enumerate}
@@ -974,58 +976,58 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \setcounter{section}{6}
 \setcounter{dummy}{7}
 \begin{lemma}
-    Let $S$ be a linearly independent subset of $V$ and let $\vec{v} \in V$, but $\vec{v} \notin S$. Then $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}\left( S \right)$. 
+    Let $S$ be a linearly independent subset of $V$ and let $\vec{v} \in V$, but $\vec{v} \notin S$. Then $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}\left( S \right)$.
 \end{lemma}
 \setcounter{section}{5}
 
 \begin{proof}
-    WTS $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}((S)$. 
-    
+    WTS $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}((S)$.
+
     \begin{itemize}
-        \item $\rightarrow$: Assume $S \cup \{ \vec{v} \}$ is linearly independent. WTS $\vec{v} \notin \mathrm{Span}\left( S \right)$. 
-        
+        \item $\rightarrow$: Assume $S \cup \{ \vec{v} \}$ is linearly independent. WTS $\vec{v} \notin \mathrm{Span}\left( S \right)$.
+
         {~~~}
-        
-        Proof by contradiction. Assume $\vec{v} \in \mathrm{Span}(S)$. 
+
+        Proof by contradiction. Assume $\vec{v} \in \mathrm{Span}(S)$.
 
         Then, $\exists r_1, \dots, r_m \in \mathbb{F}$, $\vec{s}_1, \dots, \vec{s}_m \in S$ s.t. $\vec{v} + r_1\vec{s}_1 + \cdots + r_m\vec{s}_m$.
-        
-        i.e $\vec{v} - r_1\vec{s}_1 - \dots - r_m\vec{s}_m = \vec{0}$. This is a non-trivial relation among vectors in $S \cup \{ \vec{v} \}$, $S \cup \{ \vec{v} \}$ is linearly dependent. 
 
-        Contradiction with the assumption. 
-        
+        i.e $\vec{v} - r_1\vec{s}_1 - \dots - r_m\vec{s}_m = \vec{0}$. This is a non-trivial relation among vectors in $S \cup \{ \vec{v} \}$, $S \cup \{ \vec{v} \}$ is linearly dependent.
+
+        Contradiction with the assumption.
+
         {~~~}
-        
-        Thus, $\vec{v} \notin \mathrm{Span}\left( S \right)$. 
- 
-        \item $\leftarrow$: Assume $\vec{v} \notin \mathrm{Span}(S)$. WTS $S \cup \{ \vec{v} \}$ is linearly independent. 
-        
+
+        Thus, $\vec{v} \notin \mathrm{Span}\left( S \right)$.
+
+        \item $\leftarrow$: Assume $\vec{v} \notin \mathrm{Span}(S)$. WTS $S \cup \{ \vec{v} \}$ is linearly independent.
+
         {~~~}
-        
-        (Prove the contrapositive $\lnot ( S \cup \{ \vec{v}\} \text{ is linearly independent} ) \implies \lnot \left( \vec{v} \notin \mathrm{Span}(S) \right)$, that is, we prove that ``$S \cup \{ \vec{v}\} \text{ is linearly dependent} \implies \vec{v} \in \mathrm{Span}(S)$''). 
-        
+
+        (Prove the contrapositive $\lnot ( S \cup \{ \vec{v}\} \text{ is linearly independent} ) \implies \lnot \left( \vec{v} \notin \mathrm{Span}(S) \right)$, that is, we prove that ``$S \cup \{ \vec{v}\} \text{ is linearly dependent} \implies \vec{v} \in \mathrm{Span}(S)$'').
+
         {~~~}
-        
-        There exists a dependency relation among vectors in $S \cup \{\vec{v} \}$. 
-        
-        This relation should contain $\vec{v}$. 
-        
-        $\exists r_1, \dots, r_m, a \in \mathbb{F}$ s.t. $r_1\vec{s}_1 + \cdots + r_m\vec{s}_m+a\vec{v} = \vec{0}$. 
+
+        There exists a dependency relation among vectors in $S \cup \{\vec{v} \}$.
+
+        This relation should contain $\vec{v}$.
+
+        $\exists r_1, \dots, r_m, a \in \mathbb{F}$ s.t. $r_1\vec{s}_1 + \cdots + r_m\vec{s}_m+a\vec{v} = \vec{0}$.
         \begin{flalign*}
             \text{Thus, }
-            a\vec{v} 
+            a\vec{v}
             &= -r\vec{s}_1 - \dots - r_m\vec{s}_m
             &&\\
             \vec{v}
             &= -\frac{r_1}{a}\vec{s}_1 - \dots - \frac{r_m}a\vec{s}_m
         \end{flalign*}
-        
-        That is, $x\in \mathrm{Span}\left( S \right)$. 
+
+        That is, $x\in \mathrm{Span}\left( S \right)$.
     \end{itemize}
-    
+
     {~~~}
-    
-    Thus, $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}((S)$. 
+
+    Thus, $S \cup \{\vec{v}\}$ is linearly independent if and only if $\vec{v} \notin \mathrm{Span}((S)$.
 \end{proof}
 
 \section{Bases and Dimension}
@@ -1036,7 +1038,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 \setcounter{dummy}{2}
 \begin{theorem}
-    Let $V$ be a vector space, and let $S$ be a nonempty subset of $V$. Then $S$ is a basis of $V$ if and only if every vector $\vec{v} \in V$ may be written uniquely as a linear combination of the vectors in $S$. 
+    Let $V$ be a vector space, and let $S$ be a nonempty subset of $V$. Then $S$ is a basis of $V$ if and only if every vector $\vec{v} \in V$ may be written uniquely as a linear combination of the vectors in $S$.
 \end{theorem}
 
 %TODO: finish this proof
@@ -1048,36 +1050,36 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 {~~~}
 
     $\mathbb{F}^n = \left\{ \begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} ~|~a_i \in \mathbb{F} \right\}$
-    
-    Find a basis $\mathcal{B}$ of $\mathbb{F}^n$. 
-    
-    Note that $\begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} = a_1\begin{bmatrix}1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix} + a_2\begin{bmatrix} 0\\1_{\mathbb{F}}\\\vdots\\0 \end{bmatrix} + \cdots + a_n\begin{bmatrix} 0\\0\\\vdots\\1_{\mathbb{F}} \end{bmatrix}$. 
-    
-    $\vec{e}_i := \begin{bmatrix} 0\\\vdots\\0\\1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix}$ with the $i$-th element $1_\mathbb{F}$ and the rest $0$. 
-    
-    $\{\vec{e}_1, \dots, \vec{e}_n\}$ is linearly independent, and $\mathrm{Span}\left( \vec{e}_1, \dots, \vec{e}_n \right) = \mathbb{F}^n$. 
-    
-    Then $\mathcal{B} = \{\vec{e}_1, \dots, \vec{e}_n\} $ is a basis for $\mathbb{F}^n$. 
+
+    Find a basis $\mathcal{B}$ of $\mathbb{F}^n$.
+
+    Note that $\begin{bmatrix} a_1\\a_2\\\vdots\\a_n \end{bmatrix} = a_1\begin{bmatrix}1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix} + a_2\begin{bmatrix} 0\\1_{\mathbb{F}}\\\vdots\\0 \end{bmatrix} + \cdots + a_n\begin{bmatrix} 0\\0\\\vdots\\1_{\mathbb{F}} \end{bmatrix}$.
+
+    $\vec{e}_i := \begin{bmatrix} 0\\\vdots\\0\\1_{\mathbb{F}}\\0\\\vdots\\0 \end{bmatrix}$ with the $i$-th element $1_\mathbb{F}$ and the rest $0$.
+
+    $\{\vec{e}_1, \dots, \vec{e}_n\}$ is linearly independent, and $\mathrm{Span}\left( \vec{e}_1, \dots, \vec{e}_n \right) = \mathbb{F}^n$.
+
+    Then $\mathcal{B} = \{\vec{e}_1, \dots, \vec{e}_n\} $ is a basis for $\mathbb{F}^n$.
 \end{example}
 
 \begin{example}
 {~~~}
 
-    Consider $\mathbb{C}^2 = \left\{ \begin{pmatrix} z_1\\z_2 \end{pmatrix} ~|~ z_i \in \mathbb{C} \right\}$. 
-    
+    Consider $\mathbb{C}^2 = \left\{ \begin{pmatrix} z_1\\z_2 \end{pmatrix} ~|~ z_i \in \mathbb{C} \right\}$.
+
     \begin{itemize}
-        \item Suppose $\mathbb{C}^2$ is a $\mathbb{C}$\_V.S., what is $\dim \mathbb{C}^2$? 
-        
+        \item Suppose $\mathbb{C}^2$ is a $\mathbb{C}$\_V.S., what is $\dim \mathbb{C}^2$?
+
         \begin{itemize}
-            \item $w\begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} wz_1 \\ wz_2\end{pmatrix}, w\in \mathbb{C}$. 
+            \item $w\begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} wz_1 \\ wz_2\end{pmatrix}, w\in \mathbb{C}$.
 
             \item $\mathcal{E} = \left\{ \vec{e}_1 = \begin{pmatrix} 1\\0 \end{pmatrix}, \vec{e}_2=\begin{pmatrix} 0\\1 \end{pmatrix} \right\}$
         \end{itemize}
-        
-        \item Suppose $\mathbb{C}^2$ is a $\mathbb{R}$\_V.S., what is $\dim \mathbb{C}^2$? 
-        
+
+        \item Suppose $\mathbb{C}^2$ is a $\mathbb{R}$\_V.S., what is $\dim \mathbb{C}^2$?
+
         \begin{itemize}
-            \item $r \begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} rz_1 \\ rz_2\end{pmatrix}, r \in \mathbb{R}$. 
+            \item $r \begin{pmatrix} z_1\\z_2 \end{pmatrix} = \begin{pmatrix} rz_1 \\ rz_2\end{pmatrix}, r \in \mathbb{R}$.
 
             \item $\mathcal{V} = \left\{ \vec{v}_1 = \begin{pmatrix} 1\\0 \end{pmatrix}, \vec{v}_2 = \begin{pmatrix} 0\\1 \end{pmatrix}, \vec{v}_3 = \begin{pmatrix} i\\0 \end{pmatrix}, \vec{v}_4 = \begin{pmatrix} 0\\i \end{pmatrix} \right\}$
             \item $z_1 = a_1 + b_1i$, $z_2 = a_2+b_2i$, then $\begin{pmatrix} z_1\\z_2 \end{pmatrix} \in \mathbb{C}^2 = a_1\vec{v}_1 + a_2\vec{v}_2 + b_1\vec{v}_3 + b_2\vec{v}_4$
@@ -1087,7 +1089,7 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 \setcounter{dummy}{9}
 \begin{theorem}
-    Let $V$ be a \itblue{finitely generate} vector space and let $S$ be a spanning set for $V$, which has $m$ elements. Then no linearly independent set in $V$ can have more than $m$ elements. 
+    Let $V$ be a \itblue{finitely generate} vector space and let $S$ be a spanning set for $V$, which has $m$ elements. Then no linearly independent set in $V$ can have more than $m$ elements.
 \end{theorem}
 
 \begin{corollary}
@@ -1097,23 +1099,23 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 \begin{proof}
     WTS if $S$ and $S'$ are two bases of $V$, with $m$ and $m'$ elements, respectively, then $m = m'$.
 
-    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S$ is linearly independent. 
+    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S$ is linearly independent.
 
-    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S')=V$. 
+    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S')=V$.
 
-    Applying the theorem above, $m = |S| \le |S'| = m'$. 
-    
+    Applying the theorem above, $m = |S| \le |S'| = m'$.
+
     {~~~}
 
-    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S)=V$. 
-    
-    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S'$ is linearly independent. 
+    $S$ is a basis for $V \overset{\text{by definition of basis}}{\implies} \mathrm{Span}(S)=V$.
 
-    Applying the theorem above, $m' = |S'| \le |S| = m$. 
-    
+    $S'$ is a basis for $V \overset{\text{by definition of basis}}{\implies} S'$ is linearly independent.
+
+    Applying the theorem above, $m' = |S'| \le |S| = m$.
+
     {~~~}
-    
-    So $m \le m'$ and $m' \le m$. That is, $m = m'$. 
+
+    So $m \le m'$ and $m' \le m$. That is, $m = m'$.
 \end{proof}
 
 \chapterimage{field.jpg}
@@ -1123,66 +1125,66 @@ How do we describe $\mathrm{Span}(S)$ in set builder notation?
 
 \begin{definition}[Linear Transformation]\index{Linear Mapping}\index{Linear Transformation}\index{Domain}\index{Target}
     A function $T: V \to W$ is called a \term{linear mapping} or a \term{linear transformation} if it satisfies
-    
+
     \begin{enumerate}[label=\roman*)]
-        \item $T(\vec{v}_1 + \vec{v}_2) = T(\vec{v}_1) + T(\vec{v}_2)$ for all $\vec{v}_1$ and $\vec{v}_2 \in V$. 
-        \item $T(r\vec{v}) = rT(\vec{v})$ for all $r \in \mathbb{R}$ and $\vec{v} \in V$. 
+        \item $T(\vec{v}_1 + \vec{v}_2) = T(\vec{v}_1) + T(\vec{v}_2)$ for all $\vec{v}_1$ and $\vec{v}_2 \in V$.
+        \item $T(r\vec{v}) = rT(\vec{v})$ for all $r \in \mathbb{R}$ and $\vec{v} \in V$.
     \end{enumerate}
-    
+
     $V$ is called the \term{domain} of $T$ and $W$ is called the \term{target} of $T$.
 \end{definition}
 
-\begin{example} Consider the following examples. 
+\begin{example} Consider the following examples.
 
 \begin{minipage}[t]{0.45\linewidth}
     $\begin{matrix} \mathrm{id}: &V &\to &V \\ &\vec{x} &\mapsto &\vec{x} \end{matrix}$
-    
+
     $\begin{matrix} P_l: &\mathbb{R}^2 &\to &\mathbb{R}^2 \\ &\vec{x} &\mapsto &\mathrm{proj}_l\vec{x} \end{matrix}$
 \end{minipage}
 \begin{minipage}[t]{0.45\linewidth}
     $\begin{matrix} R_{\theta}: &\mathbb{R}^2 &\to &\mathbb{R}^2 \\ &\vec{x} &\mapsto &\vec{x}\text{ rotated through }\theta \end{matrix}$
-    
+
     $\begin{matrix} T_M: &\mathbb{R}^3 &\to &\mathbb{R} \\ &\vec{x} &\mapsto &\begin{bmatrix} 1&2&2 \end{bmatrix}\vec{x} \end{matrix}$
 \end{minipage}
 
-These are all commonly seen linear transformations. 
+These are all commonly seen linear transformations.
 \end{example}
 
 {~~~}
 
 $\begin{matrix} \text{Given a } m \times n \text{ matrix } A \text{, } T_A: &\mathbb{R}^m &\to &\mathbb{R}^n &\text{is a linear transformation.} \\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
-    
-Conversely for every linear transformation $T: \mathbb{R}^m \to \mathbb{R}^n$, $\exists n \times n$ matrix $M_T$ s.t. $T(\vec{v}) = M_T\vec{v}$. 
+
+Conversely for every linear transformation $T: \mathbb{R}^m \to \mathbb{R}^n$, $\exists n \times n$ matrix $M_T$ s.t. $T(\vec{v}) = M_T\vec{v}$.
 
 {~~~}
 
-Given $V, W$ be $\mathbb{F}$\_V.S., and a linear transformation $T: V \to W$. 
+Given $V, W$ be $\mathbb{F}$\_V.S., and a linear transformation $T: V \to W$.
 
-Can we describe $T$ using matrices? 
+Can we describe $T$ using matrices?
 
 \begin{example}
     Which function is a linear transformation?
-    
+
     \begin{enumerate}[label=\alph*)]
         \item Let $\mathcal{C}^\infty(\mathbb{R})$ be the space of smooth functions $$\begin{matrix} D: &\mathcal{C}^\infty(\mathbb{R}) &\to &\mathcal{C}^\infty(\mathbb{R}) \\ &f &\mapsto &f' \end{matrix}$$
 
         \item Let $\mathcal{C}[0,1]$ be the space of continuous functions on $[0,1] \to \mathbb{R}$. $$\begin{matrix} I: &\mathcal{C}[0,1] &\to &\mathbb{R} \\ &f &\mapsto &\int_0^1f(t)\,dt \end{matrix}$$
     \end{enumerate}
-    
+
     \begin{itemize}
-        \item {\color{lightblue} a) is a linear transformation. 
+        \item {\color{lightblue} a) is a linear transformation.
 
-        Let $f, g \in \mathcal{C}^\infty(\mathbb{R})$, $r\in\mathbb{R}$. 
-        
+        Let $f, g \in \mathcal{C}^\infty(\mathbb{R})$, $r\in\mathbb{R}$.
+
         $D(f+g)= (f+g)'=f'+g'=D(f)+D(g)$
-        
-        $D(rf) = (rf)'=rf'=rD(f)$. }
-        \item { \color{lightblue} b is also a linear transformation. 
 
-        Let $f,g \in \mathcal{C}[0,1]$, $r \in \mathbb{R}$. 
-        
+        $D(rf) = (rf)'=rf'=rD(f)$. }
+        \item { \color{lightblue} b is also a linear transformation.
+
+        Let $f,g \in \mathcal{C}[0,1]$, $r \in \mathbb{R}$.
+
         $I(f+g)=\int_0^1(f+g)(t)\,dt=\int_0^1f(t)+g(x)\,dt=\int_0^1f(t)\,dt+\int_0^1g(t)\,dt=I(f)+I(g)$.
-         
+
         $I(rf)=\int_0^1(rf)(t)\,dt=r\int_0^1f(t)\,dt=rI(f)$. }
     \end{itemize}
 \end{example}
@@ -1190,20 +1192,20 @@ Can we describe $T$ using matrices?
 \textbf{Properties of a Linear Transformation}
 
 \begin{itemize}
-    \item Linear transformations $\vec{0}$ to $\vec{0}$. 
+    \item Linear transformations $\vec{0}$ to $\vec{0}$.
 
     \item Linear transformations preserve linear combinations
 \end{itemize}
 
 \setcounter{section}{0}
 \begin{lemma}
-    Let $T: V \to W$ be a linear transformation. Then $T(\vec{0}_V) = \vec{0}_W$. 
+    Let $T: V \to W$ be a linear transformation. Then $T(\vec{0}_V) = \vec{0}_W$.
 \end{lemma}
 \setcounter{section}{1}
 
 \begin{proof}
-    WTS $T(\vec{0}_V) = \vec{0}_W$. 
-    
+    WTS $T(\vec{0}_V) = \vec{0}_W$.
+
     \begin{flalign*}
         T(\vec{0}_V)
         &=T(\vec{0}_V+\vec{0}_V)
@@ -1224,8 +1226,8 @@ Can we describe $T$ using matrices?
         &=T(\vec{0}_V)
         &\text{since }\vec{0}_W\text{ is the additive identity in }W
     \end{flalign*}
-    
-    Thus, $T(\vec{0}_V) = \vec{0}_W$. 
+
+    Thus, $T(\vec{0}_V) = \vec{0}_W$.
 \end{proof}
 
 \begin{proposition}
@@ -1234,9 +1236,9 @@ Can we describe $T$ using matrices?
 
 %TODO: complete the proof
 \begin{proof}
-    WTS a function $T: V \to W$ is a linear transformation if and only if for all $a$ and $b \in \mathbb{F}$ and all $\vec{u}$ and $\vec{v} \in V$, $T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v})$. 
+    WTS a function $T: V \to W$ is a linear transformation if and only if for all $a$ and $b \in \mathbb{F}$ and all $\vec{u}$ and $\vec{v} \in V$, $T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v})$.
     \begin{itemize}
-        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v})$. 
+        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v})$.
             \begin{flalign*}
                 T(a\vec{u} + b\vec{v})
                 &=T(a\vec{u}) + T(b\vec{v})
@@ -1246,7 +1248,7 @@ Can we describe $T$ using matrices?
                 &\text{by (2) of the definition of L.T.}
             \end{flalign*}
 
-        \item $\leftarrow$: WTS $T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v}) \implies T : V \to W$ is a linear transformation. 
+        \item $\leftarrow$: WTS $T(a\vec{u} + b\vec{v}) = aT(\vec{u}) + bT(\vec{v}) \implies T : V \to W$ is a linear transformation.
     \end{itemize}
 \end{proof}
 
@@ -1256,65 +1258,65 @@ Can we describe $T$ using matrices?
 
 %TODO: complete the proof
 \begin{proof}
-    WTS $T : V \to W$ is a linear transformation if and only if for all $a_1, \dots a_k \in \mathbb{F}$ and for all $\vec{v}_1, \dots, \vec{v}_k \in V$, $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$. 
-    
-    \begin{itemize}
-        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies \displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$. 
+    WTS $T : V \to W$ is a linear transformation if and only if for all $a_1, \dots a_k \in \mathbb{F}$ and for all $\vec{v}_1, \dots, \vec{v}_k \in V$, $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$.
 
-        Prove by induction. 
-        
+    \begin{itemize}
+        \item $\rightarrow$: WTS $T : V \to W$ is a linear transformation $\implies \displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$.
+
+        Prove by induction.
+
         \begin{itemize}
-        
+
         \item \textbf{Base case:} WTS $T(a_1\vec{v}_1)=a_1T(\vec{v}_1)$
-        
-        This follows immediately from (2) of the definition of linear transformation. 
-        
+
+        This follows immediately from (2) of the definition of linear transformation.
+
         {~~~}
-        
-        \item \textbf{Induction hypothesis:} $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_1) = \sum_{i=1}^ka_iT(\vec{v}_i)$. 
-        
-        WTS $\displaystyle T(\sum_{i=1}^{k+1}a_i\vec{v}_1) = \sum_{i=1}^{k+1}a_iT(\vec{v}_i)$. 
-        
+
+        \item \textbf{Induction hypothesis:} $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_1) = \sum_{i=1}^ka_iT(\vec{v}_i)$.
+
+        WTS $\displaystyle T(\sum_{i=1}^{k+1}a_i\vec{v}_1) = \sum_{i=1}^{k+1}a_iT(\vec{v}_i)$.
+
         {~~~}
-        
-        By (1) of the definition of linear transformation, $\displaystyle T(\sum_{i=1}^{k+1}a_i\vec{v}_i) = T(\sum_{i=1}^{k}a_i\vec{v}_i)+T(a_{k+1}\vec{v}_{k+1})$. 
-        
-        $\displaystyle T(\sum_{i=1}^{k}a_i\vec{v}_i) = \sum_{i=1}^ka_iT(\vec{v}_i)$ by the induction hypothesis. 
-        
-        $T(a_{k+1}\vec{v}_{k+1}) = a_{k+1}T(\vec{v}_{k+1})$ by (2) of the definition of linear transformation. 
+
+        By (1) of the definition of linear transformation, $\displaystyle T(\sum_{i=1}^{k+1}a_i\vec{v}_i) = T(\sum_{i=1}^{k}a_i\vec{v}_i)+T(a_{k+1}\vec{v}_{k+1})$.
+
+        $\displaystyle T(\sum_{i=1}^{k}a_i\vec{v}_i) = \sum_{i=1}^ka_iT(\vec{v}_i)$ by the induction hypothesis.
+
+        $T(a_{k+1}\vec{v}_{k+1}) = a_{k+1}T(\vec{v}_{k+1})$ by (2) of the definition of linear transformation.
         \begin{flalign*}
             \text{So }
-            T(\sum_{i=1}^{k+1}a_i\vec{v}_i) 
+            T(\sum_{i=1}^{k+1}a_i\vec{v}_i)
             &= T(\sum_{i=1}^{k}a_i\vec{v}_i)+T(a_{k+1}\vec{v}_{k+1})
             \\&=\sum_{i=1}^ka_iT(\vec{v}_i) + a_{k+1}T(\vec{v}_{k+1})
             &&\\
             &=\sum_{i=1}^ka_iT(\vec{v}_i)
         \end{flalign*}
 
-        Thus, $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$. 
+        Thus, $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i)$.
         \end{itemize}
-        
-        \item $\leftarrow$: WTS $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i) \implies T: V \to W$ is a linear transformation. 
+
+        \item $\leftarrow$: WTS $\displaystyle T(\sum_{i=1}^ka_i\vec{v}_i)=\sum_{i=1}^ka_iT(\vec{v}_i) \implies T: V \to W$ is a linear transformation.
     \end{itemize}
 \end{proof}
 
 \setcounter{dummy}{13}
 \begin{proposition}
-    If $T: V \to W$ is a linear transformation and $V$ is finite-dimensional, then $T$ is uniquely determined by its value on the members of a basis of $V$. 
+    If $T: V \to W$ is a linear transformation and $V$ is finite-dimensional, then $T$ is uniquely determined by its value on the members of a basis of $V$.
 \end{proposition}
 
 \setcounter{section}{0}
 \begin{definition}\index{Injective}\index{Surjective}\index{Bijective}
-    Let $A, B$ be sets. 
+    Let $A, B$ be sets.
 
-    Let $f: A \to B$ be a function. 
+    Let $f: A \to B$ be a function.
 
     \begin{itemize}
-        \item $f$ is \term{injective} (one to one) if $\forall a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$. 
+        \item $f$ is \term{injective} (one to one) if $\forall a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$.
 
-        \item $f$ is \term{surjective} (onto) if $\forall b \in B$, $\exists a \in A$ s.t. $f(a) = b$. 
+        \item $f$ is \term{surjective} (onto) if $\forall b \in B$, $\exists a \in A$ s.t. $f(a) = b$.
 
-        \item $f$ is \term{bijective} if $f$ is both injective and surjective. 
+        \item $f$ is \term{bijective} if $f$ is both injective and surjective.
     \end{itemize}
 \end{definition}
 \setcounter{section}{1}
@@ -1332,60 +1334,61 @@ Can we describe $T$ using matrices?
 \end{definition}
 
 \setcounter{section}{0}
+\setcounter{dummy}{2}
 \begin{proposition}
-    Let $T$ be a linear transformation. $T$ is injective if and only if $\ker T = \{ \vec{0} \}$. 
+    Let $T$ be a linear transformation. $T$ is injective if and only if $\ker T = \{ \vec{0} \}$.
 \end{proposition}
 
 \begin{proof}
     WTS $T$ is injective iff $\ker T = \{\vec{0} \}$.
-    
+
     \begin{itemize}
-        \item $\rightarrow$: Assume $T$ is injective. WTS $\ker T = \{\vec{0} \}$. 
-        
-        Pick $\vec{v} \in T$. 
-        
-        Suppose $T(\vec{v})=\vec{0}_W$. 
-        
+        \item $\rightarrow$: Assume $T$ is injective. WTS $\ker T = \{\vec{0} \}$.
+
+        Pick $\vec{v} \in T$.
+
+        Suppose $T(\vec{v})=\vec{0}_W$.
+
         {~~~}
 
-        Then, $T(\vec{v}) = \vec{0}_W = T(\vec{0})$. 
-        
-        Since $T$ is injective, $\vec{v} = 0$. 
-        
+        Then, $T(\vec{v}) = \vec{0}_W = T(\vec{0})$.
+
+        Since $T$ is injective, $\vec{v} = 0$.
+
         {~~~}
 
         Thus, $\forall \vec{v} \in \ker T, \vec{v} = \vec{0}$.
-        
-        That is, $\ker T=\vec{0}$. 
-        
-        \item $\leftarrow$: Assume $\ker T = \{\vec{0} \}$. WTS $T$ is injective. 
-        
-        WTS $T(\vec{v}_1) = T(\vec{v}_2) \implies \vec{v}_1 = \vec{v}_2$. 
 
-        Pick $\vec{v}_1, \vec{v}_2 \in V$. 
-        
-        Suppose $T(\vec{v}_1)=T(\vec{v}_2)$. 
+        That is, $\ker T=\vec{0}$.
+
+        \item $\leftarrow$: Assume $\ker T = \{\vec{0} \}$. WTS $T$ is injective.
+
+        WTS $T(\vec{v}_1) = T(\vec{v}_2) \implies \vec{v}_1 = \vec{v}_2$.
+
+        Pick $\vec{v}_1, \vec{v}_2 \in V$.
+
+        Suppose $T(\vec{v}_1)=T(\vec{v}_2)$.
 
         {~~~}
 
-        Then, $T(\vec{v}_1 - \vec{v}_2) = \vec{0}_W$. 
-        
-        By linearity of $T$, $\vec{0}_W = T(\vec{v}_1 - \vec{v}_2) = T(\vec{v}_1) - T(\vec{v}_2)$. 
-        
+        Then, $T(\vec{v}_1 - \vec{v}_2) = \vec{0}_W$.
+
+        By linearity of $T$, $\vec{0}_W = T(\vec{v}_1 - \vec{v}_2) = T(\vec{v}_1) - T(\vec{v}_2)$.
+
         {~~~}
 
-        Then, $\vec{v}_1 - \vec{v}_2 \in \ker T = \{ \vec{0}_V \}$. 
-        
-        Thus, $\vec{v}_1 - \vec{v}_2 = 0$. 
-        
-        That is, $\vec{v}_1 = \vec{v}_2$. 
+        Then, $\vec{v}_1 - \vec{v}_2 \in \ker T = \{ \vec{0}_V \}$.
+
+        Thus, $\vec{v}_1 - \vec{v}_2 = 0$.
+
+        That is, $\vec{v}_1 = \vec{v}_2$.
     \end{itemize}
-    
-    Thus, $T$ is injective iff $\ker T = \{\vec{0} \}$. 
+
+    Thus, $T$ is injective iff $\ker T = \{\vec{0} \}$.
 \end{proof}
 
 \begin{proposition}
-    Let $T$ be a linear transformation. $T$ is surjective if and only if $\mathrm{Im}~T=W$. 
+    Let $T$ be a linear transformation. $T$ is surjective if and only if $\mathrm{Im}~T=W$.
 \end{proposition}
 \setcounter{section}{2}
 
@@ -1394,12 +1397,12 @@ Can we describe $T$ using matrices?
     $\begin{matrix} \text{Let } D: &\mathcal{C}^\infty(\mathbb{R}) &\to &\mathcal{C}^\infty(\mathbb{R}) &\text{be a linear transformation.} \\ &f &\mapsto &f' \end{matrix}$
 
     \begin{itemize}
-        \item Describe: 
-        
+        \item Describe:
+
         \begin{itemize}
-            \item $\ker D$. 
+            \item $\ker D$.
             \begin{align*}
-                \ker D 
+                \ker D
                 &= \{f\in \mathcal{C}^\infty(\mathbb{R}) ~|~D(f) = \vec{0} \}
                 \\
                 &= \{ f \in \mathcal{C}^\infty(\mathbb{R}) ~|~f'=\vec{0} \}
@@ -1407,42 +1410,42 @@ Can we describe $T$ using matrices?
                 &=\{ f \in \mathcal{C}^\infty(\mathbb{R}) ~|~ f(x) = c \text{ for some } c \in \mathbb{R}\}
             \end{align*}
 
-            \item $\mathrm{Im}~D$. 
+            \item $\mathrm{Im}~D$.
             \begin{align*}
                 \mathrm{Im}~D
                 &=\{ g \in \mathcal{C}^\infty(\mathbb{R}) ~|~g=D(f) \text{ for some }f \in \mathcal{C}^\infty(\mathbb{R}) \}
-                \\  
+                \\
                 &=\{ g \in \mathcal{C}^\infty(\mathbb{R}) ~|~ g = f' \text{ for some } f \in \mathcal{C}^\infty(\mathbb{R}) \}
                 \\
                 &= \mathcal{C}^\infty(\mathbb{R})
             \end{align*}
         \end{itemize}
-        
-        \item Is $D$: 
-        
+
+        \item Is $D$:
+
         \begin{itemize}
-            \item injective? 
-            
-            No. 
-            
-            The kernel is NOT trivial. 
+            \item injective?
+
+            No.
+
+            The kernel is NOT trivial.
             \item surjective?
-            
-            Yes. 
-            
-            $\mathrm{Im}~g=\mathcal{C}^\infty(\mathbb{R})$(the image is equal to the codomain). 
+
+            Yes.
+
+            $\mathrm{Im}~g=\mathcal{C}^\infty(\mathbb{R})$(the image is equal to the codomain).
         \end{itemize}
     \end{itemize}
 \end{example}
 
 \begin{example}
     $\begin{matrix} \text{Let } T: &P_2(\mathbb{R}) &\to &P_3(\mathbb{R}) &\text{be a linear transformation.} \\ &p(x) &\mapsto &xp(x) \end{matrix}$
-    
+
     \begin{itemize}
-        \item Describe: 
-        
+        \item Describe:
+
         \begin{itemize}
-            \item $\ker D$. 
+            \item $\ker D$.
             \begin{align*}
                 \mathrm{Ker}~T
                 &=\{ p(x)\in P_2(x) ~|~xp(x) = 0\}
@@ -1450,26 +1453,26 @@ Can we describe $T$ using matrices?
                 &=\{\vec{0}\}
             \end{align*}
 
-            \item $\mathrm{Im}~D$. 
+            \item $\mathrm{Im}~D$.
             \begin{align*}
                 \mathrm{Im}~T = \{ xp(x) ~|~ p(x) \in P_2(\mathbb{R}) \}
             \end{align*}
         \end{itemize}
-        
-        \item Is $D$: 
-        
+
+        \item Is $D$:
+
         \begin{itemize}
-            \item injective? 
-            
+            \item injective?
+
             Yes.
-            
-            The kernel of $T$ is trivial. 
-            
+
+            The kernel of $T$ is trivial.
+
             \item surjective?
-            
-            No. 
-            
-            Take $p(x)=2 \in P_3(\mathbb{R})$. $2 \notin \mathrm{Im}~T$. 
+
+            No.
+
+            Take $p(x)=2 \in P_3(\mathbb{R})$. $2 \notin \mathrm{Im}~T$.
         \end{itemize}
     \end{itemize}
 \end{example}
@@ -1482,20 +1485,20 @@ Can we describe $T$ using matrices?
 \setcounter{section}{2}
 
 \begin{proof}
-    We will use subspace test. 
-    
-    \begin{itemize}
-        \item Show that $\ker T \subseteq V$. 
+    We will use subspace test.
 
-        The follows immediately form the definition of kernel. 
+    \begin{itemize}
+        \item Show that $\ker T \subseteq V$.
+
+        The follows immediately form the definition of kernel.
 
         \item Show that $\ker T \neq \emptyset$.
-        
-        Since $T(\vec{0})=\vec{0}$, $\vec{0} \in \ker T$. So $\ker T \neq \emptyset$. 
 
-        \item Show that $\ker T$ is closed under addition. 
-        
-        Pick $\vec{v}_1, \vec{v}_2 \in \ker T$. 
+        Since $T(\vec{0})=\vec{0}$, $\vec{0} \in \ker T$. So $\ker T \neq \emptyset$.
+
+        \item Show that $\ker T$ is closed under addition.
+
+        Pick $\vec{v}_1, \vec{v}_2 \in \ker T$.
         \begin{align*}
             T(\vec{v}_1 + \vec{v}_2)
             &=T(\vec{v}_1) + T(\vec{v}_2)
@@ -1507,9 +1510,9 @@ Can we describe $T$ using matrices?
             &=\vec{0}_W
         \end{align*}
 
-        \item Show that $\ker T$ is closed under scalar multiplication. 
-        
-        Pick $\vec{v} \in V$, $r \in \mathbb{F}$. 
+        \item Show that $\ker T$ is closed under scalar multiplication.
+
+        Pick $\vec{v} \in V$, $r \in \mathbb{F}$.
         \begin{align*}
             T(r\vec{v})
             &=rT(\vec{v}))
@@ -1521,26 +1524,26 @@ Can we describe $T$ using matrices?
             &=\vec{0}_W
         \end{align*}
     \end{itemize}
-    
-    Thus, $\ker T \underset{S.S.}{\subseteq} V$. 
+
+    Thus, $\ker T \underset{S.S.}{\subseteq} V$.
 \end{proof}
 
 \begin{example}
-    True or false. 
-    
-    \begin{itemize}
-        \item Let $T$ be a linear transformation and $\dim \ker T = 0$. Then $T$ is injective. 
+    True or false.
 
-        True. 
-        
-        \item Let $T$ be a linear transformation and $\dim \mathrm{Im}~T = \dim W$. Then  is surjective. 
-        
+    \begin{itemize}
+        \item Let $T$ be a linear transformation and $\dim \ker T = 0$. Then $T$ is injective.
+
+        True.
+
+        \item Let $T$ be a linear transformation and $\dim \mathrm{Im}~T = \dim W$. Then  is surjective.
+
         True
         \begin{itemize}
             \item $\mathrm{Im}~T \underset{S.S.}{\subseteq} W \overset{?}{\implies} \mathrm{Im}~T = W$
-            \item Assume $\dim\left( \mathrm{Im}~T \right) = \dim W$. 
-            \item Let $\mathcal{B} = \left( \vec{b}_1, \dots, \vec{b}_k \right)$ be a basis for $\mathrm{Im}~T \implies \mathcal{B}$ is linearly independent in $W$. 
-            \item $\mathcal{B}$ is a basis for $W$, and $\mathcal{B}$ has $k$ elements. 
+            \item Assume $\dim\left( \mathrm{Im}~T \right) = \dim W$.
+            \item Let $\mathcal{B} = \left( \vec{b}_1, \dots, \vec{b}_k \right)$ be a basis for $\mathrm{Im}~T \implies \mathcal{B}$ is linearly independent in $W$.
+            \item $\mathcal{B}$ is a basis for $W$, and $\mathcal{B}$ has $k$ elements.
         \end{itemize}
     \end{itemize}
 \end{example}
@@ -1548,56 +1551,56 @@ Can we describe $T$ using matrices?
 \begin{example}
 {~~~}
 
-    Let $A = \begin{bmatrix} 1&4&1&2 \\ 3&4&0&0 \\ 0&0&0&4 \end{bmatrix}$. 
-    
-    $A \sim \underbrace{ \begin{bmatrix} 1&4&1&2\\0&-8&-3&-5\\0&0&0&4 \end{bmatrix} }_{REF} \sim \underbrace{ \begin{bmatrix} 1&0&-\frac{1}{2}&0\\0&1&\frac{3}{8}&0\\0&0&0&1 \end{bmatrix}}_{RREF}$. 
+    Let $A = \begin{bmatrix} 1&4&1&2 \\ 3&4&0&0 \\ 0&0&0&4 \end{bmatrix}$.
+
+    $A \sim \underbrace{ \begin{bmatrix} 1&4&1&2\\0&-8&-3&-5\\0&0&0&4 \end{bmatrix} }_{REF} \sim \underbrace{ \begin{bmatrix} 1&0&-\frac{1}{2}&0\\0&1&\frac{3}{8}&0\\0&0&0&1 \end{bmatrix}}_{RREF}$.
     \begin{align*}
         T_A:
         &~\mathbb{R}^4 \to \mathbb{R}^3
         \\
         &~\vec{x} ~\mapsto A\vec{x}
     \end{align*}
-    
+
     \begin{enumerate}
-        \item Find a basis for $\underbrace{\ker T_A}_{\mathrm{Nul}(A)}$ and $\dim\left( \ker T_A \right)$. 
-        
-        $\ker T_A = \mathrm{Nul}~A = \{ \vec{x} \in \mathbb{R}^4 ~|~ A\vec{x} = \vec{0} \}$. 
-        
+        \item Find a basis for $\underbrace{\ker T_A}_{\mathrm{Nul}(A)}$ and $\dim\left( \ker T_A \right)$.
+
+        $\ker T_A = \mathrm{Nul}~A = \{ \vec{x} \in \mathbb{R}^4 ~|~ A\vec{x} = \vec{0} \}$.
+
         Solution to $A\vec{x} = \vec{0}$.
-        
-        From RREF of : $x_3$ is a free variable. 
+
+        From RREF of : $x_3$ is a free variable.
         \begin{itemize}
             \item ${x_1} = \frac{1}{2}{x_3}$
             \item ${x_2} = -\frac{3}{8}{x_3}$
             \item $x_4 = 0$
         \end{itemize}
-        
-        $\vec{x} = {x_3} \begin{pmatrix} \frac{1}{2} \\ -\frac{3}{2} \\ 1 \\ 0 \end{pmatrix}$, $x_3 \in \mathbb{R}$. 
-        
-        $\ker T_A = \mathrm{Nul}~A = \mathrm{Span}\left( \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right)$. 
-        
-        That is, a basis for $\ker T_A = \left\{ \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right\}$, $\dim\left( \ker T_A \right)=1$. 
-        
-        \item Find a basis for $\underbrace{\mathrm{Im}~T_A}_{\mathrm{Col}(A)}$ and $\dim \left( \mathrm{Im}~T_A \right)$. 
+
+        $\vec{x} = {x_3} \begin{pmatrix} \frac{1}{2} \\ -\frac{3}{2} \\ 1 \\ 0 \end{pmatrix}$, $x_3 \in \mathbb{R}$.
+
+        $\ker T_A = \mathrm{Nul}~A = \mathrm{Span}\left( \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right)$.
+
+        That is, a basis for $\ker T_A = \left\{ \begin{pmatrix} \frac12 \\ -\frac38 \\ 1 \\ 0 \end{pmatrix} \right\}$, $\dim\left( \ker T_A \right)=1$.
+
+        \item Find a basis for $\underbrace{\mathrm{Im}~T_A}_{\mathrm{Col}(A)}$ and $\dim \left( \mathrm{Im}~T_A \right)$.
         \begin{align*}
-            \mathrm{Im}~T_A 
+            \mathrm{Im}~T_A
             &= \mathrm{Cal}(A) = \{ A\vec{x} ~|~ \vec{x} \in \mathbb{R}^4 \}
             \\
             &=\mathrm{Span}\left( \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 1\\0\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right)
         \end{align*}
-        
-        Take $x_3=1$: 
+
+        Take $x_3=1$:
         \begin{align*}
             A \begin{pmatrix} \frac12\\-\frac38\\1\\0 \end{pmatrix}
             &=\vec{0}
             \\
-            \vec{a}_3 
+            \vec{a}_3
             &= -\frac12\vec{a}_1 + \frac38\vec{a}_2
         \end{align*}
-        
-        Thus, a basis for $\mathrm{Im}~T_A = \left\{ \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right\}$. $\dim\left( \mathrm{Im}~T_A \right) = 3$. 
 
-        \item Find the relationship between the rank and nullity of $T_A$. 
+        Thus, a basis for $\mathrm{Im}~T_A = \left\{ \begin{pmatrix} 1\\3\\0 \end{pmatrix}, \begin{pmatrix} 4\\4\\0 \end{pmatrix}, \begin{pmatrix} 2\\0\\4 \end{pmatrix} \right\}$. $\dim\left( \mathrm{Im}~T_A \right) = 3$.
+
+        \item Find the relationship between the rank and nullity of $T_A$.
         $$\dim \mathrm{dom}~A = \dim \mathrm{Im}~T_A + \dim \ker  T_A $$
     \end{enumerate}
 \end{example}
@@ -1610,26 +1613,26 @@ Can we describe $T$ using matrices?
 \setcounter{section}{2}
 
 \begin{proof}
-    Proof: WTS $\dim V = \dim \mathrm{Im}~T + \dim \ker T$. 
+    Proof: WTS $\dim V = \dim \mathrm{Im}~T + \dim \ker T$.
 
     {~~~}
-    
-    Consider a basis $\vec{u}_1, \dots, \vec{u}_m$ for $\ker T$. 
-    
-    $\vec{u}_1, \dots, \vec{u}_m$ is linearly independent in $V$, thus it can be extended to a basis for $V$. 
-    
-    Suppose $\vec{u}_1, \dots, \vec{u}_m, \vec{v}_1, \dots, \vec{v}_n$ is a basis for $V$ we get. 
 
-    Note that $\dim \ker T = m$, and $\dim V = m + n$. 
-    
+    Consider a basis $\vec{u}_1, \dots, \vec{u}_m$ for $\ker T$.
+
+    $\vec{u}_1, \dots, \vec{u}_m$ is linearly independent in $V$, thus it can be extended to a basis for $V$.
+
+    Suppose $\vec{u}_1, \dots, \vec{u}_m, \vec{v}_1, \dots, \vec{v}_n$ is a basis for $V$ we get.
+
+    Note that $\dim \ker T = m$, and $\dim V = m + n$.
+
     {~~~}
 
-    WTS $\dim \mathrm{Im}~T = n$. 
-    
-    Take $\vec{w} \in \mathrm{Im}~T$. 
-    
-    Then, $\exists \vec{v} \in V$ s.t. $T(\vec{v}) = \vec{w}$. 
-    \begin{align*}  
+    WTS $\dim \mathrm{Im}~T = n$.
+
+    Take $\vec{w} \in \mathrm{Im}~T$.
+
+    Then, $\exists \vec{v} \in V$ s.t. $T(\vec{v}) = \vec{w}$.
+    \begin{align*}
         \vec{w}
         &=T(\vec{v})
         \\
@@ -1638,41 +1641,41 @@ Can we describe $T$ using matrices?
         \\
         &= a_1T(\vec{u}_1) + \cdots + a_mT(\vec{u}_m) + b_1T(\vec{v}_1) + \cdots + b_nT(\vec{v}_n)
     \end{align*}
-    
+
     {~~~}
 
-    Since $\vec{v}_1, \dots, \vec{v}_n$ is a basis for $\ker T$, $a_iT(\vec{u}_i) = \vec{0}$. 
+    Since $\vec{v}_1, \dots, \vec{v}_n$ is a basis for $\ker T$, $a_iT(\vec{u}_i) = \vec{0}$.
     $$\vec{w} = b_1T(\vec{v}_1) + \cdots + b_nT(\vec{v}_n)$$
 
     {~~~}
 
-    Thus, $\mathrm{Im}~T = \mathrm{Span}\left( T(\vec{v}_1), \dots, T(\vec{v}_n) \right)$. 
+    Thus, $\mathrm{Im}~T = \mathrm{Span}\left( T(\vec{v}_1), \dots, T(\vec{v}_n) \right)$.
 
     {~~~}
 
-    Show that $T(\vec{v}_1), \dots, T(\vec{v}_n)$ is linearly independent. 
-    
-    $c_1 T(\vec{v}_1), \dots, c_nT(\vec{v}_n) = \vec{0}$, WTS $c_i = 0$. 
+    Show that $T(\vec{v}_1), \dots, T(\vec{v}_n)$ is linearly independent.
+
+    $c_1 T(\vec{v}_1), \dots, c_nT(\vec{v}_n) = \vec{0}$, WTS $c_i = 0$.
     \begin{align*}
-        T ( \underbrace{c_1\vec{v}_1, \dots, c_n\vec{v}_n}_{\in~\ker T} ) 
+        T ( \underbrace{c_1\vec{v}_1, \dots, c_n\vec{v}_n}_{\in~\ker T} )
         &= \vec{0}
         \\
-        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n 
+        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n
         &= r_1\vec{u}_1 + \cdots + r_m\vec{u}_m \text{ for some } r_i \in \mathbb{F}
         \\
-        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n - r_1\vec{u}_1 - \dots - r_m\vec{u}_m 
+        c_1\vec{v}_1 + \cdots + c_n\vec{v}_n - r_1\vec{u}_1 - \dots - r_m\vec{u}_m
         &= \vec{0}
     \end{align*}
-    
+
     {~~~}
 
-    $\{\vec{v}_i, \vec{u}_j ~|~  i \le u \le m, 1 \le j \le n \}$ is a basis for $V$. 
-    
-    Thus, $c_1 = \dots = c_n = r_1 = \dots = r_n = 0$. 
-    
-    So $T(\vec{v}_1), \dots, T(\vec{v}_n)$ is linearly independent, and so it is a basis for $V$. 
-    
-    $\dim \mathrm{Im}~T = n$. 
+    $\{\vec{v}_i, \vec{u}_j ~|~  i \le u \le m, 1 \le j \le n \}$ is a basis for $V$.
+
+    Thus, $c_1 = \dots = c_n = r_1 = \dots = r_n = 0$.
+
+    So $T(\vec{v}_1), \dots, T(\vec{v}_n)$ is linearly independent, and so it is a basis for $V$.
+
+    $\dim \mathrm{Im}~T = n$.
 \end{proof}
 
 \section{The Inverse of a Linear Transformation}
@@ -1812,7 +1815,7 @@ $\vec{v} \in V$  is an eigenvector if and only if $T(\vec{v}) = \lambda \vec{v}$
 \begin{example}
 {~~~}
 
-    Let $\dim V = n$, and fix a basis $\mathcal{B}$ for $V$. 
+    Let $\dim V = n$, and fix a basis $\mathcal{B}$ for $V$.
 
     $\begin{matrix} \text{Then, } \mathcal{L}(V, V) &\overset{\cong}{\to} &\underset{n \times n}M(\mathbb{F}) \\ T &\mapsto &[T]_\mathcal{B} = B \end{matrix}$
 
@@ -1880,34 +1883,34 @@ $\vec{v} \in V$  is an eigenvector if and only if $T(\vec{v}) = \lambda \vec{v}$
 
     \begin{itemize}
         \item $\rightarrow$: WTS $T$ is diagonalizable $\implies \exists$ a basis  of $\mathcal{B}$ s.t.  is diagonal.
-         
-        $T$ has an eigenbasis $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$. 
-    
-        Note that $T(\vec{b}_i) = \lambda_i \vec{b}_i$ for some $\lambda_i \in \mathbb{F}$. 
-        
+
+        $T$ has an eigenbasis $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$.
+
+        Note that $T(\vec{b}_i) = \lambda_i \vec{b}_i$ for some $\lambda_i \in \mathbb{F}$.
+
         $[T]_\mathcal{B} = \begin{bmatrix} | & &| \\ [T(\vec{b}_1)]_\mathcal{B} &\dots &[T(\vec{b}_n)]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} | & &| \\ [\lambda_1\vec{b}_1]_\mathcal{B} &\dots &[\lambda_n\vec{b}_n]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} \lambda_1 &0 &\cdots &0 \\ 0 &\lambda_2 & &\vdots \\ \vdots &\vdots & &0 \\ 0 &0 &\cdots &\lambda_n  \end{bmatrix}$
 
         \item $\leftarrow$: WTS $\exists$ a basis $\mathcal{B}$ of $T$ s.t. $[T]_\mathcal{B}$ is diagonal $\implies T$ is diagonalizable.
-        
-        $\exists$ a basis $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$ s.t. $[T]_\mathcal{B} = \begin{bmatrix} a_1 &0 &\cdots &0 \\ 0 &a_1 &\cdots &0 \\ \vdots &\vdots &\ddots &\vdots \\ 0 &0 &\cdots &a_n \end{bmatrix}$. 
+
+        $\exists$ a basis $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$ s.t. $[T]_\mathcal{B} = \begin{bmatrix} a_1 &0 &\cdots &0 \\ 0 &a_1 &\cdots &0 \\ \vdots &\vdots &\ddots &\vdots \\ 0 &0 &\cdots &a_n \end{bmatrix}$.
 
         $[T]_\mathcal{B} = \begin{bmatrix} | & &| \\ [T(\vec{b}_1)]_\mathcal{B} &\dots &[T(\vec{b}_n)]_\mathcal{B} \\ | & &| \end{bmatrix} = \begin{bmatrix} a_1 &0 &\cdots &0 \\ 0 &a_1 &\cdots &0 \\ \vdots &\vdots &\ddots &\vdots \\ 0 &0 &\cdots &a_n \end{bmatrix}$
         \begin{flalign*}
-            \forall i, [T(\vec{b}_i)]_\mathcal{B} 
+            \forall i, [T(\vec{b}_i)]_\mathcal{B}
             &= a_i\vec{e}_i
             &&\\
-            [a_i\vec{b}_i]_\mathcal{B} 
+            [a_i\vec{b}_i]_\mathcal{B}
             &= a_i\vec{e}_i
         \end{flalign*}
 
-        So $T(\vec{b}_i) = a_i\vec{b}_i$, since $\gamma_\mathcal{B}$ is injective. 
+        So $T(\vec{b}_i) = a_i\vec{b}_i$, since $\gamma_\mathcal{B}$ is injective.
     \end{itemize}
 \end{proof}
 
 \setcounter{section}{0}
 \setcounter{dummy}{0}
-\begin{proposition}
-    $T: V \to V$ is diagonalizable iff $\exists$ a basis $\mathcal{B}$ of $V$ s.t. $[T]_\mathcal{B}$ is diagonal
+\begin{proposition}[Diagonalizable]\index{Diagonalizable}
+    $T: V \to V$ is \term{diagonalizable} if and only if $\exists$ a basis $\mathcal{B}$ of $V$ s.t. $[T]_\mathcal{B}$ is diagonal
 \end{proposition}
 \setcounter{section}{2}
 
@@ -1916,24 +1919,24 @@ $\vec{v} \in V$  is an eigenvector if and only if $T(\vec{v}) = \lambda \vec{v}$
 \begin{theorem}
 (Computational Criteria)
 
-Let $V$ be a vector space, $\dim V = n$. 
+Let $V$ be a vector space, $\dim V = n$.
 
-Let $T: V \to V$ be a linear transformation. 
+Let $T: V \to V$ be a linear transformation.
 
-Let $\lambda_1, \dots,, \lambda_n$ be \bred{distinct} eigenvalues of $T$. 
+Let $\lambda_1, \dots,, \lambda_n$ be \bred{distinct} eigenvalues of $T$.
 
 {~~~}
 
-Let $m_i$ be the algebraic multiplicity of $\lambda_i$. 
+Let $m_i$ be the algebraic multiplicity of $\lambda_i$.
 
-Let $M_i$ be the geometric multiplicity of $\lambda_i$. 
+Let $M_i$ be the geometric multiplicity of $\lambda_i$.
 
 {~~~}
 
 T is diagonalizable if and only if
 \begin{enumerate}
     \item $\displaystyle \sum_{i=1}^{k}m_i = n$
-    \item $\forall i$, $M_i = m_i$. 
+    \item $\forall i$, $M_i = m_i$.
 \end{enumerate}
 
 {~~~}
@@ -1947,9 +1950,9 @@ T is diagonalizable if and only if
 
 \begin{example}
 
-Let $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_2(\mathbb{R})$ be a linear transformation. 
+Let $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_2(\mathbb{R})$ be a linear transformation.
 
-Let $\mathcal{A} = (x^2, x, 1)$ be a basis for $\mathcal{P}_2(\mathbb{R})$. 
+Let $\mathcal{A} = (x^2, x, 1)$ be a basis for $\mathcal{P}_2(\mathbb{R})$.
 
 $A = [T]_\mathcal{A} = \begin{bmatrix} 2 &0 &0 \\ 1 &2 &1 \\ -1 &0 &1 \end{bmatrix}$
 
@@ -1967,8 +1970,8 @@ $E_1 = \mathrm{Span}\left( \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix} \right)$
 $\mathrm{Nul}(A - 2I) = \mathrm{Span}\left(\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\right)$
 
 \begin{itemize}
-    \item For $\lambda = 2$, the algebraic multiplicity is $2$. 
-    \item For $\lambda = 1$, the algebraic multiplicity is $1$. 
+    \item For $\lambda = 2$, the algebraic multiplicity is $2$.
+    \item For $\lambda = 1$, the algebraic multiplicity is $1$.
 \end{itemize}
 $$2+1 = 3$$
 
@@ -1977,8 +1980,8 @@ The geometric multiplicity of $\lambda = 2$ is $\dim \ker (T - 2 \mathrm{id}) = 
 $\dim(\mathrm{Nul}(A - 2I)) = 2$
 
 \begin{itemize}
-    \item The geometric multiplicity of $\lambda = 2$  is 2. 
-    \item The geometric multiplicity of $\lambda = 1$ is 1. 
+    \item The geometric multiplicity of $\lambda = 2$  is 2.
+    \item The geometric multiplicity of $\lambda = 1$ is 1.
 \end{itemize}
 
 $\mathrm{Nul}(A - 2I) = \mathrm{Span}\left(\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\right) \underset{S.S.}{\subseteq} \mathbb{R}^3$
@@ -1993,7 +1996,7 @@ $\mathrm{Nul}(A - 2I) \cong E_2$
 
 $\dim E_2 = \dim \mathrm{Nul}(A - 2I)$
 
-Find an eigenbasis $\mathcal{B}$ for $T$. 
+Find an eigenbasis $\mathcal{B}$ for $T$.
 
 \bred{Note:} We need the eigenbasis for $\mathcal{P_2}(\mathbb{R})$, not $\mathbb{R}^3$!
 
@@ -2014,75 +2017,75 @@ $E_{\lambda_1} \cup \dots \cup E_{\lambda_k}$ is an eigenbasis for $T$.
 \setcounter{dummy}{5}
 \begin{proposition}
     Let $V$ be finite-dimensional, and let $T: V \to V$ be linear.
-    
+
     Let $A$ be an eigenvalue of $T$, and assume that $A$ is an $m$-fold root of the characteristic polynomial of $T$. Then we have $$1 \le \dim(E_\lambda) \le m$$
 \end{proposition}
 
 \setcounter{dummy}{3}
 \begin{proposition}
-    Let $\vec{v}_1, \dots, \vec{v}_n$ be eigenvectors corresponding to distinct eigenvalues of $T: V \to V$. Then $\{ \vec{v}_1, \dots, \vec{v}_n \}$  is linearly independent. 
+    Let $\vec{v}_1, \dots, \vec{v}_n$ be eigenvectors corresponding to distinct eigenvalues of $T: V \to V$. Then $\{ \vec{v}_1, \dots, \vec{v}_n \}$  is linearly independent.
 \end{proposition}
 \setcounter{chapter}{3}
 
 \begin{proof}
-    We know that $T(\vec{v}_i) = \lambda_i\vec{v}_i$, $1 \le i \le k$ and $\lambda_i \neq \lambda_j$ for $i \neq j$. 
+    We know that $T(\vec{v}_i) = \lambda_i\vec{v}_i$, $1 \le i \le k$ and $\lambda_i \neq \lambda_j$ for $i \neq j$.
 
-    WTS $\{ \vec{v}_1, \dots, \vec{v}_k \}$ is linearly independent. 
+    WTS $\{ \vec{v}_1, \dots, \vec{v}_k \}$ is linearly independent.
 
 \begin{quotation}
     \textbf{Rough Work}
-    
+
     $k = 1$, $0 \neq \vec{v}_1$ is linearly independent.
-    
-    $k = 2$, $\vec{v}_1, \vec{v}_2$, $T(\vec{v}_1) = T(\alpha\vec{v}_2) = \alpha T(\vec{v}_1) = \alpha\lambda_2 \vec{v}_2 = \lambda_2\alpha\vec{v}_2 = \lambda_2\vec{v}_1$. Contradiction, because the $\lambda$'s should be distinct. 
+
+    $k = 2$, $\vec{v}_1, \vec{v}_2$, $T(\vec{v}_1) = T(\alpha\vec{v}_2) = \alpha T(\vec{v}_1) = \alpha\lambda_2 \vec{v}_2 = \lambda_2\alpha\vec{v}_2 = \lambda_2\vec{v}_1$. Contradiction, because the $\lambda$'s should be distinct.
 \end{quotation}
 
     Induction on $k$
-    
+
     \begin{itemize}
         \item \textbf{Base case:} $k = 1$
 
         $0 \neq \vec{v}_1$ is linearly independent.
-        
-        \item \textbf{Induction hypothesis:} suppose $\vec{v}_1, \dots, \vec{v}_k$ is linearly independent. 
-    
-        Prove that $\vec{v}_1, \dots, \vec{v}_k, \vec{v}_{k+1}$ is linearly independent. 
+
+        \item \textbf{Induction hypothesis:} suppose $\vec{v}_1, \dots, \vec{v}_k$ is linearly independent.
+
+        Prove that $\vec{v}_1, \dots, \vec{v}_k, \vec{v}_{k+1}$ is linearly independent.
 
     Suppose $a_1\vec{v}_1 + a_2\vec{v}_2 + \cdots + a_k\vec{v}_k + a_{k+1}\vec{v}_{k+1} = \vec{0}$. (*)
 
-    WTS $a_1 = \dots = a_k = a_{k+1} = 0$. 
+    WTS $a_1 = \dots = a_k = a_{k+1} = 0$.
 
-    Apply $T$ to (*): 
+    Apply $T$ to (*):
     \begin{align*}
-        a_1T(\vec{v}_1) + a_kT(\vec{v}_k) +a_{k+1}T(\vec{v}_{k+1}) 
+        a_1T(\vec{v}_1) + a_kT(\vec{v}_k) +a_{k+1}T(\vec{v}_{k+1})
         &= \vec{0}
         \\
-        a_1\lambda_1\vec{v}_1 +a_k\lambda_k\vec{v}_k +a_{k+1}\lambda_{k+1}\vec{v}_{k+1} 
+        a_1\lambda_1\vec{v}_1 +a_k\lambda_k\vec{v}_k +a_{k+1}\lambda_{k+1}\vec{v}_{k+1}
         \label{eq:1}\tag{1}
     \end{align*}
 
-    Multiply (*) by $\lambda_{k+1}$ (if $\lambda_{k_i} = 0$, switch with $\lambda_k$): 
+    Multiply (*) by $\lambda_{k+1}$ (if $\lambda_{k_i} = 0$, switch with $\lambda_k$):
     \begin{equation*}
         a_1\lambda_{k+1}\vec{v}_1 + \cdots + a_k\lambda_{k+1}\vec{v}_k + a_{k+1}\lambda_{k+1}\vec{v}_{k+1}
         \label{eq:2}\tag{2}
     \end{equation*}
 
-    $\ref{eq:1} - \ref{eq:2}$: 
+    $\ref{eq:1} - \ref{eq:2}$:
     $a_1(\lambda_1 - \lambda_{k+1})\vec{v}_1 + \cdots + a_k(\lambda_k-\lambda_{k+1})\vec{v}_k = \vec{0}$
 
-    We have $a_1 = \dots = a_k = 0$. 
-    
+    We have $a_1 = \dots = a_k = 0$.
+
     {~~~}
 
-    Plug back into (*): 
+    Plug back into (*):
 
-    $a_{k+1} = 0$. So $\vec{v}_1, \dots, \vec{v}_{k+1}$ are linearly independent. 
+    $a_{k+1} = 0$. So $\vec{v}_1, \dots, \vec{v}_{k+1}$ are linearly independent.
     \end{itemize}
 \end{proof}
 
 \section{Geonetry in $\mathbb{R}^n$}
 
-Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$. 
+Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 \noindent We know that $V \overset{\gamma\mathcal{B}}{\cong} \mathbb{F}^n$, $v \mapsto [v]_\mathcal{B}$ and $T \mapsto [T]_\mathcal{B}$
 
@@ -2095,7 +2098,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 {~~~}
 
-\noindent In $\mathbb{R}^n$, 
+\noindent In $\mathbb{R}^n$,
 \begin{itemize}
     \item $\|\vec{v}\| = \sqrt{{v_1}^2 + \cdots + {v_n}^2} = \sqrt{\vec{v} \cdot \vec{v}}$
     \item $d(\vec{v}, \vec{w}) = \|\vec{v} - \vec{w}\|$
@@ -2107,7 +2110,7 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 \setcounter{chapter}{4}\index{Standard Inner Product}\index{Dot Product}\label{Def4_3_1}
 \begin{definition}
-    The \term{standard inner product} (or \term{dot product}) on $\mathbb{R}^n$ is the function $\langle , \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by the following rule. If $\vec{x} = (x_1, \dots, x_n)$ and $\vec{y} =  (y_1, \dots, y_n)$ in standard coordinates, then $\langle \vec{x}, \vec{y} \rangle$ is the scalar: $\langle \vec{x}, \vec{y} \rangle = x_1y_1 + \cdots + x_ny_n$. 
+    The \term{standard inner product} (or \term{dot product}) on $\mathbb{R}^n$ is the function $\langle , \rangle : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$ defined by the following rule. If $\vec{x} = (x_1, \dots, x_n)$ and $\vec{y} =  (y_1, \dots, y_n)$ in standard coordinates, then $\langle \vec{x}, \vec{y} \rangle$ is the scalar: $\langle \vec{x}, \vec{y} \rangle = x_1y_1 + \cdots + x_ny_n$.
 \end{definition}
 \setcounter{chapter}{3}
 
@@ -2117,33 +2120,33 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
     $$\begin{matrix} \langle~,~\rangle: &V \times V &\to &\mathbb{F} \\ &(\vec{v}, \vec{w}) &\mapsto \langle \vec{v}, \vec{w} \rangle \end{matrix}$$
 
     An \term{inner product} on $V$ is a function that takes each ordered pair of $(u, v)$ of elements of $V$ to a number $\langle u, v \rangle \in \mathbb{F}$ and has the following properties:
-    
+
     \begin{enumerate}[label=\alph*)]
         \item \textbf{Positivity}
-        
+
         $\langle v, v \rangle \ge 0$ for all $v \in V$;
-        
+
         \item \textbf{Definiteness}
-        
+
         $\langle v, v \rangle = 0$ if and only if $v = 0$
-        
+
         \item \textbf{Additivity in the first slot}
 
         $\langle u + v, w \rangle = \langle u + w \rangle + \langle v + w \rangle$ for all $u, v, w \in V$;
-        
+
         \item \textbf{Homogeneity in the first slot}
 
         $\langle \lambda u, v \rangle = \lambda\langle u, v\rangle$ for all $u, v \in V$
-        
+
         \item \textbf{Conjugate symmetry}
-        
+
         $\langle u, v \rangle = \overline{\langle v, u \rangle}$ for all $u, v \in V$.
     \end{enumerate}
 \end{definition}
 \setcounter{section}{3}
 
 \setcounter{chapter}{4}
-\setcounter{dummy}{2}
+\setcounter{dummy}{1}
 \begin{proposition}
 {~~~}
 
@@ -2157,21 +2160,21 @@ Let $\mathbb{R}^n = \begin{pmatrix} r_1 \\ r_1 \\ \vdots \\ r_n \end{pmatrix}$.
 
 \begin{proof}
     Many of the simpler facts about the standard inner product may be derived by expanding out the expressions involved, using \hyperref[Def4_3_1]{Definition (4.3.1)}.
-    
+
     \begin{enumerate}[label=\alph*)]
-        \item Write $\vec{x} = (x_1, \dots, x_n)$, $\vec{y} = (y_1, \dots, y_n)$, and $\vec{z} = (z_1, \dots, z_n)$. Then $\langle c\vec{x} + \vec{y} \rangle = (cx_1 + y_1, \dots, x_n + y_n)$, so we have $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = (cx_1 + y_1)z_1 + \cdots + (cx_n + y_n)z_n$$ After multiplying this out and rearranging the terms, we obtain $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = c(x_1z_1 + \cdots + x_nz_n)+ \cdots + (y_1z_1+ \cdots + y_nz_n) = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$$ 
+        \item Write $\vec{x} = (x_1, \dots, x_n)$, $\vec{y} = (y_1, \dots, y_n)$, and $\vec{z} = (z_1, \dots, z_n)$. Then $\langle c\vec{x} + \vec{y} \rangle = (cx_1 + y_1, \dots, x_n + y_n)$, so we have $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = (cx_1 + y_1)z_1 + \cdots + (cx_n + y_n)z_n$$ After multiplying this out and rearranging the terms, we obtain $$\langle \vec{x} + \vec{y}, \vec{z} \rangle = c(x_1z_1 + \cdots + x_nz_n)+ \cdots + (y_1z_1+ \cdots + y_nz_n) = c \langle \vec{x}, \vec{z} \rangle + \langle \vec{y}, \vec{z} \rangle$$
 
         \item We have:
-        \vspace{-0.45cm} 
+        \vspace{-0.45cm}
         \begin{align*}
-            \langle \vec{x}, \vec{y} \rangle 
-            &= x_1y_1 + \cdots + x_ny_n 
+            \langle \vec{x}, \vec{y} \rangle
+            &= x_1y_1 + \cdots + x_ny_n
             \\
             &= y_1x_1 + \cdots + y_nz_n
             \\
             &= \langle \vec{y}, \vec{x} \rangle.
         \end{align*}
-        
+
         \item By the definition, $\langle \vec{x}, \vec{x} \rangle = x_1^2 + \cdots + x_n^2$. Since the components of $\vec{x}$ are all real numbers, each $x_i^2 \ge 0$, so $\langle \vec{x}, \vec{x} \rangle \ge 0$. Furthermore, if $\langle \vec{x}, \vec{x} \rangle = 0$, then it is clear that $x_i = 0$ for all $i$, or in other words, that $\vec{x} = \vec{0}$.
     \end{enumerate}
 \end{proof}
@@ -2186,24 +2189,24 @@ Let $z \in \mathbb{C}$, $z = a + bi$
         \def\ymax{3}
         \def\R{3.925}
         \def\ang{35}
-        
+
         \coordinate (O) at (0,0);
         \coordinate (R) at (\ang:\R);
         \coordinate (X) at ({\R*cos(\ang)},0);
         \coordinate (Y) at (0,{\R*sin(\ang)});
-        
+
         \node[fill=red,circle,inner sep=0.8] (R') at (R) {};
         \node[blue,above right=-2] at (R') {$z = a + bi$};
         \node[black,below left=2] at (O) {$O$};
-        
+
         \draw[dashed,blue]
             (Y) -- (R') --++ (0,{0.1-\R*sin(\ang)});
-            
+
         \draw[->,line width=0.9] (-0.5,0) -- (\xmax+0.05,0) node[right] {$\mathrm{Re}$};
         \draw[->,line width=0.9] (0,-0.5) -- (0,\ymax+0.05) node[left] {$\mathrm{Im}$};
-        
+
         \draw[vector] (O) -- (R') node[pos=0.55,above left=-2] {$r$};
-        
+
         \tick{X}{90} node[scale=1,below=-1] {$a$};
         \tick{Y}{ 0} node[blue,scale=1,left] {$b$};
     \end{tikzpicture}
@@ -2219,16 +2222,16 @@ $\|z\|^2 = a^2 + b^2 = z \overline{z}$
 
 $\|\vec{z}\|^2 = z_1\overline{z_1} + z_2\overline{z_2} + \cdots + z_n\overline{z_n} = \langle \vec{z}, \vec{z} \rangle_{\mathbb{C}}$
 
-\begin{example} The following are commonly seen examples of inner products. 
+\begin{example} The following are commonly seen examples of inner products.
     \begin{itemize}
         \item dot product in $\mathbb{R}^n$
-        
+
         $\vec{x} \cdot \vec{y} = x_1y_1 + \cdots + x_ny_n$
-        
+
         \item Euclidian inner product (or Hermitan inner product)
-        
+
         $\vec{z} = \begin{pmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{pmatrix}$
-        
+
         $\langle \vec{z}, \vec{x} \rangle = z_1 \overline{w_1} + \cdots + z_n\overline{w_n}$
     \end{itemize}
 \end{example}
@@ -2238,11 +2241,11 @@ $\|\vec{z}\|^2 = z_1\overline{z_1} + z_2\overline{z_2} + \cdots + z_n\overline{z
 \begin{definition}[Hermitian Inner Product]\index{Hermitian Inner Product}\index{Hermitian Inner Product Space}
     Let $V$ be a complex vector space. A \term{Hermitian inner product} on $V$ is a complex valued function on pairs of vectors in $V$, denoted by $\langle \vec{u}, \vec{v} \rangle \in \mathbb{V}$ for $\vec{u}, \vec{v} \in V$, which satisfies the following properties:
     \begin{enumerate}[label=\alph*)]
-        \item For all $\vec{u}, \vec{v}$, and $\vec{w} \in V$ and $a, b \in \mathbb{C}$, $\langle a\vec{u} + b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$, 
+        \item For all $\vec{u}, \vec{v}$, and $\vec{w} \in V$ and $a, b \in \mathbb{C}$, $\langle a\vec{u} + b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$,
         \item For all $\vec{u}, \vec{v} \in V$, $\langle \vec{u}, \vec{v} \rangle = \overline{ \langle \vec{v}, \vec{u} \rangle }$, and
-        \item For all $\vec{v} \in V$, $\langle \vec{v}, \vec{v} \rangle \ge 0$, and $langle \vec{v}, \vec{v} \rangle  = 0$ implies $\vec{v} = \vec{0}$. 
+        \item For all $\vec{v} \in V$, $\langle \vec{v}, \vec{v} \rangle \ge 0$, and $langle \vec{v}, \vec{v} \rangle  = 0$ implies $\vec{v} = \vec{0}$.
     \end{enumerate}
-    
+
     We call a complex vector space with a Hermitian inner product a \term{Hermitian inner product space}.
 \end{definition}
 
@@ -2251,25 +2254,25 @@ $$ \langle \vec{z}, \vec{w} \rangle_\mathcal{C} = \sum_{i=1}^n z_i\overline{w_i}
 
 \setcounter{chapter}{3}
 \setcounter{section}{0}
-\setcounter{dummy}{2}
+\setcounter{definitionT}{2}
 \begin{definition}[Inner Product Space]\index{Inner Product Space}
-    An \term{inner product space} is a vector space $V$ along with an inner product on $V$. 
+    An \term{inner product space} is a vector space $V$ along with an inner product on $V$.
 \end{definition}
 
 \setcounter{chapter}{4}
 \setcounter{section}{3}
 \begin{definition}[Norm]\index{Norm}\index{Unit Vector}
-{~~~}
+$\text{ }$
 
     \begin{enumerate}[label=\alph*)]
         \item The \term{length} (or \term{norm}) of $\vec{v} \in \mathbb{R}^n$ is the scalar $$\|\vec{v}\| = \sqrt{\langle \vec{v}, \vec{v} \rangle}$$
-        \item $\vec{v}$ is called a \term{unit vector} if $\| \vec{v} \| = 1$. 
+        \item $\vec{v}$ is called a \term{unit vector} if $\| \vec{v} \| = 1$.
     \end{enumerate}
 \end{definition}
 
 \setcounter{definitionT}{4}
 \begin{definition}
-    The angle, $\theta$, between two nonzero vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$ is defined to be $\theta = \cos^{-1}\dfrac{\langle \vec{x}, \vec{y} \rangle}{\|x\| \cdot \|y\|}$. 
+    The angle, $\theta$, between two nonzero vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$ is defined to be $\theta = \cos^{-1}\dfrac{\langle \vec{x}, \vec{y} \rangle}{\|x\| \cdot \|y\|}$.
 \end{definition}
 
 \setcounter{definitionT}{6}
@@ -2283,37 +2286,37 @@ $$ \langle \vec{z}, \vec{w} \rangle_\mathcal{C} = \sum_{i=1}^n z_i\overline{w_i}
 
     $\displaystyle \langle f, g \rangle = \int_0^1 f(x)g(x)\,dx$
 
-    Show $\langle~, ~\rangle$ is an inner product on $V$. 
-    
+    Show $\langle~, ~\rangle$ is an inner product on $V$.
+
     \begin{itemize}
         \item Show that $\langle ~,~ \rangle$ has positivity
-        
-        $\displaystyle \langle f, f \rangle = \int_0^1f^(x)\,dx \ge 0$. 
-        $\langle ~,~ \rangle$ is positive 
-        
+
+        $\displaystyle \langle f, f \rangle = \int_0^1f^(x)\,dx \ge 0$.
+        $\langle ~,~ \rangle$ is positive
+
         \item Show that $\langle ~,~ \rangle$ has definiteness
 
-        $\displaystyle \int_0^1f^2(x)\,dx = 0$ if and only if $f(x) = 0$. 
+        $\displaystyle \int_0^1f^2(x)\,dx = 0$ if and only if $f(x) = 0$.
         $\langle ~,~ \rangle$ is definite
 
         \item Show that $\langle~, ~\rangle$ has additivity and homogeneityin the first slot
         \begin{flalign*}
-            \langle rf + g, h \rangle 
-            &= \int_0^1 (rf + g)(x) h(x)\,dx 
+            \langle rf + g, h \rangle
+            &= \int_0^1 (rf + g)(x) h(x)\,dx
             &&\\
-            &= \int_0^1 (rf(x) + g(x)) h(x)\,dx 
+            &= \int_0^1 (rf(x) + g(x)) h(x)\,dx
             \\
-            &= \int_0^1 rf(x) h(x) + g(x) h(x)\,dx 
+            &= \int_0^1 rf(x) h(x) + g(x) h(x)\,dx
             \\
-            &= r\int_0^1f(x) h(x)\,dx + \int_0^1g(x)h(x)\,dx 
+            &= r\int_0^1f(x) h(x)\,dx + \int_0^1g(x)h(x)\,dx
             \\
             &= r\langle f, h \rangle + \langle g, h \rangle
         \end{flalign*}
-        
+
         \item Show that $\langle~, ~\rangle$ has conjugate summery
         \begin{flalign*}
-            \langle g, h \rangle 
-            &= \int_0^1 g(x) h(x)\,dx 
+            \langle g, h \rangle
+            &= \int_0^1 g(x) h(x)\,dx
             &&\\
             &= \int_0^1 \overline{h(x) g(x)}\,dx
             \\
@@ -2322,42 +2325,42 @@ $$ \langle \vec{z}, \vec{w} \rangle_\mathcal{C} = \sum_{i=1}^n z_i\overline{w_i}
     \end{itemize}
 \end{example}
 
-Note that inner products have the following properties: 
+Note that inner products have the following properties:
 
 \begin{itemize}
-    \item $\langle \vec{0}, \vec{u} \rangle = 0$ for every $\vec{u} \in V$. 
+    \item $\langle \vec{0}, \vec{u} \rangle = 0$ for every $\vec{u} \in V$.
     \item $\langle \vec{u}, \vec{0} \rangle = 0$ for every $\vec{u} \in V$
     \item $\langle \vec{u}, \vec{v} + \vec{w} \rangle = \langle \vec{x} + \vec{v} \rangle + \langle \vec{u} + \vec{w} \rangle$ for all $\vec{u}, \vec{v}, \vec{w} \in V$
-    \item $\langle \vec{u}, \lambda \vec{v} \rangle = \overline{\lambda}\langle \vec{u}, \vec{v} \rangle$ for all $\lambda \in \mathbb{F}$ and $\vec{u}, \vec{v} \in V$. 
+    \item $\langle \vec{u}, \lambda \vec{v} \rangle = \overline{\lambda}\langle \vec{u}, \vec{v} \rangle$ for all $\lambda \in \mathbb{F}$ and $\vec{u}, \vec{v} \in V$.
 \end{itemize}
 
 Let $\vec{v} \in V$
 \begin{itemize}
     \item $\|\vec{v}\| = 0$ if and only if $\vec{v} = \vec{0}$.
-    \item $\|\lambda\vec{v}\| = |\lambda|\|\vec{v}\|$ for all $\lambda \in \mathbb{F}$. 
+    \item $\|\lambda\vec{v}\| = |\lambda|\|\vec{v}\|$ for all $\lambda \in \mathbb{F}$.
 \end{itemize}
 
 \setcounter{section}{0}
-\setcounter{definitionT}{2}
+\setcounter{definitionT}{3}
 \begin{definition}[Trace]\index{Trace}
 {~~~}
 
-    Let $A \in M_{n \times n}(\mathbb{F})$. The \term{trace} of $A$, denoted $\mathrm{tr}(A)$, is defined by $$\mathrm{tr}(A) = \sum_{i=1}^\infty a_{ij}, A_{n \times n} = a_{ij}$$ (the sum of the diagonal entries). 
+    Let $A \in M_{n \times n}(\mathbb{F})$. The \term{trace} of $A$, denoted $\mathrm{tr}(A)$, is defined by $$\mathrm{tr}(A) = \sum_{i=1}^\infty a_{ij}, A_{n \times n} = a_{ij}$$ (the sum of the diagonal entries).
 \end{definition}
 \setcounter{section}{3}
 \begin{itemize}
     \item $\mathrm{tr}(A + B) = \mathrm{tr}A + \mathrm{tr}B$
-    \item $\mathrm{tr}(AB) = \mathrm{tr}(BA)$    
+    \item $\mathrm{tr}(AB) = \mathrm{tr}(BA)$
 \end{itemize}
 
 \begin{example}
 {~~~}
 
-    Let $V = \underset{2\times2}{M}(\mathbb{R})$ be an inner product space. 
+    Let $V = \underset{2\times2}{M}(\mathbb{R})$ be an inner product space.
 
-    $\begin{matrix} \text{Define } \langle ~,~ \rangle_V: &V x V &\rangle &\mathbb{R} \\ &(A, B) &\mapsto &\frac{1}{2}\mathrm{tr}(A^TB) \end{matrix}$. 
+    $\begin{matrix} \text{Define } \langle ~,~ \rangle_V: &V x V &\rangle &\mathbb{R} \\ &(A, B) &\mapsto &\frac{1}{2}\mathrm{tr}(A^TB) \end{matrix}$.
 
-    Let $A = \begin{bmatrix} \frac{1}{\sqrt{2}} &\frac{-1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} &\frac{1}{\sqrt{2}} \end{bmatrix}$. What is $\|A\|$? 
+    Let $A = \begin{bmatrix} \frac{1}{\sqrt{2}} &\frac{-1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} &\frac{1}{\sqrt{2}} \end{bmatrix}$. What is $\|A\|$?
 
     \begin{align*}
         \|A\|^2
@@ -2369,8 +2372,8 @@ Let $\vec{v} \in V$
         \\
         &= 1
     \end{align*}
-    
-    So $\|A\| = \sqrt{1} = 1$. 
+
+    So $\|A\| = \sqrt{1} = 1$.
 \end{example}
 
 \setcounter{chapter}{4}
@@ -2390,7 +2393,7 @@ $\text{ }$
 Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 + |v\|^2. $$
 
 \begin{proof}
-    WTS $\vec{u}, \vec{v} \in V$ s.t. $\langle \vec{u}, \vec{v} \rangle = 0$. Then $\|\vec{u} + \vec{v}\|^2 = \|\vec{u}\|^2 + \|\vec{v}\|^2$. 
+    WTS $\vec{u}, \vec{v} \in V$ s.t. $\langle \vec{u}, \vec{v} \rangle = 0$. Then $\|\vec{u} + \vec{v}\|^2 = \|\vec{u}\|^2 + \|\vec{v}\|^2$.
     \begin{align*}
         \|\vec{u} + \vec{v}\|^2
         &= \langle \vec{u} + \vec{v}, \vec{u} + \vec{v} \rangle
@@ -2405,12 +2408,13 @@ Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 
 \end{proof}
 
 \setcounter{chapter}{4}
+\setcounter{dummy}{3}
 \begin{proposition}[The Triangle Inequality and The Cauchy-Schwarz Inequality]\index{The Triangle Inequality}\index{The Cauchy-Schwarz Inequality}
-{~~~}
+$\text{ }$
 
     \begin{enumerate}[label=\alph*)]
-        \item (The triangle inequality) For all vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$, $\| \vec{x} + \vec{y} \| \le \|\vec{x}\| + \|\vec{y}\|$. 
-        
+        \item (The triangle inequality) For all vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$, $\| \vec{x} + \vec{y} \| \le \|\vec{x}\| + \|\vec{y}\|$.
+
         (Geometrically, in a triangle, the length of any side is less than or equal to the sum of the lengths of the other two sides. )
         \begin{center}
             \begin{tikzpicture}
@@ -2418,7 +2422,7 @@ Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 
                 \coordinate (A) at (4,0) {};
                 \coordinate (B) at (6,2) {};
                 \coordinate (C) at (2,2) {};
-                
+
                 \draw[thick, arrows={-latex}]  (O) -- (A) node[midway,below] {$\vec{x}$};
                 \draw[thick, arrows={-latex}]  (A) -- (B) node[midway,below] {$\vec{y}$};
                 \draw[thick, arrows={-latex}]  (C) -- (B) node[midway,above] {$\vec{x}$};
@@ -2426,7 +2430,7 @@ Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 
                 \draw[arrows={-latex}]  (O) -- (B) node[midway,below] {$\vec{x} + \vec{y}$};
             \end{tikzpicture}
         \end{center}
-        
+
         \item (The Cauchy-Schwarz inequality\footnote{This inequality if an equality if and only if one of $u, v$ is a scalar multiple of the other. }) For all vectors $\vec{x}, \vec{y} \in \mathbb{R}^n$, $$| \langle \vec{x}, \vec{x} \rangle \le \|\vec{x}\| \cdot \|\vec{y}\|. $$
     \end{enumerate}
 \end{proposition}
@@ -2435,13 +2439,13 @@ Suppose $u$ and $v$ are orthogonal vectors in $V$. Then $$\|u + v\|^2 = \|u\|^2 
 $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \end{cases}$$
 
 \begin{example}
-    Let $\mathbb{R}^2$ with the dot product be an inner product space. 
+    Let $\mathbb{R}^2$ with the dot product be an inner product space.
 
-    $\left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \end{pmatrix} \right\}$ is a basis for $\mathbb{R}^2$. 
+    $\left\{ \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \end{pmatrix} \right\}$ is a basis for $\mathbb{R}^2$.
 
-    $\left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\}$ is an orthogonal basis for $\mathbb{R}^2$. 
+    $\left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right\}$ is an orthogonal basis for $\mathbb{R}^2$.
 
-    $\left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{pmatrix}, \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \right\}$ is an orthonormal basis for $\mathbb{R}^2$. 
+    $\left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{pmatrix}, \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \right\}$ is an orthonormal basis for $\mathbb{R}^2$.
 \end{example}
 
 \begin{example}
@@ -2452,19 +2456,19 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
     $$W^\perp = \left\{ \vec{v} \in V , \langle \vec{v}, \vec{w} \rangle = 0 ~ \forall \vec{w} \in V \right\}$$
 
     $$V^\perp = ?$$
-    
+
     \begin{itemize}
         \item $\langle \vec{0}, \vec{v} \rangle = 0$, so $\vec{0} \in V^\perp$
 
         \item $\vec{v} \in V^\perp$: $\langle \vec{v}, \vec{w} \rangle = 0 ~ \forall \vec{w} \in V$
-        
+
         $\langle \vec{v}, \vec{v} \rangle = 0 \implies \vec{v} = \vec{0}$
     \end{itemize}
-    
+
     So $V^\perp = \{ \vec{0} \}$
 
     $$\{ \vec{0} \}^\perp = ?$$
-    
+
     \begin{itemize}
         \item $\{ \vec{0} \}^\perp = \left\{ \vec{v} \in V \big| \langle \vec{v}, \vec{0} \rangle = 0 \right\} = V$
     \end{itemize}
@@ -2489,13 +2493,13 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 \section{Orthogonal Projection and the Gram-Schmidt Process}
 
 \setcounter{section}{0}
-\setcounter{definitionT}{3}
+\setcounter{definitionT}{4}
 \begin{definition}[Orthogonal Projection]\index{Orthogonal Projection}
 {~~~}
 
-    Let $V$ be an inner product space. The orthogonal projection of the vector $\vec{v} \in V$ onto the subspace $W \subseteq V$, denoted $P_W$ or $\mathrm{proj}_W(\vec{v})$, is the mapping 
-    $$\begin{matrix}P_W := proj_W: &V &\to &V \\ &\underset{\color{red}\vec{v}_W + \vec{v}_{W^\perp}}{\vec{v}} &\mapsto &\vec{v}_W\end{matrix}$$ 
-    where $\vec{v} = \vec{v}_W + \vec{v}_{W^\perp}$, with $\vec{v}_W \in W$ and $\vec{v}_{W^\perp} \in W^\perp$. 
+    Let $V$ be an inner product space. The orthogonal projection of the vector $\vec{v} \in V$ onto the subspace $W \subseteq V$, denoted $P_W$ or $\mathrm{proj}_W(\vec{v})$, is the mapping
+    $$\begin{matrix}P_W := proj_W: &V &\to &V \\ &\underset{\color{red}\vec{v}_W + \vec{v}_{W^\perp}}{\vec{v}} &\mapsto &\vec{v}_W\end{matrix}$$
+    where $\vec{v} = \vec{v}_W + \vec{v}_{W^\perp}$, with $\vec{v}_W \in W$ and $\vec{v}_{W^\perp} \in W^\perp$.
 \end{definition}
 \setcounter{section}{4}
 
@@ -2507,13 +2511,13 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
     \begin{enumerate}[label=\alph*)]
         \item $P_W$ is a linear mapping.
         \item $\mathrm{Im}(P_W) = W$, and if $\vec{w} \in W$, then $P_W(\vec{w}) = \vec{w}$.
-        \item $\ker(P_W) = W^\perp$. 
+        \item $\ker(P_W) = W^\perp$.
     \end{enumerate}
 \end{proposition}
 
 \begin{proposition}
-    Let $\{ \vec{w}_1, \dots, \vec{w}_n \}$ be an orthonormal basis for the subspace $W \subseteq V$. 
-    
+    Let $\{ \vec{w}_1, \dots, \vec{w}_n \}$ be an orthonormal basis for the subspace $W \subseteq V$.
+
     \begin{enumerate}[label=\alph*)]
         \item For each $w \in W$, we have $$\vec{w} = \sum_{i=1}^n \langle \vec{w}, \vec{w}_i \rangle \vec{w}_i$$
         \item For all $\vec{v} \in V$, we have $$P_W(\vec{v}) = \sum_{i=1}^n \langle \vec{v}, \vec{w}_i \rangle \vec{w}_i$$
@@ -2524,7 +2528,7 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 \begin{proof}
     (idea) say $\left\{ \vec{u}_1, \vec{u}_2 \right\}$ ($\dim V = 2$), $\vec{v} \in V$
 
-    $\vec{v} = r_1\vec{u}_1 + r_2\vec{u}_2,~ r_i \in \mathbb{F}$. 
+    $\vec{v} = r_1\vec{u}_1 + r_2\vec{u}_2,~ r_i \in \mathbb{F}$.
     \begin{align*}
         \langle \vec{v}, \vec{u}_1 \rangle
         &= \langle r_1\vec{u}_1 + r_2\vec{u}_2, \vec{u}_1 \rangle
@@ -2538,45 +2542,43 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 \end{proof}
 
 \setcounter{section}{0}
-\setcounter{dummy}{4}
+\setcounter{dummy}{5}
 \begin{lemma}
-    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$ be a basis for $W$. 
-    
-    $\vec{v} \in W^\perp$ iff $\langle \vec{v}, \vec{b}_i \rangle = 0 ~ \forall \vec{b}_i \in \mathcal{B}$. 
+    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$ be a basis for $W$. $\vec{v} \in W^\perp \iff \forall \vec{b}_i \in \mathcal{B}$, $\langle \vec{v}, \vec{b}_i \rangle = 0$.
 \end{lemma}
 \setcounter{section}{4}
 
 \begin{example}
 {~~~}
 
-    $P_W$ is a linear transformation. 
-    
+    $P_W$ is a linear transformation.
+
     \begin{itemize}
         \item $\ker P_W = ~?$
-        
+
         $W^\perp$
-        
-        Let $\vec{w} \in W^\perp$, $P_W(\vec{w}) = P_W(\vec{0} + \vec{w}) = \vec{0}$, so $W^\perp \in \ker P_W$ 
-        
-        Let $\vec{w} \in \ker P_W$, so $P_W(\vec{w}) = \vec{0} \implies P_W(\vec{w}_W + \vec{w}_{W^\perp})$, so $\vec{w} = \vec{0} + \vec{w}_{W^\perp}$, so $\vec{w} = \vec{w}_{W\perp}$, $\vec{w} \in W^\perp$. 
-        
+
+        Let $\vec{w} \in W^\perp$, $P_W(\vec{w}) = P_W(\vec{0} + \vec{w}) = \vec{0}$, so $W^\perp \in \ker P_W$
+
+        Let $\vec{w} \in \ker P_W$, so $P_W(\vec{w}) = \vec{0} \implies P_W(\vec{w}_W + \vec{w}_{W^\perp})$, so $\vec{w} = \vec{0} + \vec{w}_{W^\perp}$, so $\vec{w} = \vec{w}_{W\perp}$, $\vec{w} \in W^\perp$.
+
         \item $\mathrm{Im}~P_w = ~?$
-        
+
         $W$
         \vspace{-0.5cm}
         \begin{flalign*}
-            \vec{v} 
-            &= \vec{v}_W + \vec{v}_{W^\perp} 
-            &&\\ 
-            \mathrm{Im}(P_W) 
-            &\subseteq W 
-            \\ 
-            \vec{w} \in W, P_W(\vec{w} + \vec{0}) 
+            \vec{v}
+            &= \vec{v}_W + \vec{v}_{W^\perp}
+            &&\\
+            \mathrm{Im}(P_W)
+            &\subseteq W
+            \\
+            \vec{w} \in W, P_W(\vec{w} + \vec{0})
             &= \vec{w}
         \end{flalign*}
-        
-        \item Assume $\dim V < \infty$, what does rank-nullity say about $P_w$? 
-        
+
+        \item Assume $\dim V < \infty$, what does rank-nullity say about $P_w$?
+
         $\dim V = \dim W + \dim W^\perp$
     \end{itemize}
 
@@ -2584,27 +2586,27 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 
 \begin{proof}
     WTS $V = W + W^\perp$.
-    
-    Suppose $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$ is an orthonormal basis for $W$. 
+
+    Suppose $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$ is an orthonormal basis for $W$.
 
     $\forall \vec{v} \in V$, $\vec{w} := \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \langle \vec{v}, \vec{u}_2 \rangle\vec{u}_2 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$
 
     $\vec{v} = \underset{\in W}{\vec{w}} + \underset{\overset{?}{\in} W^\perp}{(\vec{v}} - \vec{w})$
 
-    WTS $\vec{v} - \vec{w}$ is in $W^\perp$. 
+    WTS $\vec{v} - \vec{w}$ is in $W^\perp$.
 
     WTS $\langle \vec{v} - \vec{w}, \vec{u} \rangle = 0 \forall \vec{u} \in W$.
 
-    This is true $\iff \langle \vec{v} - \vec{w}, \vec{u}_i \rangle = 0$ (by lemma). 
+    This is true $\iff \langle \vec{v} - \vec{w}, \vec{u}_i \rangle = 0$ (by lemma).
     \begin{align*}
         \langle \vec{v} - \vec{w}, \vec{u}_i \rangle
         &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{w}, \vec{u}_i \rangle
         \\
         &= \langle \vec{v}, \vec{u}_1 \rangle - \langle \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_i \rangle\vec{u}_i + \dots + \langle \vec{v}, \vec{u}_m \rangle \vec{u}_m, \vec{u}_i \rangle
         \\
-        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \langle \vec{v}, \vec{u}_i \rangle \vec{u}_i, \vec{u}_i \rangle 
+        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \langle \vec{v}, \vec{u}_i \rangle \vec{u}_i, \vec{u}_i \rangle
         \\
-        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{v}, \vec{u}_i \rangle 
+        &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{v}, \vec{u}_i \rangle
         \\
         &= 0
     \end{align*}
@@ -2617,13 +2619,13 @@ $
 \setcounter{definitionT}{7}
 \begin{definition}[Gram-Schmidt Procedure]\index{Gram-Schmidt Procedure}
     By induction, suppose that we have already constructed the vectors $\{ \vec{v}_1, \dots, \vec{v_k} \}$. Note that the vectors $\left\{ \dfrac{\vec{v}_1}{\|\vec{v}_1\|}, \dots, \dfrac{\vec{v_j}}{\|\vec{v_j}\|} \right\}$form an orthonormal basis for the subspace $W_j$. Then we have $$P_{W_j}(\vec{v}) = \sum_{i=1}^j \frac{\langle \vec{v}_i, \vec{v} \rangle}{\langle \vec{v}_i, \vec{v}_i \rangle} \vec{v_i}$$
-    
+
     Substituting this expression into our formula for $\vec{v}_{j+1}$, w obtain
     \begin{flalign*}
-        \vec{v}_1 
+        \vec{v}_1
         &= \vec{u}_1
         &&\\
-        \vec{v_2} 
+        \vec{v_2}
         &= \vec{u}_2 - \frac{\langle \vec{v}_1, \vec{u}_2 \rangle}{\langle \vec{v}_1, \vec{v}_1}\vec{v}_2
         \\
         &\vdots
@@ -2635,57 +2637,57 @@ $
 
 \setcounter{dummy}{8}
 \begin{theorem}
-    Every finitely generated inner product space has an orthonormal basis. 
+    Every finitely generated inner product space has an orthonormal basis.
 \end{theorem}
 \setcounter{chapter}{3}
 
 \begin{proof}
     (idea)
-    
-    $W \underset{S.S.}{\subseteq} V$, $\dim W < \infty$. 
 
-    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_m)$ be a basis for $W$. 
+    $W \underset{S.S.}{\subseteq} V$, $\dim W < \infty$.
 
-    Apply the \hyperref[https://en.wikipedia.org/wiki/Gram–Schmidt_process]{Gram–Schmidt process}, we get $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$, an orthonormal basis. 
-    
+    Let $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_m)$ be a basis for $W$.
+
+    Apply the Gram–Schmidt process, we get $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$, an orthonormal basis.
+
     \begin{itemize}
-        \item $\dim W = 1$ 
-        
+        \item $\dim W = 1$
+
         $\mathcal{B} = (\vec{b}_1)$
-        
+
         $\vec{u}_1 = \dfrac{\vec{b}}{\|\vec{v}\|}$
-        
+
         \item $\dim W =2$
-        
-        $\mathcal{B} = (\vec{b}_1, \vec{b}_2)$ 
-        
-        $\vec{u}_1 = \dfrac{\vec{b}_1}{\|\vec{b}_1\|}$ 
-        
+
+        $\mathcal{B} = (\vec{b}_1, \vec{b}_2)$
+
+        $\vec{u}_1 = \dfrac{\vec{b}_1}{\|\vec{b}_1\|}$
+
         Take $\vec{p}_2 = {\vec{b}_2}^\perp = \vec{b}_2 + \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1)}\vec{b}_2$, $\vec{u}_2 = \dfrac{\vec{p}_2}{\|\vec{p}_2\|}$
-        
-        \item $\dim W = 3$ 
-        
-        $\mathcal{B} = (\vec{b}_1, \vec{b}_2, \vec{b}_3)$ 
-        
+
+        \item $\dim W = 3$
+
+        $\mathcal{B} = (\vec{b}_1, \vec{b}_2, \vec{b}_3)$
+
         $\vec{u}_1 = \frac{\vec{b}_1}{\|\vec{b}_1\|}$ <
-        
-        $\vec{p}_2 = \vec{b}_2 - \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1)}\vec{b}_2$, $\vec{u}_2 = \dfrac{\vec{p}_2}{\|\vec{p}_2\|}$ 
-        
+
+        $\vec{p}_2 = \vec{b}_2 - \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1)}\vec{b}_2$, $\vec{u}_2 = \dfrac{\vec{p}_2}{\|\vec{p}_2\|}$
+
         $\vec{p}_3 = \vec{b}_3 - \mathrm{proj}_{\mathrm{Sp}(\vec{b}_1, \vec{b}_2)}\vec{b}_3$, $\vec{u}_3 = \dfrac{\vec{p}_3}{\|\vec{p}_3\|}$
-        
+
         \item $\cdots$
     \end{itemize}
 
-    If $\vec{u}_1, \dots, \vec{u}_m$ is an orthonormal basis for $W \underset{S.S.}{\subseteq} V$, $\forall \vec{v} \in V$, $\mathrm{proj}_W\vec{v} - \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$. 
+    If $\vec{u}_1, \dots, \vec{u}_m$ is an orthonormal basis for $W \underset{S.S.}{\subseteq} V$, $\forall \vec{v} \in V$, $\mathrm{proj}_W\vec{v} - \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$.
     $$\vec{v} = \underset{\in W}{\vec{w}} + \underset{\in W}{\vec{v} - \vec{w}}$$
 \end{proof}
 
 \begin{example}
-    $\mathcal{P}_2(\mathbb{R}) \in \mathcal{C}^0(\mathbb{R})$. 
+    $\mathcal{P}_2(\mathbb{R}) \in \mathcal{C}^0(\mathbb{R})$.
 
     $\langle f, g \rangle = \int_0^1 f(x)g(x)\,dx$
 
-    $\mathcal{B} = (1 + x, x^2) \overset{G-S}{\longrightarrow} (u_1, u_2, u_2)$ prthonormal basis for $\mathcal{P}_2(\mathbb{R})$. 
+    $\mathcal{B} = (1 + x, x^2) \overset{G-S}{\longrightarrow} (u_1, u_2, u_2)$ prthonormal basis for $\mathcal{P}_2(\mathbb{R})$.
 
     $\|1\| = \sqrt{\int_0^1 1\cdot1\,dx}$
 
@@ -2693,18 +2695,18 @@ $
 \end{example}
 
 \setcounter{section}{0}
-\setcounter{dummy}{5}
+\setcounter{dummy}{6}
 \begin{theorem}
-    $\forall \vec{v} \in V$, $\|\vec{v} - \mathrm{proj}_W \vec{v} \| \le \| \vec{v} - \vec{w} \| ~ \forall \vec{w} \in W$. 
+    $\forall \vec{v} \in V$, $\|\vec{v} - \mathrm{proj}_W \vec{v} \| \le \| \vec{v} - \vec{w} \| ~ \forall \vec{w} \in W$.
 \end{theorem}
 \setcounter{section}{4}
 
 \begin{proof}
     \begin{align*}
-        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 
+        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2
         &\le \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 + \|\mathrm{proj}_W \vec{v} - \vec{w}\|^2
         \\
-        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2 
+        \|\vec{v} - \mathrm{proj}_W\vec{v}\|^2
         &\le \|\vec{v} - \vec{w}\|^2
     \end{align*}
 \end{proof}
@@ -2714,11 +2716,11 @@ $
 
     \begin{quote}
         Previously we have:
-        
-        $\mathcal{P}_2(\mathbb{R}) \underset{S.S.}{\subseteq} \mathcal{C}^0(\mathbb{R})$. 
-        
+
+        $\mathcal{P}_2(\mathbb{R}) \underset{S.S.}{\subseteq} \mathcal{C}^0(\mathbb{R})$.
+
         $\mathcal{B} = (1, x, x^2) \overset{G-S}{\longrightarrow} \mathcal{U} = (u_1, u_2, u_3)$
-        
+
         \begin{itemize}
             \item $\vec{u}_1 = 1$
             \item $\vec{u}_2 = 2\sqrt{3}(x - \frac{1}{2})$
@@ -2733,7 +2735,7 @@ $
     $\displaystyle \mathrm{proj}_{\mathcal{P}_2(\mathbb{R})} f = \sum_{i=1}^3 \frac{\langle f, \vec{u}_i \rangle}{\langle \vec{u}_i, \vec{u}_i \rangle} \vec{u}_i = \sum_{i=1}^3 \langle f, \vec{u}_i \rangle \vec{u}_i \approx \frac{1}{500}(1~062 x^2 + 246x + 23)$
 
     Tayler appension (for $x = 2$) would be $x + x^2$
-    
+
     \begin{center}
         \begin{tikzpicture}
             \begin{axis}[xmin=-6, xmax=7, ymin=-3, ymax=17, axis lines=middle, restrict y to domain=-1:15]
@@ -2750,24 +2752,24 @@ $
 
     $\begin{matrix} \text{Let }T: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
 
-    Let $A = \begin{bmatrix} 2 &0 &0 \\ 1 &2 &1 \\ -1 &0 &1 \end{bmatrix}$. 
+    Let $A = \begin{bmatrix} 2 &0 &0 \\ 1 &2 &1 \\ -1 &0 &1 \end{bmatrix}$.
 
-    $\mathrm{char}(T) = (2 - 2\lambda)(1 - \lambda)$. 
+    $\mathrm{char}(T) = (2 - 2\lambda)(1 - \lambda)$.
 
     $E_2 = \mathrm{Sp}\left\{ \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix} \right\}$ (v1 and v2)
-    
+
     $E_1 = \mathrm{Sp}\left\{ \begin{bmatrix} 0 \\ -1 \\ 1 \end{bmatrix} \right\}$ (v3)
 
-    $\mathcal{U} = (\vec{v}_1, \vec{v}_2, \vec{v}_3)$. 
+    $\mathcal{U} = (\vec{v}_1, \vec{v}_2, \vec{v}_3)$.
 
     $[T]_\mathcal{U} = \begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1\end{bmatrix}$.
 
 
-    $E_1 \not\perp E_2$. 
+    $E_1 \not\perp E_2$.
 
-    $\mathbb{R}^3 \ni \vec{v} = c_1\vec{v}_1 + c_2\vec{v}_3 + c_3\vec{v}_3$ uniquely. 
+    $\mathbb{R}^3 \ni \vec{v} = c_1\vec{v}_1 + c_2\vec{v}_3 + c_3\vec{v}_3$ uniquely.
 
-    $\mathbb{R}^3 = E_1 \oplus E_2$. 
+    $\mathbb{R}^3 = E_1 \oplus E_2$.
 \end{example}
 
 \begin{example}
@@ -2775,16 +2777,16 @@ $
 
     $\begin{matrix} \text{Let }S: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &D\vec{x} \end{matrix}$
 
-    Let $D = \begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1 \end{bmatrix}$. 
-    
-    $\mathcal{E} = (\vec{e}_1, \vec{e}_2, \vec{e}_3)$ is an eignebasis. 
+    Let $D = \begin{bmatrix} 2 &0 &0 \\ 0 &2 &0 \\ 0 &0 &1 \end{bmatrix}$.
+
+    $\mathcal{E} = (\vec{e}_1, \vec{e}_2, \vec{e}_3)$ is an eignebasis.
     \begin{itemize}
         \item $S(\vec{e}_1) = 2\vec{e}_1$
         \item $S(\vec{e}_2) = 2\vec{e}_2$
         \item $S(\vec{e}_3) = 1\vec{e}_3$
     \end{itemize}
 
-    $\mathbb{R}^3 = E_2 \oplus E_1$. 
+    $\mathbb{R}^3 = E_2 \oplus E_1$.
 \end{example}
 
 \begin{example}
@@ -2792,21 +2794,21 @@ $
 
     $\begin{matrix} \text{Let }L: &\mathbb{R}^3 &\to &\mathbb{R}^3 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &B\vec{x} \end{matrix}$
 
-    Let $B = \begin{bmatrix} 1 &-1 &1 \\ -1 &0 &1 \\ 1 &1 &0 \end{bmatrix}$. 
+    Let $B = \begin{bmatrix} 1 &-1 &1 \\ -1 &0 &1 \\ 1 &1 &0 \end{bmatrix}$.
 
-    $\mathrm{char}(T) = (\lambda - 1)(\lambda - \sqrt{3})(\lambda + \sqrt{3})$. 
-    
+    $\mathrm{char}(T) = (\lambda - 1)(\lambda - \sqrt{3})(\lambda + \sqrt{3})$.
+
     \begin{itemize}
         \item $E_1 = \mathrm{Sp}\left\{ \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \right\}$
         \item $E_{\sqrt{3}} = \mathrm{Sp}\left\{ \begin{pmatrix} \sqrt{3} \\ -1 \\ 1 \end{pmatrix} \right\}$
         \item $E_{-\sqrt{3}} = \mathrm{Sp}\left\{ \begin{pmatrix} -\sqrt{3} \\ -1 \\ 1 \end{pmatrix} \right\}$
     \end{itemize}
 
-    $L$ is diagonalizable because it has $3$ distinct eigenvalues.  
+    $L$ is diagonalizable because it has $3$ distinct eigenvalues.
 
     $\mathbb{R}^3 = E_1 \oplus E_{\sqrt{3}} \oplus E_{-\sqrt{3}}$
 
-    $E_i \perp E_j ~ \forall i\neq j \le 3$. 
+    $E_i \perp E_j ~ \forall i\neq j \le 3$.
 
     Note that $B$ is symmetric since $B = B^T$.
 \end{example}
@@ -2814,23 +2816,23 @@ $
 \begin{example}
     $\begin{matrix} \text{Let }T: &\mathbb{C}^2 &\to &\mathbb{C}^2 &\text{ be a linear transformation. }\\ &\vec{x} &\mapsto &\begin{bmatrix} 1 &i \\ -i &1\end{bmatrix}\vec{x} \end{matrix}$
 
-    $\mathrm{char}(T) = \lambda(\lambda - 2)$. 
-    
+    $\mathrm{char}(T) = \lambda(\lambda - 2)$.
+
     \begin{itemize}
         \item $E_0 = \mathrm{Sp}\left\{ \begin{pmatrix} -i \\ 1 \end{pmatrix} \right\}$
         \item $E_1 = \mathrm{Sp}\left\{ \begin{pmatrix} i \\ 1 \end{pmatrix} \right\}$
     \end{itemize}
 
-    $T$ is diagonalizable because it has $2$ distinct eigenvalues. 
+    $T$ is diagonalizable because it has $2$ distinct eigenvalues.
 
-    $\mathbb{C}^2 = E_0 \oplus E_2$. 
+    $\mathbb{C}^2 = E_0 \oplus E_2$.
 
-    $\langle \begin{pmatrix} -i \\ i \end{pmatrix}, \begin{pmatrix} i \\ 1 \end{pmatrix} \rangle = (-i)\overline{(i)} + (1)\overline{(1)} = -1 + 1 = 0$, so $E_1 \perp E_2$. 
+    $\langle \begin{pmatrix} -i \\ i \end{pmatrix}, \begin{pmatrix} i \\ 1 \end{pmatrix} \rangle = (-i)\overline{(i)} + (1)\overline{(1)} = -1 + 1 = 0$, so $E_1 \perp E_2$.
 
     {~~~}
 
-    Note that if $A = (a_{ij})$, then $A^T = (a_{ji})$ and $A^* = (\overline{a_{ji}})$ (conjugate transpose). 
-    
+    Note that if $A = (a_{ij})$, then $A^T = (a_{ji})$ and $A^* = (\overline{a_{ji}})$ (conjugate transpose).
+
     $\begin{bmatrix} 1 &i \\ -i &1 \end{bmatrix}^* = \begin{bmatrix} \overline{1} &\overline{i} \\ \overline{-i} &\overline{1} \end{bmatrix} = \begin{bmatrix} 1 &i \\ -i &1 \end{bmatrix}$
 \end{example}
 
@@ -2841,7 +2843,7 @@ $
 \setcounter{dummy}{11}
 \begin{theorem}
     Let $T: V \to V$ be a self-adjoint transformation of a complex vector space $V$ with Hermitian inner product $\langle ~,~ \rangle$. Then there is an orthonormal basis of $V$ consisting of eigenvectors for $T$ and, in particular, $T$ is diagonalizable.
-\end{theorem} 
+\end{theorem}
 
 \setcounter{chapter}{4}
 \setcounter{section}{6}
@@ -2851,27 +2853,27 @@ $
 \end{theorem}
 \setcounter{chapter}{3}
 
-$T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following Are Equivalent''. }. 
+$T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following Are Equivalent''. }.
 
 \begin{enumerate}
-    \item $T$ is diagonalizable AND eigenspaces of $T$ are orthogonal. 
-    \item $V = E_{\lambda_1} \oplus \dots + E_{\lambda_k}$ AND $E_{\lambda_i} \perp E_{\lambda_j}$ for $i \neq j$, $\lambda_1, \dots, \lambda_k$ are eigenvalues. 
-    \item $T$ has an orthonormal eigenbasis. 
+    \item $T$ is diagonalizable AND eigenspaces of $T$ are orthogonal.
+    \item $V = E_{\lambda_1} \oplus \dots + E_{\lambda_k}$ AND $E_{\lambda_i} \perp E_{\lambda_j}$ for $i \neq j$, $\lambda_1, \dots, \lambda_k$ are eigenvalues.
+    \item $T$ has an orthonormal eigenbasis.
 \end{enumerate}
 
 \begin{itemize}
     \item $2 \to 3$
-    
+
     $V = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_k}$, $E_{\lambda_i} \perp E_{\lambda_j}$
-    
-    $\overset{G-S}{\sim} \mathcal{U}_1 \cup \dots \cup \mathcal{U}_k$ is an orthonormal eignebasis. 
-    
+
+    $\overset{G-S}{\sim} \mathcal{U}_1 \cup \dots \cup \mathcal{U}_k$ is an orthonormal eignebasis.
+
     \item $3 \to 2$
-    
+
     $(\vec{v}_1, \dots, \vec{v}_n)$ ~ \footnote{$\vec{v}_i$'s are eigenvectors corresponding to the eigenvales. } is an orthonormal eigenbais, $\vec{v} \in V$.
-    
+
     $\vec{v} = r_1\vec{v}_1 + r_2\vec{v}_2 + \dots + r_n\vec{v}_n$
-    
+
     $V = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_n}$
 \end{itemize}
 
@@ -2884,7 +2886,7 @@ $T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following A
 
 \setcounter{dummy}{7}
 \begin{proposition}
-    Let $V$ be a finite dimensional Hermitian inner product space. The adjoint of $T: V \to V$ satisfies $\langle T(\vec{v}), \vec{w} \rangle = \langle \vec{v}, T(\vec{w}) \rangle$ for all $\vec{v}$ and $\vec{w} \in V$. 
+    Let $V$ be a finite dimensional Hermitian inner product space. The adjoint of $T: V \to V$ satisfies $\langle T(\vec{v}), \vec{w} \rangle = \langle \vec{v}, T(\vec{w}) \rangle$ for all $\vec{v}$ and $\vec{w} \in V$.
 \end{proposition}
 
 \textbf{Questions: }
@@ -2900,8 +2902,8 @@ $T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following A
 \setcounter{section}{5}
 \setcounter{chapter}{3}
 \begin{itemize}
-    \item $A \in M_n(\mathbb{R})$, $A = A^T \implies T_A$ is self-adjoint 
-    \item $B \in M_n(\mathbb{C})$, $B = B^* \implies T_B$ is self-adjoint. 
+    \item $A \in M_n(\mathbb{R})$, $A = A^T \implies T_A$ is self-adjoint
+    \item $B \in M_n(\mathbb{C})$, $B = B^* \implies T_B$ is self-adjoint.
 \end{itemize}
 
 {~~~}
@@ -2910,22 +2912,22 @@ $T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following A
 
 $\begin{matrix} \text{Let }T: &\mathbb{R}^n &\to &\mathbb{R} ^n &\text{be a linear transformation. }\\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
 
-If $A = A^T$, then $T$ is self-adjoint. 
+If $A = A^T$, then $T$ is self-adjoint.
 
-$\forall \vec{v}, \vec{w} \in \mathbb{R}^n$. 
+$\forall \vec{v}, \vec{w} \in \mathbb{R}^n$.
 
-$\langle T(\vec{v}), \vec{w} \rangle = \langle A\vec{v}, \vec{w} \rangle = (A\vec{v}) \cdot \vec{w}$. 
+$\langle T(\vec{v}), \vec{w} \rangle = \langle A\vec{v}, \vec{w} \rangle = (A\vec{v}) \cdot \vec{w}$.
 
 \begin{quote}
     $\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \cdot \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = \begin{pmatrix} x_1 &\cdots &x_n \end{pmatrix} \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix}$
-    
+
     That is, $\vec{x} \cdot \vec{y} = \vec{x}^T \vec{y}$
-    
+
     $(AB)^T = B^TA^T$
 \end{quote}
 \begin{align*}
     \langle T(\vec{v}), \vec{w} \rangle
-    &= \langle A\vec{v}, \vec{w} \rangle 
+    &= \langle A\vec{v}, \vec{w} \rangle
     \\
     &= (A\vec{v}) \cdot \vec{w}
     \\
@@ -2941,15 +2943,15 @@ $\langle T(\vec{v}), \vec{w} \rangle = \langle A\vec{v}, \vec{w} \rangle = (A\ve
 \end{align*}
 
 \setcounter{section}{0}
-\setcounter{dummy}{6}
+\setcounter{dummy}{7}
 \begin{theorem}
     Let $T \in \mathcal{L}(V, V)$.
 
-    Let $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_n)$ be an orthonormal basis for $V$. 
+    Let $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_n)$ be an orthonormal basis for $V$.
 
-    Let $A = [T]_\mathcal{U}$. 
+    Let $A = [T]_\mathcal{U}$.
 
-    Then, $[T^*]_\mathcal{U} = A^*$ ~ \footnote{For $\mathbb{F} = \mathbb{R}$, $M^* = M^T$, }. 
+    Then, $[T^*]_\mathcal{U} = A^*$ ~ \footnote{For $\mathbb{F} = \mathbb{R}$, $M^* = M^T$, }.
 \end{theorem}
 \setcounter{section}{5}
 
@@ -2957,18 +2959,18 @@ $\langle T(\vec{v}), \vec{w} \rangle = \langle A\vec{v}, \vec{w} \rangle = (A\ve
 
 $\begin{matrix} \text{Let }T: &\mathbb{C}^2 &\to &\mathbb{C}^2 &\text{be a linear transformation}. \\ &\vec{x} &\mapsto &B\vec{x} \end{matrix}$
 
-$B = B^* = \overline{B^T}$, $B$ is Hermitian. 
+$B = B^* = \overline{B^T}$, $B$ is Hermitian.
 
-Then, $T$ is self adjoint. 
+Then, $T$ is self adjoint.
 
-That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(\vec{w}) \rangle_{\mathbb{C}}$ ~ \footnote{Recall that $\langle u, v \rangle_{\mathbb{C}} = u^*v = \overline{u^T} v = u^T\overline{w}$. }. 
+That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(\vec{w}) \rangle_{\mathbb{C}}$ ~ \footnote{Recall that $\langle u, v \rangle_{\mathbb{C}} = u^*v = \overline{u^T} v = u^T\overline{w}$. }.
 
 \begin{quote}
     $\vec{z} = \begin{pmatrix} z_1 \\ \vdots \\ z_n \end{pmatrix}, \vec{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix} \in \mathbb{C}^n$
 
     $\langle \vec{z}, \vec{w} \rangle = z_1 \overline{w_1} + \dots + z_n\overline{w_n} = \vec{w}^* \vec{z}$
 
-    That is, $\langle \vec{z}, \vec{w} \rangle_\mathbb{C} = \vec{w}^* \vec{z}$. 
+    That is, $\langle \vec{z}, \vec{w} \rangle_\mathbb{C} = \vec{w}^* \vec{z}$.
 
     $(BA)^* = A^*B^*$
 \end{quote}
@@ -2988,114 +2990,115 @@ That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(
 \end{align*}
 
 \begin{proof}
-    Let $A = [T]_\mathcal{U} = \begin{bmatrix} | &| & &| \\ [T(\overrightarrow{u_1})]_\mathcal{U} &[T(\overrightarrow{u_2})]_\mathcal{U} & \cdots &[T(\overrightarrow{u_n})]_\mathcal{U} \\ | &| & &|  \end{bmatrix}$, where $\mathcal{U} = (\overrightarrow{u_1}, \dots, \overrightarrow{u_n})$ is an orthonormal basis for $V$. 
-    
+    Let $A = [T]_\mathcal{U} = \begin{bmatrix} | &| & &| \\ [T(\vec{u}_1)]_\mathcal{U} &[T(\vec{u}_2)]_\mathcal{U} & \cdots &[T(\vec{u}_n)]_\mathcal{U} \\ | &| & &|  \end{bmatrix}$, where $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_n)$ is an orthonormal basis for $V$.
+
     \begin{itemize}
-        \item The $i-j^{th}$ entry of $[T(\overrightarrow{u_j})]_\mathcal{U}$:
-        
-        \begin{itemize}
-            \item $\displaystyle [T(\overrightarrow{u_j})]_\mathcal{U} = \sum_{k=1}^n \langle T(\overrightarrow{u_j}), \overrightarrow{u_k} \rangle \overrightarrow{u_k}$
-            \item The $i-j^{th}$ entry of $A$ is $\langle T(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
-        \end{itemize}
-        
-        \item The $i-j^{th}$ entry of $[T^*(\overrightarrow{u_j})]_\mathcal{U}$:
-        \begin{itemize}
-            \item $\displaystyle [T^*(\overrightarrow{u_j})]_\mathcal{U} = \sum_{k=1}^n \langle T^*((\overrightarrow{u_j}), \overrightarrow{u_k} \rangle \overrightarrow{u_k}$
-            \item The $i-j^{th}$ entry of $[T^*(\overrightarrow{u_j})]_\mathcal{U}$ is $\langle T^*(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
-        \end{itemize}
-                
-        \item The $i-j^{th}$ entry of $A$ is $\langle T(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle$
+        \item The $i-j^{th}$ entry of $[T(\vec{u}_j)]_\mathcal{U}$:
 
-        \item The $i-j^{th}$ entry of $A^T$ is $\langle T(\overrightarrow{u_i}), \overrightarrow{u_j} \rangle$
+        \begin{itemize}
+            \item $\displaystyle [T(\vec{u}_j)]_\mathcal{U} = \sum_{k=1}^n \langle T(\vec{u}_j), \vec{u}_k \rangle \vec{u}_k$
+            \item The $i-j^{th}$ entry of $A$ is $\langle T(\vec{u}_j), \vec{u}_i \rangle$
+        \end{itemize}
 
-        \item The $i-j^{th}$ entry of $\overline{A}^T = A^*$ is $\overline {\langle T(\overrightarrow{u_i}), \overrightarrow{u_j} \rangle} = \overline{\langle \overrightarrow{u_i}, T^*(\overrightarrow{u_j}) \rangle} = \langle T^*(\overrightarrow{u_j}), \overrightarrow{u_i} \rangle = i-j^{th}$ column of $[T^*]_\mathcal{U}$
+        \item The $i-j^{th}$ entry of $[T^*(\vec{u}_j)]_\mathcal{U}$:
+        \begin{itemize}
+            \item $\displaystyle [T^*(\vec{u}_j)]_\mathcal{U} = \sum_{k=1}^n \langle T^*((\vec{u}_j), \vec{u}_k \rangle \vec{u}_k$
+            \item The $i-j^{th}$ entry of $[T^*(\vec{u}_j)]_\mathcal{U}$ is $\langle T^*(\vec{u}_j), \vec{u}_i \rangle$
+        \end{itemize}
+
+        \item The $i-j^{th}$ entry of $A$ is $\langle T(\vec{u}_j), \vec{u}_i \rangle$
+
+        \item The $i-j^{th}$ entry of $A^T$ is $\langle T(\vec{u}_i), \vec{u}_j \rangle$
+
+        \item The $i-j^{th}$ entry of $\overline{A}^T = A^*$ is $\overline {\langle T(\vec{u}_i), \vec{u}_j \rangle} = \overline{\langle \vec{u}_i, T^*(\vec{u}_j) \rangle} = \langle T^*(\vec{u}_j), \vec{u}_i \rangle = i-j^{th}$ column of $[T^*]_\mathcal{U}$
     \end{itemize}
 \end{proof}
 
 \setcounter{section}{0}
+\setcounter{dummy}{8}
 \begin{corollary}
-    $T \in \mathcal{L}(V)$ is self-adjoint if and only if $[T]_\mathcal{U} = ([T]_\mathcal{U})^*$. 
+    $T \in \mathcal{L}(V)$ is self-adjoint if and only if $[T]_\mathcal{U} = ([T]_\mathcal{U})^*$.
 \end{corollary}
 
 \setcounter{chapter}{5}
 \setcounter{section}{3}
 \setcounter{dummy}{9}
 \begin{proposition}
-    If $\lambda$ is an eigenvalue of the self-adjoint linear transformation $T$, then $\lambda \in \mathbb{R}$. 
+    If $\lambda$ is an eigenvalue of the self-adjoint linear transformation $T$, then $\lambda \in \mathbb{R}$.
 \end{proposition}
 \setcounter{section}{5}
 \setcounter{chapter}{3}
 
 \begin{proof}
-    Let $\lambda$ be an eigenvalue. 
+    Let $\lambda$ be an eigenvalue.
 
-    $T(\overrightarrow{v}) = \lambda \overrightarrow{v}$ for some $\overrightarrow{v} \in V$.
+    $T(\vec{v}) = \lambda \vec{v}$ for some $\vec{v} \in V$.
 
-    $\langle \lambda \overrightarrow{v}, \overrightarrow{v} \rangle = \lambda\langle T(\overrightarrow{v}), \overrightarrow{v} \rangle = \langle \overrightarrow{v}, T(\overrightarrow{v}) \rangle = \langle \overrightarrow{v}, \lambda \overrightarrow{v} \rangle = \overline{\lambda} \langle \overrightarrow{v}, \overrightarrow{v} \rangle$. 
+    $\langle \lambda \vec{v}, \vec{v} \rangle = \lambda\langle T(\vec{v}), \vec{v} \rangle = \langle \vec{v}, T(\vec{v}) \rangle = \langle \vec{v}, \lambda \vec{v} \rangle = \overline{\lambda} \langle \vec{v}, \vec{v} \rangle$.
 
-    $(\lambda - \overline) \langle \overrightarrow{v}, \overrightarrow{v} \rangle = 0$. 
+    $(\lambda - \overline) \langle \vec{v}, \vec{v} \rangle = 0$.
 
-    Since $\langle \overrightarrow{v}, \overrightarrow{v} \rangle \neq 0$, $\lambda = \overline{\lambda} \implies \lambda \in \mathbb{R}$. 
+    Since $\langle \vec{v}, \vec{v} \rangle \neq 0$, $\lambda = \overline{\lambda} \implies \lambda \in \mathbb{R}$.
 \end{proof}
 
 \begin{example}
 {~~~}
 
-    Is $\lambda = 3-i$ an eigenvalue of $A = \begin{bmatrix} 1 &-2 &3 \\ -2 &5 &2 \\ 3 &2 &7 \end{bmatrix}$? 
-    
+    Is $\lambda = 3-i$ an eigenvalue of $A = \begin{bmatrix} 1 &-2 &3 \\ -2 &5 &2 \\ 3 &2 &7 \end{bmatrix}$?
+
     { \color{lightblue} No. $A$ is a symmetric, so all of its eigenvectors must be in real. }
 \end{example}
 
 \setcounter{chapter}{5}
 \setcounter{section}{3}
 \begin{proposition}
-    If $\vec{u}$ and $\vec{v}$ are eigenvectors, respectively, for the distinct eigenvalues $\lambda$ and $\mu$ of $T: V \to V$, then $\vec{u}$ and $\vec{v}$ are orthogonal, $\langle \vec{u}, \vec{v} \rangle = 0$. 
+    If $\vec{u}$ and $\vec{v}$ are eigenvectors, respectively, for the distinct eigenvalues $\lambda$ and $\mu$ of $T: V \to V$, then $\vec{u}$ and $\vec{v}$ are orthogonal, $\langle \vec{u}, \vec{v} \rangle = 0$.
 \end{proposition}
 \setcounter{section}{5}
 \setcounter{chapter}{3}
 
 \begin{proof}
-    Let $\lambda_1 \neq \lambda_2$ be eigenvalues. 
+    Let $\lambda_1 \neq \lambda_2$ be eigenvalues.
 
-    $T(\overrightarrow{v_1}) = \lambda_1\overrightarrow{v_1}$, and $T(\overrightarrow{v_2}) = \lambda_2\overrightarrow{v_2}$, $v_i \neq 0$, $\overrightarrow{v} \in V$. 
+    $T(\vec{v}_1) = \lambda_1\vec{v}_1$, and $T(\vec{v}_2) = \lambda_2\vec{v}_2$, $v_i \neq 0$, $\vec{v} \in V$.
 
-    $\langle \lambda_1\overrightarrow{v_1}, \overrightarrow{v_2} \rangle = \langle T(\overrightarrow{v_1}), \overrightarrow{v_2} \rangle = \langle \overrightarrow{v_1}, T(\overrightarrow{v_2} \rangle = \langle v_1, \lambda_2\overrightarrow{v_2}) \rangle = \overline{\lambda_2}\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle$.
+    $\langle \lambda_1\vec{v}_1, \vec{v}_2 \rangle = \langle T(\vec{v}_1), \vec{v}_2 \rangle = \langle \vec{v}_1, T(\vec{v}_2 \rangle = \langle v_1, \lambda_2\vec{v}_2) \rangle = \overline{\lambda_2}\langle \vec{v}_1, \vec{v}_2 \rangle$.
 
-    Then, $(\lambda_1 - \lambda_2)\langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle = 0$. 
+    Then, $(\lambda_1 - \lambda_2)\langle \vec{v}_1, \vec{v}_2 \rangle = 0$.
 
-    $\lambda_1 - \lambda_2 \neq 0 \to \langle \overrightarrow{v_1}, \overrightarrow{v_2} \rangle = 0$. 
+    $\lambda_1 - \lambda_2 \neq 0 \to \langle \vec{v}_1, \vec{v}_2 \rangle = 0$.
 \end{proof}
- 
+
 \begin{example}
 {~~~}
 
     Let $A = \begin{bmatrix} a &b \\ b &c \end{bmatrix}$.
 
-    Let $\overrightarrow{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ be an eigenvector. 
+    Let $\vec{v} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ be an eigenvector.
 
-    $A$ must have another eigenvector of $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$. 
+    $A$ must have another eigenvector of $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
 \end{example}
 
 \setcounter{section}{0}
-\setcounter{dummy}{8}
+\setcounter{dummy}{9}
 \begin{proposition}
-    Let $T \in \mathcal{L}(V)$ be self-adjoint. $U \underset{S.S.}{\subseteq} V$ s.t. $\underbrace{T(U) \in U}_{U\text{ is invariant}}$. 
-    
+    Let $T \in \mathcal{L}(V)$ be self-adjoint. $U \underset{S.S.}{\subseteq} V$ s.t. $\underbrace{T(U) \in U}_{U\text{ is invariant}}$.
+
     \begin{enumerate}
         \item $T(U^\perp) \underset{S.S.}{\subseteq} U^\perp$
-        \item $T \bigg|_U: U \to U$ s.t. $\overrightarrow{u} \mapsto T(\overrightarrow{u})$ ~ \footnote{$T \bigg|_U$ means $T$ restricted to $U$. } is self-adjoint. 
-        \item $T\bigg|_{U^\perp}: U^\perp \to \perp U^\perp$ is self-adjoint. 
+        \item $T \bigg|_U: U \to U$ s.t. $\vec{u} \mapsto T(\vec{u})$ ~ \footnote{$T \bigg|_U$ means $T$ restricted to $U$. } is self-adjoint.
+        \item $T\bigg|_{U^\perp}: U^\perp \to \perp U^\perp$ is self-adjoint.
     \end{enumerate}
 \end{proposition}
 
 \begin{proof}
     \begin{enumerate}
-        \item Let $\overrightarrow{v} \in U^\perp$. WTS $T(\overrightarrow{v}) \in U^\perp$. 
-        
-        WTS $\langle T(\overrightarrow{v}), \overrightarrow{u} \rangle = 0$ for all $\overrightarrow{u} \in U$. 
-        
-        $\langle T(\overrightarrow{v}), \overrightarrow{u} \rangle = \langle \underset{\in U^\perp}{\overrightarrow{v}}, \underset{\in U}{T(\overrightarrow{u})} \rangle = 0$
-        
+        \item Let $\vec{v} \in U^\perp$. WTS $T(\vec{v}) \in U^\perp$.
+
+        WTS $\langle T(\vec{v}), \vec{u} \rangle = 0$ for all $\vec{u} \in U$.
+
+        $\langle T(\vec{v}), \vec{u} \rangle = \langle \underset{\in U^\perp}{\vec{v}}, \underset{\in U}{T(\vec{u})} \rangle = 0$
+
         \item Exercise
 
         \item Exercise
@@ -3107,15 +3110,277 @@ $\text{ }$
 
     \begin{itemize}
         \item Spectral Theorem ($\mathbb{F} = \mathbb{C}$)
-        
-        $T \in \mathcal{L}(V)$ is self-adjoint $\implies T$ admits an orthonormal eigenbasis. 
-        
+
+        $T \in \mathcal{L}(V)$ is self-adjoint $\implies T$ admits an orthonormal eigenbasis.
+
         \item Spectral Theorem ($\mathbb{F} = \mathbb{R}$)
-        
-        $T \in \mathcal{L}(V)$ is self-adjoint $\iff T$ admits an orthonormal eigenbasis. 
+
+        $T \in \mathcal{L}(V)$ is self-adjoint $\iff T$ admits an orthonormal eigenbasis.
     \end{itemize}
 \end{theorem}
 \setcounter{section}{5}
+
+\begin{example}
+{~~~}
+
+    $T_A: \mathbb{C}^3 \to \mathbb{C}^3$ defined by $\vec{x} \mapsto A\vec{x}$.
+
+    $A = \begin{bmatrix} i &1 &-1 \\ 0 &2+i &1 \\ 0 &0 &3 \end{bmatrix}$
+
+    \begin{itemize}
+        \item True of False:
+
+        \begin{itemize}
+            \item $Sp(\vec{e}_1)\underset{S.S.}{\subseteq} \mathbb{C}^3$ is invariant.
+
+            True
+
+            $\vec{v} \in Sp(\vec{e}_1) \implies k\vec{e}_1$
+
+            $T(\vec{e}_1) = \begin{pmatrix} i \\ 0 \\ 0 \end{pmatrix} = i\vec{e}_1 \in Sp(\vec{e}_1)$
+
+            $T_A(\vec{v}) = T_A(k\vec{e}_1) = ki\vec{e}_1 \in Sp(\vec{e}_1)$
+
+            \item $Sp(\vec{e}_1, \vec{e}_2)\underset{S.S.}{\subseteq} \mathbb{C}^3$ is invariant.
+
+            $\vec{v} \in Sp(\vec{e}_1, \vec{e}_2), T(\vec{v})\overset{?}{\in}Sp(\vec{e}_1, \vec{e}_2)$
+
+            $T(\vec{e}_1) = \begin{pmatrix} i \\ 0 \\ 0 \end{pmatrix} \in Sp(\vec{e}_1) \subset Sp(\vec{e}_1, \vec{e}_2)$
+
+            $T(\vec{e}_2 = \begin{pmatrix} 1 \\ 2+i \\ 0 \end{pmatrix}) \in Sp(\vec{e}_1, \vec{e}_2)$ <br> $T(\vec{v}) = T(r\vec{e}_1+s\vec{e}_2) \in Sp(\vec{e}_1, \vec{e}_2)$.
+
+            \item $Sp(\vec{e}_1, \vec{e}_2, \vec{e}_3) = \mathbb{C}^3 \underset{S.S.}{\subseteq} ?$ is invariant.
+
+            True
+        \end{itemize}
+
+        \item Give an example of a non-invariant subspace of $\mathbb{C}^3$.
+
+        $Sp(\vec{e}_1, \vec{e}_3) \underset{S.S.}{\subseteq} \mathbb{C}^3$
+
+        $T(\vec{e}_3) = \begin{pmatrix} -i \\ 1 \\ 3 \end{pmatrix} = (-i)\vec{e}_1 + (1)\vec{e}_2 + 3\vec{e}_3 \not\in Sp(\vec{e}_1, \vec{e}_2)$.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    $\dim V < \infty$, $T \in \mathcal{L}(V)$. $\lambda$ is an eigenvalue of $T$.
+
+    \begin{itemize}
+        \item True or False: $\mathrm{Im}(T - \lambda \mathrm{id}) \underset{S.S.}{\subsetneq} V$
+
+        True
+
+        $\exists \vec{v} \neq \vec{0} \in \ker(T - \lambda \mathrm{id})$
+
+        $\dim \ker (T - \lambda \mathrm{id}) \ge 1 \implies \dim \mathrm{Im}(T - \lambda \mathrm{id}) < \dim V$, $\mathrm{Im}(T - \lambda \mathrm{id}) \subsetneq V$.
+
+        \item True or False: $Im(T - \lambda id)$ is invariant.
+
+        True
+
+        Let $\vec{u} \in \mathrm{Im}(T - \lambda \mathrm{id})$, $T(\vec{u}) \overset{?}{\in} \mathrm{Im}(T - \lambda \mathrm{id})$
+
+        $T(\vec{u}) = \underbrace{T(\vec{u}) - \lambda\vec{u}}_{(T-\lambda id)\vec{u}\color{red}\in \mathrm{Im}(T-\lambda \mathrm{id})} + \underbrace{\lambda \vec{u}}_{\in \mathrm{Im}(T - \lambda \mathrm{id})} \in \mathrm{Im}(T - \lambda \mathrm{id})$.
+    \end{itemize}
+\end{example}
+
+\chapterimage{field.jpg}
+\chapter{Jordan Canonical Form}
+
+\setcounter{section}{-1}
+\section{Moltivation}
+
+Let $T: V \to V$ be a linear transformation.
+
+\begin{itemize}
+    \item Let $\mathcal{B}$ be an eigenbasis of V.
+
+    $[T]_\mathcal{B} = \begin{bmatrix} \lambda_1 &0 &\cdots &0 &0 \\ 0 &\lambda 2 &\cdots &0 &0 \\ \vdots &\vdots &\ddots &\vdots &\vdots \\ 0 &0 &\cdots &\lambda_{n-1} &0 \\ 0 &0 &\cdots &0 &\lambda_n \end{bmatrix}$
+
+    \item Let $\mathcal{U}$ be an orthonormal eigenbasis of $V$.
+
+    $[T]_\mathcal{U} = \begin{bmatrix} \lambda_1 &0 &\cdots &0 &0 \\ 0 &\lambda 2 &\cdots &0 &0 \\ \vdots &\vdots &\ddots &\vdots &\vdots \\ 0 &0 &\cdots &\lambda_{n-1} &0 \\ 0 &0 &\cdots &0 &\lambda_n \end{bmatrix}$
+
+    \item $E_{\lambda_j} \perp E_{\lambda_j}$, $i \neq j$
+\end{itemize}
+
+We know that if $T$ is self-adjoint then an orthonormal eigenbasis exists. But what if there is no eigenbasls? Then we need something called a Jordan basis.
+
+Let $\mathcal{B}$ be a Jordan basis of $V$. Then, $[T]_\mathcal{B} = \begin{bmatrix}  \lambda_1 &1 \\ 1 &\lambda_1 \\ & &\lambda_2 &1 &0 \\ & & &\lambda_2 &1 \\ & & & &\lambda_2 \\ & & & & &\lambda_3 \end{bmatrix}$
+
+\begin{theorem}
+    ($\mathbb{F} = \mathbb{C}$)
+
+    $\dim V < \infty$.
+
+    Let $T \in \mathcal{L}(V)$. There exists a basis $\mathcal{B}$ s.t. $[T]_\mathcal{B}$ is upper triangular.
+\end{theorem}
+
+\begin{proof}
+    Prove by induction on $\dim V$
+
+    \begin{itemize}
+        \item $\dim V = 1$
+
+        $\mathcal{B} = \{ \vec{b}_1 \}$
+
+        $[T]_\mathcal{B} = [a]_{1 \times 1}$ is upper triangular.
+
+        \item Induction hypothesis: all $T \in \mathcal{L}(W)$, $\dim W < n$ have an upper triangular matrix representation.
+
+        Let $\dim V = n$, $T \in \mathcal{L}(V)$.
+
+        Let $\lambda$ be an eigenvalue of $T$.
+
+        $U = Im(T - \lambda id) \underset{S.S.}{\subsetneq} V$ is invariant.
+
+        $T\bigg|_{U}: U \to U$, $\dim U \lneq n$.
+
+        By induction hypothesis, $\exists \mathcal{U} = \{ \vec{u}_1, \dots, \vec{u}_m \}$ be a basis for $U$ s.t. $[T\bigg|_U]_\mathcal{U}$ is a diagonal matrix.
+
+        IDEA: extend $\mathcal{U}$ to a basis for $V$.
+
+        $\mathcal{B} = (\vec{u}_1, \dots, \vec{u}_m, \vec{v}_1, \dots, \vec{v}_e)$, $m+e = m$
+
+        Claim $[T]_\mathcal{B}$ is upper triangular.
+    \end{itemize}
+\end{proof}
+
+\section{Triangular Form}
+
+\setcounter{chapter}{6}
+\setcounter{dummy}{1}
+\begin{definition}[Invariant]\index{Invariant}\index{Stable}
+    Let $T: V \to V$ be a linear mapping. A subspace $W \subset V$ is said to be \term{invariant} (or \term{stable}) under $T$ if $T(W) \subset W$.
+\end{definition}
+\setcounter{chapter}{4}
+
+\begin{example}
+{~~~}
+
+    $\mathrm{Im}(T - \lambda I) \subsetneq V$ invariant.
+\end{example}
+
+\setcounter{chapter}{6}
+\setcounter{dummy}{3}
+\begin{proposition}[Triangularizable]\index{Triangularizable}
+    We say that a linear mapping $T: V \to V$ on a finite-dimensional vector space $V$ is \term{triangularizable} if there exists a basis $\beta$ uch that $[T]_\beta^\beta$ is upper-triangular.
+\end{proposition}
+\setcounter{chapter}{4}
+
+Let $\mathcal{B} = (\vec{v}_1, \cdots, \vec{v}_n)$ be basis for $V$.
+
+Assume $[T]_\mathcal{B} =\begin{bmatrix} b_{11} &b_{12} & \cdots &b_{1n} \\ 0 &b_{22} &\cdots &b_{2n} \\ \vdots & &\ddots &\vdots \\ 0 &0 &\cdots &b_{nn} \end{bmatrix}$
+
+Then, $[T(\vec{v}_1)]_\mathcal{B} = [T]_\mathcal{B}[\vec{v}_1]_\mathcal{B} = \begin{pmatrix} b_{11} \\ 0 \\\vdots \\ 0 \end{pmatrix}$
+
+\begin{itemize}
+    \item $T(\vec{v}_1) = b_{11}\vec{v}_1 \in \mathrm{Sp}(\vec{v}_1)$
+    \item $T(\vec{v}_2) = b_{12}\vec{v}_1 + b_{22}\vec{v}_2 \in \mathrm{Sp}(\vec{v}_1, \vec{v}_2)$.
+    \item $\cdots$
+    \item $T[\vec{v}_n] = b_{1n}\vec{v}_1 + \cdots + b_{nn}\vec{v}_n \in \mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_n)$
+\end{itemize}
+
+{~~~}
+
+$\forall j$, $T(\vec{v}_j) \in \mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_j)$
+
+$\mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_j) \underset{S.S.}{\subseteq} V$ is an invariant subspace of $V$.
+
+$T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subseteq} \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_j)$, $1 \le i \le j$
+
+\begin{proof} Prove Proposition 6.1.4.
+
+    Prove by induction on $\dim V$
+
+    \begin{itemize}
+        \item $\dim V = 1$
+
+        This follows immediately.
+
+        \item True for $T \in \mathcal{L}(W)$, $\dim W < n$.
+
+        WTS True for $T \in \mathcal{V}$, $\dim V = n$.
+
+        Consider $U = Im(T = \lambda I) \underset{S.S.}{\subsetneq} V$ invariant under $T$.
+
+        $T\bigg|_U: U \to U$, $u \mapsto T(u)$
+
+        By induction hypothesis, $\exists$ a basis $\mathcal{U} = (\vec{u}_1, \cdots, \vec{u}_m)$ for $U$ s.t. $[T\bigg|_U]_\mathcal{U}$ is upper triangular.
+
+        Extend $\mathcal{U}$ to a basis $\mathcal{B}$ for $V$: $\vec{u}_1, \cdots, \vec{u}_m, \vec{v}_1, \cdots, \vec{v}_l$, $l + m = n$.
+
+        WTS $[T]_\mathcal{B}$ is upper triangular.
+
+        $\underbrace{T\bigg|_U(\vec{u}_i)}_{=~T(\vec{u}_i)} \in Sp(\vec{u}_1, \cdots, \vec{u}_i)$
+
+        \begin{align*}
+            T(\vec{v}_i)
+            &= T(\vec{v}_i) - \lambda\vec{v}_1 + \lambda\vec{v}_i
+            \\
+            &= \underbrace{(T - \lambda I)(\vec{v}_i)}_{\in Im(T - \lambda I) = Sp(\vec{v}_1, \cdots, \vec{v}_m)} + \underbrace{\lambda \vec{v} _i}_{\in Sp(\vec{v}_i)}
+            \\
+            &\in \mathrm{Sp}(\vec{u}_1, \cdots, \vec{u}_m, \vec{v}_1, \cdots, \vec{v}_i)
+        \end{align*}
+    \end{itemize}
+\end{proof}
+
+\setcounter{section}{0}
+\setcounter{dummy}{1}
+\begin{theorem}[Schur's Theorem]\index{Schur's Theorem}
+    Suppose $V$ is a finite-dimensional comples vector space and $T \in \mathcal{L}(V)$. Then $T$ has an upper-triangular matrix with respect to some orthonormal basis of $V$.
+\end{theorem}
+\setcounter{section}{1}
+
+\begin{proof}
+    Take a basis $\mathcal{B} = (\vec{b}_1, \cdots, \vec{b}_n)$.
+
+    After G-S:
+
+    $\mathrm{Sp}(\vec{u}_1) = \mathrm{Sp}(\vec{b}_1)$
+
+    $\mathrm{Sp}(\vec{u}_1, \cdots, \vec{u}_j) = \mathrm{Sp}(\vec{b}_1, \cdots, \vec{b}_j)$
+
+    $[T]_\mathcal{U}$ is triangular iff $\forall i$, $T(\vec{u}_i)\in Sp(\vec{u}_1, \cdots, \vec{u}_i) = Sp(\vec{b}_1, \cdots, \vec{b}_i)$
+\end{proof}
+
+\setcounter{chapter}{6}
+\setcounter{dummy}{11}
+\begin{theorem}[Cayley-Hamilton Theorem]\index{Cayley-Hamilton Theorem}
+    Let $T: V \to V$ be a linear mapping on a finite-dimensional vector space $V$, and let $p(t) = \det(r - tI)$ be its characteristic polynomial. Assume that $p(t)$ has $\dim(V)$ roots in the field $\mathbb{F}$ over which $V$ is defined. Then $p(T) = 0$ (the zero mapping on V)\footnote{$q(x) = x^n + a_{n-1}x^n-1 + \cdots +a_1x = a_0$. $q(T) = T^n + a_{n-1}T^{n-1}+\cdots+a_1T + a_0 = 0$. }.
+\end{theorem}
+\setcounter{chapter}{4}
+
+\begin{example}
+{~~~}
+
+    $\begin{matrix}\text{Let } T: &\mathbb{C}^n &\to &\mathbb{C}^n &\text{be a linear transformation. }\\ &\vec{x} &\mapsto &A\vec{x} \end{matrix}$
+
+    $\mathrm{char}(T) = \mathrm{char}(A) = \det(A - \lambda U)$
+
+    $\det(A - A) = \det(0) = 0 \in \mathbb{C}$.
+\end{example}
+
+\section{Canonical Form for Nilpotent Mappings}
+\setcounter{section}{0}
+\begin{definition}[Niplotent]\index{Niplotent}\index{Index (of nilpotency)}\index{Signature}
+    The linear transformation $T: V \to V$ is \term{nilpotent} if $\exists n \ge 1$ s.t $T^n = 0$. The smallest such $n$ is called the \term{index} of $T$. Its signature is $(\dim \ker T, \cdots, \dim\ker T^k)$.
+\end{definition}
+\setcounter{section}{2}
+
+\bred{Note:} If $T \in \mathcal{L}(V)$ is nilpotent, then $\lambda$ is an eigenvalue of $T \iff \lambda = 0$
+
+\begin{example}
+    True or False ($\mathbb{F} = \mathbb{C}$):
+
+    Suppose $T \in \mathcal{L}(V)$ is nilpotent with index $k$.
+
+    Then, $k \le \dim V$.
+
+    {\color{lightblue} True.
+
+    $p(x) = char(T) = x^{\dim V} \implies T^{\dim V} = 0$ (by Cayley-Hamilton). }
+\end{example}
 
 %----------------------------------------------------------------------------------------
 %	PART
