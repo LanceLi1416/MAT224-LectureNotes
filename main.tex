@@ -2589,7 +2589,7 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
 
     Suppose $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$ is an orthonormal basis for $W$.
 
-    $\forall \vec{v} \in V$, $\vec{w} := \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \langle \vec{v}, \vec{u}_2 \rangle\vec{u}_2 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$
+    $\forall \vec{v} \in V$, $\vec{w} := \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \langle \vec{v}, \vec{u}_2 \rangle\vec{u}_2 + \cdots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$
 
     $\vec{v} = \underset{\in W}{\vec{w}} + \underset{\overset{?}{\in} W^\perp}{(\vec{v}} - \vec{w})$
 
@@ -2602,7 +2602,7 @@ $$\langle \vec{u}_i, \vec{u}_j \rangle = \begin{cases} 0 &i\neq j \\ 1 &i = j \e
         \langle \vec{v} - \vec{w}, \vec{u}_i \rangle
         &= \langle \vec{v}, \vec{u}_i \rangle - \langle \vec{w}, \vec{u}_i \rangle
         \\
-        &= \langle \vec{v}, \vec{u}_1 \rangle - \langle \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_i \rangle\vec{u}_i + \dots + \langle \vec{v}, \vec{u}_m \rangle \vec{u}_m, \vec{u}_i \rangle
+        &= \langle \vec{v}, \vec{u}_1 \rangle - \langle \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \cdots + \langle \vec{v}, \vec{u}_i \rangle\vec{u}_i + \cdots + \langle \vec{v}, \vec{u}_m \rangle \vec{u}_m, \vec{u}_i \rangle
         \\
         &= \langle \vec{v}, \vec{u}_i \rangle - \langle \langle \vec{v}, \vec{u}_i \rangle \vec{u}_i, \vec{u}_i \rangle
         \\
@@ -2678,7 +2678,7 @@ $
         \item $\cdots$
     \end{itemize}
 
-    If $\vec{u}_1, \dots, \vec{u}_m$ is an orthonormal basis for $W \underset{S.S.}{\subseteq} V$, $\forall \vec{v} \in V$, $\mathrm{proj}_W\vec{v} - \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \dots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$.
+    If $\vec{u}_1, \dots, \vec{u}_m$ is an orthonormal basis for $W \underset{S.S.}{\subseteq} V$, $\forall \vec{v} \in V$, $\mathrm{proj}_W\vec{v} - \langle \vec{v}, \vec{u}_1 \rangle\vec{u}_1 + \cdots + \langle \vec{v}, \vec{u}_m \rangle\vec{u}_m$.
     $$\vec{v} = \underset{\in W}{\vec{w}} + \underset{\in W}{\vec{v} - \vec{w}}$$
 \end{proof}
 
@@ -2872,7 +2872,7 @@ $T: V \to V$, $V$ inner product space TFAE\footnote{This means ``The Following A
 
     $(\vec{v}_1, \dots, \vec{v}_n)$ ~ \footnote{$\vec{v}_i$'s are eigenvectors corresponding to the eigenvales. } is an orthonormal eigenbais, $\vec{v} \in V$.
 
-    $\vec{v} = r_1\vec{v}_1 + r_2\vec{v}_2 + \dots + r_n\vec{v}_n$
+    $\vec{v} = r_1\vec{v}_1 + r_2\vec{v}_2 + \cdots + r_n\vec{v}_n$
 
     $V = E_{\lambda_1} \oplus \cdots \oplus E_{\lambda_n}$
 \end{itemize}
@@ -2968,7 +2968,7 @@ That is, $\langle T(\vec{v}), \vec{w} \rangle_{\mathbb{C}} = \langle \vec{v}, T(
 \begin{quote}
     $\vec{z} = \begin{pmatrix} z_1 \\ \vdots \\ z_n \end{pmatrix}, \vec{w} = \begin{pmatrix} w_1 \\ \vdots \\ w_n \end{pmatrix} \in \mathbb{C}^n$
 
-    $\langle \vec{z}, \vec{w} \rangle = z_1 \overline{w_1} + \dots + z_n\overline{w_n} = \vec{w}^* \vec{z}$
+    $\langle \vec{z}, \vec{w} \rangle = z_1 \overline{w_1} + \cdots + z_n\overline{w_n} = \vec{w}^* \vec{z}$
 
     That is, $\langle \vec{z}, \vec{w} \rangle_\mathbb{C} = \vec{w}^* \vec{z}$.
 
@@ -3268,7 +3268,7 @@ Let $\mathcal{B}$ be a Jordan basis of $V$. Then, $[T]_\mathcal{B} = \begin{bmat
 \end{proposition}
 \setcounter{chapter}{4}
 
-Let $\mathcal{B} = (\vec{v}_1, \cdots, \vec{v}_n)$ be basis for $V$.
+Let $\mathcal{B} = (\vec{v}_1, \dots, \vec{v}_n)$ be basis for $V$.
 
 Assume $[T]_\mathcal{B} =\begin{bmatrix} b_{11} &b_{12} & \cdots &b_{1n} \\ 0 &b_{22} &\cdots &b_{2n} \\ \vdots & &\ddots &\vdots \\ 0 &0 &\cdots &b_{nn} \end{bmatrix}$
 
@@ -3278,14 +3278,14 @@ Then, $[T(\vec{v}_1)]_\mathcal{B} = [T]_\mathcal{B}[\vec{v}_1]_\mathcal{B} = \be
     \item $T(\vec{v}_1) = b_{11}\vec{v}_1 \in \mathrm{Sp}(\vec{v}_1)$
     \item $T(\vec{v}_2) = b_{12}\vec{v}_1 + b_{22}\vec{v}_2 \in \mathrm{Sp}(\vec{v}_1, \vec{v}_2)$.
     \item $\cdots$
-    \item $T[\vec{v}_n] = b_{1n}\vec{v}_1 + \cdots + b_{nn}\vec{v}_n \in \mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_n)$
+    \item $T[\vec{v}_n] = b_{1n}\vec{v}_1 + \cdots + b_{nn}\vec{v}_n \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_n)$
 \end{itemize}
 
 {~~~}
 
-$\forall j$, $T(\vec{v}_j) \in \mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_j)$
+$\forall j$, $T(\vec{v}_j) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_j)$
 
-$\mathrm{Sp}(\vec{v}_1, \cdots, \vec{v}_j) \underset{S.S.}{\subseteq} V$ is an invariant subspace of $V$.
+$\mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_j) \underset{S.S.}{\subseteq} V$ is an invariant subspace of $V$.
 
 $T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subseteq} \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_j)$, $1 \le i \le j$
 
@@ -3306,21 +3306,21 @@ $T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subs
 
         $T\bigg|_U: U \to U$, $u \mapsto T(u)$
 
-        By induction hypothesis, $\exists$ a basis $\mathcal{U} = (\vec{u}_1, \cdots, \vec{u}_m)$ for $U$ s.t. $[T\bigg|_U]_\mathcal{U}$ is upper triangular.
+        By induction hypothesis, $\exists$ a basis $\mathcal{U} = (\vec{u}_1, \dots, \vec{u}_m)$ for $U$ s.t. $[T\bigg|_U]_\mathcal{U}$ is upper triangular.
 
-        Extend $\mathcal{U}$ to a basis $\mathcal{B}$ for $V$: $\vec{u}_1, \cdots, \vec{u}_m, \vec{v}_1, \cdots, \vec{v}_l$, $l + m = n$.
+        Extend $\mathcal{U}$ to a basis $\mathcal{B}$ for $V$: $\vec{u}_1, \dots, \vec{u}_m, \vec{v}_1, \dots, \vec{v}_l$, $l + m = n$.
 
         WTS $[T]_\mathcal{B}$ is upper triangular.
 
-        $\underbrace{T\bigg|_U(\vec{u}_i)}_{=~T(\vec{u}_i)} \in Sp(\vec{u}_1, \cdots, \vec{u}_i)$
+        $\underbrace{T\bigg|_U(\vec{u}_i)}_{=~T(\vec{u}_i)} \in Sp(\vec{u}_1, \dots, \vec{u}_i)$
 
         \begin{align*}
             T(\vec{v}_i)
             &= T(\vec{v}_i) - \lambda\vec{v}_1 + \lambda\vec{v}_i
             \\
-            &= \underbrace{(T - \lambda I)(\vec{v}_i)}_{\in Im(T - \lambda I) = Sp(\vec{v}_1, \cdots, \vec{v}_m)} + \underbrace{\lambda \vec{v} _i}_{\in Sp(\vec{v}_i)}
+            &= \underbrace{(T - \lambda I)(\vec{v}_i)}_{\in Im(T - \lambda I) = Sp(\vec{v}_1, \dots, \vec{v}_m)} + \underbrace{\lambda \vec{v} _i}_{\in Sp(\vec{v}_i)}
             \\
-            &\in \mathrm{Sp}(\vec{u}_1, \cdots, \vec{u}_m, \vec{v}_1, \cdots, \vec{v}_i)
+            &\in \mathrm{Sp}(\vec{u}_1, \dots, \vec{u}_m, \vec{v}_1, \dots, \vec{v}_i)
         \end{align*}
     \end{itemize}
 \end{proof}
@@ -3333,15 +3333,15 @@ $T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subs
 \setcounter{section}{1}
 
 \begin{proof}
-    Take a basis $\mathcal{B} = (\vec{b}_1, \cdots, \vec{b}_n)$.
+    Take a basis $\mathcal{B} = (\vec{b}_1, \dots, \vec{b}_n)$.
 
     After G-S:
 
     $\mathrm{Sp}(\vec{u}_1) = \mathrm{Sp}(\vec{b}_1)$
 
-    $\mathrm{Sp}(\vec{u}_1, \cdots, \vec{u}_j) = \mathrm{Sp}(\vec{b}_1, \cdots, \vec{b}_j)$
+    $\mathrm{Sp}(\vec{u}_1, \dots, \vec{u}_j) = \mathrm{Sp}(\vec{b}_1, \dots, \vec{b}_j)$
 
-    $[T]_\mathcal{U}$ is triangular iff $\forall i$, $T(\vec{u}_i)\in Sp(\vec{u}_1, \cdots, \vec{u}_i) = Sp(\vec{b}_1, \cdots, \vec{b}_i)$
+    $[T]_\mathcal{U}$ is triangular iff $\forall i$, $T(\vec{u}_i)\in Sp(\vec{u}_1, \dots, \vec{u}_i) = Sp(\vec{b}_1, \dots, \vec{b}_i)$
 \end{proof}
 
 \setcounter{chapter}{6}
@@ -3387,7 +3387,7 @@ $T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subs
 \setcounter{section}{0}
 \setcounter{definitionT}{2}
 \begin{definition}[Niplotent]\index{Niplotent}\index{Index (of nilpotency)}\index{Signature}
-    The linear transformation $T: V \to V$ is \term{nilpotent} if $\exists n \ge 1$ s.t $T^n = 0$. The smallest such $n$ is called the \term{index} of $T$. Its signature is $(\dim \ker T, \cdots, \dim\ker T^k)$.
+    The linear transformation $T: V \to V$ is \term{nilpotent} if $\exists n \ge 1$ s.t $T^n = 0$. The smallest such $n$ is called the \term{index} of $T$. Its signature is $(\dim \ker T, \dots, \dim\ker T^k)$.
 \end{definition}
 
 \bred{Note:} If $T \in \mathcal{L}(V)$ is nilpotent, then $\lambda$ is an eigenvalue of $T \iff \lambda = 0$
@@ -3439,7 +3439,7 @@ Suppose $N$ is a nilpotent operator on $V$. Then there is a basis $V$ with respe
 \begin{example}
     $N: \mathbb{C}^4 \to \mathbb{C}^4$ is nilpotent.
 
-    $\exists \mathcal{B} = (\vec{b}_1, \cdots, \vec{b}_4)$ s.t. $[N]_\mathcal{B} = \begin{bmatrix} 0 &1 &0 &0 \\ 0 &0 &1 &0 \\ 0 &0 &0 &1 \\ 0 &0 &0 &0 \end{bmatrix}$
+    $\exists \mathcal{B} = (\vec{b}_1, \dots, \vec{b}_4)$ s.t. $[N]_\mathcal{B} = \begin{bmatrix} 0 &1 &0 &0 \\ 0 &0 &1 &0 \\ 0 &0 &0 &1 \\ 0 &0 &0 &0 \end{bmatrix}$
 \end{example}
 
 \begin{theorem}[Canonical Form for Nilpotent Mappings]\index{Canonical Form for Nilpotent Mappings}
