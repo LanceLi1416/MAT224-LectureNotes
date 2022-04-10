@@ -1,0 +1,144 @@
+\documentclass[11pt,fleqn]{book} 
+\input{structure}
+
+\usetikzlibrary{decorations.pathreplacing}
+\newcommand{\tikznode}[3][inner sep=0pt]{\tikz[remember
+picture,baseline=(#2.base)]{\node(#2)[#1]{$#3$};}}
+\usepackage{ytableau}
+
+\input{structure}
+
+\begin{document}
+\ytableausetup{centertableaux}
+
+    Recall
+    
+    $N: \mathbb{C}^4 \to \mathbb{C}^4$ is a nilpotent map with the dignatiure $(1, 2, 3, 4)$. 
+    
+    $[N]_\mathcal{B} = \begin{bmatrix} 0 &1 &0 &0 \\ 0 &0 &1 &0 \\ 0 &0 &0 &1 \\ 0 &0 &0 &0 \end{bmatrix}$ 
+    
+    $\vec{0} \leftarrow \vec{b}_1 \leftarrow \vec{b}_2 \leftarrow \vec{b}_3 \leftarrow \vec{b}_4$
+    
+    
+    If $\dim\ker T^2 = 2$, $\dim \ker T^3 = \dim\ker T^4 = 4$, then $[T]_\mathcal{B} = \begin{bmatrix} \begin{bmatrix} 0 &1 \\ 0 &0 \end{bmatrix} \\ &\begin{bmatrix} 0 &1 \\0 &0 \end{bmatrix} \end{bmatrix} = N_2 \oplus N_2$
+    
+    {~~~}
+    
+    Let $T \mathbb{C}^{10} \to \mathbb{C}^{10}$
+    
+    If $\dim\ker T = 4$, $\dim\ker T^2 = 8$ and $\dim\ker T^3 = 9 and \dim\ker T^4 = 10$, then $[T]_\mathcal{B} = N_4 \oplus N_1 \oplus N_1 + \oplus N_1$
+    
+    \begin{ytableau}
+        \none & & & &\\
+        \none & & \\
+        \none & & \\
+        \none & & \\
+    \end{ytableau}
+    
+    \begin{example}[Single Block]
+        $T: \mathbb{C}^4 \to \mathbb{C}^4$. 
+        
+        $[T]_\mathcal{B} = \begin{bmatrix} \lambda &1 \\ &\lambda &1 \\ & &\lambda &1 \\ & & &\lambda \end{bmatrix}$
+        
+        \begin{itemize}
+            \item The eigenvalue is $\lambda$ with the algebraic multiplicity of $4$. 
+            \item The geometric multiplicity of $\lambda$ is $1$. 
+        \end{itemize}
+        
+        Thus, $T = \lambda \mathrm{id}: \mathbb{C}^4 \to \mathbb{C}^4: $$[T - \lambda \mathrm{id}] = \begin{bmatrix} 0 &1 \\ &0 &1 \\ & &0 &1 \\ & & &0 \end{bmatrix}$
+        
+        {~~~}
+        
+        $T(\vec{b}_1) = \lambda\vec{b}_1$
+        
+        $T(\vec{b}_i) = \lambda\vec{b}_i + \vec{b}_i$
+        
+        $[T - \lambda \mathrm{id}]$ has a cycle of $\vec{b}_1 \leftarrow \vec{b}_2 \leftarrow \vec{b}_3 \leftarrow \vec{b}_4$
+    \end{example}
+    
+    \begin{example}[Multiple Block]
+        $T: \mathbb{C}^8 \to \mathbb{C}^8$
+        
+        $\exists$ a basis $\mathcal{B}$ s.t. $[T]_\mathcal{B} = \begin{bmatrix} \begin{bmatrix} -i &1 \\ &-i &1 \\ & &-i \end{bmatrix} \\ &\begin{bmatrix} -i &i \\ &-i \end{bmatrix} \\ & &\begin{bmatrix} 3 &1 \\ &3 \end{bmatrix} \\ & && \begin{bmatrix} 2 \end{bmatrix} \end{bmatrix}$
+    \end{example}
+    
+    \newpage
+    
+    \begin{itemize}
+        \item The eigenvalues are
+        \begin{itemize}
+            \item $-i$ with an algebraic multiplicity of $5$
+            \item $3$ with an algebraic multiplicity of $2$
+            \item $2$ with an algebraic multiplicity of $1$
+        \end{itemize}
+        
+        \item For $\lambda = -i$
+        
+        $[T - (-i)\mathrm{id}] = \begin{bmatrix} \begin{bmatrix} 0 &1 \\ &0 &1 \\ & &0 \end{bmatrix} \\ &\begin{bmatrix} 0 &1 \\ &0 \end{bmatrix} \\ & &\begin{bmatrix} * &1 \\ &* \end{bmatrix} \\ & && \begin{bmatrix} * \end{bmatrix} \end{bmatrix}$
+        
+        \begin{itemize}
+            \item the geomrtric mutiplicity of $\lambda = -i$ is $2$.
+            
+            $\mathcal{B} = (\vec{b}_1, \vec{b}_2, \dots, \vec{b}_8)$
+    
+            $\vec{0} \leftarrow \vec{b}_1 \leftarrow \vec{b}_2 \leftarrow \vec{b}_3$
+    
+            $\vec{0} \leftarrow \vec{b}_4 \leftarrow \vec{b}_5$
+            
+            \begin{center}
+            \begin{ytableau}
+                \none & & & \\
+                \none & &
+            \end{ytableau}
+            \end{center}
+            
+            \item The generalized eigenspace\footnote{$G_\lambda = \ker(T - \lambda\mathrm{id})^l$, $l \ge 1$} , $G_i = \mathrm{Sp}(\vec{b}_1, \vec{b}_2, \vec{b}_3, \vec{b}_4, \vec{b}_5)$
+        \end{itemize}
+        
+        \item For $\lambda = 3$
+        
+        $[T - 3\mathrm{id}]_\mathcal{B} = \begin{bmatrix} \begin{bmatrix} * &1 \\ &* &1 \\ & &* \end{bmatrix} \\ &\begin{bmatrix} * &1 \\ &* \end{bmatrix} \\ & &\begin{bmatrix} 0 &1 \\ &0 \end{bmatrix} \\ & && \begin{bmatrix} * \end{bmatrix} \end{bmatrix}$
+        
+        \begin{itemize}
+            \item $\vec{0} \leftarrow \vec{b}_6 \leftarrow \vec{b}_7$
+            
+            \item $G_3 = \mathrm{Sp}(\vec{b}_6, \vec{b}_7)$
+            
+            \begin{center}
+            \begin{ytableau}
+                \none & & &    
+            \end{ytableau}
+            \end{center}
+        \end{itemize}
+        
+        \item For $\lambda = 2$
+            
+        $[T - 2\mathrm{id}]_\mathcal{B} = [T - 3\mathrm{id}]_\mathcal{B} = \begin{bmatrix} \begin{bmatrix} * &1 \\ &* &1 \\ & &* \end{bmatrix} \\ &\begin{bmatrix} * &1 \\ &* \end{bmatrix} \\ & &\begin{bmatrix} * &1 \\ &* \end{bmatrix} \\ & && \begin{bmatrix} 0 \end{bmatrix} \end{bmatrix}$
+            
+        \begin{itemize}
+            \item $G_2 = \mathrm{Sp}(\vec{b}_8) = E_2$. 
+        \end{itemize}
+    \end{itemize}
+    
+    \begin{example}
+    {~~~}
+    
+        $\begin{matrix} \text{Let } T: &\mathbb{C}^4 &\to &\mathbb{C}^4 &\text{be a linear transformation. } \\ &\vec{x} &\mapsto &A\vec{x}  \end{matrix}$
+        
+        Let $A = \begin{bmatrix} 1 &0 &0 &0 \\ 1 &2 &0 &0 \\ 1 &0 &2 &0 \\ 1 &1 &0 &2 \end{bmatrix}$. 
+        
+        Given the eigenvalue $\lambda_1 = 2$ with an algebraic multiplicity of $3$, and the eigenvalue $\lambda_2 = 3$ with an algebraic multiplicity of $1$. 
+        
+        Given $\ker(T - 1\mathrm{id}) = mathrm{Sp}(\begin{pmatrix} -1 \\ 1 \\ 1 \\ 0 \end{pmatrix})$, $\ker(T - 1\mathrm{id})^2 = \mathrm{Sp}\{\begin{bmatrix} -1 \\ 1 \\ 1 \\ 0 \end{bmatrix}\}$. 
+        
+        Given $\ker{T - 2\mathrm{id}} = \mathrm{Sp}\{\begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}\}$ \footnote{This tells us that we have two Jordan blocks with eigenvalues of 2}, and $\ker T - 2\mathrm{id})^2 = \{\begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}, \begin{bmatrix}0\\0\\1\\0 \end{bmatrix}, \begin{bmatrix} 0\\0\\0\\1 \end{bmatrix}\}$
+        
+        \begin{itemize}
+            \item $\vec{0} \leftarrow \vec{b}_1 \leftarrow \vec{b}_2$
+            
+            Pick a $\vec{b}_2$, compute its image and that will be $\vec{b}_1$. 
+            
+            \item $\vec{0} \leftarrow \vec{b}_3$
+        \end{itemize}
+    \end{example}
+\end{document}
