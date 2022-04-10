@@ -3351,6 +3351,28 @@ $T(\vec{v}_i) \in \mathrm{Sp}(\vec{v}_1, \dots, \vec{v}_i) \underset{S.S.}{\subs
 \end{theorem}
 \setcounter{chapter}{4}
 
+\begin{proof}
+    Let $Q(T)$ be the characteristic polynomial of $T$. The $Q(T) = 0 \in \mathcal{L}(V)$. 
+    
+    Note $Q(t) = (t - \lambda_1)^{m_1}(y-\lambda_2)^{m_2}\cdots(T-\lambda_k)^{m_k}$, $m_i$'s are the algebraic multiplicities of $\lambda_i$. 
+    
+    WTS $Q(T) \vec{v} = \vec{0} \in V$ for all $\vec{x} \in V$. 
+    
+    $Q(T): V = G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_k} \to G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_k}$.
+    
+    Note that $Q(T)\big|_{G_\lambda+i}: {G_\lambda+i} \to {G_\lambda+i}$ is $G_{\lambda_i}$ invariant. 
+    
+    $\forall \vec{v} \in \vec{v}$, $\vec{v} = \vec{v}_1 + \vec{v}_2 + \cdots + \vec{v}_k$, $\vec{v}_i \in G_{\lambda_i}$. 
+    
+    {~~~}
+    
+    WTS $Q(T)\big|_{G_{\lambda_i}}(\vec{v}_i) = \vec{0}$. 
+    
+    Take $\vec{v}_i \in G_{\lambda_i} = \ker (T - \lambda_i\mathrm{id})^{m_i}$. 
+    
+    $Q(T)\big|_{G_{\lambda_i}} = ()\cdots(T-\lambda_i\mathrm{id})^{m_i} \vec{v}_i = \vec{0}$. 
+\end{proof}
+
 \begin{example}
 {~~~}
 
@@ -3727,6 +3749,192 @@ $\text{ }$
         Pick a $\vec{b}_2$, compute its image and that will be $\vec{b}_1$. 
             
         \item $\vec{0} \leftarrow \vec{b}_3$
+    \end{itemize}
+\end{example}
+
+%----------------------------------------------------------------------------------------
+\begin{lemma}
+    Suppose $T \in \mathcal{L}(V)$ and $\lambda \in \mathbb{F}$. Then $G(\lambda, T) = \mathrm{null}(T - \lambda I)^{\dim V}$. 
+\end{lemma}
+
+Recall: $V$ is a $\mathbb{C}$\_V.S., $\dim V = n$. $T \in \mathcal{L}(V)$. $\lambda_1, \dots, \lambda_k$ are distinct eigenvalues. 
+\begin{theorem}
+    $T$ admits a Jordan basis. 
+     
+    $\exists$ a basis $\mathcal{B} = (\vec{b}_1, \dots, \vec{x}_n)$ for $V$ s.t. $$[T]_\mathcal{B} = \begin{bmatrix} A_1 \\ &A_2 \\ & &\ddots \\ & & &A_l \end{bmatrix}$$, with each $A_{i} = \begin{bmatrix} \lambda &1 \\ &\ddots &\ddots \\ & & \ddots &1 \\ & & & \lambda \end{bmatrix}$
+\end{theorem}
+ 
+\textbf{Observations}
+\begin{itemize}
+    \item $A_i$'s with the same $\lambda$ are the matrix representation of $(T - \lambda I)\big|_{G(\lambda, T)}$. 
+     
+    $T\big|_{G_\lambda}: G_\lambda \to G_\lambda$ is invariant. $T(G_\lambda) \underset{S.S.}{\subseteq} G_\lambda$. 
+     
+    \item $\vec{b}_i$'s are generalized eigenvectors. 
+    
+    $V = \underset{\lambda = \{ \lambda_1, \dots, \lambda_k \}}{\oplus} G_{\lambda} = G_{\lambda_1} \oplus G_{\lambda_2} \oplus \cdots \oplus G_{\lambda_k}$. 
+    
+    \item $T - \lambda\mathrm{id} \big|_{G_\lambda}$ is nilpotent. 
+\end{itemize}
+ 
+\begin{theorem}
+$\text{ }$
+ 
+    \begin{enumerate}[label=\alph*)]
+        \item $G_\lambda$ is $T$ invariant: $T(G_\lambda) = G_\lambda$
+         
+        \item $V = \underset{\lambda = \{ \lambda_1, \dots, \lambda_k \}}{\oplus} G_{\lambda} = G_{\lambda_1} \oplus G_{\lambda_2} \oplus \cdots \oplus G_{\lambda_k}$
+         
+        \item $T - \lambda\mathrm{id} \big|_{G_\lambda}$ is nilpotent. 
+    \end{enumerate}
+\end{theorem}
+ 
+\begin{proof}
+$\text{ }$
+    \begin{enumerate}[label=\alph*)]
+        \item $G_\lambda = \ker(T - \lambda\mathrm{id})^n$. 
+        
+        Let $\vec{v} \in G_\lambda$. 
+        
+        Then, $(T - \lambda\mathrm{id})^n\vec{v} = 0$. 
+        
+        {~~~}
+        
+        WTS $T(\vec{x}) \in \ker(T - \lambda\mathrm{id})^n$. 
+        
+        $(T - \lambda\mathrm{id})^n T(\vec{v})$
+        
+        Let $p(T) = (T - \lambda\mathrm{id})^n$. 
+        
+        $p(T)T(\vec{v}) = Tp(T)(\vec{v}) = T(\vec{0}) = 0$
+        
+        {~~~} 
+        
+        OR
+        
+        $T(\vec{v}) = (T - \lambda\mathrm{id})(\vec{v}) + \lambda\vec{v} = \vec{0} + \lambda\vec{v} = \lambda\vec{v}$. 
+        
+        \item Proof by induction on $\dim V$.
+        
+        \begin{itemize}
+            \item \textbf{Base case:} $\dim V = 1$
+            
+            $\lambda$ is an eigenvalues of $T$, so $E_\lambda = V = G_\lambda$. 
+            
+            \item \textbf{Induction Hypothesis:} Assume $W = \underset{\lambda=\{\lambda_1, \dots, \lambda_n\}}{\oplus}G_\lambda = G_{\lambda_1} \oplus \cdots \oplus G_{\lambda_k}$ holds for any $S \in \mathcal{L}(W)$, $\dim W < n$. 
+            
+            Let $T \in \mathcal{L}(V)$m $\dim V = n$. $V = \underset{=\ker(T-\lambda_1)\mathrm{id}^n}{G_{\lambda_1}} \oplus $ something. 
+            
+            Consider $T - \lambda_1\mathrm{id}: B \to V$ by :) $V = \underset{G_{\lambda_1}}{\ker(T - \lambda\mathrm{id})^n} + \underset{U}{\mathrm{Im}(T-\lambda_1\mathrm{id})^n}$. 
+            
+            Note $U$ is invariant: 
+            \begin{exercise}
+                $S: V \to V$. Prove $S(\mathrm{Im}~S) \underset{S.S.}{\subseteq} \mathrm{Im}~S$. 
+                
+                \begin{proof}
+                    Let $\vec{w} \in \mathrm{Im}~S$. $S(\vec{w}) \in \mathrm{Im}~S$. 
+                \end{proof}
+            \end{exercise}
+            
+            $T\big|_U: U \to U$, $\dim U < n$. 
+                
+            By induction hypothesis, $U = G_{\lambda_2} \oplus \cdots \oplus G_{\lambda_k}$
+            
+            {~~~}
+            
+            Note that $G_{\lambda_1} = G(\lambda_1, T)$, but $G_{\lambda_2} = G(\lambda_2, T\big|_U)$. 
+            
+            WTS $G(\lambda_i, T\big|_U) = G(\lambda_i, T)$. 
+            \begin{itemize}
+                \item $G(\lambda_i, T\big|_U) \underset{S.S.}{\subseteq} G(\lambda_i, T)$
+                
+                Let $\vec{v} \in G(\lambda_i, T\big|_U)$. 
+                
+                $(T\big|_U - \lambda_i\mathrm{id})^n \vec{v} = \vec{0}$. 
+                
+                $\underbrace{(T - \lambda_i\mathrm{id})^n}_{p(T)} \vec{v} = (T\big|_U - \lambda_i\mathrm{id})^n \vec{v} = \vec{0}$. 
+                
+                \item $G(\lambda_i, T) \underset{S.S.}{\subseteq} G(\lambda_i, T\big|_U)$
+                
+                Let $\vec{v} \in G(\lambda_i, T)$. 
+                
+                Show that $\vec{v} \in U$. 
+                
+                $\vec{v} = \vec{v}_1 + \vec{u}_2 + \cdots + \vec{u}_k$ = a component in $G_{\lambda_1}$ + a component in $U$. 
+            \end{itemize}
+        \end{itemize}
+        
+        {~~~}
+        
+        \item WTS $T - \lambda\mathrm{id}\big|_{G_\lambda}$ is nilpotent. 
+        
+        Let $\vec{v} \in G_\lambda$, $T\big|_{G_\lambda} - \lambda\mathrm{id}\big|_{G_\lambda}(\vec{x}) = T(\vec{v}) - \lambda\mathrm{id}(\vec{v}) \in G_\lambda$.
+        
+        {~~~}
+        
+        $\forall \vec{v} \in G_\lambda$, $(T - \lambda\mathrm{id})^n = \vec{0}$ by the description of a generalized eigenspace. 
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Provide counter examples of $T: \ker T \oplus \mathrm{Im}~T$. 
+    
+    \item $\begin{matrix} T: &\mathbb{R} &\to &\mathbb{R} \\ &\vec{x} &\mapsto &\begin{bmatrix} 0 &0 \\ 1 &0 \end{bmatrix} \vec{v} \end{matrix}$
+\end{example}
+
+\begin{example}
+    Prove $V = \ker T^n \oplus \mathrm{Im}~T^n$ $:)$
+    
+    \begin{proof}
+        Let $\vec{v} \in \ker T^n \cap \mathrm{Im}~T^n$. 
+        WTS $\vec{v} = 0$. 
+        
+        Since $\vec{v} \in \ker T^n$, $T^n(\vec{v}) = \vec{0}$. 
+        
+        Since $\vec{v} \in \mathrm{Im}~T^n$, $\exists \vec{w} \in V$ s.t. $T(\vec{w}) = \vec{x}$. 
+        
+        $T^n(T^n(\vec{w})) = T^n(\vec{v}) = \vec{0}$. 
+        
+        $T^{2n}(\vec{x}) = \vec{0}$. 
+        
+        From HW2: $\ker T \subsetneq \ker T^2 \subsetneq \cdots \subsetneq \ker T^n = \ker T^{n+1} = \cdots $. 
+        
+        So $\ker T^{2n} = \ker T^n$, so $T^{2n}(\vec{w}) = 0 \implies T^n(\vec{w}) = \vec{0} = \vec{v}$.
+        
+        {~~~~}
+        
+        WTS $\ker T^n \oplus \mathrm{Im}~T^n \underset{S.S.}{\subseteq} V \implies \ker T^n \oplus \mathrm{Im}T^n = V$ by Rank-Nullity Theorem. 
+    \end{proof}
+\end{example}
+
+\begin{example}
+{~~~}
+    
+    Let $T: \mathbb{C}^4 \to \mathbb{C}^4$ be a linear transformation defined by $\vec{x} \mapsto A\vec{x}$. 
+    
+    $\mathrm{Nul}(A - 2I) = \mathrm{Sp} \left\{ \begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}, \begin{pmatrix} 0\\0\\0\\1 \end{pmatrix} \right\}$
+    
+    $\mathrm{Nul}(A -t 3I) = \mathrm{Sp} \left\{ \begin{pmatrix} 1\\-1\\-1\\3 \end{pmatrix} \right\}$
+    
+    $\mathrm{Nul}(A - 3I) = \mathrm{Sp} \left\{ \begin{pmatrix} 2\\10\\1\\0 \end{pmatrix} \right\}$
+    
+    \begin{itemize}
+        \item Fina a Jordan Canonical form for $A$
+        
+        $$\begin{pmatrix} \begin{bmatrix} 2 \end{bmatrix} \\ & \begin{bmatrix} 2 \end{bmatrix} \\ & &\begin{bmatrix} 3 &1 \\ &3 \end{bmatrix} \end{pmatrix}$$
+        
+        \item Find the corresponding Jordan basis
+        
+        \begin{itemize}
+            \item $\mathcal{B} = (\vec{b}_1, \vec{b}_2, \vec{b}_3, \vec{b}_4)$.
+            \item $[T(\vec{b}_1)]_\mathcal{B} = [2\vec{b}_1]_\mathcal{B} = \begin{pmatrix} 2\\0\\0\\0 \end{pmatrix}$. 
+            \item Take $\vec{b}_1 = \begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}$, $\vec{b}_2 = \begin{pmatrix} 0\\0\\0\\1 \end{pmatrix}$.
+            \item $\vec{0} \leftarrow \vec{b}_3 \leftarrow \vec{b}_4$ is a cycle. 
+            \item Take $\vec{b}_4 = \begin{pmatrix} 2\\10\\1\\0 \end{pmatrix}$ s.t. $\vec{b}_4 \in \mathrm{Nul}(A - 3I)^2$ and $\vec{x}_4 \notin \mathrm{Nul}(A - 3I)$. 
+            \item $\vec{b}_3 = (A - 3I)(\vec{b}_4) = \begin{pmatrix} 3\\-3\\-3\\9 \end{pmatrix} \in \mathrm{Nul}(A - 3I)$. 
+        \end{itemize}
+        
+        So $\mathcal{B} = \left( \begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}, \begin{pmatrix} 0\\0\\0\\1 \end{pmatrix}, \begin{pmatrix} 3\\-3\\-3\\9 \end{pmatrix}, \begin{pmatrix} 2\\10\\1\\0 \end{pmatrix} \right)$ is a Jordan basis for $T$. 
     \end{itemize}
 \end{example}
 
